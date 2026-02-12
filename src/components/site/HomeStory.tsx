@@ -735,79 +735,129 @@ function DifferencePanel() {
 function HowItWorksPanel() {
   const steps = [
     {
-      title: "Join a cohort",
-      body: "Families pick a schedule that fits. Students receive a clear weekly plan and a live Zoom link.",
+      title: "Join",
+      body: "Enroll in Kanam Academy Foundations (Ages 12–15). Families receive a simple start checklist so learners begin confidently.",
+      outcome: "Clear setup + cohort start",
     },
     {
-      title: "Learn together, live",
-      body: "Instructors teach step by step and answer questions in real time, so learners never feel stuck.",
+      title: "Build",
+      body: "Attend live, human-led Zoom sessions and complete guided practice. Each week ends with a concrete build.",
+      outcome: "Weekly project milestone",
     },
     {
-      title: "Practice by building",
-      body: "Students apply each lesson immediately with guided practice and projects that build confidence.",
-    },
-    {
-      title: "Finish with outcomes",
-      body: "Every unit ends with a project students can explain and share, so progress is easy to see.",
+      title: "Grow",
+      body: "Refine projects, debug with support, and practice explaining your work. Finish with a capstone showcase.",
+      outcome: "Capstone + explanation skills",
     },
   ];
 
-  return (
-    <section className="kanam-section-tint-3 w-full py-20">
-      <div className="w-full">
-        <div className="mx-auto w-full max-w-[92vw]">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[2fr_3fr] lg:items-start">
-            <div className="order-2 lg:order-2">
-              <SectionTitle>How learning works at Kanam</SectionTitle>
-              <p className="mt-5 text-lg leading-8 text-zinc-600">
-                A steady weekly rhythm that keeps beginners supported and moving forward.
-              </p>
-              <p className="mt-4 text-lg leading-8 text-zinc-600">
-                Live instruction is paired with guided practice, so learners know exactly
-                what to do next and families can see steady progress week to week.
-              </p>
+  const panels = [
+    {
+      title: "Live Zoom instruction",
+      bullets: [
+        "Real-time teaching with examples, questions, and interactive practice",
+        "Clear lesson outcomes and checkpoints",
+        "Beginner-friendly pace with supportive guidance",
+      ],
+    },
+    {
+      title: "Practice + projects between sessions",
+      bullets: [
+        "Guided practice tasks tied to the week’s concept",
+        "Projects that build from fundamentals (variables → logic → loops → lists)",
+        "Human help when stuck + structured review before moving on",
+      ],
+    },
+  ] as const;
 
-              <ol className="mt-6 w-full space-y-10 border-l-2 border-[rgb(var(--brand-rgb)/0.12)] pl-6">
-                {steps.map((step, index) => (
-                  <li key={step.title} className="space-y-3">
-                    <div className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </div>
-                    <h3 className="text-base font-semibold text-zinc-900">{step.title}</h3>
-                    <p className="text-base leading-7 text-zinc-600">{step.body}</p>
+  const outcomes = [
+    "Weekly builds they can demo",
+    "A rules-based helper (automation logic)",
+    "A capstone project they present and explain",
+  ] as const;
+
+  const standardsHref = "/documents/standards-alignment.pdf";
+
+  return (
+    <section className="py-16 md:py-20">
+      <div className="mx-auto w-full max-w-6xl px-6">
+        <div className="rounded-3xl bg-zinc-900/[0.03] p-6 md:p-8 lg:p-10">
+        <header className="space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+            Simple, supportive process
+          </p>
+          <h2 className="text-3xl font-black tracking-tight text-zinc-950 sm:text-4xl md:text-5xl">
+            How Kanam works
+          </h2>
+          <p className="text-base font-semibold leading-relaxed text-zinc-800 md:text-lg">
+            Structured instruction. Human guidance. Measurable progress.
+          </p>
+        </header>
+
+        <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute left-4 top-2 bottom-2 w-px bg-zinc-900/10"
+            />
+            <ol className="space-y-8">
+              {steps.map((step, index) => (
+                <li key={step.title} className="relative pl-14">
+                  <div className="text-3xl font-semibold leading-none text-zinc-400 md:text-4xl">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mt-2 text-lg font-semibold text-zinc-950">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
+                    {step.body}
+                  </p>
+                  <p className="mt-3 text-sm font-medium text-zinc-800">
+                    Outcome: <span className="font-normal text-zinc-600">{step.outcome}</span>
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="space-y-5">
+            <h3 className="text-lg font-semibold text-zinc-950">What learning looks like</h3>
+            {panels.map((panel) => (
+              <div key={panel.title} className="rounded-2xl border border-zinc-900/10 bg-[var(--background)] p-5 md:p-6">
+                <h4 className="text-base font-semibold text-zinc-950 md:text-lg">{panel.title}</h4>
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-600">
+                  {panel.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            <div className="rounded-2xl border border-zinc-900/10 bg-[var(--background)] p-5 md:p-6">
+              <h4 className="text-base font-semibold text-zinc-950">What students finish with</h4>
+              <ul className="mt-3 divide-y divide-zinc-900/10 text-sm leading-relaxed text-zinc-700">
+                {outcomes.map((outcome) => (
+                  <li key={outcome} className="py-2 first:pt-0 last:pb-0">
+                    {outcome}
                   </li>
                 ))}
-              </ol>
-            </div>
-
-            <div className="order-1 lg:order-1">
-              <div className="space-y-6">
-                <div className="kanam-photo-pop relative w-full aspect-[4/3] max-h-[320px] overflow-hidden rounded-3xl">
-                  <Image
-                    src="/images/family_pics/pexels-august-de-richelieu-4260758.jpg"
-                    alt="Live class session in progress"
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-cover"
-                    priority={false}
-                  />
-                </div>
-                <div className="kanam-photo-pop relative w-full aspect-[4/3] max-h-[320px] translate-y-4 overflow-hidden rounded-3xl">
-                  <Image
-                    src="/images/family_pics/pexels-shkrabaanthony-5306453.jpg"
-                    alt="Learner focusing during a live lesson"
-                    fill
-                    sizes="(min-width: 1024px) 40vw, 100vw"
-                    className="object-cover"
-                    priority={false}
-                  />
-                </div>
-              </div>
+              </ul>
             </div>
           </div>
         </div>
 
-        {/* Button removed per request */}
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button asChild>
+            <Link href="/curriculum">Explore the curriculum</Link>
+          </Button>
+          <Link
+            href={standardsHref}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+          >
+            Download standards alignment (PDF)
+          </Link>
+        </div>
+        </div>
       </div>
     </section>
   );
