@@ -1,7 +1,6 @@
 "use client";
 
-import { Fragment, type ReactNode, useEffect, useState } from "react";
-import Image from "next/image";
+import { Fragment, type ReactNode, useState } from "react";
 import Link from "next/link";
 import {
   BookOpen,
@@ -14,7 +13,6 @@ import {
   Video,
 } from "lucide-react";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -25,7 +23,7 @@ import {
 } from "@/components/ui/accordion";
 import { PanelShell, PanelText, PanelMedia } from "@/components/site/PanelShell";
 import { DeviceFrame } from "@/components/site/MediaFrames";
-import { siteConfig } from "@/lib/site";
+import { SectionImage } from "@/components/site/SectionImage";
 import { cn } from "@/lib/utils";
 
 function SectionTitle({
@@ -44,62 +42,18 @@ function SectionTitle({
     >
       <span className="inline-block max-w-full align-top">
         {children}
-        <span
-          aria-hidden="true"
-          className="mt-4 block h-[3px] w-full rounded-full bg-gradient-to-r from-[rgb(var(--accent-rgb)/0.0)] via-[rgb(var(--accent-rgb)/0.95)] to-[rgb(var(--accent-rgb)/0.0)]"
-        />
+        <div aria-hidden="true" className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
       </span>
     </h2>
   );
 }
 
 function HeroPanel() {
-  const heroMediaVideos = [
-    "/video/hero_vids/5495790-uhd_2560_1080_30fps%20(1).mp4",
-    "/video/hero_vids/6986094-uhd_2160_3840_25fps.mp4",
-    "/video/hero_vids/7310259-uhd_2160_4096_25fps%20(1).mp4",
-  ] as const;
-
-  const CYCLE_MS = 10_000;
-  const PRELOAD_MS = 250;
-  const FADE_MS = 700;
-
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [nextIdx, setNextIdx] = useState(1);
-  const [phase, setPhase] = useState<"idle" | "preload" | "fade">("idle");
-
-  useEffect(() => {
-    setNextIdx((activeIdx + 1) % heroMediaVideos.length);
-  }, [activeIdx, heroMediaVideos.length]);
-
-  useEffect(() => {
-    const id = window.setInterval(() => setPhase("preload"), CYCLE_MS);
-    return () => window.clearInterval(id);
-  }, []);
-
-  useEffect(() => {
-    if (phase !== "preload") return;
-
-    const nxt = (activeIdx + 1) % heroMediaVideos.length;
-    setNextIdx(nxt);
-
-    const t1 = window.setTimeout(() => setPhase("fade"), PRELOAD_MS);
-    const t2 = window.setTimeout(() => {
-      setActiveIdx(nxt);
-      setPhase("idle");
-    }, PRELOAD_MS + FADE_MS);
-
-    return () => {
-      window.clearTimeout(t1);
-      window.clearTimeout(t2);
-    };
-  }, [phase, activeIdx, heroMediaVideos.length]);
-
   return (
-    <section className="relative w-full -mt-8 min-h-[90svh] overflow-hidden bg-transparent pt-16 pb-4 md:-mt-20 md:pt-20 md:pb-6">
+    <section className="relative w-full min-h-[90svh] overflow-hidden bg-transparent pt-8 pb-4 md:pt-12 md:pb-6">
       <div className="pointer-events-none absolute inset-0 z-0">
         <video
-          className="absolute inset-0 h-full w-full object-cover opacity-60"
+          className="absolute inset-0 h-full w-full object-cover opacity-[0.20]"
           autoPlay
           muted
           loop
@@ -109,32 +63,33 @@ function HeroPanel() {
         >
           <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.42)] via-white/75 to-white/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/8 via-transparent to-amber-400/8" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.24)] via-white/82 to-white/92" />
       </div>
 
       <div className="w-full">
         <div className="relative z-10 flex flex-col justify-center">
           <PanelShell>
             <PanelText>
-            <h1 className="mt-5 text-5xl font-black tracking-tight text-zinc-950 sm:text-6xl">
-                Live, instructor-led Python & AI learning for young beginners
-              </h1>
-            <p className="mt-5 text-xl leading-9 text-zinc-700">
-                Interactive lessons, real projects, and real human support — designed for
-                learners starting from zero.
-              </p>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-                Built for families and educators who value clarity, safety, and meaningful
-                outcomes.
-              </p>
+              <div className="rounded-2xl border border-foreground/10 bg-white/70 p-6 md:p-8 backdrop-blur-sm">
+                <h1 className="text-5xl font-black tracking-tight text-zinc-950 sm:text-6xl">
+                  Live, instructor-led Python & AI learning for young beginners
+                </h1>
+                <p className="mt-5 text-zinc-700">
+                  Students learn through live instruction, hands-on projects, and consistent
+                  support from real educators — even if they are starting with no prior coding
+                  experience.
+                </p>
+                <p className="mt-4 text-zinc-600">
+                  Designed for families and educators seeking a safe, structured path with
+                  clear milestones and outcomes students can confidently explain and showcase.
+                </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button asChild>
-                  <Link href="/curriculum">Explore the Curriculum</Link>
-                </Button>
-                <Button asChild variant="secondary">
-                  <Link href={siteConfig.links.bookCall}>Book a Call</Link>
-                </Button>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+                  <Button asChild>
+                    <Link href="/curriculum">Explore the Curriculum</Link>
+                  </Button>
+                </div>
               </div>
 
               <ul
@@ -142,9 +97,9 @@ function HeroPanel() {
                 role="list"
               >
                 <li className="relative flex items-start gap-3 bg-white/35 p-4 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.24)] via-[rgb(var(--brand-2-rgb)/0.10)] to-[rgb(var(--accent-rgb)/0.16)] ring-1 ring-[rgb(var(--accent-rgb)/0.22)]">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/80 ring-1 ring-black/10">
                     <Video
-                      className="h-4.5 w-4.5 text-[rgb(var(--accent-rgb)/0.92)]"
+                      className="h-4.5 w-4.5 text-emerald-700"
                       aria-hidden="true"
                     />
                   </span>
@@ -160,9 +115,9 @@ function HeroPanel() {
                 </li>
 
                 <li className="relative flex items-start gap-3 border-t border-black/5 bg-white/35 p-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.24)] via-[rgb(var(--brand-2-rgb)/0.10)] to-[rgb(var(--accent-rgb)/0.16)] ring-1 ring-[rgb(var(--accent-rgb)/0.22)]">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/80 ring-1 ring-black/10">
                     <Users
-                      className="h-4.5 w-4.5 text-[rgb(var(--accent-rgb)/0.92)]"
+                      className="h-4.5 w-4.5 text-emerald-700"
                       aria-hidden="true"
                     />
                   </span>
@@ -178,9 +133,9 @@ function HeroPanel() {
                 </li>
 
                 <li className="relative flex items-start gap-3 border-t border-black/5 bg-white/35 p-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.24)] via-[rgb(var(--brand-2-rgb)/0.10)] to-[rgb(var(--accent-rgb)/0.16)] ring-1 ring-[rgb(var(--accent-rgb)/0.22)]">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/80 ring-1 ring-black/10">
                     <Sparkles
-                      className="h-4.5 w-4.5 text-[rgb(var(--accent-rgb)/0.92)]"
+                      className="h-4.5 w-4.5 text-emerald-700"
                       aria-hidden="true"
                     />
                   </span>
@@ -197,45 +152,13 @@ function HeroPanel() {
               </ul>
             </PanelText>
             <PanelMedia>
-              <DeviceFrame
-                imageAlt="Kanam Academy preview video"
+              <SectionImage
+                src="/images/family_pics/pexels-kampus-6297625.jpg"
+                alt="Learner and instructor collaborating during a live coding session"
                 className="h-full"
-                imageFit="contain"
-                imagePadding="p-2"
-              >
-                <div className="absolute inset-0">
-                  <video
-                    className={[
-                      "absolute inset-0 h-full w-full object-cover",
-                      "transition-opacity ease-in-out",
-                      phase === "fade" ? "opacity-0" : "opacity-100",
-                    ].join(" ")}
-                    style={{ transitionDuration: `${FADE_MS}ms` }}
-                    src={heroMediaVideos[activeIdx]}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    aria-hidden="true"
-                  />
-                  <video
-                    className={[
-                      "absolute inset-0 h-full w-full object-cover",
-                      "transition-opacity ease-in-out",
-                      phase === "fade" ? "opacity-100" : "opacity-0",
-                    ].join(" ")}
-                    style={{ transitionDuration: `${FADE_MS}ms` }}
-                    src={heroMediaVideos[nextIdx]}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    aria-hidden="true"
-                  />
-                </div>
-              </DeviceFrame>
+                frameClassName="min-h-[380px] md:min-h-[540px] lg:min-h-[620px]"
+                priority
+              />
             </PanelMedia>
           </PanelShell>
         </div>
@@ -276,7 +199,7 @@ function ValuePillarsPanel() {
     },
   ];
   return (
-    <section className="kanam-section-tint-1 w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 py-14 md:py-20">
       <div className="w-full">
         <div className="mx-auto w-full max-w-[92vw]">
           <SectionTitle className="sm:tracking-tight md:tracking-tight">
@@ -295,32 +218,33 @@ function ValuePillarsPanel() {
         </div>
 
         <div className="mx-auto mt-10 w-full max-w-[92vw]">
-          <div className="grid gap-6 md:flex md:items-center md:justify-between md:gap-10 lg:gap-14">
-            <div className="kanam-photo-pop relative aspect-[4/5] w-full overflow-hidden rounded-3xl md:w-[min(360px,28vw)]">
-              <Image
-                src="/images/family_pics/pexels-august-de-richelieu-4260325%20(1).jpg"
-                alt="Instructor supporting a learner during a lesson"
-                fill
-                sizes="(min-width: 768px) 28vw, 100vw"
-                className="object-cover"
-                priority={false}
-              />
-            </div>
-            <div className="rounded-2xl bg-[rgb(var(--brand-2-rgb)/0.06)] px-6 py-8 shadow-sm ring-1 ring-[rgb(var(--brand-2-rgb)/0.12)] md:w-[min(720px,44vw)]">
-              <ul className="space-y-6">
+          <div className="grid items-stretch gap-6 lg:grid-cols-[1fr_1.55fr_1fr] lg:gap-8">
+            <SectionImage
+              src="/images/family_pics/pexels-august-de-richelieu-4260325%20(1).jpg"
+              alt="Live instructor guiding a student through coding"
+              caption="Live, human-led learning"
+              frameClassName="h-full min-h-[560px]"
+            />
+            <div className="h-full rounded-2xl bg-[rgb(var(--brand-2-rgb)/0.08)] px-6 py-8 shadow-[0_12px_32px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.18)]">
+              <ul className="space-y-0">
                 {items.map((item, idx) => (
                   <Fragment key={item.label}>
-                    <li className="grid gap-2 text-zinc-700 md:grid-cols-[220px_1fr] md:items-start">
-                      <div className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-900">
-                        {item.label}
+                    <li className="py-4 first:pt-0 last:pb-0">
+                      <div className="grid gap-2 text-zinc-700 md:grid-cols-[240px_minmax(0,1fr)] md:items-start md:gap-x-5">
+                        <div className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-900">
+                          {item.label}
+                        </div>
+                        <p className="text-base leading-7 text-zinc-700">{item.body}</p>
                       </div>
-                      <p className="text-[15px] leading-7 text-zinc-600">{item.body}</p>
                     </li>
+                    {idx < items.length - 1 ? (
+                      <li aria-hidden="true" className="h-px bg-zinc-900/10" />
+                    ) : null}
                     {idx === 2 ? (
-                      <li aria-hidden="true" className="py-2">
+                      <li aria-hidden="true" className="py-4">
                         <div className="relative flex items-center justify-center">
                           <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgb(var(--accent-rgb)/0.60)] to-transparent" />
-                          <span className="absolute inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-800 ring-1 ring-[rgb(var(--accent-rgb)/0.55)] shadow-sm">
+                          <span className="absolute inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-800 ring-1 ring-[rgb(var(--accent-rgb)/0.55)] shadow-[0_6px_18px_rgba(15,23,42,0.10)]">
                             <Sparkles className="h-3 w-3 text-[rgb(var(--accent-rgb)/0.95)]" />
                             More ways we support learners
                           </span>
@@ -331,16 +255,12 @@ function ValuePillarsPanel() {
                 ))}
               </ul>
             </div>
-            <div className="kanam-photo-pop relative aspect-[4/5] w-full overflow-hidden rounded-3xl md:w-[min(360px,28vw)]">
-              <Image
-                src="/images/family_pics/pexels-timur-weber-9127614.jpg"
-                alt="Learner working with focus"
-                fill
-                sizes="(min-width: 768px) 28vw, 100vw"
-                className="object-cover"
-                priority={false}
-              />
-            </div>
+            <SectionImage
+              src="/images/family_pics/pexels-timur-weber-9127614.jpg"
+              alt="Student working independently in a family-friendly setting"
+              caption="Family-friendly structure"
+              frameClassName="h-full min-h-[560px]"
+            />
           </div>
         </div>
       </div>
@@ -447,7 +367,7 @@ function BuildPanel() {
   const activeIdx = previewIdx ?? pinnedIdx ?? 0;
 
   return (
-    <section className="kanam-section-tint-4 w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -642,7 +562,7 @@ function BuildPanel() {
 
 function DifferencePanel() {
   return (
-    <section className="kanam-section-tint-2 w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-transparent py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -664,22 +584,26 @@ function DifferencePanel() {
           </PanelMedia>
         </PanelShell>
 
-        <div className="mx-auto mt-8 grid w-full max-w-[92vw] gap-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
-          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 md:col-span-2 lg:col-span-2">
-            Common approaches
+        <div className="mx-auto mt-8 grid w-full max-w-[92vw] items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
+          <div className="md:col-span-2 lg:col-span-2">
+            <div className="rounded-xl border border-zinc-900/12 bg-white/75 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800 ring-1 ring-zinc-900/8">
+              Common approaches
+            </div>
           </div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-400 md:col-span-2 lg:col-span-1 lg:col-start-3">
-            The Kanam approach
+          <div className="md:col-span-2 lg:col-span-1 lg:col-start-3">
+            <div className="rounded-xl border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.28)]">
+              The Kanam approach
+            </div>
           </div>
-          <Card className="border-[rgb(var(--brand-2-rgb)/0.18)] bg-[rgb(var(--brand-2-rgb)/0.06)] shadow-sm ring-1 ring-[rgb(var(--brand-2-rgb)/0.12)]">
+          <Card className="h-full border-[rgb(var(--brand-2-rgb)/0.22)] bg-[rgb(var(--brand-2-rgb)/0.08)] shadow-[0_12px_32px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.16)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.13)]">
             <CardHeader className="pt-7">
               <CardTitle className="text-base">Self-paced videos</CardTitle>
-              <div className="text-sm font-medium text-zinc-600">
+              <div className="text-base font-medium leading-7 text-zinc-600">
                 Watch-first, mostly solo learning.
               </div>
             </CardHeader>
             <CardContent className="pb-7">
-              <ul className="space-y-2 text-sm leading-6 text-zinc-700">
+              <ul className="space-y-2 text-base leading-7 text-zinc-700">
                 <li>Watch-first lessons</li>
                 <li>Limited live feedback</li>
                 <li>Easy to fall behind without support</li>
@@ -688,15 +612,15 @@ function DifferencePanel() {
             </CardContent>
           </Card>
 
-          <Card className="border-[rgb(var(--brand-2-rgb)/0.18)] bg-[rgb(var(--brand-2-rgb)/0.06)] shadow-sm ring-1 ring-[rgb(var(--brand-2-rgb)/0.12)]">
+          <Card className="h-full border-[rgb(var(--brand-2-rgb)/0.22)] bg-[rgb(var(--brand-2-rgb)/0.08)] shadow-[0_12px_32px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.16)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.13)]">
             <CardHeader className="pt-7">
               <CardTitle className="text-base">Unstructured tutoring</CardTitle>
-              <div className="text-sm font-medium text-zinc-600">
+              <div className="text-base font-medium leading-7 text-zinc-600">
                 Helpful help, but outcomes vary.
               </div>
             </CardHeader>
             <CardContent className="pb-7">
-              <ul className="space-y-2 text-sm leading-6 text-zinc-700">
+              <ul className="space-y-2 text-base leading-7 text-zinc-700">
                 <li>Helpful one-on-one guidance</li>
                 <li>Pacing varies week to week</li>
                 <li>Often no shared curriculum</li>
@@ -705,15 +629,18 @@ function DifferencePanel() {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-[rgb(var(--accent-rgb)/0.85)] bg-[rgb(var(--brand-2-rgb)/0.07)] shadow-lg ring-1 ring-[rgb(var(--accent-rgb)/0.20)] lg:ml-4">
+          <Card className="h-full border-2 border-[rgb(var(--accent-rgb)/0.9)] bg-[rgb(var(--brand-2-rgb)/0.10)] shadow-[0_14px_36px_rgba(15,23,42,0.14)] ring-1 ring-[rgb(var(--accent-rgb)/0.24)] transition-shadow hover:shadow-[0_18px_42px_rgba(15,23,42,0.18)]">
             <CardHeader className="pt-7">
+              <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
+                Kanam approach
+              </div>
               <CardTitle>Kanam Academy</CardTitle>
-              <div className="text-sm font-medium text-zinc-600">
+              <div className="text-base font-medium leading-7 text-zinc-600">
                 Structure + live teaching + outcomes.
               </div>
             </CardHeader>
             <CardContent className="pb-7">
-              <ul className="space-y-2 text-sm leading-6 text-zinc-700">
+              <ul className="space-y-2 text-base leading-7 text-zinc-700">
                 <li>Live, instructor-led learning (Zoom)</li>
                 <li>Structured beginner curriculum</li>
                 <li>Project outcomes every unit</li>
@@ -779,8 +706,8 @@ function HowItWorksPanel() {
   const standardsHref = "/documents/standards-alignment.pdf";
 
   return (
-    <section className="py-16 md:py-20">
-      <div className="mx-auto w-full max-w-6xl px-6">
+    <section className="border-t border-foreground/10 bg-transparent py-14 md:py-20">
+      <div className="mx-auto w-full max-w-[92vw]">
         <div className="rounded-3xl bg-zinc-900/[0.03] p-6 md:p-8 lg:p-10">
         <header className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
@@ -789,6 +716,7 @@ function HowItWorksPanel() {
           <h2 className="text-3xl font-black tracking-tight text-zinc-950 sm:text-4xl md:text-5xl">
             How Kanam works
           </h2>
+          <div aria-hidden="true" className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
           <p className="text-base font-semibold leading-relaxed text-zinc-800 md:text-lg">
             Structured instruction. Human guidance. Measurable progress.
           </p>
@@ -852,7 +780,7 @@ function HowItWorksPanel() {
             href={standardsHref}
             target="_blank"
             rel="noreferrer"
-            className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+            className="text-sm font-semibold text-emerald-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
           >
             Download standards alignment (PDF)
           </Link>
@@ -865,7 +793,7 @@ function HowItWorksPanel() {
 
 function ProductPreviewPanel() {
   return (
-    <section className="kanam-section-tint-5 w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-amber-400/5 py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -903,7 +831,7 @@ function ProductPreviewPanel() {
 
 function SafetyPanel() {
   return (
-    <section className="kanam-section-tint-6 w-full py-20">
+    <section className="w-full py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -987,7 +915,7 @@ function SafetyPanel() {
 
 function WhoItsForPanel() {
   return (
-    <section className="kanam-section-tint-7 w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-transparent py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -1011,10 +939,10 @@ function WhoItsForPanel() {
               <CardTitle>Parents</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm font-semibold text-zinc-900">
+              <p className="text-base font-semibold leading-7 text-zinc-900">
                 Confidence + projects you can see.
               </p>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-zinc-700">
+              <ul className="mt-4 space-y-3 text-base leading-7 text-zinc-700">
                 <li className="flex gap-3">
                   <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
                   A structured, safe learning environment
@@ -1041,10 +969,10 @@ function WhoItsForPanel() {
               <CardTitle>Educators / Programs</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-sm font-semibold text-zinc-900">
+              <p className="text-base font-semibold leading-7 text-zinc-900">
                 A structured track that fits programs.
               </p>
-              <ul className="mt-4 space-y-3 text-sm leading-6 text-zinc-700">
+              <ul className="mt-4 space-y-3 text-base leading-7 text-zinc-700">
                 <li className="flex gap-3">
                   <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
                   A ready-to-use curriculum
@@ -1102,7 +1030,7 @@ function FaqPanel() {
   ];
 
   return (
-    <section className="kanam-section-tint-8 w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -1153,7 +1081,7 @@ function FaqPanel() {
 
 function FinalPanel() {
   return (
-    <section className="w-full bg-zinc-950 py-20">
+    <section className="w-full border-t border-foreground/10 bg-zinc-950 py-14 md:py-20">
       <div className="w-full">
         <div className="text-white">
           <PanelShell>
@@ -1161,6 +1089,7 @@ function FinalPanel() {
               <h2 className="text-4xl font-black tracking-tight sm:text-5xl">
                 Ready to take the next step?
               </h2>
+              <div aria-hidden="true" className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
               <p className="mt-3 text-lg leading-8 text-zinc-300">
                 Explore the curriculum or speak with a Kanam advisor to see if this is the
                 right fit for your learner or program.
@@ -1168,9 +1097,6 @@ function FinalPanel() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild>
                   <Link href="/curriculum">Explore the Curriculum</Link>
-                </Button>
-                <Button asChild variant="secondary">
-                  <Link href={siteConfig.links.bookCall}>Book a Call</Link>
                 </Button>
               </div>
             </PanelText>
@@ -1190,16 +1116,35 @@ function FinalPanel() {
 
 export function HomeStory() {
   return (
-    <div className="w-full">
-      <HeroPanel />
-      <ValuePillarsPanel />
-      <DifferencePanel />
-      <HowItWorksPanel />
-      <BuildPanel />
-      <SafetyPanel />
-      <WhoItsForPanel />
-      <FaqPanel />
-      <FinalPanel />
+    <div className="relative -mt-8 overflow-hidden bg-background md:-mt-20">
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <video
+          className="absolute inset-x-0 top-0 h-[100svh] w-full object-cover object-center opacity-[0.075]"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-amber-400/10" />
+        <div className="absolute -left-60 top-0 h-full w-[520px] bg-emerald-500/12 blur-3xl" />
+        <div className="absolute -right-60 top-0 h-full w-[520px] bg-amber-400/12 blur-3xl" />
+        <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.7)_1px,transparent_0)] [background-size:28px_28px] dark:[background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.7)_1px,transparent_0)]" />
+      </div>
+      <div className="relative z-10 w-full">
+        <HeroPanel />
+        <DifferencePanel />
+        <ValuePillarsPanel />
+        <HowItWorksPanel />
+        <BuildPanel />
+        <SafetyPanel />
+        <WhoItsForPanel />
+        <FaqPanel />
+        <FinalPanel />
+      </div>
     </div>
   );
 }

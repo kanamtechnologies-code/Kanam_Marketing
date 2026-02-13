@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Container } from "@/components/Container";
-import { SubpageShell } from "@/components/site/SubpageShell";
+import {
+  Band,
+  H2,
+  Section,
+  SubpageShell,
+  textLinkClass,
+} from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -182,202 +187,174 @@ const faqs = [
   },
 ] as const;
 
-const sectionClass = "py-12 md:py-16";
-const h2Class = "text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl";
-const h3Class = "text-lg font-semibold tracking-tight text-zinc-950";
-const bodyClass = "text-zinc-600 leading-relaxed";
-const cardClass = "h-full rounded-2xl border border-zinc-900/10 bg-white/90 shadow-none";
-const kanamLinkClass =
-  "text-emerald-700 dark:text-emerald-400 hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40";
-
-function SectionHeading({ children }: { children: React.ReactNode }) {
-  return (
-    <div>
-      <h2 className={h2Class}>{children}</h2>
-      <div className="mt-3 h-1 w-10 rounded-full bg-amber-400/70" />
-    </div>
-  );
-}
-
-function ProgramOverview() {
-  return (
-    <Card className={cardClass}>
-      <CardHeader className="p-5 md:p-6 pb-3">
-        <CardTitle className={h3Class}>Program Overview</CardTitle>
-      </CardHeader>
-      <CardContent className="p-5 md:p-6 pt-0">
-        <dl className="space-y-2.5 text-sm">
-          {overviewItems.map(([label, value]) => (
-            <div
-              key={label}
-              className="grid grid-cols-[110px_1fr] gap-3 border-b border-zinc-900/8 py-2 last:border-b-0"
-            >
-              <dt className="font-semibold text-zinc-900">{label}</dt>
-              <dd className="text-zinc-700">{value}</dd>
-            </div>
-          ))}
-        </dl>
-      </CardContent>
-    </Card>
-  );
-}
-
-function HeroIntro() {
-  return (
-    <section className={sectionClass}>
-      <h1 className="text-4xl font-black tracking-tight text-zinc-950 sm:text-5xl">
-        Curriculum
-      </h1>
-      <p className="mt-3 text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl">
-        Kanam Academy Foundations (Ages 12–15)
-      </p>
-      <p className={`mt-5 max-w-3xl text-lg ${bodyClass}`}>
-        Kanam Academy Foundations is a project-based Python program for learners ages
-        12–15. Students develop core programming skills through direct instruction, guided
-        practice, and weekly build outcomes. The curriculum emphasizes computational
-        thinking, code comprehension, and clear explanation of student work.
-      </p>
-
-      <div className="mt-8 grid gap-5 lg:max-w-3xl">
-        <ProgramOverview />
-        <div
-          id="standards"
-          className="rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 md:p-6 scroll-mt-24"
-        >
-          <SectionHeading>Standards Alignment</SectionHeading>
-          <p className={`mt-2 text-base ${bodyClass}`}>
-            Curriculum designed in alignment with CSTA Computer Science Standards (Grades
-            6–8).
-          </p>
-          <div className="mt-5 flex flex-col items-start gap-2">
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
-              <Button asChild>
-                <Link
-                  href={standardsPdfUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={kanamLinkClass}
-                >
-                  Download Standards Alignment (PDF)
-                </Link>
-              </Button>
-              <Button asChild variant="outline">
-                <Link href="#scope-sequence">View Syllabus</Link>
-              </Button>
-            </div>
-            <p className="text-sm leading-relaxed text-zinc-500">
-              Maps major units to CSTA 3A benchmark codes.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-5">
-        <Link
-          href="#outcomes"
-          className={`inline-flex items-center text-sm font-medium transition-colors hover:text-zinc-900 ${kanamLinkClass}`}
-        >
-          See what students build ↓
-        </Link>
-      </div>
-    </section>
-  );
-}
+const galleryArtifacts = [
+  { title: "Intro Program", skills: "Variables + input/output" },
+  { title: "Choose-Your-Path Story", skills: "Conditionals + branching logic" },
+  { title: "Quiz / Reaction Game", skills: "Loops + score tracking" },
+  { title: "Simple Data Tracker", skills: "Lists + structured input" },
+  { title: "Rules-Based Helper", skills: "Decision rules + automation" },
+  { title: "Capstone Showcase", skills: "Integrated program design" },
+] as const;
 
 export default function CurriculumPage() {
   return (
-    <SubpageShell>
-      <Container>
-        <HeroIntro />
-
-        <section id="scope-sequence" className={`${sectionClass} border-t border-zinc-900/10 scroll-mt-24`}>
-          <SectionHeading>Scope &amp; Sequence</SectionHeading>
-          <p className={`mt-3 max-w-3xl text-base ${bodyClass}`}>
-            Weekly progression for Kanam Academy Foundations. Each week combines direct
-            instruction, guided practice, and a concrete build outcome.
+    <SubpageShell
+      eyebrow="Program overview"
+      title="Program Overview"
+      subtitle="Kanam Academy Foundations (Ages 12–15) is an 8-week, standards-aligned computer science program delivering foundational Python instruction through live, educator-led sessions and structured project milestones."
+      actions={
+        <>
+          <Button asChild>
+            <Link href={standardsPdfUrl} target="_blank" rel="noreferrer">
+              Download Standards Alignment (PDF)
+            </Link>
+          </Button>
+          <p className="basis-full text-sm text-muted-foreground leading-relaxed">
+            The curriculum is developed in alignment with the CSTA Computer Science
+            Standards (Grades 6–8 / Level 3A). Each instructional unit includes clearly
+            defined learning objectives mapped to benchmark standards across Algorithms
+            &amp; Programming, Data &amp; Analysis, and Computational Thinking Practices.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {weeks.map((week) => (
-              <Card key={week.week} className={cardClass}>
-                <CardHeader className="p-5 md:p-6 pb-3">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                    {week.week}
-                  </p>
-                  <CardTitle className="mt-1 text-lg font-semibold leading-tight md:text-xl">
-                    {week.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="p-5 md:p-6 pt-0">
-                  <ul className="space-y-2 text-sm leading-relaxed text-zinc-700">
-                    {week.objectives.map((objective) => (
-                      <li key={objective} className="flex gap-3">
-                        <span
-                          aria-hidden="true"
-                          className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]"
-                        />
-                        <span>{objective}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <p className="mt-4 border-t border-zinc-900/10 pt-3 text-sm font-semibold text-zinc-900">
-                    Build: <span className="font-medium text-zinc-700">{week.build}</span>
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        <section id="outcomes" className={`${sectionClass} border-t border-zinc-900/10 scroll-mt-24`}>
-          <SectionHeading>Student Work &amp; Outcomes</SectionHeading>
-          <p className={`mt-3 max-w-3xl text-base ${bodyClass}`}>
-            Examples of cumulative projects that demonstrate coding foundations, applied
-            problem-solving, and communication.
+          <p className="basis-full text-sm text-muted-foreground leading-relaxed">
+            Students demonstrate mastery through cumulative project builds, structured
+            assessments, and final presentation. Documentation of standards alignment and
+            unit mapping is available upon request.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {outcomesCategories.map((group) => (
+        </>
+      }
+      toc={[
+        { href: "#overview", label: "Overview" },
+        { href: "#scope", label: "Weekly Learning Plan" },
+        { href: "#student-work", label: "Student Work" },
+      ]}
+    >
+      <Section id="overview" className="pt-0">
+        <Band>
+          <H2>Program Overview</H2>
+          <dl className="mt-6 space-y-2.5 text-sm">
+            {overviewItems.map(([label, value]) => (
               <div
-                key={group.category}
-                className={[
-                  "rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-5 md:p-6",
-                  group.accent ? "border-l-2 border-l-[rgb(var(--brand-rgb)/0.40)] pl-4 md:pl-5" : "",
-                ].join(" ")}
+                key={label}
+                className="grid grid-cols-[110px_1fr] gap-3 border-b border-foreground/10 py-2 last:border-b-0"
               >
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
-                  {group.category}
-                </h3>
-                <div className="mt-3 divide-y divide-zinc-900/10">
-                  {group.rows.map((row) => (
-                    <div key={row.title} className="py-3 first:pt-0 last:pb-0">
-                      <p className="font-semibold text-zinc-950">{row.title}</p>
-                      <p className="mt-1 text-sm leading-relaxed text-zinc-600">{row.outcome}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-xs leading-relaxed text-zinc-500">
-                  <span className="font-semibold text-zinc-700">Skills reinforced:</span>{" "}
-                  {group.skills}
+                <dt className="font-semibold text-foreground">{label}</dt>
+                <dd className="text-muted-foreground">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Band>
+      </Section>
+
+      <Section id="scope" className="border-t border-foreground/10 scroll-mt-24">
+        <H2>Weekly Learning Plan</H2>
+        <p className="mt-3 max-w-3xl text-muted-foreground leading-relaxed">
+          Weekly progression for Kanam Academy Foundations. Each week combines direct
+          instruction, guided practice, and a concrete build outcome.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {weeks.map((week) => (
+            <Card
+              key={week.week}
+              className="h-full rounded-2xl border border-foreground/15 bg-white/78 shadow-[0_10px_28px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--accent-rgb)/0.12)] transition-shadow hover:shadow-[0_14px_34px_rgba(15,23,42,0.13)] dark:bg-background/60"
+            >
+              <CardHeader className="p-5 pb-3 md:p-6 md:pb-3">
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                  {week.week}
                 </p>
+                <CardTitle className="mt-1 text-lg font-semibold leading-tight md:text-xl">
+                  {week.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-5 pt-0 md:p-6 md:pt-0">
+                <ul className="space-y-2 text-sm leading-relaxed text-muted-foreground">
+                  {week.objectives.map((objective) => (
+                    <li key={objective} className="flex gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]"
+                      />
+                      <span>{objective}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-4 border-t border-foreground/10 pt-3 text-sm font-semibold text-foreground">
+                  Build: <span className="font-medium text-muted-foreground">{week.build}</span>
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="student-work" className="border-t border-foreground/10 scroll-mt-24">
+        <H2>Student Work &amp; Outcomes</H2>
+        <p className="mt-3 max-w-3xl text-muted-foreground leading-relaxed">
+          Examples of cumulative projects that demonstrate coding foundations, applied
+          problem-solving, and communication.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {outcomesCategories.map((group) => (
+            <Band
+              key={group.category}
+              className={group.accent ? "border-l-2 border-l-[rgb(var(--brand-rgb)/0.4)]" : undefined}
+            >
+              <h3 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                {group.category}
+              </h3>
+              <div className="mt-3 divide-y divide-foreground/10">
+                {group.rows.map((row) => (
+                  <div key={row.title} className="py-3 first:pt-0 last:pb-0">
+                    <p className="font-semibold text-foreground">{row.title}</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{row.outcome}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+                <span className="font-semibold text-foreground">Skills reinforced:</span>{" "}
+                {group.skills}
+              </p>
+            </Band>
+          ))}
+        </div>
+        <div className="mt-8">
+          <h3 className="text-lg font-semibold text-foreground">Student Work Gallery</h3>
+          <div className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {galleryArtifacts.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-3xl overflow-hidden border border-foreground/10 bg-background"
+              >
+                <div className="h-44 w-full bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-white to-[rgb(var(--accent-rgb)/0.14)] p-5">
+                  <div className="inline-flex rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-700 ring-1 ring-zinc-900/10">
+                    Artifact
+                  </div>
+                  <p className="mt-4 text-lg font-semibold text-zinc-900">{item.title}</p>
+                </div>
+                <div className="px-5 py-4">
+                  <p className="text-sm text-muted-foreground">
+                    <span className="font-semibold text-foreground">Skills:</span>{" "}
+                    {item.skills}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
+      </Section>
 
-        <section className={`${sectionClass} border-t border-zinc-900/10`}>
-          <SectionHeading>Frequently Asked Questions</SectionHeading>
-          <div className="mt-6 rounded-2xl border border-zinc-900/10 bg-white/80 px-5 py-1">
-            <Accordion type="single" collapsible>
-              {faqs.map((item, idx) => (
-                <AccordionItem key={item.q} value={`faq-${idx}`}>
-                  <AccordionTrigger>{item.q}</AccordionTrigger>
-                  <AccordionContent>{item.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
-      </Container>
+      <Section className="border-t border-foreground/10 pb-0">
+        <H2>Frequently Asked Questions</H2>
+        <Band className="mt-6 p-5 md:p-6">
+          <Accordion type="single" collapsible>
+            {faqs.map((item, idx) => (
+              <AccordionItem key={item.q} value={`faq-${idx}`}>
+                <AccordionTrigger>{item.q}</AccordionTrigger>
+                <AccordionContent>{item.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Band>
+      </Section>
     </SubpageShell>
   );
 }
-

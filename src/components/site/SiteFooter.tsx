@@ -29,7 +29,7 @@ export function SiteFooter() {
           <div className="md:col-span-7">
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                <div className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
                   Explore
                 </div>
                 <ul className="mt-3 space-y-2">
@@ -44,7 +44,7 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                <div className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
                   Social
                 </div>
                 <ul className="mt-3 space-y-2">
@@ -64,7 +64,7 @@ export function SiteFooter() {
               </div>
 
               <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                <div className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
                   Legal
                 </div>
                 <ul className="mt-3 space-y-2">
@@ -84,7 +84,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-200 py-6 text-xs text-zinc-500">
+        <div className="border-t border-zinc-200 py-6 text-sm text-zinc-500">
           © {year} Kanam Academy. All rights reserved.
         </div>
       </Container>

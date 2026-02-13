@@ -66,17 +66,11 @@ export function SiteNavbar() {
             <Button
               asChild
               variant="secondary"
-              className="rounded-full border border-[rgb(var(--accent-rgb)/0.98)] bg-white/95 px-2.5 py-1 text-xs font-semibold text-[rgb(var(--brand-2-rgb)/1)] shadow-md hover:bg-white"
+              className="rounded-full border border-[rgb(var(--accent-rgb)/0.98)] bg-white/95 px-3 py-1.5 text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] shadow-md hover:bg-white"
             >
               <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
-                Open app
+                Try our interactive demo
               </Link>
-            </Button>
-            <Button
-              asChild
-              className="rounded-full bg-[rgb(var(--brand-rgb))] px-2.5 py-1 text-xs font-semibold text-white shadow-md hover:bg-[rgb(var(--brand-rgb)/0.9)]"
-            >
-              <Link href={siteConfig.links.bookCall}>Book a Call</Link>
             </Button>
           </div>
 
@@ -100,11 +94,8 @@ export function SiteNavbar() {
                   <div className="h-px bg-zinc-200" />
                   <Button asChild variant="secondary" className="w-full">
                     <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
-                      Open app
+                      Try our interactive demo
                     </Link>
-                  </Button>
-                  <Button asChild className="w-full">
-                    <Link href={siteConfig.links.bookCall}>Book a Call</Link>
                   </Button>
                 </div>
               </SheetContent>

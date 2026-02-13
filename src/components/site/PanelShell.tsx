@@ -24,7 +24,7 @@ export function PanelShell({
 
 export function PanelText({ children }: { children: ReactNode }) {
   return (
-    <div className="order-1 col-span-12 max-w-3xl lg:order-none lg:col-span-5">
+    <div className="order-1 col-span-12 max-w-3xl lg:order-none lg:col-span-5 [&_p]:text-base [&_p]:md:text-lg [&_p]:leading-relaxed">
       {children}
     </div>
   );

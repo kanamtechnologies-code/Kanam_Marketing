@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Container } from "@/components/Container";
-import { Badge } from "@/components/ui/badge";
+import {
+  Band,
+  H2,
+  Section,
+  SubpageShell,
+  textLinkClass,
+} from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What age range is this for?",
-    a: "Kanam is designed for ages 11–14. If a learner is slightly younger/older, we can recommend whether the cohort pace is a fit based on experience and confidence.",
+    a: "Kanam is designed for ages 12–15. If a learner is slightly younger/older, we can recommend whether the cohort pace is a fit based on experience and confidence.",
   },
   {
     q: "Is it beginner-friendly?",
@@ -75,46 +79,38 @@ const faqs = [
     q: "How do I get started?",
     a: "Explore the curriculum, then book a quick call so we can recommend the best starting track and cohort options.",
   },
-];
+] as const;
 
 export default function FaqPage() {
   return (
-    <div className="bg-[var(--background)]">
-      <Container>
-        <div className="py-16">
-          <Badge variant="brand">FAQ</Badge>
-          <h1 className="mt-5 text-4xl font-black tracking-tight text-zinc-950 sm:text-5xl">
-            Answers for parents and educators
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">
-            If you don’t see your question here, send us a message and we’ll reply with a
-            clear recommendation.
-          </p>
-
-          <Card className="mt-10">
-            <CardContent className="pt-6">
-              <Accordion type="single" collapsible>
-                {faqs.map((item, idx) => (
-                  <AccordionItem key={item.q} value={`faq-${idx}`}>
-                    <AccordionTrigger>{item.q}</AccordionTrigger>
-                    <AccordionContent>{item.a}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
-
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Button asChild>
-              <Link href="/contact">Book a Call</Link>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/curriculum">Explore the Curriculum</Link>
-            </Button>
-          </div>
-        </div>
-      </Container>
-    </div>
+    <SubpageShell
+      eyebrow="FAQ"
+      title="Answers for parents and educators"
+      subtitle="If you don’t see your question here, send us a message and we’ll reply with a clear recommendation."
+      actions={
+        <>
+          <Button asChild>
+            <Link href="/contact">Book a Call</Link>
+          </Button>
+          <Link href="/curriculum" className={textLinkClass}>
+            Explore the Curriculum
+          </Link>
+        </>
+      }
+    >
+      <Section className="pt-0 pb-0">
+        <H2>Frequently Asked Questions</H2>
+        <Band className="mt-5 p-5 md:p-6">
+          <Accordion type="single" collapsible>
+            {faqs.map((item, idx) => (
+              <AccordionItem key={item.q} value={`faq-${idx}`}>
+                <AccordionTrigger>{item.q}</AccordionTrigger>
+                <AccordionContent>{item.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Band>
+      </Section>
+    </SubpageShell>
   );
 }
-

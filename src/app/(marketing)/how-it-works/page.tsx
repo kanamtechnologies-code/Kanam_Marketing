@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { Container } from "@/components/Container";
-import { SubpageShell } from "@/components/site/SubpageShell";
+import {
+  Band,
+  H2,
+  Section,
+  SubpageShell,
+  textLinkClass,
+} from "@/components/layout/SubpageShell";
+import { SectionImage } from "@/components/site/SectionImage";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -62,11 +68,7 @@ export default function HowItWorksPage() {
     },
     {
       title: "Between Sessions",
-      bullets: [
-        "Guided reinforcement tasks",
-        "Project progress work",
-        "Reflection and review prompts",
-      ],
+      bullets: ["Guided reinforcement tasks", "Project progress work", "Reflection and review prompts"],
     },
     {
       title: "Session 2 (2 Hours)",
@@ -138,280 +140,238 @@ export default function HowItWorksPage() {
     },
   ] as const;
 
-  const sectionClass = "py-10 md:py-12";
-  const dividerClass = "border-t border-zinc-900/10";
-  const panelClass =
-    "rounded-2xl border border-zinc-900/10 bg-white/85 p-5 md:p-6";
-  const kanamLinkClass =
-    "text-emerald-700 dark:text-emerald-400 hover:underline underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40";
-
-  const SectionHeading = ({ children }: { children: React.ReactNode }) => (
-    <div>
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-zinc-950">
-        {children}
-      </h2>
-      <div className="mt-3 h-1 w-10 rounded-full bg-amber-400/70" />
-    </div>
-  );
-
   return (
-    <SubpageShell>
-      <Container>
-        <div className="mx-auto w-full max-w-6xl px-6">
-          <section className="py-14 md:py-20">
-            <header className="space-y-3">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-                Program structure
-              </p>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-950">
-                How Kanam Academy Works
-              </h1>
-              <p className="text-xl font-semibold tracking-tight text-zinc-900">
-                Structured learning. Human guidance. Measurable progress.
-              </p>
-              <p className="max-w-4xl text-zinc-600 leading-relaxed">
-                Kanam Academy Foundations is designed for learners ages 12–15 who benefit
-                from clear structure and consistent milestones. The program combines live,
-                human-led instruction with guided independent practice so students build real
-                programming skill — not just exposure.
-              </p>
-            </header>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-              <Button asChild>
-                <Link href="/curriculum">Explore the curriculum</Link>
-              </Button>
-              <Link
-                href="/documents/standards-alignment.pdf"
-                className={`text-sm font-semibold ${kanamLinkClass}`}
-              >
-                Download standards alignment (PDF)
-              </Link>
-              <Link
-                href="/documents/syllabus.pdf"
-                className={`text-sm font-semibold ${kanamLinkClass}`}
-              >
-                View program syllabus (PDF)
-              </Link>
-            </div>
-
-            <div className={`mt-8 ${panelClass}`}>
-              <SectionHeading>At-a-glance</SectionHeading>
-              <dl className="mt-4 grid gap-2 text-sm md:grid-cols-2">
-                {atAGlance.map(([label, value]) => (
-                  <div
-                    key={label}
-                    className="grid grid-cols-[130px_1fr] gap-3 border-t border-zinc-900/10 py-2 first:border-t-0 first:pt-0"
-                  >
-                    <dt className="font-semibold text-zinc-900">{label}</dt>
-                    <dd className="text-zinc-700">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </section>
-
-          <section id="format" className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Program Format</SectionHeading>
-            <div className={`mt-5 ${panelClass}`}>
-              <dl className="grid gap-2 text-sm md:grid-cols-2">
-                {formatRows.map(([label, value]) => (
-                  <div
-                    key={label}
-                    className="grid grid-cols-[170px_1fr] gap-3 border-t border-zinc-900/10 py-2 first:border-t-0 first:pt-0"
-                  >
-                    <dt className="font-semibold text-zinc-900">{label}</dt>
-                    <dd className="text-zinc-700">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-              <p className="mt-4 text-zinc-600 leading-relaxed">
-                Students meet twice per week for structured instruction. Each session builds
-                directly on the previous one, progressing from foundational Python concepts
-                to a complete capstone project.
-              </p>
-            </div>
-          </section>
-
-          <section id="process" className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>The Learning Process</SectionHeading>
-            <div className="mt-6 relative">
+    <SubpageShell
+      eyebrow="Program structure"
+      title="How Kanam Academy Works"
+      subtitle="Structured learning. Human guidance. Measurable progress."
+      actions={
+        <>
+          <Button asChild>
+            <Link href="/curriculum">Explore the curriculum</Link>
+          </Button>
+          <Link href="/documents/standards-alignment.pdf" className={textLinkClass}>
+            Download standards alignment (PDF)
+          </Link>
+          <Link href="/documents/syllabus.pdf" className={textLinkClass}>
+            View program syllabus (PDF)
+          </Link>
+        </>
+      }
+      toc={[
+        { href: "#format", label: "Format" },
+        { href: "#process", label: "Process" },
+        { href: "#week", label: "Typical Week" },
+        { href: "#capstone", label: "Capstone" },
+        { href: "#support", label: "Support" },
+        { href: "#standards", label: "Standards" },
+      ]}
+    >
+      <Section className="pt-0">
+        <Band>
+          <H2>At-a-glance</H2>
+          <p className="mt-4 max-w-4xl text-muted-foreground leading-relaxed">
+            Kanam Academy Foundations is designed for learners ages 12–15 who benefit from
+            clear structure and consistent milestones. The program combines live,
+            human-led instruction with guided independent practice so students build real
+            programming skill — not just exposure.
+          </p>
+          <dl className="mt-4 grid gap-2 text-sm md:grid-cols-2">
+            {atAGlance.map(([label, value]) => (
               <div
-                aria-hidden="true"
-                className="absolute left-4 top-2 bottom-2 w-px bg-[rgb(var(--brand-rgb)/0.22)]"
-              />
-              <ol className="space-y-8 pl-12">
-                {steps.map((step) => (
-                  <li key={step.number} className="space-y-2">
-                    <div className="text-3xl font-semibold text-[rgb(var(--brand-rgb)/0.45)]">
-                      {step.number}
-                    </div>
-                    <h3 className="text-lg md:text-xl font-semibold text-zinc-950">
-                      {step.title}
-                    </h3>
-                    <p className="text-zinc-600 leading-relaxed">
-                      {step.body}
-                    </p>
-                    <p className="text-sm font-medium text-zinc-800">
-                      Outcome: <span className="font-normal text-zinc-600">{step.outcome}</span>
-                    </p>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </section>
+                key={label}
+                className="grid grid-cols-[130px_1fr] gap-3 border-t border-foreground/10 py-2 first:border-t-0 first:pt-0"
+              >
+                <dt className="font-semibold text-foreground">{label}</dt>
+                <dd className="text-muted-foreground">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </Band>
+      </Section>
 
-          <section id="week" className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>What a Typical Week Looks Like</SectionHeading>
-            <div className="mt-6 grid gap-4 md:grid-cols-3">
-              {weekPanels.map((panel) => (
-                <div key={panel.title} className={panelClass}>
-                  <h3 className="text-lg md:text-xl font-semibold text-zinc-950">{panel.title}</h3>
-                  <ul className="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-600 leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
-                    {panel.bullets.map((bullet) => (
-                      <li key={bullet}>{bullet}</li>
-                    ))}
-                  </ul>
-                </div>
+      <Section id="format" className="border-t border-foreground/10">
+        <H2>Program Format</H2>
+        <Band className="mt-5">
+          <dl className="grid gap-2 text-sm md:grid-cols-2">
+            {formatRows.map(([label, value]) => (
+              <div
+                key={label}
+                className="grid grid-cols-[170px_1fr] gap-3 border-t border-foreground/10 py-2 first:border-t-0 first:pt-0"
+              >
+                <dt className="font-semibold text-foreground">{label}</dt>
+                <dd className="text-muted-foreground">{value}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Students meet twice per week for structured instruction. Each session builds
+            directly on the previous one, progressing from foundational Python concepts to
+            a complete capstone project.
+          </p>
+        </Band>
+      </Section>
+
+      <Section id="process" className="border-t border-foreground/10">
+        <H2>The Learning Process</H2>
+        <div className="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+          <div className="relative">
+            <div aria-hidden="true" className="absolute left-4 top-2 bottom-2 w-px bg-foreground/10" />
+            <ol className="space-y-8 pl-12">
+              {steps.map((step) => (
+                <li key={step.number} className="space-y-2">
+                  <div className="text-3xl font-semibold text-foreground/20">{step.number}</div>
+                  <h3 className="text-lg md:text-xl font-semibold">{step.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{step.body}</p>
+                  <p className="text-sm font-medium text-foreground">
+                    Outcome: <span className="font-normal text-muted-foreground">{step.outcome}</span>
+                  </p>
+                </li>
               ))}
-            </div>
-            <p className="mt-4 text-zinc-600 leading-relaxed">
-              This structure ensures steady progress without overwhelming students.
-            </p>
-          </section>
+            </ol>
+          </div>
+          <SectionImage
+            src="/images/family_pics/pexels-august-de-richelieu-4260744.jpg"
+            alt="Instructor leading students through a structured coding lesson"
+            caption="Guided live instruction with clear weekly milestones"
+            frameClassName="min-h-[360px]"
+          />
+        </div>
+      </Section>
 
-          <section className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Live Instruction Model</SectionHeading>
-            <div className={`mt-5 ${panelClass}`}>
-              <p className="text-zinc-600 leading-relaxed">
-                All sessions are taught live by experienced instructors.
-              </p>
-              <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-zinc-600 leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
-                {liveInstructionBullets.map((bullet) => (
+      <Section id="week" className="border-t border-foreground/10">
+        <H2>What a Typical Week Looks Like</H2>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {weekPanels.map((panel) => (
+            <Band key={panel.title} className="p-5 md:p-6">
+              <h3 className="text-lg md:text-xl font-semibold">{panel.title}</h3>
+              <ul className="mt-3 list-disc pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
+                {panel.bullets.map((bullet) => (
                   <li key={bullet}>{bullet}</li>
                 ))}
               </ul>
-            </div>
-          </section>
-
-          <section className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Practice &amp; Projects</SectionHeading>
-            <div className={`mt-5 ${panelClass}`}>
-              <p className="text-zinc-600 leading-relaxed">
-                Between sessions, students complete guided exercises and build small projects
-                that reinforce new skills.
-              </p>
-              <ol className="mt-4 list-decimal pl-5 space-y-2 text-sm text-zinc-700 leading-relaxed">
-                {progression.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ol>
-              <p className="mt-4 text-zinc-600 leading-relaxed">
-                Each build prepares students for the final capstone.
-              </p>
-            </div>
-          </section>
-
-          <section id="capstone" className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Capstone Showcase</SectionHeading>
-            <div className={`mt-5 ${panelClass}`}>
-              <p className="text-zinc-600 leading-relaxed">
-                In the final week, students design and build an independent project
-                integrating all core programming constructs.
-              </p>
-              <h3 className="mt-5 text-lg md:text-xl font-semibold text-zinc-950">
-                Capstone requirements
-              </h3>
-              <ul className="mt-3 list-disc pl-5 grid gap-1 text-sm text-zinc-700 leading-relaxed sm:grid-cols-2">
-                {capstoneRequirements.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p className="mt-4 text-zinc-600 leading-relaxed">
-                Students present their work and explain how their code functions,
-                demonstrating true comprehension — not memorization.
-              </p>
-            </div>
-          </section>
-
-          <section id="support" className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Support Structure</SectionHeading>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-5 md:p-6">
-                <h3 className="text-lg md:text-xl font-semibold text-zinc-950">
-                  How students are supported
-                </h3>
-                <ul className="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-600 leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
-                  {supportedBy.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-5 md:p-6">
-                <h3 className="text-lg md:text-xl font-semibold text-zinc-950">
-                  Learning integrity
-                </h3>
-                <p className="mt-3 text-zinc-600 leading-relaxed">
-                  No generative shortcuts are used in the learning process. Students develop
-                  genuine programming foundations and practice explaining their work
-                  independently.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          <section id="standards" className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Standards &amp; Outcomes</SectionHeading>
-            <div className="mt-5 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-5 md:p-6">
-              <p className="text-zinc-600 leading-relaxed">
-                Kanam Academy Foundations is designed in alignment with CSTA Computer Science
-                Standards (Grade Band 3A, Grades 6–8).
-              </p>
-              <h3 className="mt-5 text-lg md:text-xl font-semibold text-zinc-950">
-                Students finish with
-              </h3>
-              <ul className="mt-3 list-disc pl-5 space-y-2 text-sm text-zinc-700 leading-relaxed">
-                {finishWith.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button asChild>
-                  <Link href="/documents/standards-alignment.pdf" className={kanamLinkClass}>
-                    Download standards alignment (PDF)
-                  </Link>
-                </Button>
-                <Link
-                  href="/curriculum"
-                  className={`text-sm font-semibold ${kanamLinkClass}`}
-                >
-                  Explore the curriculum
-                </Link>
-              </div>
-            </div>
-          </section>
-
-          <section className={`${sectionClass} ${dividerClass}`}>
-            <SectionHeading>Frequently Asked Questions</SectionHeading>
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
-              {faqs.map((item) => (
-                <Card
-                  key={item.q}
-                  className="rounded-2xl border border-zinc-900/10 bg-white/85 shadow-none"
-                >
-                  <CardHeader className="p-5 md:p-6 pb-2">
-                    <CardTitle className="text-lg font-semibold">{item.q}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-5 md:p-6 pt-0">
-                    <p className="text-zinc-600 leading-relaxed">{item.a}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </section>
+            </Band>
+          ))}
         </div>
-      </Container>
+        <p className="mt-4 text-muted-foreground leading-relaxed">
+          This structure ensures steady progress without overwhelming students.
+        </p>
+      </Section>
+
+      <Section className="border-t border-foreground/10">
+        <H2>Live Instruction Model</H2>
+        <Band className="mt-5">
+          <p className="text-muted-foreground leading-relaxed">
+            All sessions are taught live by experienced instructors.
+          </p>
+          <ul className="mt-4 list-disc pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
+            {liveInstructionBullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        </Band>
+      </Section>
+
+      <Section className="border-t border-foreground/10">
+        <H2>Practice &amp; Projects</H2>
+        <Band className="mt-5">
+          <p className="text-muted-foreground leading-relaxed">
+            Between sessions, students complete guided exercises and build small projects
+            that reinforce new skills.
+          </p>
+          <ol className="mt-4 list-decimal pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed">
+            {progression.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Each build prepares students for the final capstone.
+          </p>
+        </Band>
+      </Section>
+
+      <Section id="capstone" className="border-t border-foreground/10">
+        <H2>Capstone Showcase</H2>
+        <Band className="mt-5">
+          <p className="text-muted-foreground leading-relaxed">
+            In the final week, students design and build an independent project integrating
+            all core programming constructs.
+          </p>
+          <h3 className="mt-5 text-lg md:text-xl font-semibold">Capstone requirements</h3>
+          <ul className="mt-3 list-disc pl-5 grid gap-1 text-sm text-muted-foreground leading-relaxed sm:grid-cols-2 marker:text-[rgb(var(--accent-rgb)/0.9)]">
+            {capstoneRequirements.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <p className="mt-4 text-muted-foreground leading-relaxed">
+            Students present their work and explain how their code functions,
+            demonstrating true comprehension — not memorization.
+          </p>
+        </Band>
+      </Section>
+
+      <Section id="support" className="border-t border-foreground/10">
+        <H2>Support Structure</H2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-6">
+            <h3 className="text-lg md:text-xl font-semibold">How students are supported</h3>
+            <ul className="mt-3 list-disc pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
+              {supportedBy.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-6">
+            <h3 className="text-lg md:text-xl font-semibold">Learning integrity</h3>
+            <p className="mt-3 text-muted-foreground leading-relaxed">
+              No generative shortcuts are used in the learning process. Students develop
+              genuine programming foundations and practice explaining their work
+              independently.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="standards" className="border-t border-foreground/10">
+        <H2>Standards &amp; Outcomes</H2>
+        <div className="mt-5 rounded-2xl border border-amber-400/30 bg-amber-400/10 p-6">
+          <p className="text-muted-foreground leading-relaxed">
+            Kanam Academy Foundations is designed in alignment with CSTA Computer Science
+            Standards (Grade Band 3A, Grades 6–8).
+          </p>
+          <h3 className="mt-5 text-lg md:text-xl font-semibold">Students finish with</h3>
+          <ul className="mt-3 list-disc pl-5 space-y-2 text-sm text-muted-foreground leading-relaxed marker:text-[rgb(var(--accent-rgb)/0.9)]">
+            {finishWith.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button asChild>
+              <Link href="/documents/standards-alignment.pdf">Download standards alignment (PDF)</Link>
+            </Button>
+            <Link href="/curriculum" className={textLinkClass}>
+              Explore the curriculum
+            </Link>
+          </div>
+        </div>
+      </Section>
+
+      <Section className="border-t border-foreground/10 pb-0">
+        <H2>Frequently Asked Questions</H2>
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {faqs.map((item) => (
+            <Card key={item.q} className="rounded-2xl border border-foreground/15 bg-white/78 shadow-[0_10px_28px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--accent-rgb)/0.12)] transition-shadow hover:shadow-[0_14px_34px_rgba(15,23,42,0.13)] dark:bg-background/60">
+              <CardHeader className="p-5 pb-2 md:p-6 md:pb-2">
+                <CardTitle className="text-lg font-semibold">{item.q}</CardTitle>
+              </CardHeader>
+              <CardContent className="p-5 pt-0 md:p-6 md:pt-0">
+                <p className="text-muted-foreground leading-relaxed">{item.a}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </Section>
     </SubpageShell>
   );
 }
