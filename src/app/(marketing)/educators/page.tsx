@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "For Educators | Kanam Academy",
   description:
-    "Bring instructor-led Python + AI to schools and after-school programs. Cohort model, objectives, and progress visibility.",
+    "Bring instructor-led Python + AI to schools and after-school programs with an emphasis on AI literacy, not prompt-generated shortcuts. Cohort model, objectives, and progress visibility.",
 };
 
 const assessmentRows = [
@@ -37,7 +37,7 @@ export default function EducatorsPage() {
     <SubpageShell
       eyebrow="For Educators"
       title="A cohort model that works for schools and programs"
-      subtitle="Kanam supports implementation for schools and after-school programs: clear objectives, project-based evidence, and progress visibility for stakeholders."
+      subtitle="Kanam supports implementation for schools and after-school programs: clear objectives, project-based evidence, and progress visibility for stakeholders without AI prompt-dependent instruction."
       actions={
         <>
           <Button asChild>
@@ -50,6 +50,7 @@ export default function EducatorsPage() {
       }
       toc={[
         { href: "#overview", label: "Program overview" },
+        { href: "#instructional-team", label: "Instructional team" },
         { href: "#assessment", label: "Assessment approach" },
         { href: "#implementation", label: "Implementation" },
       ]}
@@ -170,6 +171,83 @@ export default function EducatorsPage() {
               </div>
             </div>
           </div>
+        </div>
+      </Section>
+
+      <Section id="instructional-team" className="border-t border-foreground/10">
+        <H2>Instructional Team &amp; Delivery</H2>
+        <div className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
+        <div className="mt-5 rounded-3xl border border-foreground/10 bg-white/70 p-6 backdrop-blur-sm md:p-8 dark:bg-background/60">
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <p className="text-base leading-relaxed md:text-lg">
+                Kanam Academy instruction is delivered live by qualified educators with
+                real-world technical experience and structured teaching practice. Our
+                instructional model emphasizes consistency, academic rigor, and
+                measurable outcomes—particularly for learners new to computer science.
+              </p>
+              <p className="mt-4 text-base leading-relaxed md:text-lg">
+                Instructors are responsible for:
+              </p>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed marker:text-emerald-600 md:text-lg">
+                <li>
+                  Delivering standards-aligned instruction with clear objectives
+                </li>
+                <li>
+                  Facilitating guided practice and structured build milestones
+                </li>
+                <li>Supporting debugging and code comprehension</li>
+                <li>
+                  Assessing work using defined rubrics and milestone checkpoints
+                </li>
+                <li>Maintaining a safe, supportive learning environment</li>
+              </ul>
+
+              <h3 className="mt-6 text-lg font-semibold md:text-xl">
+                Instructional consistency
+              </h3>
+              <p className="mt-2 text-base leading-relaxed md:text-lg">
+                Lessons follow a consistent session format (instruction → guided
+                practice → application → check for understanding), supporting
+                predictable implementation in school and enrichment settings.
+              </p>
+            </div>
+
+            <SectionImage
+              src="/images/family_pics/pexels-august-de-richelieu-4260758.jpg"
+              alt="Instructor delivering live instruction to student cohort"
+              frameClassName="h-[280px] md:h-full"
+            />
+          </div>
+        </div>
+        <div className="mt-5 rounded-3xl border border-foreground/10 bg-emerald-500/5 p-6 md:p-8">
+          <h3 className="text-lg font-semibold md:text-xl">
+            Instructor Qualifications &amp; Safeguards
+          </h3>
+          <p className="mt-3 text-base leading-relaxed md:text-lg">
+            Kanam Academy instructors are selected for both technical competence and
+            instructional ability. All instructional staff undergo background
+            screening prior to assignment and complete structured onboarding aligned
+            to curriculum delivery standards.
+          </p>
+          <p className="mt-4 text-base leading-relaxed md:text-lg">
+            Instructor preparation includes:
+          </p>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed marker:text-emerald-600 md:text-lg">
+            <li>Background screening prior to student engagement</li>
+            <li>Curriculum-specific training and milestone alignment</li>
+            <li>
+              Classroom facilitation standards and instructional consistency
+            </li>
+            <li>Age-appropriate communication protocols</li>
+            <li>Professional conduct and learner safety expectations</li>
+          </ul>
+          <p className="mt-4 text-base leading-relaxed md:text-lg">
+            This framework supports consistent implementation, measurable
+            instructional outcomes, and safe learning environments across cohorts.
+            Instruction emphasizes AI literacy and evaluation, not prompt-generated
+            completion.
+          </p>
         </div>
       </Section>
 

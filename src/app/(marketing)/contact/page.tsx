@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Kanam Academy",
   description:
-    "Book a call or send a message. For parents and educators interested in instructor-led Python + AI for kids.",
+    "Book a call or send a message. For parents and educators interested in instructor-led Python + AI that teaches understanding, not prompt-generated shortcuts.",
 };
 
 export default function ContactPage() {
@@ -20,7 +20,7 @@ export default function ContactPage() {
     <SubpageShell
       eyebrow="Contact"
       title="Let’s talk about the right fit."
-      subtitle="Whether you’re a parent exploring cohorts or an educator looking for a standards-aligned program, we’ll help you find the best next step."
+      subtitle="Whether you’re a parent exploring cohorts or an educator looking for a standards-aligned program, we’ll help you find the best next step for real learning—not prompt-dependent output."
     >
       <div className="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-start">
         <div>

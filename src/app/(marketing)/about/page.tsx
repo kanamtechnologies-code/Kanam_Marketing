@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 export const metadata: Metadata = {
   title: "About | Kanam Academy",
   description:
-    "Kanam Academy is human-first, instructor-led learning for kids—focused on real projects, confidence, and responsible AI habits.",
+    "Kanam Academy is human-first, instructor-led learning for kids—focused on real projects, confidence, and teaching AI understanding rather than prompt shortcuts.",
 };
 
 export default function AboutPage() {
@@ -43,7 +43,8 @@ export default function AboutPage() {
             <p className="mt-4 max-w-3xl text-muted-foreground leading-relaxed">
               Our programs are designed for clarity, accountability, and measurable
               progress, with curriculum alignment to CSTA Computer Science Standards
-              (Grades 6–8 / Level 3A).
+              (Grades 6–8 / Level 3A). Students learn what AI is and how to evaluate its
+              output responsibly, rather than depending on prompts to generate work.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Button asChild>
@@ -84,7 +85,9 @@ export default function AboutPage() {
               project-based progression, students develop foundational programming skills,
               computational thinking, and the confidence to explain and defend their work.
               Our approach prioritizes equity, measurable outcomes, and responsible
-              technology use in a supportive learning environment.
+              technology use in a supportive learning environment. We teach AI literacy as
+              part of core computer science learning, not as a replacement for
+              understanding.
             </p>
           </div>
         </Band>

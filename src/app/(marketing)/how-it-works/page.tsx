@@ -15,7 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "How it works | Kanam Academy",
   description:
-    "How Kanam Academy Foundations works: structured, human-led instruction with weekly milestones, capstone outcomes, and standards alignment.",
+    "How Kanam Academy Foundations works: structured, human-led instruction with weekly milestones, capstone outcomes, standards alignment, and responsible AI literacy without prompt shortcuts.",
 };
 
 export default function HowItWorksPage() {
@@ -25,14 +25,6 @@ export default function HowItWorksPage() {
     ["Session length", "2 hours"],
     ["Total instruction", "32 hours"],
     ["Format", "Live, human-led (Zoom)"],
-  ] as const;
-
-  const formatRows = [
-    ["Duration", "8 Weeks"],
-    ["Sessions per Week", "2"],
-    ["Session Length", "2 Hours"],
-    ["Total Instructional Time", "32 Hours"],
-    ["Format", "Live, human-led instruction (Zoom)"],
   ] as const;
 
   const steps = [
@@ -144,7 +136,7 @@ export default function HowItWorksPage() {
     <SubpageShell
       eyebrow="Program structure"
       title="How Kanam Academy Works"
-      subtitle="Structured learning. Human guidance. Measurable progress."
+      subtitle="Structured learning. Human guidance. Measurable progress. Students learn what AI is and how to evaluate it—without relying on prompt shortcuts."
       actions={
         <>
           <Button asChild>
@@ -167,14 +159,19 @@ export default function HowItWorksPage() {
         { href: "#standards", label: "Standards" },
       ]}
     >
-      <Section className="pt-0">
+      <Section id="format" className="pt-0">
         <Band>
-          <H2>At-a-glance</H2>
+          <H2>Program Format</H2>
           <p className="mt-4 max-w-4xl text-muted-foreground leading-relaxed">
             Kanam Academy Foundations is designed for learners ages 12–15 who benefit from
             clear structure and consistent milestones. The program combines live,
             human-led instruction with guided independent practice so students build real
             programming skill — not just exposure.
+          </p>
+          <p className="mt-4 max-w-4xl text-muted-foreground leading-relaxed">
+            Students meet twice per week for structured instruction. Each session builds
+            directly on the previous one, progressing from foundational Python concepts to
+            a complete capstone project.
           </p>
           <dl className="mt-4 grid gap-2 text-sm md:grid-cols-2">
             {atAGlance.map(([label, value]) => (
@@ -187,28 +184,6 @@ export default function HowItWorksPage() {
               </div>
             ))}
           </dl>
-        </Band>
-      </Section>
-
-      <Section id="format" className="border-t border-foreground/10">
-        <H2>Program Format</H2>
-        <Band className="mt-5">
-          <dl className="grid gap-2 text-sm md:grid-cols-2">
-            {formatRows.map(([label, value]) => (
-              <div
-                key={label}
-                className="grid grid-cols-[170px_1fr] gap-3 border-t border-foreground/10 py-2 first:border-t-0 first:pt-0"
-              >
-                <dt className="font-semibold text-foreground">{label}</dt>
-                <dd className="text-muted-foreground">{value}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-4 text-muted-foreground leading-relaxed">
-            Students meet twice per week for structured instruction. Each session builds
-            directly on the previous one, progressing from foundational Python concepts to
-            a complete capstone project.
-          </p>
         </Band>
       </Section>
 
@@ -325,8 +300,9 @@ export default function HowItWorksPage() {
           <div className="rounded-2xl border border-emerald-500/25 bg-emerald-500/10 p-6">
             <h3 className="text-lg md:text-xl font-semibold">Learning integrity</h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              No generative shortcuts are used in the learning process. Students develop
-              genuine programming foundations and practice explaining their work
+              We do not teach by having students generate answers from AI prompts.
+              Students build genuine programming foundations first, then learn how to
+              analyze AI output, question reliability, and explain their own work
               independently.
             </p>
           </div>

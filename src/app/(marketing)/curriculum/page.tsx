@@ -15,7 +15,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 export const metadata: Metadata = {
   title: "Curriculum | Kanam Academy",
   description:
-    "Kanam Academy Foundations (ages 12–15): human-led Python curriculum with clear scope, projects, and standards alignment.",
+    "Kanam Academy Foundations (ages 12–15): human-led Python curriculum with clear scope, projects, standards alignment, and responsible AI literacy without prompt shortcuts.",
 };
 
 const standardsPdfUrl =
@@ -187,15 +187,6 @@ const faqs = [
   },
 ] as const;
 
-const galleryArtifacts = [
-  { title: "Intro Program", skills: "Variables + input/output" },
-  { title: "Choose-Your-Path Story", skills: "Conditionals + branching logic" },
-  { title: "Quiz / Reaction Game", skills: "Loops + score tracking" },
-  { title: "Simple Data Tracker", skills: "Lists + structured input" },
-  { title: "Rules-Based Helper", skills: "Decision rules + automation" },
-  { title: "Capstone Showcase", skills: "Integrated program design" },
-] as const;
-
 export default function CurriculumPage() {
   return (
     <SubpageShell
@@ -231,6 +222,11 @@ export default function CurriculumPage() {
       <Section id="overview" className="pt-0">
         <Band>
           <H2>Program Overview</H2>
+          <p className="mt-3 max-w-4xl text-muted-foreground leading-relaxed">
+            AI is taught as a computer science topic within the program, not as a shortcut
+            for producing answers. Students build understanding first, then learn how to
+            evaluate AI behavior responsibly with clear human oversight.
+          </p>
           <dl className="mt-6 space-y-2.5 text-sm">
             {overviewItems.map(([label, value]) => (
               <div
@@ -315,30 +311,6 @@ export default function CurriculumPage() {
               </p>
             </Band>
           ))}
-        </div>
-        <div className="mt-8">
-          <h3 className="text-lg font-semibold text-foreground">Student Work Gallery</h3>
-          <div className="mt-4 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {galleryArtifacts.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-3xl overflow-hidden border border-foreground/10 bg-background"
-              >
-                <div className="h-44 w-full bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-white to-[rgb(var(--accent-rgb)/0.14)] p-5">
-                  <div className="inline-flex rounded-full bg-white/85 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-zinc-700 ring-1 ring-zinc-900/10">
-                    Artifact
-                  </div>
-                  <p className="mt-4 text-lg font-semibold text-zinc-900">{item.title}</p>
-                </div>
-                <div className="px-5 py-4">
-                  <p className="text-sm text-muted-foreground">
-                    <span className="font-semibold text-foreground">Skills:</span>{" "}
-                    {item.skills}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </Section>
 

@@ -71,7 +71,7 @@ function HeroPanel() {
         <div className="relative z-10 flex flex-col justify-center">
           <PanelShell>
             <PanelText>
-              <div className="rounded-2xl border border-foreground/10 bg-white/70 p-6 md:p-8 backdrop-blur-sm">
+              <div className="rounded-3xl border border-zinc-900/15 bg-white/90 p-6 shadow-[0_18px_44px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 backdrop-blur-sm md:p-8">
                 <h1 className="text-5xl font-black tracking-tight text-zinc-950 sm:text-6xl">
                   Live, instructor-led Python & AI learning for young beginners
                 </h1>
@@ -81,8 +81,9 @@ function HeroPanel() {
                   experience.
                 </p>
                 <p className="mt-4 text-zinc-600">
-                  Designed for families and educators seeking a safe, structured path with
-                  clear milestones and outcomes students can confidently explain and showcase.
+                  We do not teach students to rely on AI prompts to generate answers. We
+                  teach what AI is, how it works, when to trust it, and how to verify output
+                  with real programming fundamentals.
                 </p>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -93,11 +94,11 @@ function HeroPanel() {
               </div>
 
               <ul
-                className="mt-8 grid overflow-hidden rounded-2xl bg-[rgb(var(--brand-2-rgb)/0.08)] text-zinc-900 ring-1 ring-black/5 backdrop-blur-sm sm:grid-cols-3"
+                className="mt-8 grid overflow-hidden rounded-3xl border border-zinc-900/14 bg-white/78 text-zinc-900 shadow-[0_14px_34px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 backdrop-blur-sm sm:grid-cols-3"
                 role="list"
               >
-                <li className="relative flex items-start gap-3 bg-white/35 p-4 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/80 ring-1 ring-black/10">
+                <li className="relative flex items-start gap-3 bg-white/72 p-4 sm:p-5">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/95 ring-1 ring-black/15">
                     <Video
                       className="h-4.5 w-4.5 text-emerald-700"
                       aria-hidden="true"
@@ -114,8 +115,8 @@ function HeroPanel() {
                   />
                 </li>
 
-                <li className="relative flex items-start gap-3 border-t border-black/5 bg-white/35 p-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/80 ring-1 ring-black/10">
+                <li className="relative flex items-start gap-3 border-t border-black/10 bg-white/72 p-4 sm:border-l sm:border-t-0 sm:p-5">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/95 ring-1 ring-black/15">
                     <Users
                       className="h-4.5 w-4.5 text-emerald-700"
                       aria-hidden="true"
@@ -132,8 +133,8 @@ function HeroPanel() {
                   />
                 </li>
 
-                <li className="relative flex items-start gap-3 border-t border-black/5 bg-white/35 p-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/80 ring-1 ring-black/10">
+                <li className="relative flex items-start gap-3 border-t border-black/10 bg-white/72 p-4 sm:border-l sm:border-t-0 sm:p-5">
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/95 ring-1 ring-black/15">
                     <Sparkles
                       className="h-4.5 w-4.5 text-emerald-700"
                       aria-hidden="true"
@@ -199,7 +200,7 @@ function ValuePillarsPanel() {
     },
   ];
   return (
-    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 py-14 md:py-20">
+    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 pt-14 pb-8 md:pt-20 md:pb-12">
       <div className="w-full">
         <div className="mx-auto w-full max-w-[92vw]">
           <SectionTitle className="sm:tracking-tight md:tracking-tight">
@@ -225,20 +226,20 @@ function ValuePillarsPanel() {
               caption="Live, human-led learning"
               frameClassName="h-full min-h-[560px]"
             />
-            <div className="h-full rounded-2xl bg-[rgb(var(--brand-2-rgb)/0.08)] px-6 py-8 shadow-[0_12px_32px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.18)]">
+            <div className="h-full rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-8 shadow-[0_18px_44px_rgba(15,23,42,0.16)] ring-2 ring-[rgb(var(--brand-rgb)/0.22)] md:px-7 md:py-9">
               <ul className="space-y-0">
                 {items.map((item, idx) => (
                   <Fragment key={item.label}>
                     <li className="py-4 first:pt-0 last:pb-0">
-                      <div className="grid gap-2 text-zinc-700 md:grid-cols-[240px_minmax(0,1fr)] md:items-start md:gap-x-5">
-                        <div className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-900">
+                      <div className="grid gap-2 text-zinc-800 md:grid-cols-[250px_minmax(0,1fr)] md:items-start md:gap-x-6">
+                        <div className="text-sm font-semibold uppercase tracking-[0.11em] text-zinc-950">
                           {item.label}
                         </div>
-                        <p className="text-base leading-7 text-zinc-700">{item.body}</p>
+                        <p className="text-[1.04rem] leading-7 text-zinc-800">{item.body}</p>
                       </div>
                     </li>
                     {idx < items.length - 1 ? (
-                      <li aria-hidden="true" className="h-px bg-zinc-900/10" />
+                      <li aria-hidden="true" className="h-px bg-zinc-900/16" />
                     ) : null}
                     {idx === 2 ? (
                       <li aria-hidden="true" className="py-4">
@@ -371,7 +372,7 @@ function BuildPanel() {
       <div className="w-full">
         <PanelShell>
           <PanelText>
-            <SectionTitle>What students build and take with them</SectionTitle>
+            <SectionTitle>Project Path: What learners build step by step</SectionTitle>
             <p className="mt-4 text-lg leading-8 text-zinc-600">
               Every unit leads to something tangible — not just knowledge, but confidence
               and capability.
@@ -407,125 +408,127 @@ function BuildPanel() {
           {/* Project Path (12-col grid on desktop) */}
           <div className="mt-8 grid gap-4 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-0">
             <div className="lg:col-span-7">
-              <ol className="relative space-y-1 pl-0" role="list">
-                <div
-                  aria-hidden="true"
-                  className="absolute left-[14px] top-[40px] bottom-0 w-px bg-zinc-900/15"
-                />
+              <div className="rounded-3xl border border-zinc-900/14 bg-white/90 p-4 shadow-[0_16px_36px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 md:p-5">
+                <ol className="relative space-y-1 pl-0" role="list">
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-[14px] top-[40px] bottom-0 w-px bg-zinc-900/15"
+                  />
 
-                {projectSteps.map((step, idx) => {
-                  const isPinned = pinnedIdx === idx;
-                  const isPreviewing = previewIdx === idx;
-                  const isActive = isPinned || isPreviewing || activeIdx === idx;
-                  const detailId = `project-step-detail-${idx}`;
+                  {projectSteps.map((step, idx) => {
+                    const isPinned = pinnedIdx === idx;
+                    const isPreviewing = previewIdx === idx;
+                    const isActive = isPinned || isPreviewing || activeIdx === idx;
+                    const detailId = `project-step-detail-${idx}`;
 
-                  return (
-                    <li key={step.title} className="relative">
-                      <button
-                        type="button"
-                        className={cn(
-                          "group relative w-full rounded-xl px-3 py-3.5 text-left",
-                          "transition-colors motion-reduce:transition-none",
-                          "hover:bg-white/55 focus-visible:bg-white/55",
-                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.30)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
-                          "before:absolute before:inset-y-2 before:left-0 before:w-[2px] before:rounded-full before:bg-transparent",
-                          isActive &&
-                            "bg-white/60 before:bg-[rgb(var(--accent-rgb)/0.55)]"
-                        )}
-                        aria-expanded={isPinned}
-                        aria-controls={detailId}
-                        onMouseEnter={() => setPreviewIdx(idx)}
-                        onMouseLeave={() => setPreviewIdx(null)}
-                        onFocus={() => setPreviewIdx(idx)}
-                        onBlur={() => setPreviewIdx(null)}
-                        onClick={() => setPinnedIdx((cur) => (cur === idx ? null : idx))}
-                      >
-                        <span
-                          aria-hidden="true"
+                    return (
+                      <li key={step.title} className="relative">
+                        <button
+                          type="button"
                           className={cn(
-                            "absolute left-0 top-3.5 grid h-7 w-7 place-items-center rounded-full text-xs font-semibold",
-                            "ring-1 ring-black/10 bg-white/70 text-zinc-800",
+                            "group relative w-full rounded-xl px-3 py-3.5 text-left",
+                            "transition-all duration-200 motion-reduce:transition-none",
+                            "hover:bg-white/70 focus-visible:bg-white/70",
+                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.30)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+                            "before:absolute before:inset-y-2 before:left-0 before:w-[3px] before:rounded-full before:bg-transparent",
                             isActive &&
-                              "ring-1 ring-[rgb(var(--accent-rgb)/0.30)] bg-[rgb(var(--accent-rgb)/0.12)] text-zinc-950"
+                              "bg-white ring-1 ring-[rgb(var(--accent-rgb)/0.24)] shadow-[0_8px_20px_rgba(15,23,42,0.12)] before:bg-[rgb(var(--accent-rgb)/0.9)]"
                           )}
+                          aria-expanded={isPinned}
+                          aria-controls={detailId}
+                          onMouseEnter={() => setPreviewIdx(idx)}
+                          onMouseLeave={() => setPreviewIdx(null)}
+                          onFocus={() => setPreviewIdx(idx)}
+                          onBlur={() => setPreviewIdx(null)}
+                          onClick={() => setPinnedIdx((cur) => (cur === idx ? null : idx))}
                         >
-                          {String(idx + 1).padStart(2, "0")}
-                        </span>
-
-                        <span className="ml-10 flex items-start justify-between gap-4">
-                          <span className="min-w-0">
-                            <h3 className="truncate text-base font-semibold leading-tight text-zinc-950 lg:pr-6">
-                              {step.title}
-                            </h3>
-                            <p className="mt-1 text-sm leading-snug text-zinc-600">
-                              {step.micro}
-                            </p>
+                          <span
+                            aria-hidden="true"
+                            className={cn(
+                              "absolute left-0 top-3.5 grid h-7 w-7 place-items-center rounded-full text-xs font-semibold",
+                              "ring-1 ring-black/10 bg-white/70 text-zinc-800",
+                              isActive &&
+                              "ring-1 ring-[rgb(var(--accent-rgb)/0.55)] bg-[rgb(var(--accent-rgb)/0.22)] text-zinc-950 shadow-[0_4px_12px_rgba(15,23,42,0.14)]"
+                            )}
+                          >
+                            {String(idx + 1).padStart(2, "0")}
                           </span>
-                        </span>
 
-                        {/* Mobile accordion detail */}
-                        <div
-                          id={detailId}
-                          className={cn(
-                            "mt-3 grid lg:hidden",
-                            "transition-[grid-template-rows,opacity] duration-300 motion-reduce:transition-none",
-                            isPinned ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                          )}
-                        >
-                          <div className="overflow-hidden">
-                            <div className="rounded-xl bg-white/70 p-3 text-sm leading-6 text-zinc-700 ring-1 ring-black/5">
-                              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-                                Currently viewing
-                              </div>
-                              <div className="mt-2 text-sm font-semibold text-zinc-900">
+                          <span className="ml-10 flex items-start justify-between gap-4">
+                            <span className="min-w-0">
+                              <h3 className="truncate text-base font-semibold leading-tight text-zinc-950 lg:pr-6">
                                 {step.title}
+                              </h3>
+                              <p className="mt-1 text-base leading-relaxed text-zinc-600 md:text-lg">
+                                {step.micro}
+                              </p>
+                            </span>
+                          </span>
+
+                          {/* Mobile accordion detail */}
+                          <div
+                            id={detailId}
+                            className={cn(
+                              "mt-3 grid lg:hidden",
+                              "transition-[grid-template-rows,opacity] duration-300 motion-reduce:transition-none",
+                              isPinned ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                            )}
+                          >
+                            <div className="overflow-hidden">
+                              <div className="rounded-xl bg-white/70 p-3 text-base leading-relaxed text-zinc-700 ring-1 ring-black/5 md:text-lg">
+                                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
+                                  Currently viewing
+                                </div>
+                                <div className="mt-2 text-base font-semibold text-zinc-900 md:text-lg">
+                                  {step.title}
+                                </div>
+                                <p className="mt-2 text-zinc-600">{step.detail}</p>
+                                <div className="mt-3 space-y-2 text-base text-zinc-700 md:text-lg">
+                                  <p>
+                                    <span className="font-semibold text-zinc-900">Python focus:</span>{" "}
+                                    {step.pythonFocus}
+                                  </p>
+                                  <p>
+                                    <span className="font-semibold text-zinc-900">AI alignment:</span>{" "}
+                                    {step.aiAlignment}
+                                  </p>
+                                </div>
+                                <ul className="mt-3 space-y-1.5 text-base text-zinc-700 md:text-lg">
+                                  {step.outcomes.map((point) => (
+                                    <li key={point} className="flex gap-2">
+                                      <span
+                                        aria-hidden="true"
+                                        className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.8)]"
+                                      />
+                                      <span>{point}</span>
+                                    </li>
+                                  ))}
+                                </ul>
                               </div>
-                              <p className="mt-2 text-zinc-600">{step.detail}</p>
-                              <div className="mt-3 space-y-2 text-sm text-zinc-700">
-                                <p>
-                                  <span className="font-semibold text-zinc-900">Python focus:</span>{" "}
-                                  {step.pythonFocus}
-                                </p>
-                                <p>
-                                  <span className="font-semibold text-zinc-900">AI alignment:</span>{" "}
-                                  {step.aiAlignment}
-                                </p>
-                              </div>
-                              <ul className="mt-3 space-y-1.5 text-sm text-zinc-700">
-                                {step.outcomes.map((point) => (
-                                  <li key={point} className="flex gap-2">
-                                    <span
-                                      aria-hidden="true"
-                                      className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.8)]"
-                                    />
-                                    <span>{point}</span>
-                                  </li>
-                                ))}
-                              </ul>
                             </div>
                           </div>
-                        </div>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ol>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
             </div>
 
             {/* Desktop detail panel (sticky + aligned) */}
             <aside className="hidden lg:block lg:col-span-5">
               <div className="lg:sticky lg:top-24">
-                <div className="rounded-2xl bg-white/65 p-6 ring-1 ring-zinc-900/10">
+                <div className="rounded-3xl border border-zinc-900/14 bg-white/90 p-6 shadow-[0_16px_38px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/12">
                   <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
                     Currently viewing
                   </div>
                   <div className="mt-2 text-lg font-semibold leading-tight text-zinc-950">
                     {projectSteps[activeIdx].title}
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-zinc-600">
+                  <p className="mt-3 text-base leading-relaxed text-zinc-600 md:text-lg">
                     {projectSteps[activeIdx].detail}
                   </p>
-                  <div className="mt-4 space-y-2 text-sm leading-6 text-zinc-700">
+                  <div className="mt-4 space-y-2 text-base leading-relaxed text-zinc-700 md:text-lg">
                     <p>
                       <span className="font-semibold text-zinc-900">Python focus:</span>{" "}
                       {projectSteps[activeIdx].pythonFocus}
@@ -535,7 +538,7 @@ function BuildPanel() {
                       {projectSteps[activeIdx].aiAlignment}
                     </p>
                   </div>
-                  <ul className="mt-4 space-y-2 text-sm leading-6 text-zinc-600">
+                  <ul className="mt-4 space-y-2 text-base leading-relaxed text-zinc-600 md:text-lg">
                     {projectSteps[activeIdx].outcomes.map((point) => (
                       <li key={point} className="flex gap-3">
                         <span
@@ -551,9 +554,11 @@ function BuildPanel() {
             </aside>
           </div>
 
-          <p className="mt-8 text-base leading-7 text-zinc-600">
-            Students finish with real projects they can explain, demo, and be proud of.
-          </p>
+          <div className="mt-8 rounded-2xl border border-[rgb(var(--accent-rgb)/0.4)] bg-[rgb(var(--accent-rgb)/0.12)] px-5 py-4 shadow-[0_10px_24px_rgba(15,23,42,0.12)] ring-1 ring-[rgb(var(--accent-rgb)/0.25)] md:px-6 md:py-5">
+            <p className="text-lg font-semibold leading-relaxed text-zinc-900 md:text-2xl">
+              Students finish with real projects they can explain, demo, and be proud of.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -595,7 +600,7 @@ function DifferencePanel() {
               The Kanam approach
             </div>
           </div>
-          <Card className="h-full border-[rgb(var(--brand-2-rgb)/0.22)] bg-[rgb(var(--brand-2-rgb)/0.08)] shadow-[0_12px_32px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.16)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.13)]">
+          <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_16px_38px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
             <CardHeader className="pt-7">
               <CardTitle className="text-base">Self-paced videos</CardTitle>
               <div className="text-base font-medium leading-7 text-zinc-600">
@@ -612,7 +617,7 @@ function DifferencePanel() {
             </CardContent>
           </Card>
 
-          <Card className="h-full border-[rgb(var(--brand-2-rgb)/0.22)] bg-[rgb(var(--brand-2-rgb)/0.08)] shadow-[0_12px_32px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.16)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.13)]">
+          <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_16px_38px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
             <CardHeader className="pt-7">
               <CardTitle className="text-base">Unstructured tutoring</CardTitle>
               <div className="text-base font-medium leading-7 text-zinc-600">
@@ -629,7 +634,7 @@ function DifferencePanel() {
             </CardContent>
           </Card>
 
-          <Card className="h-full border-2 border-[rgb(var(--accent-rgb)/0.9)] bg-[rgb(var(--brand-2-rgb)/0.10)] shadow-[0_14px_36px_rgba(15,23,42,0.14)] ring-1 ring-[rgb(var(--accent-rgb)/0.24)] transition-shadow hover:shadow-[0_18px_42px_rgba(15,23,42,0.18)]">
+          <Card className="h-full border-2 border-[rgb(var(--accent-rgb)/0.85)] bg-white shadow-[0_18px_42px_rgba(15,23,42,0.18)] ring-1 ring-[rgb(var(--accent-rgb)/0.30)] transition-shadow hover:shadow-[0_22px_50px_rgba(15,23,42,0.22)]">
             <CardHeader className="pt-7">
               <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
                 Kanam approach
@@ -708,7 +713,7 @@ function HowItWorksPanel() {
   return (
     <section className="border-t border-foreground/10 bg-transparent py-14 md:py-20">
       <div className="mx-auto w-full max-w-[92vw]">
-        <div className="rounded-3xl bg-zinc-900/[0.03] p-6 md:p-8 lg:p-10">
+        <div className="rounded-3xl border border-zinc-900/12 bg-white/72 p-6 shadow-[0_16px_38px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 md:p-8 lg:p-10">
         <header className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
             Simple, supportive process
@@ -735,10 +740,10 @@ function HowItWorksPanel() {
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <h3 className="mt-2 text-lg font-semibold text-zinc-950">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-600 md:text-base">
+                  <p className="mt-2 text-base leading-relaxed text-zinc-600 md:text-lg">
                     {step.body}
                   </p>
-                  <p className="mt-3 text-sm font-medium text-zinc-800">
+                  <p className="mt-3 text-base font-medium text-zinc-800 md:text-lg">
                     Outcome: <span className="font-normal text-zinc-600">{step.outcome}</span>
                   </p>
                 </li>
@@ -749,9 +754,9 @@ function HowItWorksPanel() {
           <div className="space-y-5">
             <h3 className="text-lg font-semibold text-zinc-950">What learning looks like</h3>
             {panels.map((panel) => (
-              <div key={panel.title} className="rounded-2xl border border-zinc-900/10 bg-[var(--background)] p-5 md:p-6">
+              <div key={panel.title} className="rounded-2xl border border-zinc-900/14 bg-white/92 p-5 shadow-[0_10px_26px_rgba(15,23,42,0.10)] ring-1 ring-zinc-900/8 md:p-6">
                 <h4 className="text-base font-semibold text-zinc-950 md:text-lg">{panel.title}</h4>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-zinc-600">
+                <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed text-zinc-600 md:text-lg">
                   {panel.bullets.map((bullet) => (
                     <li key={bullet}>{bullet}</li>
                   ))}
@@ -759,9 +764,9 @@ function HowItWorksPanel() {
               </div>
             ))}
 
-            <div className="rounded-2xl border border-zinc-900/10 bg-[var(--background)] p-5 md:p-6">
+            <div className="rounded-2xl border border-zinc-900/14 bg-white/92 p-5 shadow-[0_10px_26px_rgba(15,23,42,0.10)] ring-1 ring-zinc-900/8 md:p-6">
               <h4 className="text-base font-semibold text-zinc-950">What students finish with</h4>
-              <ul className="mt-3 divide-y divide-zinc-900/10 text-sm leading-relaxed text-zinc-700">
+              <ul className="mt-3 divide-y divide-zinc-900/10 text-base leading-relaxed text-zinc-700 md:text-lg">
                 {outcomes.map((outcome) => (
                   <li key={outcome} className="py-2 first:pt-0 last:pb-0">
                     {outcome}
@@ -819,8 +824,8 @@ function ProductPreviewPanel() {
             "Guided practice together",
             "A pace designed for beginners",
           ].map((item) => (
-          <Card key={item} className="border-zinc-200 bg-[rgb(var(--brand-2-rgb)/0.03)]">
-              <CardContent className="pt-6 text-sm leading-6 text-zinc-600">{item}</CardContent>
+          <Card key={item} className="border-zinc-900/14 bg-white/90 shadow-[0_10px_24px_rgba(15,23,42,0.10)] ring-1 ring-zinc-900/8">
+              <CardContent className="pt-6 text-base leading-relaxed text-zinc-600 md:text-lg">{item}</CardContent>
             </Card>
           ))}
         </div>
@@ -850,58 +855,58 @@ function SafetyPanel() {
         </PanelShell>
 
         <div className="mx-auto mt-8 w-full max-w-[92vw]">
-          <div className="grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-10">
-            <div className="md:pr-8 md:border-r md:border-zinc-900/12">
-              <h3 className="text-lg font-semibold tracking-tight text-zinc-950">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <div className="rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-7 shadow-[0_16px_40px_rgba(15,23,42,0.14)] ring-2 ring-[rgb(var(--brand-rgb)/0.16)] md:px-7 md:py-8">
+              <h3 className="text-xl font-semibold tracking-tight text-zinc-950 md:text-2xl">
                 How AI fits into our curriculum
               </h3>
-              <ul className="mt-3 divide-y divide-zinc-900/8 text-sm text-zinc-700">
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+              <ul className="mt-4 divide-y divide-zinc-900/12 text-base text-zinc-800 md:text-lg">
+                <li className="flex items-start gap-3 py-3 first:pt-0">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Students learn core programming before using AI tools
                 </li>
                 <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   AI helpers are built using rules-based logic
                 </li>
                 <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Prompting is structured and guided
                 </li>
                 <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   AI output must be reviewed and revised
                 </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                <li className="flex items-start gap-3 py-3 last:pb-0">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Projects require explanation in the student’s own words
                 </li>
               </ul>
             </div>
 
-            <div className="md:pl-2">
-              <h3 className="text-lg font-semibold tracking-tight text-zinc-950">
+            <div className="rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-7 shadow-[0_16px_40px_rgba(15,23,42,0.14)] ring-2 ring-[rgb(var(--brand-rgb)/0.16)] md:px-7 md:py-8">
+              <h3 className="text-xl font-semibold tracking-tight text-zinc-950 md:text-2xl">
                 What students actually learn
               </h3>
-              <ul className="mt-3 divide-y divide-zinc-900/8 text-sm text-zinc-700">
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+              <ul className="mt-4 divide-y divide-zinc-900/12 text-base text-zinc-800 md:text-lg">
+                <li className="flex items-start gap-3 py-3 first:pt-0">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Logic and loops power automation
                 </li>
                 <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Data inputs shape AI output
                 </li>
                 <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Bias and error are discussed openly
                 </li>
                 <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   AI can assist — but it does not replace understanding
                 </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.9)]" />
+                <li className="flex items-start gap-3 py-3 last:pb-0">
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
                   Students present and defend their final projects
                 </li>
               </ul>
@@ -934,7 +939,7 @@ function WhoItsForPanel() {
         </PanelShell>
 
         <div className="mx-auto mt-8 grid w-full max-w-[92vw] gap-6 lg:grid-cols-2">
-          <Card className="border-zinc-200 bg-[rgb(var(--brand-2-rgb)/0.03)]">
+          <Card className="border-zinc-900/14 bg-white/90 shadow-[0_14px_32px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/8">
             <CardHeader>
               <CardTitle>Parents</CardTitle>
             </CardHeader>
@@ -964,7 +969,7 @@ function WhoItsForPanel() {
             </CardContent>
           </Card>
 
-          <Card className="border-zinc-200 bg-[rgb(var(--brand-2-rgb)/0.03)]">
+          <Card className="border-zinc-900/14 bg-white/90 shadow-[0_14px_32px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/8">
             <CardHeader>
               <CardTitle>Educators / Programs</CardTitle>
             </CardHeader>
@@ -1056,7 +1061,7 @@ function FaqPanel() {
           </PanelMedia>
         </PanelShell>
 
-        <Card className="mx-auto mt-8 w-full max-w-[92vw] border-zinc-200 bg-[rgb(var(--brand-2-rgb)/0.03)]">
+        <Card className="mx-auto mt-8 w-full max-w-[92vw] border-zinc-900/14 bg-white/90 shadow-[0_16px_36px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/8">
           <CardContent className="pt-6">
             <Accordion type="single" collapsible value={`item-${activeIndex}`}>
               {items.map((item, idx) => (

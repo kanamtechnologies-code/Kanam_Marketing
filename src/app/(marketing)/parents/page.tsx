@@ -15,7 +15,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "For Parents | Kanam Academy",
   description:
-    "Reassuring, instructor-led Python + AI learning for kids. See outcomes, safety approach, weekly flow, and what devices are needed.",
+    "Reassuring, instructor-led Python + AI learning for kids that teaches understanding over prompt shortcuts. See outcomes, safety approach, weekly flow, and what devices are needed.",
 };
 
 const expectations = [
@@ -62,7 +62,7 @@ export default function ParentsPage() {
     <SubpageShell
       eyebrow="For Parents"
       title="A calm, supportive way to learn Python + AI"
-      subtitle="Kanam is built for kids who are curious—but don’t need to do it alone. Live instructors guide the learning, projects keep it engaging, and progress stays visible."
+      subtitle="Kanam is built for kids who are curious—but don’t need to do it alone. Live instructors guide the learning, projects keep it engaging, and progress stays visible without relying on AI prompt shortcuts."
       actions={
         <>
           <Button asChild>
@@ -75,6 +75,7 @@ export default function ParentsPage() {
       }
       toc={[
         { href: "#expectations", label: "What parents can expect" },
+        { href: "#instructors", label: "Meet Your Instructors" },
         { href: "#schedule", label: "Schedule & time commitment" },
         { href: "#support", label: "Support" },
         { href: "#faq", label: "FAQs" },
@@ -100,6 +101,84 @@ export default function ParentsPage() {
             />
           </div>
         </Band>
+      </Section>
+
+      <Section id="instructors" className="border-t border-foreground/10">
+        <H2>Meet Your Instructors</H2>
+        <div className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
+        <div className="mt-5 rounded-3xl border border-foreground/10 bg-white/70 p-6 backdrop-blur-sm md:p-8 dark:bg-background/60">
+          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+            <div>
+              <p className="text-base leading-relaxed md:text-lg">
+                Kanam Academy classes are led live by experienced instructors who
+                understand how to teach beginners with clarity and patience. Our
+                instructors don’t just ‘know how to code’—they know how to help
+                students learn, stay engaged, and build confidence through structure
+                and encouragement.
+              </p>
+              <p className="mt-4 text-base leading-relaxed md:text-lg">
+                In every session, students receive:
+              </p>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed marker:text-emerald-600 md:text-lg">
+                <li>Real-time explanations and guided practice</li>
+                <li>
+                  Support when they get stuck (without doing the work for them)
+                </li>
+                <li>Clear checkpoints so they know what success looks like</li>
+                <li>A calm, respectful learning environment</li>
+              </ul>
+              <p className="mt-4 text-base leading-relaxed md:text-lg">
+                We prioritize safe, age-appropriate instruction and communication.
+                Families can expect a professional classroom culture focused on
+                learning, growth, and consistent progress.
+              </p>
+
+              <h3 className="mt-6 text-lg font-semibold md:text-xl">
+                What families can expect from instructors
+              </h3>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed marker:text-emerald-600 md:text-lg">
+                <li>Prepared lessons with clear outcomes</li>
+                <li>Supportive coaching and constructive feedback</li>
+                <li>Respectful classroom norms and learner safety</li>
+                <li>
+                  Encouragement of independent thinking and problem-solving
+                </li>
+              </ul>
+            </div>
+
+            <SectionImage
+              src="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
+              alt="Instructor supporting students during a live coding session"
+              frameClassName="h-[280px] md:h-full"
+            />
+          </div>
+        </div>
+        <div className="mt-5 rounded-3xl border border-foreground/10 bg-emerald-500/5 p-6 md:p-8">
+          <h3 className="text-lg font-semibold md:text-xl">
+            Instructor Standards &amp; Safety
+          </h3>
+          <p className="mt-3 text-base leading-relaxed md:text-lg">
+            Kanam Academy maintains professional standards for all instructional staff
+            to ensure a safe, supportive learning experience for every student. All
+            instructors undergo background screening prior to working with learners
+            and participate in structured onboarding before leading classes.
+          </p>
+          <p className="mt-4 text-base leading-relaxed md:text-lg">
+            Instructor preparation includes training in:
+          </p>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed marker:text-emerald-600 md:text-lg">
+            <li>Age-appropriate communication and classroom culture</li>
+            <li>Empathetic, student-centered teaching practices</li>
+            <li>Structured lesson delivery and milestone-based instruction</li>
+            <li>Clear classroom conduct and safety expectations</li>
+          </ul>
+          <p className="mt-4 text-base leading-relaxed md:text-lg">
+            We are committed to creating a respectful, safe, and encouraging
+            learning environment where students feel supported while being challenged
+            to grow. AI is taught as a topic students learn to understand and evaluate,
+            not as a tool to generate their work for them.
+          </p>
+        </div>
       </Section>
 
       <Section id="schedule" className="border-t border-foreground/10">
@@ -132,10 +211,11 @@ export default function ParentsPage() {
             </ul>
             <div className="mt-5">
               <SectionImage
-                src="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
+                src="/images/family_pics/Screenshot 2026-02-15 at 11.57.26 AM.png"
                 alt="Student receiving support while practicing Python"
                 caption="Support is available when learners get stuck."
-                frameClassName="min-h-[220px]"
+                frameClassName="min-h-[260px] md:min-h-[300px]"
+                imageClassName="object-center"
               />
             </div>
           </div>

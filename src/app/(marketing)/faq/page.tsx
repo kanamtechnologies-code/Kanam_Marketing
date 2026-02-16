@@ -57,7 +57,7 @@ const faqs = [
   },
   {
     q: "How do you teach AI responsibly?",
-    a: "We start with understandable, rules-based logic and focus on good judgment. When AI tools are introduced, we emphasize safe prompts and explaining work in the student’s own words.",
+    a: "We do not teach students to rely on AI prompts to produce answers. We teach what AI is, how outputs are generated, how to evaluate reliability, and how to verify results with real programming logic. Students are expected to explain their own code and reasoning.",
   },
   {
     q: "What will students build?",
