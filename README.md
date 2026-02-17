@@ -13,13 +13,24 @@ This is a **standalone marketing website** built with [Next.js](https://nextjs.o
 
 ### Environment variables
 
-This repo reads a few optional environment variables (all are `NEXT_PUBLIC_*`):
+This repo reads optional environment variables.
 
 - `NEXT_PUBLIC_APP_URL`
 - `NEXT_PUBLIC_CONTACT_EMAIL`
 - `NEXT_PUBLIC_INSTAGRAM_URL`
 - `NEXT_PUBLIC_LINKEDIN_URL`
 - `NEXT_PUBLIC_YOUTUBE_URL`
+- `SMTP_HOST`
+- `SMTP_PORT`
+- `SMTP_SECURE`
+- `SMTP_USER`
+- `SMTP_PASS`
+- `CONTACT_FROM_EMAIL`
+- `CONTACT_INBOX_EMAIL`
+
+The contact form sends:
+- A team notification to `CONTACT_INBOX_EMAIL`
+- A confirmation email to the user who submitted the form
 
 Copy `env.example` to your local `.env.local` (or set them in your host).
 

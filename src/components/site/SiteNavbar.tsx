@@ -30,8 +30,9 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
             href={item.href}
             onClick={onNavigate}
             className={cn(
-              "rounded-lg px-3 py-2 text-sm font-medium text-white/80 hover:text-white md:px-0 md:py-0",
-              isActive && "text-white"
+              "relative rounded-lg px-3 py-2 text-base font-semibold tracking-[0.01em] text-white/90 transition-all duration-200 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.55)] after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-white/90 after:transition-all after:duration-200 hover:after:w-2/3 md:px-0 md:py-0 md:after:-bottom-1",
+              isActive &&
+                "bg-white/15 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] after:w-2/3 after:bg-white md:bg-transparent"
             )}
           >
             {item.label}

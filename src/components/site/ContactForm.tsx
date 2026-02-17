@@ -73,13 +73,6 @@ export function ContactForm() {
             if (!isValid || isSubmitting) return;
             setIsSubmitting(true);
             try {
-              await new Promise((r) => setTimeout(r, 450));
-              toast.success("Message sent", {
-                description:
-                  "Thanks—this form is currently a UI demo. We’ll wire delivery next.",
-              });
-              setName("");
-              setEmail("");
               const payload = {
                 name,
                 email,
@@ -94,7 +87,26 @@ export function ContactForm() {
                 organization,
                 message,
               };
-              console.info("Contact form payload", payload);
+              const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+              });
+
+              if (!response.ok) {
+                const body = (await response.json().catch(() => null)) as
+                  | { error?: string }
+                  | null;
+                throw new Error(body?.error ?? "Something went wrong while sending your message.");
+              }
+
+              toast.success("Message sent", {
+                description:
+                  "Thanks! We received your message and sent a confirmation email.",
+              });
+
+              setName("");
+              setEmail("");
 
               setRole("parent_guardian");
               setHelpTopic(helpOptionsByRole.parent_guardian[0]);
@@ -106,6 +118,13 @@ export function ContactForm() {
               setLearnerCount("");
               setOrganization("");
               setMessage("");
+            } catch (error) {
+              toast.error("Message not sent", {
+                description:
+                  error instanceof Error
+                    ? error.message
+                    : "Please try again, or email us directly if this continues.",
+              });
             } finally {
               setIsSubmitting(false);
             }

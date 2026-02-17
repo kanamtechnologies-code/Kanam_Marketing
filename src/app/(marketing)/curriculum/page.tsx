@@ -6,7 +6,6 @@ import {
   H2,
   Section,
   SubpageShell,
-  textLinkClass,
 } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -116,6 +115,7 @@ const outcomesCategories = [
   {
     category: "Foundations",
     skills: "Variables, input/output, conditionals",
+    accent: false,
     rows: [
       {
         title: "Personalized Intro Program",
@@ -130,6 +130,7 @@ const outcomesCategories = [
   {
     category: "Control Flow & Logic",
     skills: "Loops, branching, rule systems",
+    accent: false,
     rows: [
       {
         title: "Quiz / Reaction Game",
@@ -144,6 +145,7 @@ const outcomesCategories = [
   {
     category: "Data & Structure",
     skills: "Lists, input handling, data organization",
+    accent: false,
     rows: [
       {
         title: "Simple Data Tracker",

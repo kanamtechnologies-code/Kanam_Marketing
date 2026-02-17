@@ -4,7 +4,7 @@ export const siteConfig = {
     "Live, instructor-led Python + AI for kids—hands-on lessons, real projects, and progress you can track.",
   links: {
     app: process.env.NEXT_PUBLIC_APP_URL ?? "https://app.example.com",
-    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "hello@example.com",
+    email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@kanamacademy.com",
     bookCall: process.env.NEXT_PUBLIC_BOOK_CALL_URL ?? "/contact",
   },
   nav: [
