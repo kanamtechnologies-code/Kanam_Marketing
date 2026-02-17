@@ -22,7 +22,7 @@ export default function ContactPage() {
       title="Let’s talk about the right fit."
       subtitle="Whether you’re a parent exploring cohorts or an educator looking for a standards-aligned program, we’ll help you find the best next step for real learning—not prompt-dependent output."
     >
-      <div className="grid gap-8 lg:grid-cols-[1fr_340px] lg:items-start">
+      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start">
         <div>
           <Section className="pt-0">
             <Band className="mt-2">
@@ -87,7 +87,7 @@ export default function ContactPage() {
             <p className="mt-3 text-muted-foreground leading-relaxed">
               We respond within 1–2 business days.
             </p>
-            <div className="mt-5 rounded-3xl bg-white shadow-sm border border-foreground/10 p-8 md:p-10">
+            <div className="mt-5 rounded-3xl border border-foreground/10 bg-white p-5 shadow-sm sm:p-6 md:p-8 lg:p-10">
               <h3 className="text-lg md:text-xl font-semibold">Send a message</h3>
               <p className="mt-2 text-muted-foreground leading-relaxed">
                 We typically respond within 1–2 business days.
@@ -134,15 +134,15 @@ export default function ContactPage() {
           ) : null}
         </div>
 
-        <aside className="lg:sticky lg:top-24">
+        <aside className="xl:sticky xl:top-24">
           <figure className="space-y-2">
             <div className="rounded-3xl overflow-hidden border border-foreground/10 bg-background ring-1 ring-[rgb(var(--accent-rgb)/0.28)]">
-              <div className="relative h-[260px] md:h-[520px] w-full">
+              <div className="relative h-[220px] w-full sm:h-[280px] md:h-[380px] xl:h-[520px]">
                 <Image
                   src="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
                   alt="Family-friendly learning environment"
                   fill
-                  sizes="(min-width: 1024px) 340px, 100vw"
+                  sizes="(min-width: 1280px) 340px, 100vw"
                   className="object-cover w-full h-full"
                 />
               </div>
