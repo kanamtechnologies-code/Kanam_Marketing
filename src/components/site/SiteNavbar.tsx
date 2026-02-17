@@ -13,7 +13,6 @@ import {
   Sheet,
   SheetContent,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -89,14 +88,16 @@ export function SiteNavbar() {
                 side="right"
                 className="border-l-2 border-[rgb(var(--accent-rgb)/0.95)] bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.98)] via-[rgb(var(--brand-rgb)/0.94)] to-[rgb(var(--accent-rgb)/0.9)] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-white"
               >
-                <SheetHeader>
-                  <SheetTitle className="text-white">Kanam Academy</SheetTitle>
+                <SheetHeader className="pr-12">
+                  <div className="mx-auto w-fit">
+                    <HeaderBrand />
+                  </div>
                 </SheetHeader>
 
-                <div className="mt-6 flex flex-col gap-4">
+                <div className="mt-6 flex flex-col items-center gap-4">
                   <NavLinks />
-                  <div className="h-px bg-white/30" />
-                  <Button asChild variant="secondary" className="w-full">
+                  <div className="h-px w-full bg-white/30" />
+                  <Button asChild variant="secondary" className="w-full max-w-xs">
                     <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
                       Try our interactive demo
                     </Link>

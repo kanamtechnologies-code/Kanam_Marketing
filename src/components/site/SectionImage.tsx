@@ -25,13 +25,13 @@ export function SectionImage({
   return (
     <figure className={cn("space-y-2", className)}>
       <div className="rounded-3xl overflow-hidden border border-foreground/10 bg-background">
-        <div className={cn("relative min-h-[260px] w-full", frameClassName)}>
+        <div className={cn("relative min-h-[220px] w-full sm:min-h-[260px]", frameClassName)}>
           <Image
             src={src}
             alt={alt}
             fill
             priority={priority}
-            sizes="(min-width: 1024px) 40vw, (min-width: 768px) 50vw, 100vw"
+            sizes="(min-width: 1280px) 40vw, (min-width: 768px) 50vw, 100vw"
             className={cn("object-cover w-full h-full", imageClassName)}
           />
           {overlay ? (

@@ -97,7 +97,7 @@ export default function ParentsPage() {
               src="/images/family_pics/pexels-kampus-6297625.jpg"
               alt="Parent and student reviewing a coding assignment together"
               caption="Families get clear progress and visible outcomes."
-              frameClassName="min-h-[320px]"
+              frameClassName="min-h-[220px] sm:min-h-[280px] md:min-h-[320px]"
             />
           </div>
         </Band>
@@ -149,7 +149,7 @@ export default function ParentsPage() {
             <SectionImage
               src="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
               alt="Instructor supporting students during a live coding session"
-              frameClassName="h-[280px] md:h-full"
+              frameClassName="h-[220px] sm:h-[260px] md:h-full"
             />
           </div>
         </div>
@@ -214,7 +214,7 @@ export default function ParentsPage() {
                 src="/images/family_pics/Screenshot 2026-02-15 at 11.57.26 AM.png"
                 alt="Student receiving support while practicing Python"
                 caption="Support is available when learners get stuck."
-                frameClassName="min-h-[260px] md:min-h-[300px]"
+                frameClassName="min-h-[220px] sm:min-h-[260px] md:min-h-[300px]"
                 imageClassName="object-center"
               />
             </div>

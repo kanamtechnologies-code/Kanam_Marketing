@@ -71,23 +71,23 @@ function HeroPanel() {
         <div className="relative z-10 flex flex-col justify-center">
           <PanelShell>
             <PanelText>
-              <div className="rounded-3xl border border-zinc-900/15 bg-white/90 p-6 shadow-[0_18px_44px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 backdrop-blur-sm md:p-8">
-                <h1 className="text-5xl font-black tracking-tight text-zinc-950 sm:text-6xl">
+              <div className="w-full max-w-full rounded-3xl border border-zinc-900/15 bg-white/90 p-4 shadow-[0_18px_44px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 backdrop-blur-sm sm:p-6 md:p-8">
+                <h1 className="max-w-full break-words text-[clamp(1.9rem,10.4vw,3rem)] font-black tracking-tight leading-[1.02] text-zinc-950 [overflow-wrap:anywhere] sm:text-6xl">
                   Live, instructor-led Python & AI learning for young beginners
                 </h1>
-                <p className="mt-5 text-zinc-700">
+                <p className="mt-4 max-w-full break-words text-zinc-700 [overflow-wrap:anywhere]">
                   Students learn through live instruction, hands-on projects, and consistent
                   support from real educators — even if they are starting with no prior coding
                   experience.
                 </p>
-                <p className="mt-4 text-zinc-600">
+                <p className="mt-4 max-w-full break-words text-zinc-600 [overflow-wrap:anywhere]">
                   We do not teach students to rely on AI prompts to generate answers. We
                   teach what AI is, how it works, when to trust it, and how to verify output
                   with real programming fundamentals.
                 </p>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                  <Button asChild>
+                <div className="mt-6 flex max-w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
+                  <Button asChild className="w-full sm:w-auto">
                     <Link href="/curriculum">Explore the Curriculum</Link>
                   </Button>
                 </div>
@@ -157,7 +157,7 @@ function HeroPanel() {
                 src="/images/family_pics/pexels-kampus-6297625.jpg"
                 alt="Learner and instructor collaborating during a live coding session"
                 className="h-full"
-                frameClassName="min-h-[380px] md:min-h-[540px] lg:min-h-[620px]"
+                frameClassName="min-h-[230px] sm:min-h-[300px] md:min-h-[540px] lg:min-h-[620px]"
                 priority
               />
             </PanelMedia>
@@ -224,7 +224,7 @@ function ValuePillarsPanel() {
               src="/images/family_pics/pexels-august-de-richelieu-4260325%20(1).jpg"
               alt="Live instructor guiding a student through coding"
               caption="Live, human-led learning"
-              frameClassName="h-full min-h-[560px]"
+              frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
             />
             <div className="h-full rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-8 shadow-[0_18px_44px_rgba(15,23,42,0.16)] ring-2 ring-[rgb(var(--brand-rgb)/0.22)] md:px-7 md:py-9">
               <ul className="space-y-0">
@@ -260,7 +260,7 @@ function ValuePillarsPanel() {
               src="/images/family_pics/pexels-timur-weber-9127614.jpg"
               alt="Student working independently in a family-friendly setting"
               caption="Family-friendly structure"
-              frameClassName="h-full min-h-[560px]"
+              frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
             />
           </div>
         </div>

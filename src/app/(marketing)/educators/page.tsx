@@ -216,7 +216,7 @@ export default function EducatorsPage() {
             <SectionImage
               src="/images/family_pics/pexels-august-de-richelieu-4260758.jpg"
               alt="Instructor delivering live instruction to student cohort"
-              frameClassName="h-[280px] md:h-full"
+              frameClassName="h-[220px] sm:h-[260px] md:h-full"
             />
           </div>
         </div>
@@ -363,7 +363,7 @@ export default function EducatorsPage() {
               src="/images/family_pics/pexels-august-de-richelieu-4260758.jpg"
               alt="Classroom-style group instruction for student cohorts"
               caption="Built for classroom and program implementation."
-              frameClassName="min-h-[320px]"
+              frameClassName="min-h-[220px] sm:min-h-[280px] md:min-h-[320px]"
             />
           </div>
         </div>

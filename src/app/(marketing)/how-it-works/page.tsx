@@ -209,7 +209,7 @@ export default function HowItWorksPage() {
             src="/images/family_pics/pexels-august-de-richelieu-4260744.jpg"
             alt="Instructor leading students through a structured coding lesson"
             caption="Guided live instruction with clear weekly milestones"
-            frameClassName="min-h-[360px]"
+            frameClassName="min-h-[220px] sm:min-h-[280px] md:min-h-[360px]"
           />
         </div>
       </Section>

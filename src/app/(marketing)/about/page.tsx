@@ -57,7 +57,7 @@ export default function AboutPage() {
           </div>
           <figure className="space-y-2">
             <div className="rounded-3xl overflow-hidden border border-foreground/10 bg-background">
-              <div className="relative h-[320px] md:h-[420px] w-full">
+              <div className="relative h-[220px] sm:h-[280px] md:h-[420px] w-full">
                 <Image
                   src="/images/family_pics/pexels-kampus-6297625.jpg"
                   alt="Student learning with instructor support"

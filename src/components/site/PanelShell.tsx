@@ -12,7 +12,7 @@ export function PanelShell({
   return (
     <div
       className={cn(
-        "min-h-[60vh] w-full mx-auto px-5 sm:px-6 lg:px-16 lg:h-full lg:max-w-[92vw]",
+        "min-h-[60vh] w-full mx-auto px-5 max-[420px]:px-3.5 sm:px-6 lg:px-16 lg:h-full lg:max-w-[92vw]",
         "grid grid-cols-1 items-center gap-10 lg:grid-cols-12",
         className
       )}
@@ -24,7 +24,7 @@ export function PanelShell({
 
 export function PanelText({ children }: { children: ReactNode }) {
   return (
-    <div className="order-1 col-span-12 max-w-3xl lg:order-none lg:col-span-5 [&_p]:text-base [&_p]:md:text-lg [&_p]:leading-relaxed">
+    <div className="order-1 col-span-1 min-w-0 w-full max-w-none lg:order-none lg:col-span-5 lg:max-w-3xl [&_p]:text-base [&_p]:md:text-lg [&_p]:leading-relaxed">
       {children}
     </div>
   );
@@ -32,7 +32,7 @@ export function PanelText({ children }: { children: ReactNode }) {
 
 export function PanelMedia({ children }: { children: ReactNode }) {
   return (
-    <div className="order-2 col-span-12 w-full lg:order-none lg:col-span-7">
+    <div className="order-2 col-span-1 w-full lg:order-none lg:col-span-7">
       {children}
     </div>
   );
