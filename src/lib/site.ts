@@ -5,7 +5,7 @@ export const siteConfig = {
   links: {
     app:
       process.env.NEXT_PUBLIC_APP_URL ??
-      "https://kanam-academy-2026-v1-ewp3-f9w7ckn3b.vercel.app/welcome",
+      "https://kanam-academy-2026-v1-ewp3.vercel.app/welcome",
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@kanamacademy.com",
     bookCall: process.env.NEXT_PUBLIC_BOOK_CALL_URL ?? "/contact",
   },
