@@ -30,9 +30,15 @@ export function PanelText({ children }: { children: ReactNode }) {
   );
 }
 
-export function PanelMedia({ children }: { children: ReactNode }) {
+export function PanelMedia({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="order-2 col-span-1 w-full lg:order-none lg:col-span-7">
+    <div className={cn("order-2 col-span-1 w-full lg:order-none lg:col-span-7", className)}>
       {children}
     </div>
   );

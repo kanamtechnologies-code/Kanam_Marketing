@@ -6,7 +6,7 @@ export default function MarketingLayout({ children }: { children: ReactNode }) {
   return (
     <div className="relative flex min-h-dvh flex-col overflow-x-hidden">
       <SiteNavbar />
-      <main className="flex-1 pt-8 md:pt-20">{children}</main>
+      <main className="flex-1">{children}</main>
       <SiteFooter />
     </div>
   );

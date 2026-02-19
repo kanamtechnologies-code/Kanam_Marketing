@@ -154,7 +154,7 @@ function HeroPanel() {
             </PanelText>
             <PanelMedia>
               <SectionImage
-                src="/images/family_pics/pexels-kampus-6297625.jpg"
+                src="/images/family_pics/pexels-rdne-8500303.jpg"
                 alt="Learner and instructor collaborating during a live coding session"
                 className="h-full"
                 frameClassName="min-h-[230px] sm:min-h-[300px] md:min-h-[540px] lg:min-h-[620px]"
@@ -257,7 +257,7 @@ function ValuePillarsPanel() {
               </ul>
             </div>
             <SectionImage
-              src="/images/family_pics/pexels-timur-weber-9127614.jpg"
+              src="/images/family_pics/pexels-gabby-k-5876369.jpg"
               alt="Student working independently in a family-friendly setting"
               caption="Family-friendly structure"
               frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
@@ -398,7 +398,7 @@ function BuildPanel() {
           </PanelText>
           <PanelMedia>
             <DeviceFrame
-              imageSrc="/images/family_pics/pexels-kampus-6297625.jpg"
+              imageSrc="/images/family_pics/pexels-julia-m-cameron-4144144.jpg"
               imageAlt="Student working on a laptop with guidance"
             />
           </PanelMedia>
@@ -580,8 +580,14 @@ function DifferencePanel() {
               Learners follow a clear curriculum, build real projects each unit, and get
               guidance that keeps progress steady and confidence high.
             </p>
+            <div className="mt-5 md:hidden">
+              <DeviceFrame
+                imageSrc="/images/app_pics/pexels-katerina-holmes-5905700.jpg"
+                imageAlt="Learning platform interface on a laptop"
+              />
+            </div>
           </PanelText>
-          <PanelMedia>
+          <PanelMedia className="hidden md:block">
             <DeviceFrame
               imageSrc="/images/app_pics/pexels-katerina-holmes-5905700.jpg"
               imageAlt="Learning platform interface on a laptop"
@@ -589,70 +595,80 @@ function DifferencePanel() {
           </PanelMedia>
         </PanelShell>
 
-        <div className="mx-auto mt-8 grid w-full max-w-[92vw] items-stretch gap-6 md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
-          <div className="md:col-span-2 lg:col-span-2">
-            <div className="rounded-xl border border-zinc-900/12 bg-white/75 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800 ring-1 ring-zinc-900/8">
-              Common approaches
+        <div className="mx-auto mt-8 w-full max-w-[92vw]">
+          <div className="hidden items-stretch gap-6 md:grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
+            <div className="md:col-span-2 lg:col-span-2">
+              <div className="rounded-xl border border-zinc-900/12 bg-white/75 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800 ring-1 ring-zinc-900/8">
+                Common approaches
+              </div>
+            </div>
+            <div className="md:col-span-2 lg:col-span-1 lg:col-start-3">
+              <div className="rounded-xl border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.28)]">
+                The Kanam approach
+              </div>
             </div>
           </div>
-          <div className="md:col-span-2 lg:col-span-1 lg:col-start-3">
-            <div className="rounded-xl border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.28)]">
-              The Kanam approach
-            </div>
+          <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2 md:gap-6 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
+            <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
+              <CardHeader className="pt-5 md:pt-7">
+                <div className="mb-2 inline-flex w-fit rounded-full border border-zinc-900/15 bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-800">
+                  Common approach
+                </div>
+                <CardTitle className="text-base">Self-paced videos</CardTitle>
+                <div className="text-sm font-medium leading-6 text-zinc-600 md:text-base md:leading-7">
+                  Watch-first, mostly solo learning.
+                </div>
+              </CardHeader>
+              <CardContent className="pb-5 md:pb-7">
+                <ul className="space-y-2 text-sm leading-6 text-zinc-700 md:text-base md:leading-7">
+                  <li>Watch-first lessons</li>
+                  <li>Limited live feedback</li>
+                  <li>Easy to fall behind without support</li>
+                  <li>Best for highly independent learners</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
+              <CardHeader className="pt-5 md:pt-7">
+                <div className="mb-2 inline-flex w-fit rounded-full border border-zinc-900/15 bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-800">
+                  Common approach
+                </div>
+                <CardTitle className="text-base">Unstructured tutoring</CardTitle>
+                <div className="text-sm font-medium leading-6 text-zinc-600 md:text-base md:leading-7">
+                  Helpful help, but outcomes vary.
+                </div>
+              </CardHeader>
+              <CardContent className="pb-5 md:pb-7">
+                <ul className="space-y-2 text-sm leading-6 text-zinc-700 md:text-base md:leading-7">
+                  <li>Helpful one-on-one guidance</li>
+                  <li>Pacing varies week to week</li>
+                  <li>Often no shared curriculum</li>
+                  <li>Outcomes depend on the tutor</li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            <Card className="h-full border-2 border-[rgb(var(--accent-rgb)/0.85)] bg-white shadow-[0_14px_34px_rgba(15,23,42,0.15)] ring-1 ring-[rgb(var(--accent-rgb)/0.30)] transition-shadow hover:shadow-[0_22px_50px_rgba(15,23,42,0.22)]">
+              <CardHeader className="pt-5 md:pt-7">
+                <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
+                  Kanam approach
+                </div>
+                <CardTitle>Kanam Academy</CardTitle>
+                <div className="text-sm font-medium leading-6 text-zinc-600 md:text-base md:leading-7">
+                  Structure + live teaching + outcomes.
+                </div>
+              </CardHeader>
+              <CardContent className="pb-5 md:pb-7">
+                <ul className="space-y-2 text-sm leading-6 text-zinc-700 md:text-base md:leading-7">
+                  <li>Live, instructor-led learning (Zoom)</li>
+                  <li>Structured beginner curriculum</li>
+                  <li>Project outcomes every unit</li>
+                  <li>Support built in, not an add-on</li>
+                </ul>
+              </CardContent>
+            </Card>
           </div>
-          <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_16px_38px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
-            <CardHeader className="pt-7">
-              <CardTitle className="text-base">Self-paced videos</CardTitle>
-              <div className="text-base font-medium leading-7 text-zinc-600">
-                Watch-first, mostly solo learning.
-              </div>
-            </CardHeader>
-            <CardContent className="pb-7">
-              <ul className="space-y-2 text-base leading-7 text-zinc-700">
-                <li>Watch-first lessons</li>
-                <li>Limited live feedback</li>
-                <li>Easy to fall behind without support</li>
-                <li>Best for highly independent learners</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_16px_38px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
-            <CardHeader className="pt-7">
-              <CardTitle className="text-base">Unstructured tutoring</CardTitle>
-              <div className="text-base font-medium leading-7 text-zinc-600">
-                Helpful help, but outcomes vary.
-              </div>
-            </CardHeader>
-            <CardContent className="pb-7">
-              <ul className="space-y-2 text-base leading-7 text-zinc-700">
-                <li>Helpful one-on-one guidance</li>
-                <li>Pacing varies week to week</li>
-                <li>Often no shared curriculum</li>
-                <li>Outcomes depend on the tutor</li>
-              </ul>
-            </CardContent>
-          </Card>
-
-          <Card className="h-full border-2 border-[rgb(var(--accent-rgb)/0.85)] bg-white shadow-[0_18px_42px_rgba(15,23,42,0.18)] ring-1 ring-[rgb(var(--accent-rgb)/0.30)] transition-shadow hover:shadow-[0_22px_50px_rgba(15,23,42,0.22)]">
-            <CardHeader className="pt-7">
-              <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
-                Kanam approach
-              </div>
-              <CardTitle>Kanam Academy</CardTitle>
-              <div className="text-base font-medium leading-7 text-zinc-600">
-                Structure + live teaching + outcomes.
-              </div>
-            </CardHeader>
-            <CardContent className="pb-7">
-              <ul className="space-y-2 text-base leading-7 text-zinc-700">
-                <li>Live, instructor-led learning (Zoom)</li>
-                <li>Structured beginner curriculum</li>
-                <li>Project outcomes every unit</li>
-                <li>Support built in, not an add-on</li>
-              </ul>
-            </CardContent>
-          </Card>
         </div>
 
         <p className="mx-auto mt-6 w-full max-w-[92vw] text-center text-base leading-7 text-zinc-600">
@@ -808,8 +824,14 @@ function ProductPreviewPanel() {
               step. Students can ask questions, receive feedback, and see problems solved
               in real time — creating a supportive and engaging learning experience.
             </p>
+            <div className="mt-5 md:hidden">
+              <DeviceFrame
+                imageSrc="/images/family_pics/pexels-shkrabaanthony-5306453.jpg"
+                imageAlt="Learner focused on a computer project"
+              />
+            </div>
           </PanelText>
-          <PanelMedia>
+          <PanelMedia className="hidden md:block">
             <DeviceFrame
               imageSrc="/images/family_pics/pexels-shkrabaanthony-5306453.jpg"
               imageAlt="Learner focused on a computer project"
@@ -845,10 +867,16 @@ function SafetyPanel() {
               We teach AI alongside programming fundamentals, logic, and critical thinking
               — so students understand how it works, when to use it, and when not to.
             </p>
+            <div className="mt-5 md:hidden">
+              <DeviceFrame
+                imageSrc="/images/family_pics/pexels-divinetechygirl-1181271.jpg"
+                imageAlt="Safe learning environment with guidance"
+              />
+            </div>
           </PanelText>
-          <PanelMedia>
+          <PanelMedia className="hidden md:block">
             <DeviceFrame
-              imageSrc="/images/family_pics/pexels-august-de-richelieu-4260744.jpg"
+              imageSrc="/images/family_pics/pexels-divinetechygirl-1181271.jpg"
               imageAlt="Safe learning environment with guidance"
             />
           </PanelMedia>
@@ -918,92 +946,6 @@ function SafetyPanel() {
   );
 }
 
-function WhoItsForPanel() {
-  return (
-    <section className="w-full border-t border-foreground/10 bg-transparent py-14 md:py-20">
-      <div className="w-full">
-        <PanelShell>
-          <PanelText>
-            <SectionTitle>Who Kanam is designed for</SectionTitle>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-              Kanam supports both families and programs. Choose the path that fits your
-              learner or classroom.
-            </p>
-          </PanelText>
-          <PanelMedia>
-            <DeviceFrame
-              imageSrc="/images/family_pics/pexels-timur-weber-9127614.jpg"
-              imageAlt="Group learning and collaboration"
-            />
-          </PanelMedia>
-        </PanelShell>
-
-        <div className="mx-auto mt-8 grid w-full max-w-[92vw] gap-6 lg:grid-cols-2">
-          <Card className="border-zinc-900/14 bg-white/90 shadow-[0_14px_32px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/8">
-            <CardHeader>
-              <CardTitle>Parents</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-base font-semibold leading-7 text-zinc-900">
-                Confidence + projects you can see.
-              </p>
-              <ul className="mt-4 space-y-3 text-base leading-7 text-zinc-700">
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
-                  A structured, safe learning environment
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
-                  Clear outcomes and visible progress
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
-                  Support from real instructors
-                </li>
-              </ul>
-              <div className="mt-6">
-                <Button asChild variant="secondary">
-                  <Link href="/parents">For Parents</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-zinc-900/14 bg-white/90 shadow-[0_14px_32px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/8">
-            <CardHeader>
-              <CardTitle>Educators / Programs</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-base font-semibold leading-7 text-zinc-900">
-                A structured track that fits programs.
-              </p>
-              <ul className="mt-4 space-y-3 text-base leading-7 text-zinc-700">
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
-                  A ready-to-use curriculum
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
-                  Cohort-based instruction
-                </li>
-                <li className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--brand)]" />
-                  Learning outcomes that fit classrooms and after-school settings
-                </li>
-              </ul>
-              <div className="mt-6">
-                <Button asChild variant="secondary">
-                  <Link href="/educators">For Educators</Link>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function FaqPanel() {
   const activeIndex = 0;
 
@@ -1052,8 +994,14 @@ function FaqPanel() {
                 <Link href="/faq">View all FAQs</Link>
               </Button>
             </div>
+            <div className="mt-5 md:hidden">
+              <DeviceFrame
+                imageSrc="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
+                imageAlt="Student asking a question during class"
+              />
+            </div>
           </PanelText>
-          <PanelMedia>
+          <PanelMedia className="hidden md:block">
             <DeviceFrame
               imageSrc="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
               imageAlt="Student asking a question during class"
@@ -1086,7 +1034,7 @@ function FaqPanel() {
 
 function FinalPanel() {
   return (
-    <section className="w-full border-t border-foreground/10 bg-zinc-950 py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.55)] bg-[var(--brand-2)] py-14 md:py-20">
       <div className="w-full">
         <div className="text-white">
           <PanelShell>
@@ -1109,7 +1057,7 @@ function FinalPanel() {
               <DeviceFrame
                 imageSrc="/images/family_pics/pexels-kampus-6297625.jpg"
                 imageAlt="Celebrating student progress"
-                className="bg-zinc-900/30"
+                className="bg-[rgb(var(--brand-rgb)/0.35)]"
               />
             </PanelMedia>
           </PanelShell>
@@ -1121,7 +1069,7 @@ function FinalPanel() {
 
 export function HomeStory() {
   return (
-    <div className="relative -mt-8 overflow-hidden bg-background md:-mt-20">
+    <div className="relative overflow-hidden bg-background">
       <div className="pointer-events-none absolute inset-0 z-0">
         <video
           className="absolute inset-x-0 top-0 h-[100svh] w-full object-cover object-center opacity-[0.075]"
@@ -1146,7 +1094,6 @@ export function HomeStory() {
         <HowItWorksPanel />
         <BuildPanel />
         <SafetyPanel />
-        <WhoItsForPanel />
         <FaqPanel />
         <FinalPanel />
       </div>

@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -11,8 +12,10 @@ import { HeaderBrand } from "@/components/site/HeaderBrand";
 import { HeaderVideo } from "@/components/site/HeaderVideo";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -43,6 +46,12 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
 }
 
 export function SiteNavbar() {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <header className="sticky top-0 z-50 overflow-hidden border-b-2 border-[rgb(var(--accent-rgb)/0.98)] bg-gradient-to-r from-[rgb(var(--brand-2-rgb)/0.98)] via-[rgb(var(--brand-rgb)/0.92)] to-[rgb(var(--accent-rgb)/0.86)] shadow-xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[rgb(var(--accent-rgb)/0.92)] via-[rgb(var(--brand-rgb)/0.92)] to-[rgb(var(--accent-rgb)/0.92)]" />
@@ -54,7 +63,7 @@ export function SiteNavbar() {
           playbackRate={0.35}
         />
       </div>
-      <div className="relative mx-auto w-full px-4 py-3 max-[360px]:px-3 max-[360px]:py-2.5 sm:px-6 lg:px-10 2xl:max-w-[90rem]">
+      <div className="relative w-full px-4 py-3 max-[360px]:px-3 max-[360px]:py-2.5 sm:px-6 lg:px-4 xl:px-6">
         <div className="flex items-center justify-between gap-4 sm:gap-6">
           <HeaderBrand />
 
@@ -75,36 +84,57 @@ export function SiteNavbar() {
           </div>
 
           <div className="lg:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <button
-                  className="inline-flex h-11 w-11 max-[360px]:h-10 max-[360px]:w-10 items-center justify-center rounded-xl border border-white/25 bg-white/10 shadow-sm hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--brand-2-rgb)/0.85)]"
-                  aria-label="Open menu"
+            {isClient ? (
+              <Sheet>
+                <SheetTrigger asChild>
+                  <button
+                    className="inline-flex h-11 items-center justify-center rounded-xl border border-white/30 bg-white/12 px-4 text-sm font-semibold text-white shadow-sm hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--brand-2-rgb)/0.85)]"
+                    aria-label="Open menu"
+                  >
+                    Menu
+                  </button>
+                </SheetTrigger>
+                <SheetContent
+                  side="right"
+                  className="border-l-2 border-[rgb(var(--accent-rgb)/0.95)] bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.98)] via-[rgb(var(--brand-rgb)/0.94)] to-[rgb(var(--accent-rgb)/0.9)] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-white"
                 >
-                  <Menu className="h-5 w-5 text-white" />
-                </button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="border-l-2 border-[rgb(var(--accent-rgb)/0.95)] bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.98)] via-[rgb(var(--brand-rgb)/0.94)] to-[rgb(var(--accent-rgb)/0.9)] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-white"
-              >
-                <SheetHeader className="pr-12">
-                  <div className="mx-auto w-fit">
-                    <HeaderBrand />
-                  </div>
-                </SheetHeader>
+                  <SheetHeader className="pr-12">
+                    <SheetTitle className="sr-only">Site navigation menu</SheetTitle>
+                    <div className="w-fit">
+                      <HeaderBrand />
+                    </div>
+                  </SheetHeader>
+                  <SheetClose asChild>
+                    <button
+                      type="button"
+                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/35 bg-white/12 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--brand-2-rgb)/0.85)]"
+                    >
+                      <X className="h-4 w-4" />
+                      Close menu
+                    </button>
+                  </SheetClose>
 
-                <div className="mt-6 flex flex-col items-center gap-4">
-                  <NavLinks />
-                  <div className="h-px w-full bg-white/30" />
-                  <Button asChild variant="secondary" className="w-full max-w-xs">
-                    <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
-                      Try our interactive demo
-                    </Link>
-                  </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
+                  <div className="mt-6 flex flex-col items-center gap-4">
+                    <NavLinks />
+                    <div className="h-px w-full bg-white/30" />
+                    <Button asChild variant="secondary" className="w-full max-w-xs">
+                      <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
+                        Try our interactive demo
+                      </Link>
+                    </Button>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            ) : (
+              <button
+                type="button"
+                disabled
+                className="inline-flex h-11 items-center justify-center rounded-xl border border-white/30 bg-white/12 px-4 text-sm font-semibold text-white/85"
+                aria-label="Open menu"
+              >
+                Menu
+              </button>
+            )}
           </div>
         </div>
       </div>
