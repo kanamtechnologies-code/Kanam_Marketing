@@ -81,7 +81,7 @@ export function SubpageShell({
               </nav>
             </aside>
           ) : null}
-          <main className="min-w-0 [&_p]:text-[15px] [&_p]:sm:text-base [&_p]:md:text-lg [&_p]:leading-relaxed [&_li]:text-[15px] [&_li]:sm:text-base [&_li]:md:text-lg [&_li]:leading-relaxed [&_h3]:text-lg [&_h3]:md:text-xl [&_h3]:font-semibold [&_p]:2xl:text-[1.125rem] [&_li]:2xl:text-[1.125rem]">
+          <main className="min-w-0 [&>section]:rounded-3xl [&>section]:border [&>section]:border-[rgb(var(--accent-rgb)/0.22)] [&>section]:px-4 [&>section]:sm:px-5 [&>section]:md:px-6 [&>section]:shadow-[0_14px_34px_rgba(15,23,42,0.08)] [&>section]:ring-1 [&>section]:ring-[rgb(var(--accent-rgb)/0.18)] [&>section:nth-of-type(odd)]:bg-gradient-to-br [&>section:nth-of-type(odd)]:from-[rgb(var(--brand-rgb)/0.30)] [&>section:nth-of-type(odd)]:via-[rgb(var(--brand-2-rgb)/0.22)] [&>section:nth-of-type(odd)]:to-[rgb(var(--accent-rgb)/0.26)] [&>section:nth-of-type(even)]:bg-gradient-to-br [&>section:nth-of-type(even)]:from-[rgb(var(--brand-2-rgb)/0.30)] [&>section:nth-of-type(even)]:via-[rgb(var(--accent-rgb)/0.18)] [&>section:nth-of-type(even)]:to-[rgb(var(--brand-rgb)/0.26)] [&_p]:text-[15px] [&_p]:sm:text-base [&_p]:md:text-lg [&_p]:leading-relaxed [&_li]:text-[15px] [&_li]:sm:text-base [&_li]:md:text-lg [&_li]:leading-relaxed [&_h3]:text-lg [&_h3]:md:text-xl [&_h3]:font-semibold [&_p]:2xl:text-[1.125rem] [&_li]:2xl:text-[1.125rem]">
             {children}
           </main>
         </div>
@@ -100,7 +100,13 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={cn("py-8 max-[360px]:py-7 sm:py-10 md:py-12 2xl:py-14", className)}>
+    <section
+      id={id}
+      className={cn(
+        "py-8 max-[360px]:py-7 sm:py-10 md:py-12 2xl:py-14 backdrop-blur-[1px]",
+        className
+      )}
+    >
       {children}
     </section>
   );

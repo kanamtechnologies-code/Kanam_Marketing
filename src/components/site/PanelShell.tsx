@@ -22,9 +22,20 @@ export function PanelShell({
   );
 }
 
-export function PanelText({ children }: { children: ReactNode }) {
+export function PanelText({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <div className="order-1 col-span-1 min-w-0 w-full max-w-none lg:order-none lg:col-span-5 lg:max-w-3xl [&_p]:text-base [&_p]:md:text-lg [&_p]:leading-relaxed">
+    <div
+      className={cn(
+        "order-1 col-span-1 min-w-0 w-full max-w-none lg:order-none lg:col-span-5 lg:max-w-3xl [&_p]:text-base [&_p]:md:text-lg [&_p]:leading-relaxed",
+        className
+      )}
+    >
       {children}
     </div>
   );

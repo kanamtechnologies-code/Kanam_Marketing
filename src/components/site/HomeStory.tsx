@@ -50,7 +50,7 @@ function SectionTitle({
 
 function HeroPanel() {
   return (
-    <section className="relative w-full min-h-[90svh] overflow-hidden bg-transparent pt-8 pb-4 md:pt-12 md:pb-6">
+    <section className="relative w-full min-h-[90svh] overflow-hidden bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.42)] via-[rgb(var(--brand-rgb)/0.22)] to-[rgb(var(--accent-rgb)/0.30)] pt-8 pb-4 md:pt-12 md:pb-6">
       <div className="pointer-events-none absolute inset-0 z-0">
         <video
           className="absolute inset-0 h-full w-full object-cover opacity-[0.20]"
@@ -63,18 +63,27 @@ function HeroPanel() {
         >
           <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/8 via-transparent to-amber-400/8" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.24)] via-white/82 to-white/92" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.18)] via-transparent to-[rgb(var(--accent-rgb)/0.20)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.30)] via-[rgb(var(--brand-rgb)/0.16)] to-white/86" />
       </div>
 
       <div className="w-full">
         <div className="relative z-10 flex flex-col justify-center">
           <PanelShell>
-            <PanelText>
+            <PanelText className="order-2 lg:order-1">
               <div className="w-full max-w-full rounded-3xl border border-zinc-900/15 bg-white/90 p-4 shadow-[0_18px_44px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 backdrop-blur-sm sm:p-6 md:p-8">
                 <h1 className="max-w-full break-words text-[clamp(1.9rem,10.4vw,3rem)] font-black tracking-tight leading-[1.02] text-zinc-950 [overflow-wrap:anywhere] sm:text-6xl">
                   Live, instructor-led Python & AI learning for young beginners
                 </h1>
+                <div className="mt-5 md:hidden">
+                  <SectionImage
+                    src="/images/family_pics/pexels-rdne-8500303.jpg"
+                    alt="Learner and instructor collaborating during a live coding session"
+                    className="h-full"
+                    frameClassName="min-h-[180px] sm:min-h-[230px]"
+                    priority
+                  />
+                </div>
                 <p className="mt-4 max-w-full break-words text-zinc-700 [overflow-wrap:anywhere]">
                   Students learn through live instruction, hands-on projects, and consistent
                   support from real educators — even if they are starting with no prior coding
@@ -94,18 +103,18 @@ function HeroPanel() {
               </div>
 
               <ul
-                className="mt-8 grid overflow-hidden rounded-3xl border border-zinc-900/14 bg-white/78 text-zinc-900 shadow-[0_14px_34px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 backdrop-blur-sm sm:grid-cols-3"
+                className="mt-8 hidden overflow-hidden rounded-3xl border-2 border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.16)] via-white/96 to-[rgb(var(--accent-rgb)/0.2)] text-zinc-900 shadow-[0_18px_42px_rgba(15,23,42,0.18)] ring-1 ring-[rgb(var(--accent-rgb)/0.35)] backdrop-blur-sm md:grid md:grid-cols-3"
                 role="list"
               >
-                <li className="relative flex items-start gap-3 bg-white/72 p-4 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/95 ring-1 ring-black/15">
+                <li className="relative flex items-start gap-3 bg-[rgb(var(--brand-rgb)/0.16)] px-4 py-4 sm:p-5">
+                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb)/0.2)] ring-1 ring-[rgb(var(--accent-rgb)/0.5)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
                     <Video
-                      className="h-4.5 w-4.5 text-emerald-700"
+                      className="h-5 w-5 text-emerald-800"
                       aria-hidden="true"
                     />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-base font-semibold leading-tight">
+                    <div className="text-[1.15rem] font-extrabold leading-tight text-zinc-950">
                       Live Zoom instructors
                     </div>
                   </div>
@@ -115,15 +124,15 @@ function HeroPanel() {
                   />
                 </li>
 
-                <li className="relative flex items-start gap-3 border-t border-black/10 bg-white/72 p-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/95 ring-1 ring-black/15">
+                <li className="relative flex items-start gap-3 border-t border-[rgb(var(--accent-rgb)/0.35)] bg-[rgb(var(--brand-2-rgb)/0.12)] px-4 py-4 sm:border-l sm:border-t-0 sm:p-5">
+                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb)/0.2)] ring-1 ring-[rgb(var(--accent-rgb)/0.5)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
                     <Users
-                      className="h-4.5 w-4.5 text-emerald-700"
+                      className="h-5 w-5 text-emerald-800"
                       aria-hidden="true"
                     />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-base font-semibold leading-tight">
+                    <div className="text-[1.15rem] font-extrabold leading-tight text-zinc-950">
                       Beginner-friendly
                     </div>
                   </div>
@@ -133,15 +142,15 @@ function HeroPanel() {
                   />
                 </li>
 
-                <li className="relative flex items-start gap-3 border-t border-black/10 bg-white/72 p-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/95 ring-1 ring-black/15">
+                <li className="relative flex items-start gap-3 border-t border-[rgb(var(--accent-rgb)/0.35)] bg-[rgb(var(--accent-rgb)/0.2)] px-4 py-4 sm:border-l sm:border-t-0 sm:p-5">
+                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb)/0.2)] ring-1 ring-[rgb(var(--accent-rgb)/0.5)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
                     <Sparkles
-                      className="h-4.5 w-4.5 text-emerald-700"
+                      className="h-5 w-5 text-emerald-800"
                       aria-hidden="true"
                     />
                   </span>
                   <div className="min-w-0">
-                    <div className="text-base font-semibold leading-tight">
+                    <div className="text-[1.15rem] font-extrabold leading-tight text-zinc-950">
                       Project-based outcomes
                     </div>
                   </div>
@@ -152,7 +161,7 @@ function HeroPanel() {
                 </li>
               </ul>
             </PanelText>
-            <PanelMedia>
+            <PanelMedia className="order-1 hidden md:block lg:order-2">
               <SectionImage
                 src="/images/family_pics/pexels-rdne-8500303.jpg"
                 alt="Learner and instructor collaborating during a live coding session"
@@ -200,7 +209,7 @@ function ValuePillarsPanel() {
     },
   ];
   return (
-    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 pt-14 pb-8 md:pt-20 md:pb-12">
+    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.34)] via-white/84 to-[rgb(var(--accent-rgb)/0.28)] pt-14 pb-8 md:pt-20 md:pb-12">
       <div className="w-full">
         <div className="mx-auto w-full max-w-[92vw]">
           <SectionTitle className="sm:tracking-tight md:tracking-tight">
@@ -224,9 +233,18 @@ function ValuePillarsPanel() {
               src="/images/family_pics/pexels-august-de-richelieu-4260325%20(1).jpg"
               alt="Live instructor guiding a student through coding"
               caption="Live, human-led learning"
+              className="hidden md:block"
               frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
             />
             <div className="h-full rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-8 shadow-[0_18px_44px_rgba(15,23,42,0.16)] ring-2 ring-[rgb(var(--brand-rgb)/0.22)] md:px-7 md:py-9">
+              <div className="mb-5 md:hidden">
+                <SectionImage
+                  src="/images/family_pics/pexels-gabby-k-5876369.jpg"
+                  alt="Family-friendly structure"
+                  caption="Family-friendly structure"
+                  frameClassName="min-h-[180px] sm:min-h-[230px]"
+                />
+              </div>
               <ul className="space-y-0">
                 {items.map((item, idx) => (
                   <Fragment key={item.label}>
@@ -260,6 +278,7 @@ function ValuePillarsPanel() {
               src="/images/family_pics/pexels-gabby-k-5876369.jpg"
               alt="Student working independently in a family-friendly setting"
               caption="Family-friendly structure"
+              className="hidden md:block"
               frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
             />
           </div>
@@ -368,7 +387,7 @@ function BuildPanel() {
   const activeIdx = previewIdx ?? pinnedIdx ?? 0;
 
   return (
-    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 py-14 md:py-20">
+    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.34)] via-white/84 to-[rgb(var(--brand-rgb)/0.30)] py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -377,6 +396,13 @@ function BuildPanel() {
               Every unit leads to something tangible — not just knowledge, but confidence
               and capability.
             </p>
+            <div className="mt-5 md:hidden">
+              <DeviceFrame
+                imageSrc="/images/family_pics/pexels-julia-m-cameron-4144144.jpg"
+                imageAlt="Student working on a laptop with guidance"
+                className="mx-auto w-[92%]"
+              />
+            </div>
 
             {/* Trust Trio (compact, calm) */}
             <ul className="mt-4 flex flex-wrap items-center gap-2" role="list">
@@ -396,7 +422,7 @@ function BuildPanel() {
               })}
             </ul>
           </PanelText>
-          <PanelMedia>
+          <PanelMedia className="hidden md:block">
             <DeviceFrame
               imageSrc="/images/family_pics/pexels-julia-m-cameron-4144144.jpg"
               imageAlt="Student working on a laptop with guidance"
@@ -567,7 +593,7 @@ function BuildPanel() {
 
 function DifferencePanel() {
   return (
-    <section className="w-full border-t border-foreground/10 bg-transparent py-14 md:py-20">
+    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--accent-rgb)/0.30)] via-white/84 to-[rgb(var(--brand-2-rgb)/0.30)] py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -584,6 +610,7 @@ function DifferencePanel() {
               <DeviceFrame
                 imageSrc="/images/app_pics/pexels-katerina-holmes-5905700.jpg"
                 imageAlt="Learning platform interface on a laptop"
+                className="mx-auto w-[92%]"
               />
             </div>
           </PanelText>
@@ -598,73 +625,121 @@ function DifferencePanel() {
         <div className="mx-auto mt-8 w-full max-w-[92vw]">
           <div className="hidden items-stretch gap-6 md:grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
             <div className="md:col-span-2 lg:col-span-2">
-              <div className="rounded-xl border border-zinc-900/12 bg-white/75 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-800 ring-1 ring-zinc-900/8">
+              <div className="rounded-xl border border-[rgb(var(--brand-rgb)/0.45)] bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.24)] to-[rgb(var(--accent-rgb)/0.22)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.35)]">
                 Common approaches
               </div>
             </div>
             <div className="md:col-span-2 lg:col-span-1 lg:col-start-3">
-              <div className="rounded-xl border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.28)]">
+              <div className="rounded-xl border border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.2)] to-[rgb(var(--accent-rgb)/0.24)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.35)]">
                 The Kanam approach
               </div>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2 md:gap-6 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
-            <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
+            <Card className="h-full border-[rgb(var(--brand-rgb)/0.42)] bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.22)] via-white/88 to-[rgb(var(--accent-rgb)/0.18)] shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-[rgb(var(--brand-rgb)/0.30)] transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
               <CardHeader className="pt-5 md:pt-7">
-                <div className="mb-2 inline-flex w-fit rounded-full border border-zinc-900/15 bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-800">
+                <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--brand-rgb)/0.48)] bg-[rgb(var(--brand-rgb)/0.22)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
                   Common approach
                 </div>
-                <CardTitle className="text-base">Self-paced videos</CardTitle>
-                <div className="text-sm font-medium leading-6 text-zinc-600 md:text-base md:leading-7">
-                  Watch-first, mostly solo learning.
+                <CardTitle className="text-base text-zinc-900">Self-paced videos</CardTitle>
+                <div className="text-sm font-medium leading-6 text-zinc-700 md:text-base md:leading-7">
+                  Convenient to start, but students often stall without live guidance.
                 </div>
               </CardHeader>
               <CardContent className="pb-5 md:pb-7">
-                <ul className="space-y-2 text-sm leading-6 text-zinc-700 md:text-base md:leading-7">
-                  <li>Watch-first lessons</li>
-                  <li>Limited live feedback</li>
-                  <li>Easy to fall behind without support</li>
-                  <li>Best for highly independent learners</li>
+                <ul className="divide-y divide-[rgb(var(--brand-rgb)/0.32)] text-sm leading-6 text-zinc-800 md:text-base md:leading-7">
+                  <li className="flex items-start gap-3 py-2.5 first:pt-0">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
+                    Easy to start, hard to sustain momentum
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
+                    Limited accountability and real-time correction
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
+                    Questions pile up without immediate instructor help
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5 last:pb-0">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
+                    Progress can be unclear for families
+                  </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="h-full border-zinc-900/15 bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
+            <Card className="h-full border-[rgb(var(--brand-2-rgb)/0.44)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-white/88 to-[rgb(var(--accent-rgb)/0.16)] shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.30)] transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
               <CardHeader className="pt-5 md:pt-7">
-                <div className="mb-2 inline-flex w-fit rounded-full border border-zinc-900/15 bg-white/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-800">
+                <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--brand-2-rgb)/0.48)] bg-[rgb(var(--brand-2-rgb)/0.22)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
                   Common approach
                 </div>
-                <CardTitle className="text-base">Unstructured tutoring</CardTitle>
-                <div className="text-sm font-medium leading-6 text-zinc-600 md:text-base md:leading-7">
-                  Helpful help, but outcomes vary.
+                <CardTitle className="text-base text-zinc-900">Unstructured tutoring</CardTitle>
+                <div className="text-sm font-medium leading-6 text-zinc-700 md:text-base md:leading-7">
+                  Helpful in moments, but long-term outcomes are often inconsistent.
                 </div>
               </CardHeader>
               <CardContent className="pb-5 md:pb-7">
-                <ul className="space-y-2 text-sm leading-6 text-zinc-700 md:text-base md:leading-7">
-                  <li>Helpful one-on-one guidance</li>
-                  <li>Pacing varies week to week</li>
-                  <li>Often no shared curriculum</li>
-                  <li>Outcomes depend on the tutor</li>
+                <ul className="divide-y divide-[rgb(var(--brand-2-rgb)/0.30)] text-sm leading-6 text-zinc-800 md:text-base md:leading-7">
+                  <li className="flex items-start gap-3 py-2.5 first:pt-0">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
+                    Pacing and scope vary week to week
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
+                    Often no shared curriculum or milestones
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
+                    Learning gaps can compound over time
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5 last:pb-0">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
+                    Results depend heavily on the individual tutor
+                  </li>
                 </ul>
               </CardContent>
             </Card>
 
-            <Card className="h-full border-2 border-[rgb(var(--accent-rgb)/0.85)] bg-white shadow-[0_14px_34px_rgba(15,23,42,0.15)] ring-1 ring-[rgb(var(--accent-rgb)/0.30)] transition-shadow hover:shadow-[0_22px_50px_rgba(15,23,42,0.22)]">
+            <Card className="relative h-full overflow-hidden border border-transparent bg-transparent shadow-[0_18px_40px_rgba(15,23,42,0.24)] ring-1 ring-[rgb(var(--accent-rgb)/0.3)] transition-shadow hover:shadow-[0_22px_48px_rgba(15,23,42,0.28)]">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-[1px] rounded-[1rem] bg-[conic-gradient(from_0deg,rgba(255,214,102,0.55),rgba(245,158,11,0.45),rgba(234,179,8,0.4),rgba(251,191,36,0.45),rgba(255,214,102,0.55))] animate-[spin_14s_linear_infinite]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-[2px] rounded-[0.9rem] bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.98)] via-[rgb(var(--brand-2-rgb)/0.96)] to-[rgb(var(--accent-rgb)/0.74)]"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-[2px] rounded-[0.9rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_58%)]"
+              />
               <CardHeader className="pt-5 md:pt-7">
-                <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--accent-rgb)/0.45)] bg-[rgb(var(--accent-rgb)/0.14)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
+                <div className="relative z-10 mb-2 inline-flex w-fit rounded-full border border-white/55 bg-white/18 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
                   Kanam approach
                 </div>
-                <CardTitle>Kanam Academy</CardTitle>
-                <div className="text-sm font-medium leading-6 text-zinc-600 md:text-base md:leading-7">
+                <CardTitle className="relative z-10 text-white">Kanam Academy</CardTitle>
+                <div className="relative z-10 text-sm font-semibold leading-6 text-white/95 md:text-base md:leading-7">
                   Structure + live teaching + outcomes.
                 </div>
               </CardHeader>
-              <CardContent className="pb-5 md:pb-7">
-                <ul className="space-y-2 text-sm leading-6 text-zinc-700 md:text-base md:leading-7">
-                  <li>Live, instructor-led learning (Zoom)</li>
-                  <li>Structured beginner curriculum</li>
-                  <li>Project outcomes every unit</li>
-                  <li>Support built in, not an add-on</li>
+              <CardContent className="relative z-10 pb-5 md:pb-7">
+                <ul className="divide-y divide-white/28 text-sm leading-6 text-white md:text-base md:leading-7">
+                  <li className="flex items-start gap-3 py-2.5 first:pt-0">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
+                    Live, instructor-led learning (Zoom)
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
+                    Structured beginner curriculum
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
+                    Project outcomes every unit
+                  </li>
+                  <li className="flex items-start gap-3 py-2.5 last:pb-0">
+                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
+                    Support built in, not an add-on
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -727,7 +802,7 @@ function HowItWorksPanel() {
   const standardsHref = "/documents/standards-alignment.pdf";
 
   return (
-    <section className="border-t border-foreground/10 bg-transparent py-14 md:py-20">
+    <section className="border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--accent-rgb)/0.30)] via-white/84 to-[rgb(var(--brand-rgb)/0.28)] py-14 md:py-20">
       <div className="mx-auto w-full max-w-[92vw]">
         <div className="rounded-3xl border border-zinc-900/12 bg-white/72 p-6 shadow-[0_16px_38px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 md:p-8 lg:p-10">
         <header className="space-y-3">
@@ -814,7 +889,7 @@ function HowItWorksPanel() {
 
 function ProductPreviewPanel() {
   return (
-    <section className="w-full border-t border-foreground/10 bg-amber-400/5 py-14 md:py-20">
+    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.30)] via-white/84 to-[rgb(var(--brand-2-rgb)/0.30)] py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -828,6 +903,7 @@ function ProductPreviewPanel() {
               <DeviceFrame
                 imageSrc="/images/family_pics/pexels-shkrabaanthony-5306453.jpg"
                 imageAlt="Learner focused on a computer project"
+                className="mx-auto w-[92%]"
               />
             </div>
           </PanelText>
@@ -858,7 +934,7 @@ function ProductPreviewPanel() {
 
 function SafetyPanel() {
   return (
-    <section className="w-full py-20">
+    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.32)] via-white/84 to-[rgb(var(--accent-rgb)/0.28)] py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -871,6 +947,7 @@ function SafetyPanel() {
               <DeviceFrame
                 imageSrc="/images/family_pics/pexels-divinetechygirl-1181271.jpg"
                 imageAlt="Safe learning environment with guidance"
+                className="mx-auto w-[92%]"
               />
             </div>
           </PanelText>
@@ -977,7 +1054,7 @@ function FaqPanel() {
   ];
 
   return (
-    <section className="w-full border-t border-foreground/10 bg-emerald-500/5 py-14 md:py-20">
+    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--accent-rgb)/0.28)] via-white/84 to-[rgb(var(--brand-rgb)/0.30)] py-14 md:py-20">
       <div className="w-full">
         <PanelShell>
           <PanelText>
@@ -998,6 +1075,7 @@ function FaqPanel() {
               <DeviceFrame
                 imageSrc="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
                 imageAlt="Student asking a question during class"
+                className="mx-auto w-[92%]"
               />
             </div>
           </PanelText>
@@ -1034,7 +1112,7 @@ function FaqPanel() {
 
 function FinalPanel() {
   return (
-    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.55)] bg-[var(--brand-2)] py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-rgb)/0.96)] to-[rgb(var(--accent-rgb)/0.72)] py-14 md:py-20">
       <div className="w-full">
         <div className="text-white">
           <PanelShell>
@@ -1052,8 +1130,15 @@ function FinalPanel() {
                   <Link href="/curriculum">Explore the Curriculum</Link>
                 </Button>
               </div>
+              <div className="mt-5 md:hidden">
+                <DeviceFrame
+                  imageSrc="/images/family_pics/pexels-kampus-6297625.jpg"
+                  imageAlt="Celebrating student progress"
+                  className="mx-auto w-[92%] bg-[rgb(var(--brand-rgb)/0.35)]"
+                />
+              </div>
             </PanelText>
-            <PanelMedia>
+            <PanelMedia className="hidden md:block">
               <DeviceFrame
                 imageSrc="/images/family_pics/pexels-kampus-6297625.jpg"
                 imageAlt="Celebrating student progress"
@@ -1082,7 +1167,7 @@ export function HomeStory() {
         >
           <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-amber-400/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.18)] via-transparent to-[rgb(var(--accent-rgb)/0.20)]" />
         <div className="absolute -left-60 top-0 h-full w-[520px] bg-emerald-500/12 blur-3xl" />
         <div className="absolute -right-60 top-0 h-full w-[520px] bg-amber-400/12 blur-3xl" />
         <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.7)_1px,transparent_0)] [background-size:28px_28px] dark:[background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.7)_1px,transparent_0)]" />
