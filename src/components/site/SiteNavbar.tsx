@@ -77,8 +77,8 @@ export function SiteNavbar() {
               variant="secondary"
               className="rounded-full border border-[rgb(var(--accent-rgb)/0.98)] bg-white/95 px-3 py-1.5 text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] shadow-md hover:bg-white"
             >
-              <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
-                Try our interactive demo
+              <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                Try the guided lesson
               </Link>
             </Button>
           </div>
@@ -118,8 +118,8 @@ export function SiteNavbar() {
                     <NavLinks />
                     <div className="h-px w-full bg-white/30" />
                     <Button asChild variant="secondary" className="w-full max-w-xs">
-                      <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
-                        Try our interactive demo
+                      <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                        Try the guided lesson
                       </Link>
                     </Button>
                   </div>

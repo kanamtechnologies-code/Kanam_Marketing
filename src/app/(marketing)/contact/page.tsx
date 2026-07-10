@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 
 import { Band, H2, Section, SubpageShell, textLinkClass } from "@/components/layout/SubpageShell";
@@ -8,9 +7,9 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact | Kanam Academy",
+  title: "Contact | Request a pilot | Kanam Academy",
   description:
-    "Book a call or send a message. For parents and educators interested in instructor-led Python + AI that teaches understanding, not prompt-generated shortcuts.",
+    "Request a pilot or ask a question. For schools, teachers, families, and anyone evaluating Kanam Academy — live instruction or structured async tech learning.",
 };
 
 export default function ContactPage() {
@@ -19,100 +18,56 @@ export default function ContactPage() {
   return (
     <SubpageShell
       eyebrow="Contact"
-      title="Let’s talk about the right fit."
-      subtitle="Whether you’re a parent exploring cohorts or an educator looking for a standards-aligned program, we’ll help you find the best next step for real learning—not prompt-dependent output."
+      title="Request a pilot or ask a question"
+      subtitle="Tell us your role, who you’re supporting, and your timeline. We’ll help you evaluate Kanam for a classroom, after-school block, enrichment program, or self-paced learning."
+      actions={
+        <>
+          <Button asChild>
+            <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+              Try the guided lesson
+            </Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
+              Get started
+            </Link>
+          </Button>
+        </>
+      }
     >
-      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_340px] xl:items-start">
+      <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] xl:items-start">
         <div>
           <Section className="pt-0">
-            <Band className="mt-2">
+            <Band>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
-                  <h3 className="text-lg md:text-xl font-semibold">For Families</h3>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground leading-relaxed marker:text-emerald-600">
-                    <li>Cohort availability and schedule</li>
-                    <li>Enrollment questions</li>
-                    <li>Student readiness and expectations</li>
+                  <h3 className="text-lg font-semibold">Schools &amp; partners</h3>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground leading-relaxed marker:text-[var(--brand)]">
+                    <li>Pilot for a class, after-school, or enrichment block</li>
+                    <li>Standards packet &amp; implementation questions</li>
+                    <li>Instructor tools: class codes, roster, assignments</li>
                   </ul>
-                  <div className="mt-5">
-                    <Button asChild variant="outline">
-                      <Link href="#send-message">Ask about a cohort</Link>
-                    </Button>
-                  </div>
                 </div>
-
                 <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
-                  <h3 className="text-lg md:text-xl font-semibold">For Schools &amp; Programs</h3>
-                  <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground leading-relaxed marker:text-emerald-600">
-                    <li>Standards alignment and implementation</li>
-                    <li>Partnerships and group cohorts</li>
-                    <li>Reporting and documentation</li>
+                  <h3 className="text-lg font-semibold">Families &amp; teachers</h3>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground leading-relaxed marker:text-[var(--brand)]">
+                    <li>Try the guided demo first (no account)</li>
+                    <li>Student accounts &amp; progress questions</li>
+                    <li>Homeschool / self-paced enrichment</li>
                   </ul>
-                  <div className="mt-5">
-                    <Button asChild variant="outline">
-                      <Link href="#send-message">Discuss a partnership</Link>
-                    </Button>
-                  </div>
                 </div>
               </div>
             </Band>
           </Section>
 
-          <Section className="border-t border-foreground/10">
-            <H2>What happens after you reach out?</H2>
-            <div className="mt-5 grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
-                <h3 className="text-lg font-semibold">We review your message</h3>
-                <p className="mt-2 text-muted-foreground leading-relaxed">
-                  We read every inquiry carefully to understand your goals.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
-                <h3 className="text-lg font-semibold">We respond within 1–2 business days</h3>
-                <p className="mt-2 text-muted-foreground leading-relaxed">
-                  You’ll receive a clear reply outlining next steps.
-                </p>
-              </div>
-              <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
-                <h3 className="text-lg font-semibold">We schedule or guide</h3>
-                <p className="mt-2 text-muted-foreground leading-relaxed">
-                  We’ll either schedule a call or provide direct enrollment details.
-                </p>
-              </div>
-            </div>
-          </Section>
-
           <Section id="send-message" className="border-t border-foreground/10">
             <H2>Send a message</H2>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              We respond within 1–2 business days.
+              We typically respond within 1–2 business days. Include who you’re supporting
+              and your preferred start window when you can.
             </p>
-            <div className="mt-5 rounded-3xl border border-foreground/10 bg-white p-5 shadow-sm sm:p-6 md:p-8 lg:p-10">
-              <h3 className="text-lg md:text-xl font-semibold">Send a message</h3>
-              <p className="mt-2 text-muted-foreground leading-relaxed">
-                We typically respond within 1–2 business days.
-              </p>
-              <div className="[&_label]:text-sm [&_label]:md:text-base [&_input]:py-3 [&_input]:text-base [&_select]:py-3 [&_select]:text-base [&_textarea]:py-3 [&_textarea]:text-base [&_textarea]:leading-relaxed [&_input]:focus-visible:ring-2 [&_input]:focus-visible:ring-[var(--brand-2)] [&_select]:focus-visible:ring-2 [&_select]:focus-visible:ring-[var(--brand-2)] [&_textarea]:focus-visible:ring-2 [&_textarea]:focus-visible:ring-[var(--brand-2)]">
-                <ContactForm />
-              </div>
-              <p className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed">
-                For schools/programs: include grade band, preferred start window, and estimated learner count.
-              </p>
-            </div>
-            <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-              {[
-                "Human-led instruction",
-                "CSTA-aligned curriculum",
-                "Safe, structured learning",
-                "Ages 12–15",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl border border-foreground/10 bg-white/65 px-3 py-2 text-xs tracking-widest text-muted-foreground uppercase"
-                >
-                  {item}
-                </div>
-              ))}
+            <div className="mt-5 rounded-3xl border border-foreground/10 bg-white p-5 shadow-sm sm:p-6 md:p-8">
+              <ContactForm />
             </div>
           </Section>
 
@@ -120,37 +75,72 @@ export default function ContactPage() {
             <Section className="border-t border-foreground/10 pb-0">
               <H2>Prefer email?</H2>
               <Band className="mt-5">
-                <div className="flex flex-col gap-2 text-muted-foreground">
-                  <p>
-                    Email:{" "}
-                    <a href={`mailto:${supportEmail}`} className={textLinkClass}>
-                      {supportEmail}
-                    </a>
-                  </p>
-                  <p>Or we’ll reply to the email you provide.</p>
-                </div>
+                <p className="text-muted-foreground">
+                  Email:{" "}
+                  <a href={`mailto:${supportEmail}`} className={textLinkClass}>
+                    {supportEmail}
+                  </a>
+                </p>
               </Band>
             </Section>
           ) : null}
         </div>
 
-        <aside className="xl:sticky xl:top-24">
-          <figure className="space-y-2">
-            <div className="rounded-3xl overflow-hidden border border-foreground/10 bg-background ring-1 ring-[rgb(var(--accent-rgb)/0.28)]">
-              <div className="relative h-[220px] w-full sm:h-[280px] md:h-[380px] xl:h-[520px]">
-                <Image
-                  src="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
-                  alt="Family-friendly learning environment"
-                  fill
-                  sizes="(min-width: 1280px) 340px, 100vw"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            </div>
-            <figcaption className="mt-2 text-xs text-muted-foreground">
-              Live, human-led support for families and schools.
-            </figcaption>
-          </figure>
+        <aside className="space-y-4 xl:sticky xl:top-24">
+          <Band className="p-5">
+            <h3 className="font-semibold">Quick links</h3>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>
+                <Link
+                  href={siteConfig.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={textLinkClass}
+                >
+                  Try the guided lesson
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.links.app}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={textLinkClass}
+                >
+                  Student welcome / sign-in
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.links.instructor}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={textLinkClass}
+                >
+                  Instructor sign-in
+                </Link>
+              </li>
+              <li>
+                <Link href="/learning-paths" className={textLinkClass}>
+                  See the four learning paths
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={siteConfig.links.standardsPdf}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={textLinkClass}
+                >
+                  Curriculum overview (PDF)
+                </Link>
+              </li>
+            </ul>
+          </Band>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            We do not invent pricing, partner logos, or school counts on this site. Ask us
+            directly for pilot details.
+          </p>
         </aside>
       </div>
     </SubpageShell>

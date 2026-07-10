@@ -1,0 +1,233 @@
+export type LearningPathSlug =
+  | "ai-literacy"
+  | "digital-literacy"
+  | "ai-python"
+  | "data-analyst";
+
+export type LearningPath = {
+  slug: LearningPathSlug;
+  name: string;
+  shortName: string;
+  lessons: number;
+  subtitle: string;
+  outcome: string;
+  capstone: string;
+  marketingAngle: string;
+  whoFor: string;
+  prerequisite?: string;
+  weeklyThemes: string[];
+  lessonTitles: string[];
+};
+
+export const LEARNING_PATHS: LearningPath[] = [
+  {
+    slug: "ai-literacy",
+    name: "AI Literacy",
+    shortName: "AI Literacy",
+    lessons: 16,
+    subtitle: "What AI is, how it works, and how to use it wisely",
+    outcome:
+      "Students understand AI in daily life, prompting, verification, academic integrity, bias and fairness, privacy and deepfakes, and the future of work.",
+    capstone: "Be an AI-Smart Citizen",
+    marketingAngle:
+      "Students learn to evaluate AI — not to paste prompts for answers.",
+    whoFor: "Anyone new to AI who wants clear literacy before (or alongside) coding — teens, classrooms, and self-paced learners.",
+    weeklyThemes: [
+      "What AI Really Is",
+      "How Machines Sense & Represent",
+      "How AI Learns",
+      "Generative AI & LLMs",
+      "Talking to AI: Prompting",
+      "Using AI Well (verify + school integrity)",
+      "AI, Society & Ethics",
+      "Your Future With AI + capstone",
+    ],
+    lessonTitles: [
+      "What Is AI, Really?",
+      "AI Is All Around You",
+      "How Computers See and Hear",
+      "Turning the World Into Data",
+      "How AI Learns From Examples",
+      "Training, Testing, and Mistakes",
+      "What Is Generative AI?",
+      "Inside a Large Language Model",
+      "How to Talk to AI (Prompting)",
+      "Better Prompts, Better Answers",
+      "Don't Trust — Verify",
+      "AI at School: Help vs. Cheating",
+      "Bias, Fairness, and Data",
+      "Privacy, Deepfakes, and Your Footprint",
+      "AI and the Future of Work",
+      "Capstone: Be an AI-Smart Citizen",
+    ],
+  },
+  {
+    slug: "digital-literacy",
+    name: "Digital Literacy",
+    shortName: "Digital Literacy",
+    lessons: 16,
+    subtitle: "Use technology safely, smartly, and ready for work",
+    outcome:
+      "Foundations of devices and the internet, files and cloud, search, misinformation, communication and collaboration, digital citizenship, content creation, copyright, security and privacy, wellbeing, troubleshooting, and career-ready digital skills.",
+    capstone: "Your Digital Toolkit",
+    marketingAngle:
+      "Practical tech fluency and digital citizenship — not random YouTube wandering.",
+    whoFor: "Anyone building stronger digital foundations for school, work, and everyday life online.",
+    weeklyThemes: [
+      "Digital Foundations",
+      "Finding & Judging Information",
+      "Communicating & Collaborating",
+      "Digital Identity & Citizenship",
+      "Creating Digital Content",
+      "Staying Safe & Secure",
+      "Wellbeing & Problem-Solving",
+      "Digital Skills for the Real World + capstone",
+    ],
+    lessonTitles: [
+      "How Computers & the Internet Work",
+      "Files, Folders & the Cloud",
+      "Search Like a Pro",
+      "Is It True? Spotting Misinformation",
+      "Communicate Clearly & Kindly Online",
+      "Collaborate in the Cloud",
+      "Your Digital Footprint & Reputation",
+      "Being a Good Digital Citizen",
+      "Create & Edit Digital Content",
+      "Copyright, Licensing & Giving Credit",
+      "Passwords, Scams & Account Security",
+      "Protect Your Privacy & Data",
+      "Healthy Tech Habits & Digital Wellbeing",
+      "Troubleshoot Like a Tech Pro",
+      "Digital Skills for Work & Career",
+      "Capstone: Your Digital Toolkit",
+    ],
+  },
+  {
+    slug: "ai-python",
+    name: "AI + Python Starter Pack",
+    shortName: "AI + Python",
+    lessons: 13,
+    subtitle: "Build your first AI helper with Python",
+    outcome:
+      "Real Python fundamentals framed as teaching an AI helper exact instructions: output, variables, and input → conditionals → loops → lists and dicts → functions and parameters → rule-driven helper → AI NPC capstone.",
+    capstone: "Build Your AI NPC",
+    marketingAngle:
+      "Students don’t just learn about coding — they write and run Python in the browser and finish with a project.",
+    whoFor: "Beginners ready to write and run real Python in the browser — with live help or async practice.",
+    weeklyThemes: [
+      "Meet Your AI Helper",
+      "Teaching AI to Decide",
+      "Repeating Work",
+      "Patterns & State",
+      "Giving AI a Memory",
+      "Reusable Skills",
+      "Smart, Rule-Driven AI",
+      "Capstone: Build Your AI NPC",
+    ],
+    lessonTitles: [
+      "My First AI Helper",
+      "My AI Helper Listens",
+      "My AI Makes Choices",
+      "Smarter AI Rules",
+      "AI Repeats Tasks",
+      "Patterns and Predictions",
+      "AI Notices Patterns",
+      "AI Remembers Choices",
+      "Organizing Memory",
+      "Teaching the Bot Skills (Functions)",
+      "Giving Functions Better Information (Parameters)",
+      "Guiding AI with Rules",
+      "Build Your AI NPC",
+    ],
+  },
+  {
+    slug: "data-analyst",
+    name: "Data Analyst Track",
+    shortName: "Data Analyst",
+    lessons: 14,
+    subtitle: "SQL, tables, and charts for real-world questions",
+    outcome:
+      "Data investigation cycle — ask → query → transform → summarize → visualize → communicate. Real SQL and charts in the browser.",
+    capstone: "Your Data Project",
+    marketingAngle:
+      "Students query real tables and turn answers into charts — not worksheet busywork.",
+    whoFor: "Learners ready to investigate data with SQL and charts after intro Python foundations.",
+    prerequisite:
+      "Builds on intro Python foundations (recommended after starting AI + Python). Unlocks after early Python lessons 1–3.",
+    weeklyThemes: [
+      "What Data Is",
+      "Choosing & Filtering",
+      "Sorting & Summarizing",
+      "Connecting & Sharpening (joins)",
+      "Comparing with Charts (bar/pie)",
+      "Trends & Spread (line/histogram)",
+      "Relationships & Planning (scatter)",
+      "Capstone data project",
+    ],
+    lessonTitles: [
+      "What Is Data?",
+      "Your First Query",
+      "Pick the Columns You Need",
+      "Find What You're Looking For",
+      "Sort and Rank",
+      "Count and Summarize",
+      "Combine Tables",
+      "Ask Better Questions",
+      "Tell the Story with Charts",
+      "Parts of a Whole",
+      "Change Over Time",
+      "Distributions",
+      "Relationships",
+      "Your Data Project",
+    ],
+  },
+];
+
+export const TOTAL_LESSONS = LEARNING_PATHS.reduce((sum, p) => sum + p.lessons, 0);
+
+/** Marketing total — includes the guided demo lesson alongside the four paths. */
+export const LESSONS_COUNT_LABEL = "60+";
+
+export const PROOF_POINTS = [
+  { label: "Learning paths", value: "4" },
+  { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
+  { label: "Pacing", value: "8 weeks each" },
+  { label: "Sessions", value: "~2 / week" },
+  { label: "Format", value: "Live + async" },
+  { label: "Access", value: "Browser-only" },
+] as const;
+
+export const LESSON_FLOW = [
+  {
+    title: "Learn it",
+    body: "Coach’s note, quick explainer, and word help — the goal and big idea in plain language.",
+  },
+  {
+    title: "Do the activity",
+    body: "Guided practice with instant feedback, then a from-scratch challenge and check-for-understanding.",
+  },
+  {
+    title: "Reflect",
+    body: "Ethics or reflection moments on AI, data, or digital citizenship.",
+  },
+  {
+    title: "Earn XP & badges",
+    body: "Progress shows on a clear roadmap — for learners, families, and instructors.",
+  },
+] as const;
+
+export const DELIVERY_MODES = [
+  "Live cohort / classroom",
+  "Hybrid",
+  "Self-paced enrichment",
+  "Homeschool / family use",
+] as const;
+
+export const CHART_TYPES = ["bar", "pie", "line", "histogram", "scatter"] as const;
+
+export function getLearningPath(slug: string): LearningPath | undefined {
+  return LEARNING_PATHS.find((p) => p.slug === slug);
+}
+
+export const STANDARDS_BLURB =
+  "Standards-aligned curriculum documentation is available for accreditation and adoption conversations. Primary mapping: CSTA K–12 CS Standards (2017), Levels 2 and 3A — also mapped to the K–12 CS Framework, ISTE Standards for Students (2016), and Common Core Math statistics/probability (especially the Data track), with forward-looking mapping toward CSTA Draft 3.0. Clear enough for teens starting out; deep enough for anyone leveling up in tech.";

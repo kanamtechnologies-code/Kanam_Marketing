@@ -28,21 +28,8 @@ export function SubpageShell({
   return (
     <div className="relative isolate -mt-6 overflow-hidden bg-background md:-mt-16 lg:-mt-20">
       <div className="pointer-events-none absolute inset-0 z-0">
-        <video
-          className="absolute inset-x-0 top-0 h-[100svh] w-full object-cover object-center opacity-[0.075]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        >
-          <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-amber-400/10" />
-        <div className="absolute -left-60 top-0 h-full w-[520px] bg-emerald-500/12 blur-3xl" />
-        <div className="absolute -right-60 top-0 h-full w-[520px] bg-amber-400/12 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.7)_1px,transparent_0)] [background-size:28px_28px] dark:[background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.7)_1px,transparent_0)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.1)] via-transparent to-[rgb(var(--accent-rgb)/0.08)]" />
+        <div className="absolute inset-0 opacity-[0.03] kanam-hex-pattern" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 max-[360px]:px-3 sm:px-6 sm:py-10 lg:px-10 md:py-14 2xl:max-w-[90rem] 2xl:px-12">

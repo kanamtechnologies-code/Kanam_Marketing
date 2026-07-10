@@ -1,29 +1,33 @@
 "use client";
 
-import { Fragment, type ReactNode, useState } from "react";
+import { type ReactNode } from "react";
 import Link from "next/link";
 import {
   BookOpen,
-  Brain,
-  GraduationCap,
-  Handshake,
-  ShieldCheck,
-  Sparkles,
+  ClipboardCheck,
+  Monitor,
+  Play,
+  School,
   Users,
-  Video,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { PanelShell, PanelText, PanelMedia } from "@/components/site/PanelShell";
-import { DeviceFrame } from "@/components/site/MediaFrames";
-import { SectionImage } from "@/components/site/SectionImage";
+import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
+import {
+  DELIVERY_MODES,
+  LESSON_FLOW,
+  LESSONS_COUNT_LABEL,
+  LEARNING_PATHS,
+  PROOF_POINTS,
+} from "@/lib/learning-paths";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 function SectionTitle({
@@ -36,13 +40,16 @@ function SectionTitle({
   return (
     <h2
       className={cn(
-        "text-4xl font-black tracking-tight text-zinc-950 sm:text-5xl lg:text-6xl [text-shadow:0_1px_0_rgba(255,255,255,0.75),0_18px_40px_rgba(15,23,42,0.10)]",
+        "font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl",
         className
       )}
     >
       <span className="inline-block max-w-full align-top">
         {children}
-        <div aria-hidden="true" className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
+        <span
+          aria-hidden="true"
+          className="mt-3 block h-1 w-12 rounded-full bg-[rgb(var(--accent-rgb)/0.85)]"
+        />
       </span>
     </h2>
   );
@@ -50,973 +57,301 @@ function SectionTitle({
 
 function HeroPanel() {
   return (
-    <section className="relative w-full min-h-[90svh] overflow-hidden bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.42)] via-[rgb(var(--brand-rgb)/0.22)] to-[rgb(var(--accent-rgb)/0.30)] pt-8 pb-4 md:pt-12 md:pb-6">
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-[0.20]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        >
-          <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.18)] via-transparent to-[rgb(var(--accent-rgb)/0.20)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.30)] via-[rgb(var(--brand-rgb)/0.16)] to-white/86" />
-      </div>
+    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.18)] via-[rgb(var(--background))] to-[rgb(var(--accent-rgb)/0.16)] pt-10 pb-14 md:pt-14 md:pb-20">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.035] kanam-hex-pattern" />
 
-      <div className="w-full">
-        <div className="relative z-10 flex flex-col justify-center">
-          <PanelShell>
-            <PanelText className="order-2 lg:order-1">
-              <div className="w-full max-w-full rounded-3xl border border-zinc-900/15 bg-white/90 p-4 shadow-[0_18px_44px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/10 backdrop-blur-sm sm:p-6 md:p-8">
-                <h1 className="max-w-full break-words text-[clamp(1.9rem,10.4vw,3rem)] font-black tracking-tight leading-[1.02] text-zinc-950 [overflow-wrap:anywhere] sm:text-6xl">
-                  Live, instructor-led Python & AI learning for young beginners
-                </h1>
-                <div className="mt-5 md:hidden">
-                  <SectionImage
-                    src="/images/family_pics/pexels-rdne-8500303.jpg"
-                    alt="Learner and instructor collaborating during a live coding session"
-                    className="h-full"
-                    frameClassName="min-h-[180px] sm:min-h-[230px]"
-                    priority
-                  />
-                </div>
-                <p className="mt-4 max-w-full break-words text-zinc-700 [overflow-wrap:anywhere]">
-                  Students learn through live instruction, hands-on projects, and consistent
-                  support from real educators — even if they are starting with no prior coding
-                  experience.
-                </p>
-                <p className="mt-4 max-w-full break-words text-zinc-600 [overflow-wrap:anywhere]">
-                  We do not teach students to rely on AI prompts to generate answers. We
-                  teach what AI is, how it works, when to trust it, and how to verify output
-                  with real programming fundamentals.
-                </p>
-
-                <div className="mt-6 flex max-w-full flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center">
-                  <Button asChild className="w-full sm:w-auto">
-                    <Link href="/curriculum">Explore the Curriculum</Link>
-                  </Button>
-                </div>
-              </div>
-
-              <ul
-                className="mt-8 hidden overflow-hidden rounded-3xl border-2 border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.16)] via-white/96 to-[rgb(var(--accent-rgb)/0.2)] text-zinc-900 shadow-[0_18px_42px_rgba(15,23,42,0.18)] ring-1 ring-[rgb(var(--accent-rgb)/0.35)] backdrop-blur-sm md:grid md:grid-cols-3"
-                role="list"
-              >
-                <li className="relative flex items-start gap-3 bg-[rgb(var(--brand-rgb)/0.16)] px-4 py-4 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb)/0.2)] ring-1 ring-[rgb(var(--accent-rgb)/0.5)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
-                    <Video
-                      className="h-5 w-5 text-emerald-800"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="text-[1.15rem] font-extrabold leading-tight text-zinc-950">
-                      Live Zoom instructors
-                    </div>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--accent-rgb)/0.55)] to-transparent"
-                  />
-                </li>
-
-                <li className="relative flex items-start gap-3 border-t border-[rgb(var(--accent-rgb)/0.35)] bg-[rgb(var(--brand-2-rgb)/0.12)] px-4 py-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb)/0.2)] ring-1 ring-[rgb(var(--accent-rgb)/0.5)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
-                    <Users
-                      className="h-5 w-5 text-emerald-800"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="text-[1.15rem] font-extrabold leading-tight text-zinc-950">
-                      Beginner-friendly
-                    </div>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--accent-rgb)/0.55)] to-transparent"
-                  />
-                </li>
-
-                <li className="relative flex items-start gap-3 border-t border-[rgb(var(--accent-rgb)/0.35)] bg-[rgb(var(--accent-rgb)/0.2)] px-4 py-4 sm:border-l sm:border-t-0 sm:p-5">
-                  <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[rgb(var(--accent-rgb)/0.2)] ring-1 ring-[rgb(var(--accent-rgb)/0.5)] shadow-[0_8px_18px_rgba(15,23,42,0.12)]">
-                    <Sparkles
-                      className="h-5 w-5 text-emerald-800"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="text-[1.15rem] font-extrabold leading-tight text-zinc-950">
-                      Project-based outcomes
-                    </div>
-                  </div>
-                  <span
-                    aria-hidden="true"
-                    className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--accent-rgb)/0.55)] to-transparent"
-                  />
-                </li>
-              </ul>
-            </PanelText>
-            <PanelMedia className="order-1 hidden md:block lg:order-2">
-              <SectionImage
-                src="/images/family_pics/pexels-rdne-8500303.jpg"
-                alt="Learner and instructor collaborating during a live coding session"
-                className="h-full"
-                frameClassName="min-h-[230px] sm:min-h-[300px] md:min-h-[540px] lg:min-h-[620px]"
-                priority
-              />
-            </PanelMedia>
-          </PanelShell>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ValuePillarsPanel() {
-  const items = [
-    {
-      label: "Live Zoom instructors",
-      body: "Real-time guidance so learners never get stuck alone.",
-    },
-    {
-      label: "Beginner-friendly",
-      body: "Designed for first-time coders with a steady, supportive pace.",
-    },
-    {
-      label: "Project-based outcomes",
-      body: "Students build things they can show, explain, and be proud of.",
-    },
-    {
-      label: "Human-first learning",
-      body: "Understanding comes before speed or shortcuts.",
-    },
-    {
-      label: "Responsible AI education",
-      body: "Careful, age-appropriate use with clear guidance.",
-    },
-    {
-      label: "Safe for kids + schools",
-      body: "Family-friendly expectations and a calm learning environment.",
-    },
-    {
-      label: "Progress you can track",
-      body: "Milestones parents and educators can understand.",
-    },
-  ];
-  return (
-    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.34)] via-white/84 to-[rgb(var(--accent-rgb)/0.28)] pt-14 pb-8 md:pt-20 md:pb-12">
-      <div className="w-full">
-        <div className="mx-auto w-full max-w-[92vw]">
-          <SectionTitle className="sm:tracking-tight md:tracking-tight">
-            Why families trust Kanam
-          </SectionTitle>
-          <p className="mt-4 text-lg leading-8 text-zinc-600">
-            Kanam Academy was built to make complex topics like coding and AI approachable,
-            structured, and safe for young learners. We combine a clear curriculum with
-            live instruction so students aren’t left guessing — and families always know
-            what’s being learned and why.
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:px-8">
+        <div className="kanam-fade-up space-y-6">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[rgb(var(--brand-2-rgb)/1)]">
+            Kanam Academy · {siteConfig.tagline}
           </p>
-          <p className="mt-4 text-lg leading-8 text-zinc-600">
-            Kanam is built for clarity and support. Learners don’t get stuck alone—real
-            instructors guide them live, step by step.
+          <h1 className="font-display max-w-xl text-[clamp(2.1rem,5vw,3.5rem)] font-semibold leading-[1.05] tracking-tight text-zinc-950">
+            Real tech skills for teens — and anyone ready to learn
+          </h1>
+          <p className="max-w-lg text-lg leading-relaxed text-[var(--muted)]">
+            Coding, AI, data, and digital literacy in the browser. Live instruction when
+            you want a guide; structured async lessons when you want to move at your own
+            pace. Progress you can see — no software install.
+          </p>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                <Play className="h-4 w-4" />
+                Try the guided lesson
+              </Link>
+            </Button>
+            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+              <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
+                Get started
+              </Link>
+            </Button>
+          </div>
+
+          <p className="text-sm text-zinc-500">
+            No account needed for the demo · Live or async · Chromebook-ready
           </p>
         </div>
 
-        <div className="mx-auto mt-10 w-full max-w-[92vw]">
-          <div className="grid items-stretch gap-6 lg:grid-cols-[1fr_1.55fr_1fr] lg:gap-8">
-            <SectionImage
-              src="/images/family_pics/pexels-august-de-richelieu-4260325%20(1).jpg"
-              alt="Live instructor guiding a student through coding"
-              caption="Live, human-led learning"
-              className="hidden md:block"
-              frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
-            />
-            <div className="h-full rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-8 shadow-[0_18px_44px_rgba(15,23,42,0.16)] ring-2 ring-[rgb(var(--brand-rgb)/0.22)] md:px-7 md:py-9">
-              <div className="mb-5 md:hidden">
-                <SectionImage
-                  src="/images/family_pics/pexels-gabby-k-5876369.jpg"
-                  alt="Family-friendly structure"
-                  caption="Family-friendly structure"
-                  frameClassName="min-h-[180px] sm:min-h-[230px]"
-                />
-              </div>
-              <ul className="space-y-0">
-                {items.map((item, idx) => (
-                  <Fragment key={item.label}>
-                    <li className="py-4 first:pt-0 last:pb-0">
-                      <div className="grid gap-2 text-zinc-800 md:grid-cols-[250px_minmax(0,1fr)] md:items-start md:gap-x-6">
-                        <div className="text-sm font-semibold uppercase tracking-[0.11em] text-zinc-950">
-                          {item.label}
-                        </div>
-                        <p className="text-[1.04rem] leading-7 text-zinc-800">{item.body}</p>
-                      </div>
-                    </li>
-                    {idx < items.length - 1 ? (
-                      <li aria-hidden="true" className="h-px bg-zinc-900/16" />
-                    ) : null}
-                    {idx === 2 ? (
-                      <li aria-hidden="true" className="py-4">
-                        <div className="relative flex items-center justify-center">
-                          <div className="h-px w-full bg-gradient-to-r from-transparent via-[rgb(var(--accent-rgb)/0.60)] to-transparent" />
-                          <span className="absolute inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-zinc-800 ring-1 ring-[rgb(var(--accent-rgb)/0.55)] shadow-[0_6px_18px_rgba(15,23,42,0.10)]">
-                            <Sparkles className="h-3 w-3 text-[rgb(var(--accent-rgb)/0.95)]" />
-                            More ways we support learners
-                          </span>
-                        </div>
-                      </li>
-                    ) : null}
-                  </Fragment>
-                ))}
-              </ul>
-            </div>
-            <SectionImage
-              src="/images/family_pics/pexels-gabby-k-5876369.jpg"
-              alt="Student working independently in a family-friendly setting"
-              caption="Family-friendly structure"
-              className="hidden md:block"
-              frameClassName="h-full min-h-[250px] sm:min-h-[320px] lg:min-h-[560px]"
-            />
-          </div>
+        <div className="kanam-fade-up [animation-delay:120ms]">
+          <LessonCanvasPreview showCta={false} />
         </div>
       </div>
     </section>
   );
 }
 
-function BuildPanel() {
-  const trustTrio = [
-    { icon: Users, label: "Human-led instruction" },
-    { icon: Sparkles, label: "Project-based learning" },
-    { icon: GraduationCap, label: "Students build real, explainable work" },
-  ] as const;
-
-  const projectSteps = [
-    {
-      title: "Data Tracker (simple lists/inputs)",
-      micro: "Start with variables, inputs, and basic outputs.",
-      detail:
-        "Students begin with Python foundations: storing values in variables, collecting user input, and printing clear output in simple tracker-style programs.",
-      pythonFocus: "Variables, input/output, basic types, and lists.",
-      aiAlignment:
-        "Builds the data-handling mindset needed for later AI work: clean inputs, clear structure, and traceable outputs.",
-      outcomes: [
-        "Stores and updates learner-entered values correctly.",
-        "Validates input before using it in a result.",
-        "Explains how input quality affects downstream behavior.",
-      ],
-    },
-    {
-      title: "Quiz Game (score tracking)",
-      micro: "Use decision logic to score and respond.",
-      detail:
-        "Students implement a quiz engine with answer validation, score state, and clear feedback loops to reinforce correctness and revision.",
-      pythonFocus: "Variables, loops, branching, and state updates.",
-      aiAlignment:
-        "Introduces evaluation thinking: compare output to expected behavior and refine the logic.",
-      outcomes: [
-        "Tracks score across rounds with reliable state handling.",
-        "Separates question logic from display/feedback logic.",
-        "Debugs incorrect outcomes using traceable test cases.",
-      ],
-    },
-    {
-      title: "Mini Game (logic + loops)",
-      micro: "Apply loops to build repeatable game flow.",
-      detail:
-        "Students build a mini game loop where decisions, win conditions, and repeated updates are controlled by explicit program logic.",
-      pythonFocus: "Loop control, condition checks, and function reuse.",
-      aiAlignment:
-        "Reinforces that reliable automation starts with clear rules and controlled repetition.",
-      outcomes: [
-        "Designs game rules with measurable win/loss conditions.",
-        "Uses loops to manage turns, timing, or repeated actions.",
-        "Refactors game logic into reusable helper functions.",
-      ],
-    },
-    {
-      title: "Story Generator (creative coding)",
-      micro: "Organize code with functions and reusable prompts.",
-      detail:
-        "Students structure larger programs with helper functions and reusable prompt templates, strengthening code organization and readability.",
-      pythonFocus: "Functions, string handling, lists/dictionaries, and templating.",
-      aiAlignment:
-        "Shows prompting as a structured skill that depends on context, constraints, and revision.",
-      outcomes: [
-        "Builds reusable prompt templates with explicit variables.",
-        "Evaluates coherence across generated drafts.",
-        "Refines prompts to improve specificity and consistency.",
-      ],
-    },
-    {
-      title: "AI Helper (rules-based chatbot)",
-      micro: "Introduce AI through rule-based helper design.",
-      detail:
-        "After programming foundations are in place, students build a rules-based AI helper and learn the difference between scripted decisions and model-like behavior.",
-      pythonFocus: "Conditionals, functions, input validation, and flow control.",
-      aiAlignment:
-        "Teaches responsible AI use: guided prompts, review of outputs, and clear limits on when AI should be trusted.",
-      outcomes: [
-        "Implements deterministic response rules for common cases.",
-        "Tests where outputs fail and revises helper logic.",
-        "Explains when AI support is useful versus when manual reasoning is required.",
-      ],
-    },
-    {
-      title: "Capstone Showcase Project",
-      micro: "Combine Python + AI concepts in a final build.",
-      detail:
-        "Students integrate variables, logic, loops, function structure, and responsible AI usage into a final project they present and defend.",
-      pythonFocus: "End-to-end project structure, modular code, and testing.",
-      aiAlignment:
-        "Demonstrates responsible AI usage with justification, verification, and human oversight.",
-      outcomes: [
-        "Presents a working build with clear technical walkthrough.",
-        "Defends where AI was used and where it was intentionally avoided.",
-        "Explains debugging, revisions, and final implementation choices.",
-      ],
-    },
-  ] as const;
-
-  const [pinnedIdx, setPinnedIdx] = useState<number | null>(null);
-  const [previewIdx, setPreviewIdx] = useState<number | null>(null);
-  const activeIdx = previewIdx ?? pinnedIdx ?? 0;
-
+function ProofStrip() {
   return (
-    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.34)] via-white/84 to-[rgb(var(--brand-rgb)/0.30)] py-14 md:py-20">
-      <div className="w-full">
-        <PanelShell>
-          <PanelText>
-            <SectionTitle>Project Path: What learners build step by step</SectionTitle>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-              Every unit leads to something tangible — not just knowledge, but confidence
-              and capability.
-            </p>
-            <div className="mt-5 md:hidden">
-              <DeviceFrame
-                imageSrc="/images/family_pics/pexels-julia-m-cameron-4144144.jpg"
-                imageAlt="Student working on a laptop with guidance"
-                className="mx-auto w-[92%]"
-              />
+    <section className="border-y border-zinc-900/8 bg-white">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-zinc-900/8 sm:grid-cols-3 lg:grid-cols-6">
+        {PROOF_POINTS.map((item) => (
+          <div
+            key={item.label}
+            className="bg-white px-4 py-5 text-center sm:px-5 sm:py-6"
+          >
+            <div className="font-display text-2xl font-semibold text-[rgb(var(--brand-2-rgb)/1)] sm:text-3xl">
+              {item.value}
             </div>
-
-            {/* Trust Trio (compact, calm) */}
-            <ul className="mt-4 flex flex-wrap items-center gap-2" role="list">
-              {trustTrio.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.label}>
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white/55 px-3 py-1 text-sm font-medium text-zinc-800 ring-1 ring-black/5">
-                      <Icon
-                        className="h-4 w-4 text-[rgb(var(--accent-rgb)/0.90)]"
-                        aria-hidden="true"
-                      />
-                      <span className="whitespace-nowrap">{item.label}</span>
-                    </span>
-                  </li>
-                );
-              })}
-            </ul>
-          </PanelText>
-          <PanelMedia className="hidden md:block">
-            <DeviceFrame
-              imageSrc="/images/family_pics/pexels-julia-m-cameron-4144144.jpg"
-              imageAlt="Student working on a laptop with guidance"
-            />
-          </PanelMedia>
-        </PanelShell>
-
-        <div className="mx-auto mt-8 w-full max-w-[92vw]">
-          {/* Project Path (12-col grid on desktop) */}
-          <div className="mt-8 grid gap-4 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-0">
-            <div className="lg:col-span-7">
-              <div className="rounded-3xl border border-zinc-900/14 bg-white/90 p-4 shadow-[0_16px_36px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 md:p-5">
-                <ol className="relative space-y-1 pl-0" role="list">
-                  <div
-                    aria-hidden="true"
-                    className="absolute left-[14px] top-[40px] bottom-0 w-px bg-zinc-900/15"
-                  />
-
-                  {projectSteps.map((step, idx) => {
-                    const isPinned = pinnedIdx === idx;
-                    const isPreviewing = previewIdx === idx;
-                    const isActive = isPinned || isPreviewing || activeIdx === idx;
-                    const detailId = `project-step-detail-${idx}`;
-
-                    return (
-                      <li key={step.title} className="relative">
-                        <button
-                          type="button"
-                          className={cn(
-                            "group relative w-full rounded-xl px-3 py-3.5 text-left",
-                            "transition-all duration-200 motion-reduce:transition-none",
-                            "hover:bg-white/70 focus-visible:bg-white/70",
-                            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.30)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
-                            "before:absolute before:inset-y-2 before:left-0 before:w-[3px] before:rounded-full before:bg-transparent",
-                            isActive &&
-                              "bg-white ring-1 ring-[rgb(var(--accent-rgb)/0.24)] shadow-[0_8px_20px_rgba(15,23,42,0.12)] before:bg-[rgb(var(--accent-rgb)/0.9)]"
-                          )}
-                          aria-expanded={isPinned}
-                          aria-controls={detailId}
-                          onMouseEnter={() => setPreviewIdx(idx)}
-                          onMouseLeave={() => setPreviewIdx(null)}
-                          onFocus={() => setPreviewIdx(idx)}
-                          onBlur={() => setPreviewIdx(null)}
-                          onClick={() => setPinnedIdx((cur) => (cur === idx ? null : idx))}
-                        >
-                          <span
-                            aria-hidden="true"
-                            className={cn(
-                              "absolute left-0 top-3.5 grid h-7 w-7 place-items-center rounded-full text-xs font-semibold",
-                              "ring-1 ring-black/10 bg-white/70 text-zinc-800",
-                              isActive &&
-                              "ring-1 ring-[rgb(var(--accent-rgb)/0.55)] bg-[rgb(var(--accent-rgb)/0.22)] text-zinc-950 shadow-[0_4px_12px_rgba(15,23,42,0.14)]"
-                            )}
-                          >
-                            {String(idx + 1).padStart(2, "0")}
-                          </span>
-
-                          <span className="ml-10 flex items-start justify-between gap-4">
-                            <span className="min-w-0">
-                              <h3 className="truncate text-base font-semibold leading-tight text-zinc-950 lg:pr-6">
-                                {step.title}
-                              </h3>
-                              <p className="mt-1 text-base leading-relaxed text-zinc-600 md:text-lg">
-                                {step.micro}
-                              </p>
-                            </span>
-                          </span>
-
-                          {/* Mobile accordion detail */}
-                          <div
-                            id={detailId}
-                            className={cn(
-                              "mt-3 grid lg:hidden",
-                              "transition-[grid-template-rows,opacity] duration-300 motion-reduce:transition-none",
-                              isPinned ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                            )}
-                          >
-                            <div className="overflow-hidden">
-                              <div className="rounded-xl bg-white/70 p-3 text-base leading-relaxed text-zinc-700 ring-1 ring-black/5 md:text-lg">
-                                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-                                  Currently viewing
-                                </div>
-                                <div className="mt-2 text-base font-semibold text-zinc-900 md:text-lg">
-                                  {step.title}
-                                </div>
-                                <p className="mt-2 text-zinc-600">{step.detail}</p>
-                                <div className="mt-3 space-y-2 text-base text-zinc-700 md:text-lg">
-                                  <p>
-                                    <span className="font-semibold text-zinc-900">Python focus:</span>{" "}
-                                    {step.pythonFocus}
-                                  </p>
-                                  <p>
-                                    <span className="font-semibold text-zinc-900">AI alignment:</span>{" "}
-                                    {step.aiAlignment}
-                                  </p>
-                                </div>
-                                <ul className="mt-3 space-y-1.5 text-base text-zinc-700 md:text-lg">
-                                  {step.outcomes.map((point) => (
-                                    <li key={point} className="flex gap-2">
-                                      <span
-                                        aria-hidden="true"
-                                        className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.8)]"
-                                      />
-                                      <span>{point}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                          </div>
-                        </button>
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
+            <div className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">
+              {item.label}
             </div>
-
-            {/* Desktop detail panel (sticky + aligned) */}
-            <aside className="hidden lg:block lg:col-span-5">
-              <div className="lg:sticky lg:top-24">
-                <div className="rounded-3xl border border-zinc-900/14 bg-white/90 p-6 shadow-[0_16px_38px_rgba(15,23,42,0.14)] ring-1 ring-zinc-900/12">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">
-                    Currently viewing
-                  </div>
-                  <div className="mt-2 text-lg font-semibold leading-tight text-zinc-950">
-                    {projectSteps[activeIdx].title}
-                  </div>
-                  <p className="mt-3 text-base leading-relaxed text-zinc-600 md:text-lg">
-                    {projectSteps[activeIdx].detail}
-                  </p>
-                  <div className="mt-4 space-y-2 text-base leading-relaxed text-zinc-700 md:text-lg">
-                    <p>
-                      <span className="font-semibold text-zinc-900">Python focus:</span>{" "}
-                      {projectSteps[activeIdx].pythonFocus}
-                    </p>
-                    <p>
-                      <span className="font-semibold text-zinc-900">AI alignment:</span>{" "}
-                      {projectSteps[activeIdx].aiAlignment}
-                    </p>
-                  </div>
-                  <ul className="mt-4 space-y-2 text-base leading-relaxed text-zinc-600 md:text-lg">
-                    {projectSteps[activeIdx].outcomes.map((point) => (
-                      <li key={point} className="flex gap-3">
-                        <span
-                          aria-hidden="true"
-                          className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.75)]"
-                        />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </aside>
           </div>
-
-          <div className="mt-8 rounded-2xl border border-[rgb(var(--accent-rgb)/0.4)] bg-[rgb(var(--accent-rgb)/0.12)] px-5 py-4 shadow-[0_10px_24px_rgba(15,23,42,0.12)] ring-1 ring-[rgb(var(--accent-rgb)/0.25)] md:px-6 md:py-5">
-            <p className="text-lg font-semibold leading-relaxed text-zinc-900 md:text-2xl">
-              Students finish with real projects they can explain, demo, and be proud of.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 }
 
-function DifferencePanel() {
+function LearningPathsPanel() {
   return (
-    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--accent-rgb)/0.30)] via-white/84 to-[rgb(var(--brand-2-rgb)/0.30)] py-14 md:py-20">
-      <div className="w-full">
-        <PanelShell>
-          <PanelText>
-            <SectionTitle>What makes Kanam different</SectionTitle>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-              Families usually choose between self-paced platforms or tutoring. Kanam takes
-              a different approach—combining structure, live teaching, and outcomes.
-            </p>
-            <p className="mt-3 text-lg leading-8 text-zinc-600">
-              Learners follow a clear curriculum, build real projects each unit, and get
-              guidance that keeps progress steady and confidence high.
-            </p>
-            <div className="mt-5 md:hidden">
-              <DeviceFrame
-                imageSrc="/images/app_pics/pexels-katerina-holmes-5905700.jpg"
-                imageAlt="Learning platform interface on a laptop"
-                className="mx-auto w-[92%]"
-              />
-            </div>
-          </PanelText>
-          <PanelMedia className="hidden md:block">
-            <DeviceFrame
-              imageSrc="/images/app_pics/pexels-katerina-holmes-5905700.jpg"
-              imageAlt="Learning platform interface on a laptop"
-            />
-          </PanelMedia>
-        </PanelShell>
-
-        <div className="mx-auto mt-8 w-full max-w-[92vw]">
-          <div className="hidden items-stretch gap-6 md:grid md:grid-cols-2 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
-            <div className="md:col-span-2 lg:col-span-2">
-              <div className="rounded-xl border border-[rgb(var(--brand-rgb)/0.45)] bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.24)] to-[rgb(var(--accent-rgb)/0.22)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.35)]">
-                Common approaches
-              </div>
-            </div>
-            <div className="md:col-span-2 lg:col-span-1 lg:col-start-3">
-              <div className="rounded-xl border border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.2)] to-[rgb(var(--accent-rgb)/0.24)] px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-900 ring-1 ring-[rgb(var(--accent-rgb)/0.35)]">
-                The Kanam approach
-              </div>
-            </div>
-          </div>
-          <div className="mt-4 grid grid-cols-1 gap-4 md:mt-6 md:grid-cols-2 md:gap-6 lg:grid-cols-[1fr_1fr_1.15fr] lg:gap-x-10">
-            <Card className="h-full border-[rgb(var(--brand-rgb)/0.42)] bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.22)] via-white/88 to-[rgb(var(--accent-rgb)/0.18)] shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-[rgb(var(--brand-rgb)/0.30)] transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
-              <CardHeader className="pt-5 md:pt-7">
-                <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--brand-rgb)/0.48)] bg-[rgb(var(--brand-rgb)/0.22)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
-                  Common approach
-                </div>
-                <CardTitle className="text-base text-zinc-900">Self-paced videos</CardTitle>
-                <div className="text-sm font-medium leading-6 text-zinc-700 md:text-base md:leading-7">
-                  Convenient to start, but students often stall without live guidance.
-                </div>
-              </CardHeader>
-              <CardContent className="pb-5 md:pb-7">
-                <ul className="divide-y divide-[rgb(var(--brand-rgb)/0.32)] text-sm leading-6 text-zinc-800 md:text-base md:leading-7">
-                  <li className="flex items-start gap-3 py-2.5 first:pt-0">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
-                    Easy to start, hard to sustain momentum
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
-                    Limited accountability and real-time correction
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
-                    Questions pile up without immediate instructor help
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5 last:pb-0">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-amber-500" />
-                    Progress can be unclear for families
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="h-full border-[rgb(var(--brand-2-rgb)/0.44)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-white/88 to-[rgb(var(--accent-rgb)/0.16)] shadow-[0_12px_28px_rgba(15,23,42,0.12)] ring-1 ring-[rgb(var(--brand-2-rgb)/0.30)] transition-shadow hover:shadow-[0_20px_44px_rgba(15,23,42,0.18)]">
-              <CardHeader className="pt-5 md:pt-7">
-                <div className="mb-2 inline-flex w-fit rounded-full border border-[rgb(var(--brand-2-rgb)/0.48)] bg-[rgb(var(--brand-2-rgb)/0.22)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-zinc-900">
-                  Common approach
-                </div>
-                <CardTitle className="text-base text-zinc-900">Unstructured tutoring</CardTitle>
-                <div className="text-sm font-medium leading-6 text-zinc-700 md:text-base md:leading-7">
-                  Helpful in moments, but long-term outcomes are often inconsistent.
-                </div>
-              </CardHeader>
-              <CardContent className="pb-5 md:pb-7">
-                <ul className="divide-y divide-[rgb(var(--brand-2-rgb)/0.30)] text-sm leading-6 text-zinc-800 md:text-base md:leading-7">
-                  <li className="flex items-start gap-3 py-2.5 first:pt-0">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
-                    Pacing and scope vary week to week
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
-                    Often no shared curriculum or milestones
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
-                    Learning gaps can compound over time
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5 last:pb-0">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-violet-500" />
-                    Results depend heavily on the individual tutor
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className="relative h-full overflow-hidden border border-transparent bg-transparent shadow-[0_18px_40px_rgba(15,23,42,0.24)] ring-1 ring-[rgb(var(--accent-rgb)/0.3)] transition-shadow hover:shadow-[0_22px_48px_rgba(15,23,42,0.28)]">
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute -inset-[1px] rounded-[1rem] bg-[conic-gradient(from_0deg,rgba(255,214,102,0.55),rgba(245,158,11,0.45),rgba(234,179,8,0.4),rgba(251,191,36,0.45),rgba(255,214,102,0.55))] animate-[spin_14s_linear_infinite]"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-[2px] rounded-[0.9rem] bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.98)] via-[rgb(var(--brand-2-rgb)/0.96)] to-[rgb(var(--accent-rgb)/0.74)]"
-              />
-              <span
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-[2px] rounded-[0.9rem] bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.22),transparent_58%)]"
-              />
-              <CardHeader className="pt-5 md:pt-7">
-                <div className="relative z-10 mb-2 inline-flex w-fit rounded-full border border-white/55 bg-white/18 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white">
-                  Kanam approach
-                </div>
-                <CardTitle className="relative z-10 text-white">Kanam Academy</CardTitle>
-                <div className="relative z-10 text-sm font-semibold leading-6 text-white/95 md:text-base md:leading-7">
-                  Structure + live teaching + outcomes.
-                </div>
-              </CardHeader>
-              <CardContent className="relative z-10 pb-5 md:pb-7">
-                <ul className="divide-y divide-white/28 text-sm leading-6 text-white md:text-base md:leading-7">
-                  <li className="flex items-start gap-3 py-2.5 first:pt-0">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
-                    Live, instructor-led learning (Zoom)
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
-                    Structured beginner curriculum
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
-                    Project outcomes every unit
-                  </li>
-                  <li className="flex items-start gap-3 py-2.5 last:pb-0">
-                    <span className="mt-2 inline-block h-2 w-2 rounded-full bg-indigo-300" />
-                    Support built in, not an add-on
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <p className="mx-auto mt-6 w-full max-w-[92vw] text-center text-base leading-7 text-zinc-600">
-          Kanam is designed for beginners who need clarity, encouragement, and structure—not
-          shortcuts.
+    <section className="w-full border-t border-zinc-900/8 bg-[rgb(var(--background))] py-14 md:py-20">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle>Four learning paths. One platform.</SectionTitle>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
+          {LESSONS_COUNT_LABEL} interactive lessons across AI Literacy, Digital Literacy,
+          AI + Python, and Data Analyst — each paced as an 8-week path with about two
+          sessions per week.
         </p>
+
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {LEARNING_PATHS.map((path) => (
+            <Link
+              key={path.slug}
+              href={`/learning-paths/${path.slug}`}
+              className="group rounded-2xl border border-zinc-900/10 bg-white p-6 shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.1)]"
+            >
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-display text-xl font-semibold text-zinc-950 group-hover:text-[rgb(var(--brand-2-rgb)/1)]">
+                  {path.name}
+                </h3>
+                <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500">
+                  {path.lessons} lessons
+                </span>
+              </div>
+              <p className="mt-2 text-sm font-medium text-[rgb(var(--brand-2-rgb)/1)]">
+                {path.subtitle}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+                {path.marketingAngle}
+              </p>
+              <p className="mt-4 text-sm font-semibold text-zinc-800">
+                Capstone: {path.capstone}
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-8">
+          <Button asChild variant="secondary">
+            <Link href="/learning-paths">See the four learning paths</Link>
+          </Button>
+        </div>
       </div>
     </section>
   );
 }
 
 function HowItWorksPanel() {
-  const steps = [
-    {
-      title: "Join",
-      body: "Enroll in Kanam Academy Foundations (Ages 12–15). Families receive a simple start checklist so learners begin confidently.",
-      outcome: "Clear setup + cohort start",
-    },
-    {
-      title: "Build",
-      body: "Attend live, human-led Zoom sessions and complete guided practice. Each week ends with a concrete build.",
-      outcome: "Weekly project milestone",
-    },
-    {
-      title: "Grow",
-      body: "Refine projects, debug with support, and practice explaining your work. Finish with a capstone showcase.",
-      outcome: "Capstone + explanation skills",
-    },
-  ];
-
-  const panels = [
-    {
-      title: "Live Zoom instruction",
-      bullets: [
-        "Real-time teaching with examples, questions, and interactive practice",
-        "Clear lesson outcomes and checkpoints",
-        "Beginner-friendly pace with supportive guidance",
-      ],
-    },
-    {
-      title: "Practice + projects between sessions",
-      bullets: [
-        "Guided practice tasks tied to the week’s concept",
-        "Projects that build from fundamentals (variables → logic → loops → lists)",
-        "Human help when stuck + structured review before moving on",
-      ],
-    },
-  ] as const;
-
-  const outcomes = [
-    "Weekly builds they can demo",
-    "A rules-based helper (automation logic)",
-    "A capstone project they present and explain",
-  ] as const;
-
-  const standardsHref = "/documents/standards-alignment.pdf";
-
   return (
-    <section className="border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--accent-rgb)/0.30)] via-white/84 to-[rgb(var(--brand-rgb)/0.28)] py-14 md:py-20">
-      <div className="mx-auto w-full max-w-[92vw]">
-        <div className="rounded-3xl border border-zinc-900/12 bg-white/72 p-6 shadow-[0_16px_38px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/10 md:p-8 lg:p-10">
-        <header className="space-y-3">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-            Simple, supportive process
-          </p>
-          <h2 className="text-3xl font-black tracking-tight text-zinc-950 sm:text-4xl md:text-5xl">
-            How Kanam works
-          </h2>
-          <div aria-hidden="true" className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
-          <p className="text-base font-semibold leading-relaxed text-zinc-800 md:text-lg">
-            Structured instruction. Human guidance. Measurable progress.
-          </p>
-        </header>
+    <section className="w-full border-t border-zinc-900/8 bg-white py-14 md:py-20">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle>How learning works</SectionTitle>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
+          Learn the idea, practice with instant feedback, reflect, and earn XP and badges
+          on a clear roadmap.
+        </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_1fr] lg:gap-12">
-          <div className="relative">
-            <div
-              aria-hidden="true"
-              className="absolute left-4 top-2 bottom-2 w-px bg-zinc-900/10"
-            />
-            <ol className="space-y-8">
-              {steps.map((step, index) => (
-                <li key={step.title} className="relative pl-14">
-                  <div className="text-3xl font-semibold leading-none text-zinc-400 md:text-4xl">
-                    {String(index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="mt-2 text-lg font-semibold text-zinc-950">{step.title}</h3>
-                  <p className="mt-2 text-base leading-relaxed text-zinc-600 md:text-lg">
-                    {step.body}
-                  </p>
-                  <p className="mt-3 text-base font-medium text-zinc-800 md:text-lg">
-                    Outcome: <span className="font-normal text-zinc-600">{step.outcome}</span>
-                  </p>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="space-y-5">
-            <h3 className="text-lg font-semibold text-zinc-950">What learning looks like</h3>
-            {panels.map((panel) => (
-              <div key={panel.title} className="rounded-2xl border border-zinc-900/14 bg-white/92 p-5 shadow-[0_10px_26px_rgba(15,23,42,0.10)] ring-1 ring-zinc-900/8 md:p-6">
-                <h4 className="text-base font-semibold text-zinc-950 md:text-lg">{panel.title}</h4>
-                <ul className="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed text-zinc-600 md:text-lg">
-                  {panel.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
-                  ))}
-                </ul>
+        <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list">
+          {LESSON_FLOW.map((step, idx) => (
+            <li
+              key={step.title}
+              className="rounded-2xl border border-zinc-900/8 bg-[rgb(var(--background))] p-5"
+            >
+              <div className="font-mono text-xs font-semibold text-[rgb(var(--brand-2-rgb)/1)]">
+                {String(idx + 1).padStart(2, "0")}
               </div>
-            ))}
+              <h3 className="mt-3 font-display text-xl font-semibold text-zinc-950">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{step.body}</p>
+            </li>
+          ))}
+        </ol>
 
-            <div className="rounded-2xl border border-zinc-900/14 bg-white/92 p-5 shadow-[0_10px_26px_rgba(15,23,42,0.10)] ring-1 ring-zinc-900/8 md:p-6">
-              <h4 className="text-base font-semibold text-zinc-950">What students finish with</h4>
-              <ul className="mt-3 divide-y divide-zinc-900/10 text-base leading-relaxed text-zinc-700 md:text-lg">
-                {outcomes.map((outcome) => (
-                  <li key={outcome} className="py-2 first:pt-0 last:pb-0">
-                    {outcome}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="rounded-2xl border border-zinc-900/10 bg-[rgb(var(--background))] p-6">
+            <h3 className="font-semibold text-zinc-950">Path pacing</h3>
+            <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+              <li>8 weeks per path · ~2 sessions per week</li>
+              <li>Dashboard labels lessons as Week X · Session Y</li>
+              <li>Works self-paced, with light mentor support, or as a live cohort</li>
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-zinc-900/10 bg-[rgb(var(--background))] p-6">
+            <h3 className="font-semibold text-zinc-950">Delivery modes</h3>
+            <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+              {DELIVERY_MODES.map((mode) => (
+                <li key={mode}>{mode}</li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Button asChild>
-            <Link href="/curriculum">Explore the curriculum</Link>
-          </Button>
+        <div className="mt-8">
           <Link
-            href={standardsHref}
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm font-semibold text-emerald-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
+            href="/how-it-works"
+            className="text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
           >
-            Download standards alignment (PDF)
+            See how lessons work in detail →
           </Link>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function AudienceSplitPanel() {
+  return (
+    <section className="w-full border-t border-zinc-900/8 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.06)] to-[rgb(var(--background))] py-14 md:py-20">
+      <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div className="rounded-2xl border border-zinc-900/10 bg-white p-6 sm:p-8">
+          <School
+            className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
+            aria-hidden="true"
+          />
+          <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
+            For schools &amp; instructors
+          </h3>
+          <p className="mt-3 text-[var(--muted)] leading-relaxed">
+            Create a class, share a code, assign lessons, and see learner progress —
+            without needing a full-time CS specialist for every session.
+          </p>
+          <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+            <li className="flex gap-2">
+              <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+              Class codes, roster, assignments, XP &amp; last activity
+            </li>
+            <li className="flex gap-2">
+              <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+              Chromebook-ready · no install · browser-only
+            </li>
+            <li className="flex gap-2">
+              <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+              Standards-aligned curriculum packet available
+            </li>
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="/educators">For schools</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/contact">Request a pilot</Link>
+            </Button>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-zinc-900/10 bg-white p-6 sm:p-8">
+          <Users
+            className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
+            aria-hidden="true"
+          />
+          <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
+            For families &amp; learners
+          </h3>
+          <p className="mt-3 text-[var(--muted)] leading-relaxed">
+            Start with a guided demo lesson — no account needed. Then create an account,
+            keep progress, and follow a clear roadmap with badges and real projects. Live
+            instruction when you want a guide; structured async when you want to move at
+            your own pace.
+          </p>
+          <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+            <li className="flex gap-2">
+              <Play className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+              Try the guided lesson in minutes
+            </li>
+            <li className="flex gap-2">
+              <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+              Structured alternative to random YouTube / AI chat wandering
+            </li>
+            <li className="flex gap-2">
+              <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+              Homeschool, enrichment, or self-paced use
+            </li>
+          </ul>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                Try the guided lesson
+              </Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/parents">For families</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function ProductPreviewPanel() {
+function TrustPanel() {
   return (
-    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-rgb)/0.30)] via-white/84 to-[rgb(var(--brand-2-rgb)/0.30)] py-14 md:py-20">
-      <div className="w-full">
-        <PanelShell>
-          <PanelText>
-            <SectionTitle>Inside a real Kanam classroom</SectionTitle>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-              Classes are taught live via Zoom by instructors who guide learners step by
-              step. Students can ask questions, receive feedback, and see problems solved
-              in real time — creating a supportive and engaging learning experience.
-            </p>
-            <div className="mt-5 md:hidden">
-              <DeviceFrame
-                imageSrc="/images/family_pics/pexels-shkrabaanthony-5306453.jpg"
-                imageAlt="Learner focused on a computer project"
-                className="mx-auto w-[92%]"
-              />
-            </div>
-          </PanelText>
-          <PanelMedia className="hidden md:block">
-            <DeviceFrame
-              imageSrc="/images/family_pics/pexels-shkrabaanthony-5306453.jpg"
-              imageAlt="Learner focused on a computer project"
-            />
-          </PanelMedia>
-        </PanelShell>
-
-        <div className="mx-auto mt-8 grid w-full max-w-[92vw] gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <section className="w-full border-t border-zinc-900/8 bg-white py-14 md:py-20">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle>Built for classrooms and credibility</SectionTitle>
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">
+          Standards-aligned curriculum documentation is available for accreditation and
+          adoption conversations. Clear enough for teens starting out — deep enough for
+          anyone leveling up in tech.
+        </p>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            "Instructor-led walkthroughs",
-            "Live questions and explanations",
-            "Guided practice together",
-            "A pace designed for beginners",
-          ].map((item) => (
-          <Card key={item} className="border-zinc-900/14 bg-white/90 shadow-[0_10px_24px_rgba(15,23,42,0.10)] ring-1 ring-zinc-900/8">
-              <CardContent className="pt-6 text-base leading-relaxed text-zinc-600 md:text-lg">{item}</CardContent>
-            </Card>
+            "Programming fundamentals (Python)",
+            "Data analysis + visualization",
+            "AI literacy / responsible use",
+            "Digital citizenship & tech fluency",
+          ].map((pillar) => (
+            <div
+              key={pillar}
+              className="rounded-2xl border border-zinc-900/8 bg-[rgb(var(--background))] p-5 text-sm font-semibold text-zinc-900"
+            >
+              {pillar}
+            </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-function SafetyPanel() {
-  return (
-    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.32)] via-white/84 to-[rgb(var(--accent-rgb)/0.28)] py-20">
-      <div className="w-full">
-        <PanelShell>
-          <PanelText>
-            <SectionTitle>AI is taught within real computer science foundations.</SectionTitle>
-            <p className="mt-4 text-lg leading-8 text-zinc-600">
-              We teach AI alongside programming fundamentals, logic, and critical thinking
-              — so students understand how it works, when to use it, and when not to.
-            </p>
-            <div className="mt-5 md:hidden">
-              <DeviceFrame
-                imageSrc="/images/family_pics/pexels-divinetechygirl-1181271.jpg"
-                imageAlt="Safe learning environment with guidance"
-                className="mx-auto w-[92%]"
-              />
-            </div>
-          </PanelText>
-          <PanelMedia className="hidden md:block">
-            <DeviceFrame
-              imageSrc="/images/family_pics/pexels-divinetechygirl-1181271.jpg"
-              imageAlt="Safe learning environment with guidance"
-            />
-          </PanelMedia>
-        </PanelShell>
-
-        <div className="mx-auto mt-8 w-full max-w-[92vw]">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            <div className="rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-7 shadow-[0_16px_40px_rgba(15,23,42,0.14)] ring-2 ring-[rgb(var(--brand-rgb)/0.16)] md:px-7 md:py-8">
-              <h3 className="text-xl font-semibold tracking-tight text-zinc-950 md:text-2xl">
-                How AI fits into our curriculum
-              </h3>
-              <ul className="mt-4 divide-y divide-zinc-900/12 text-base text-zinc-800 md:text-lg">
-                <li className="flex items-start gap-3 py-3 first:pt-0">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Students learn core programming before using AI tools
-                </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  AI helpers are built using rules-based logic
-                </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Prompting is structured and guided
-                </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  AI output must be reviewed and revised
-                </li>
-                <li className="flex items-start gap-3 py-3 last:pb-0">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Projects require explanation in the student’s own words
-                </li>
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border border-zinc-900/15 bg-white/92 px-6 py-7 shadow-[0_16px_40px_rgba(15,23,42,0.14)] ring-2 ring-[rgb(var(--brand-rgb)/0.16)] md:px-7 md:py-8">
-              <h3 className="text-xl font-semibold tracking-tight text-zinc-950 md:text-2xl">
-                What students actually learn
-              </h3>
-              <ul className="mt-4 divide-y divide-zinc-900/12 text-base text-zinc-800 md:text-lg">
-                <li className="flex items-start gap-3 py-3 first:pt-0">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Logic and loops power automation
-                </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Data inputs shape AI output
-                </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Bias and error are discussed openly
-                </li>
-                <li className="flex items-start gap-3 py-3">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  AI can assist — but it does not replace understanding
-                </li>
-                <li className="flex items-start gap-3 py-3 last:pb-0">
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent-rgb)/0.95)]" />
-                  Students present and defend their final projects
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild variant="secondary">
+            <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
+              Get the curriculum overview
+            </Link>
+          </Button>
+          <Link
+            href="/how-it-works#standards"
+            className="inline-flex items-center text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+          >
+            Standards details →
+          </Link>
         </div>
       </div>
     </section>
@@ -1024,72 +359,36 @@ function SafetyPanel() {
 }
 
 function FaqPanel() {
-  const activeIndex = 0;
-
   const items = [
     {
-      q: "Do learners need prior coding experience?",
-      a: "No. Kanam is designed for complete beginners.",
+      q: "What is Kanam Academy?",
+      a: "A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four 8-week learning paths, interactive lessons, live or async options, and progress adults can see.",
     },
     {
-      q: "How are classes taught?",
-      a: "Live via Zoom with instructor guidance.",
+      q: "Who is it for?",
+      a: "Teens and anyone learning tech who wants strong live instruction or structured async classes — plus teachers, schools, families, and enrichment partners.",
     },
     {
-      q: "What age range is this for?",
-      a: "Primarily ages 11–14, with flexibility for beginners.",
+      q: "Can I try it without an account?",
+      a: "Yes. Open the guided lesson demo — no account needed. It walks through a real Python lesson: coach notes, code blanks, Run & check, and XP.",
     },
     {
-      q: "Is this safe for kids?",
-      a: "Yes. Lessons are guided, moderated, and age-appropriate.",
+      q: "Do learners need to install software?",
+      a: "No. Kanam is browser-only and Chromebook-ready. Python and SQL run in the browser.",
     },
     {
-      q: "What device is required?",
-      a: "A laptop or desktop with internet access.",
-    },
-    {
-      q: "How much time is expected each week?",
-      a: "Sessions are structured to fit alongside school schedules.",
+      q: "How do schools use it?",
+      a: "Instructors create a class, share a code, assign lessons, and view roster progress. Lessons include coach notes so adults can support with minimal prep — live, hybrid, or structured async.",
     },
   ];
 
   return (
-    <section className="w-full border-t border-foreground/10 bg-gradient-to-br from-[rgb(var(--accent-rgb)/0.28)] via-white/84 to-[rgb(var(--brand-rgb)/0.30)] py-14 md:py-20">
-      <div className="w-full">
-        <PanelShell>
-          <PanelText>
-            <div className="flex items-end justify-between gap-6">
-              <div>
-                <SectionTitle>
-                  Common questions from families and educators
-                </SectionTitle>
-                <p className="mt-4 text-lg leading-8 text-zinc-600">
-                  Quick answers to the most common questions from parents and educators.
-                </p>
-              </div>
-              <Button asChild variant="outline" className="hidden sm:inline-flex">
-                <Link href="/faq">View all FAQs</Link>
-              </Button>
-            </div>
-            <div className="mt-5 md:hidden">
-              <DeviceFrame
-                imageSrc="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
-                imageAlt="Student asking a question during class"
-                className="mx-auto w-[92%]"
-              />
-            </div>
-          </PanelText>
-          <PanelMedia className="hidden md:block">
-            <DeviceFrame
-              imageSrc="/images/family_pics/pexels-august-de-richelieu-4260747.jpg"
-              imageAlt="Student asking a question during class"
-            />
-          </PanelMedia>
-        </PanelShell>
-
-        <Card className="mx-auto mt-8 w-full max-w-[92vw] border-zinc-900/14 bg-white/90 shadow-[0_16px_36px_rgba(15,23,42,0.12)] ring-1 ring-zinc-900/8">
-          <CardContent className="pt-6">
-            <Accordion type="single" collapsible value={`item-${activeIndex}`}>
+    <section className="w-full border-t border-zinc-900/8 bg-[rgb(var(--background))] py-14 md:py-20">
+      <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
+        <SectionTitle>Common questions</SectionTitle>
+        <Card className="mt-8 border-zinc-900/10 bg-white shadow-[0_12px_28px_rgba(15,23,42,0.06)]">
+          <CardContent className="pt-2">
+            <Accordion type="single" collapsible defaultValue="item-0">
               {items.map((item, idx) => (
                 <AccordionItem key={item.q} value={`item-${idx}`}>
                   <AccordionTrigger>{item.q}</AccordionTrigger>
@@ -1099,11 +398,13 @@ function FaqPanel() {
             </Accordion>
           </CardContent>
         </Card>
-
-        <div className="mt-8 sm:hidden">
-          <Button asChild variant="outline" className="w-full">
-            <Link href="/faq">View all FAQs</Link>
-          </Button>
+        <div className="mt-6">
+          <Link
+            href="/faq"
+            className="text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+          >
+            View all FAQs
+          </Link>
         </div>
       </div>
     </section>
@@ -1112,40 +413,46 @@ function FaqPanel() {
 
 function FinalPanel() {
   return (
-    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-rgb)/0.96)] to-[rgb(var(--accent-rgb)/0.72)] py-14 md:py-20">
-      <div className="w-full">
-        <div className="text-white">
-          <PanelShell>
-            <PanelText>
-              <h2 className="text-4xl font-black tracking-tight sm:text-5xl">
-                Ready to take the next step?
-              </h2>
-              <div aria-hidden="true" className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
-              <p className="mt-3 text-lg leading-8 text-zinc-300">
-                Explore the curriculum or speak with a Kanam advisor to see if this is the
-                right fit for your learner or program.
-              </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild>
-                  <Link href="/curriculum">Explore the Curriculum</Link>
-                </Button>
-              </div>
-              <div className="mt-5 md:hidden">
-                <DeviceFrame
-                  imageSrc="/images/family_pics/pexels-kampus-6297625.jpg"
-                  imageAlt="Celebrating student progress"
-                  className="mx-auto w-[92%] bg-[rgb(var(--brand-rgb)/0.35)]"
-                />
-              </div>
-            </PanelText>
-            <PanelMedia className="hidden md:block">
-              <DeviceFrame
-                imageSrc="/images/family_pics/pexels-kampus-6297625.jpg"
-                imageAlt="Celebrating student progress"
-                className="bg-[rgb(var(--brand-rgb)/0.35)]"
-              />
-            </PanelMedia>
-          </PanelShell>
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.45)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-rgb)/0.95)] to-[rgb(var(--brand-2-rgb)/0.88)] py-14 md:py-20">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 text-white sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+        <div className="max-w-xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+            Move forward — try a real lesson today
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-white/80">
+            Open the guided demo, create an account, or request a pilot for your school or
+            organization.
+          </p>
+        </div>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button
+            asChild
+            size="lg"
+            className="bg-white text-[rgb(var(--brand-2-rgb)/1)] hover:bg-white/95"
+          >
+            <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+              <Play className="h-4 w-4" />
+              Try the guided lesson
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="border-white/40 bg-white/10 text-white hover:bg-white/20"
+          >
+            <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
+              Get started
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="secondary"
+            className="border-white/40 bg-white/10 text-white hover:bg-white/20"
+          >
+            <Link href="/contact">Request a pilot</Link>
+          </Button>
         </div>
       </div>
     </section>
@@ -1154,35 +461,15 @@ function FinalPanel() {
 
 export function HomeStory() {
   return (
-    <div className="relative overflow-hidden bg-background">
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <video
-          className="absolute inset-x-0 top-0 h-[100svh] w-full object-cover object-center opacity-[0.075]"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-        >
-          <source src="/video/8733062-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--brand-rgb)/0.18)] via-transparent to-[rgb(var(--accent-rgb)/0.20)]" />
-        <div className="absolute -left-60 top-0 h-full w-[520px] bg-emerald-500/12 blur-3xl" />
-        <div className="absolute -right-60 top-0 h-full w-[520px] bg-amber-400/12 blur-3xl" />
-        <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.7)_1px,transparent_0)] [background-size:28px_28px] dark:[background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.7)_1px,transparent_0)]" />
-      </div>
-      <div className="relative z-10 w-full">
-        <HeroPanel />
-        <DifferencePanel />
-        <ValuePillarsPanel />
-        <HowItWorksPanel />
-        <BuildPanel />
-        <SafetyPanel />
-        <FaqPanel />
-        <FinalPanel />
-      </div>
+    <div className="relative overflow-hidden bg-[var(--background)]">
+      <HeroPanel />
+      <ProofStrip />
+      <LearningPathsPanel />
+      <HowItWorksPanel />
+      <AudienceSplitPanel />
+      <TrustPanel />
+      <FaqPanel />
+      <FinalPanel />
     </div>
   );
 }
-

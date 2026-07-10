@@ -3,10 +3,8 @@ import Link from "next/link";
 
 import {
   Band,
-  H2,
   Section,
   SubpageShell,
-  textLinkClass,
 } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,69 +13,62 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "FAQ | Kanam Academy",
   description:
-    "Frequently asked questions about age range, beginner-friendliness, Zoom format, safety, time commitment, device requirements, and educator adoption.",
+    "FAQ: who Kanam is for, four learning paths, browser-only lessons, guided demo, live or async learning, instructor class codes, and how to get started.",
 };
 
 const faqs = [
   {
-    q: "What age range is this for?",
-    a: "Kanam is designed for ages 12–15. If a learner is slightly younger/older, we can recommend whether the cohort pace is a fit based on experience and confidence.",
+    q: "What is Kanam Academy?",
+    a: "A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four 8-week learning paths, interactive lessons, XP and badges, and progress you can see. Live instruction when you want a guide; structured async when you want to move at your own pace.",
   },
   {
-    q: "Is it beginner-friendly?",
-    a: "Yes. We start from fundamentals and teach at a calm pace. Students don’t need prior coding experience to succeed.",
+    q: "Who is it for?",
+    a: "Teens and anyone learning tech who wants great live instruction or strong async classes — plus teachers, schools, families, and enrichment partners.",
   },
   {
-    q: "How do live Zoom classes work?",
-    a: "Students attend live Zoom instruction with an instructor, then complete guided practice and projects with clear steps. Questions are encouraged—getting stuck is normal.",
+    q: "What are the four learning paths?",
+    a: "AI Literacy (16 lessons), Digital Literacy (16), AI + Python Starter Pack (13), and Data Analyst Track (14) — 60+ interactive lessons total, including the guided demo.",
   },
   {
-    q: "Is this self-paced or cohort-based?",
-    a: "Cohort-based. Cohorts provide structure, consistency, and a shared pace—while practice time is flexible during the week.",
+    q: "Can I try it without creating an account?",
+    a: "Yes. Open the guided lesson demo — no account needed. It is a real lesson tour (coach notes, code blanks, Run & check, XP), not a fake dashboard.",
   },
   {
-    q: "How much time per week should we plan for?",
-    a: "Most families plan for the live session plus additional practice time to complete weekly milestones. We can recommend a routine that fits your schedule.",
+    q: "Do learners need to install software?",
+    a: "No. Kanam is browser-only and Chromebook-ready. Python and SQL run in the browser. No special software install.",
   },
   {
-    q: "What device is required?",
-    a: "A laptop or desktop is recommended for the best coding experience. We’ll share setup steps before the cohort starts.",
+    q: "Is this only live cohorts?",
+    a: "No. Supported models include live cohort / classroom, hybrid, self-paced enrichment, and homeschool / family use.",
   },
   {
-    q: "Do students need to install anything?",
-    a: "We keep setup simple. If an install is needed, we provide a step-by-step guide and support so families and schools can get ready confidently.",
+    q: "How do instructors use Kanam?",
+    a: "Separate instructor sign-in. Create a class, share a class code, assign lessons, and view roster progress (lessons completed, XP, last activity).",
   },
   {
-    q: "How do you keep it safe for kids?",
-    a: "We use clear community expectations, a code of conduct, and privacy-first rules (including no personal data sharing). We encourage students to involve trusted adults when unsure.",
+    q: "Do adults need to be CS experts?",
+    a: "No. Lessons include coach notes and plain-language explainers so adults can support with minimal prep.",
   },
   {
-    q: "How do you teach AI responsibly?",
-    a: "We do not teach students to rely on AI prompts to produce answers. We teach what AI is, how outputs are generated, how to evaluate reliability, and how to verify results with real programming logic. Students are expected to explain their own code and reasoning.",
+    q: "How does assessment work?",
+    a: "Auto-graded guided and scratch exercises, check-for-understanding, capstone projects, and XP/badge progress visibility — designed so mastery is demonstrated, not just clicked through.",
   },
   {
-    q: "What will students build?",
-    a: "Students build mini games, quiz apps, creative coding projects, and a final showcase project—plus practice presenting what they built.",
+    q: "Is the curriculum standards-aligned?",
+    a: "Yes. Standards-aligned curriculum documentation is available (CSTA Levels 2 and 3A primary; also K–12 CS Framework, ISTE Students 2016, Common Core Math statistics/probability for data). Request the curriculum packet for adoption conversations.",
   },
   {
-    q: "What if my child gets stuck?",
-    a: "Help is expected. Instructors support students through questions during live sessions and through help requests during practice so progress doesn’t stall.",
-  },
-  {
-    q: "Can schools or after-school programs adopt Kanam?",
-    a: "Yes. We support cohort-based implementation for schools and programs, with clear objectives and progress visibility for stakeholders.",
-  },
-  {
-    q: "Do parents need to be present during Zoom?",
-    a: "Parents do not typically need to sit in, but we recommend being nearby for setup and to support a focused learning environment.",
+    q: "What about the Data Analyst track?",
+    a: "It builds on intro Python foundations (recommended after starting AI + Python). Learners write real SQL and use charts (bar, pie, line, histogram, scatter) in the browser.",
   },
   {
     q: "How do I get started?",
-    a: "Explore the curriculum, then book a quick call so we can recommend the best starting track and cohort options.",
+    a: "Try the guided lesson, create an account from Welcome, or request a pilot if you are a school or partner.",
   },
 ] as const;
 
@@ -85,31 +76,42 @@ export default function FaqPage() {
   return (
     <SubpageShell
       eyebrow="FAQ"
-      title="Answers for parents and educators"
-      subtitle="If you don’t see your question here, send us a message and we’ll reply with a clear recommendation."
+      title="Frequently asked questions"
+      subtitle="Clear answers for learners, families, teachers, and school decision-makers."
       actions={
         <>
           <Button asChild>
-            <Link href="/contact">Book a Call</Link>
+            <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+              Try the guided lesson
+            </Link>
           </Button>
-          <Link href="/curriculum" className={textLinkClass}>
-            Explore the Curriculum
-          </Link>
+          <Button asChild variant="secondary">
+            <Link href="/contact">Contact us</Link>
+          </Button>
         </>
       }
     >
       <Section className="pt-0 pb-0">
-        <H2>Frequently Asked Questions</H2>
-        <Band className="mt-5 p-5 md:p-6">
-          <Accordion type="single" collapsible>
+        <Band className="p-5 md:p-6">
+          <Accordion type="single" collapsible defaultValue="item-0">
             {faqs.map((item, idx) => (
-              <AccordionItem key={item.q} value={`faq-${idx}`}>
+              <AccordionItem key={item.q} value={`item-${idx}`}>
                 <AccordionTrigger>{item.q}</AccordionTrigger>
                 <AccordionContent>{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         </Band>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button asChild>
+            <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
+              Get started
+            </Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link href="/learning-paths">See the four learning paths</Link>
+          </Button>
+        </div>
       </Section>
     </SubpageShell>
   );

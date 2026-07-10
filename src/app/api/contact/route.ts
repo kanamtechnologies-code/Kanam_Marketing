@@ -105,7 +105,7 @@ export async function POST(request: Request) {
     formatOptionalLine("Learner age", learnerAge),
     formatOptionalLine("Experience level", experienceLevel),
     formatOptionalLine("Goals", goals),
-    formatOptionalLine("Grade band", gradeBand),
+    formatOptionalLine("Who you're supporting", gradeBand),
     formatOptionalLine("Preferred start window", startWindow),
     formatOptionalLine("Estimated learner count", learnerCount),
     formatOptionalLine("School / Organization", organization),

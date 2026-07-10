@@ -11,28 +11,34 @@ import { Textarea } from "@/components/ui/textarea";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-type Role = "parent_guardian" | "educator_school" | "program_partner" | "other";
+type Role = "family" | "teacher" | "school" | "partner" | "other";
 
 const helpOptionsByRole: Record<Role, string[]> = {
-  parent_guardian: [
-    "Cohort availability & schedule",
-    "Enrollment questions",
-    "Student readiness & expectations",
+  family: [
+    "Try the product / guided demo",
+    "Student account & progress",
+    "Homeschool / enrichment",
     "Curriculum overview",
     "Other",
   ],
-  educator_school: [
-    "Standards alignment & documentation",
-    "Implementation / scheduling",
-    "Group cohorts & partnerships",
-    "Reporting & outcomes",
+  teacher: [
+    "Class codes & instructor tools",
+    "Assigning lessons",
+    "Classroom / after-school use",
+    "Curriculum overview",
     "Other",
   ],
-  program_partner: [
+  school: [
+    "Request a pilot",
     "Standards alignment & documentation",
     "Implementation / scheduling",
-    "Group cohorts & partnerships",
-    "Reporting & outcomes",
+    "Site license / per-class / after-school",
+    "Other",
+  ],
+  partner: [
+    "Request a pilot",
+    "Partnerships & enrichment programs",
+    "Standards alignment & documentation",
     "Other",
   ],
   other: ["General question", "Partnerships", "Curriculum", "Other"],
@@ -42,8 +48,8 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState<Role>("parent_guardian");
-  const [helpTopic, setHelpTopic] = useState(helpOptionsByRole.parent_guardian[0]);
+  const [role, setRole] = useState<Role>("family");
+  const [helpTopic, setHelpTopic] = useState(helpOptionsByRole.family[0]);
   const [learnerAge, setLearnerAge] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
   const [goals, setGoals] = useState("");
@@ -108,8 +114,8 @@ export function ContactForm() {
               setName("");
               setEmail("");
 
-              setRole("parent_guardian");
-              setHelpTopic(helpOptionsByRole.parent_guardian[0]);
+              setRole("family");
+              setHelpTopic(helpOptionsByRole.family[0]);
               setLearnerAge("");
               setExperienceLevel("");
               setGoals("");
@@ -172,9 +178,10 @@ export function ContactForm() {
                 "flex min-h-12 w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-base text-zinc-950 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--brand-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
               )}
             >
-              <option value="parent_guardian">Parent/Guardian</option>
-              <option value="educator_school">Educator/School</option>
-              <option value="program_partner">Program Partner</option>
+              <option value="family">Family / Homeschool</option>
+              <option value="teacher">Teacher / Instructor</option>
+              <option value="school">School / District</option>
+              <option value="partner">Partner / Enrichment</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -198,7 +205,7 @@ export function ContactForm() {
             </select>
           </div>
 
-          {role === "parent_guardian" ? (
+          {role === "family" ? (
             <div className="grid gap-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/60 p-4">
               <p className="text-sm font-semibold text-zinc-900">Details (optional)</p>
               <div className="grid gap-4 sm:grid-cols-2">
@@ -209,7 +216,7 @@ export function ContactForm() {
                     name="learnerAge"
                     value={learnerAge}
                     onChange={(e) => setLearnerAge(e.target.value)}
-                    placeholder="12–15"
+                    placeholder="e.g. 14, or adult beginner"
                   />
                 </div>
                 <div className="grid gap-2">
@@ -243,20 +250,22 @@ export function ContactForm() {
                 >
                   <option value="">Select one</option>
                   <option value="Build confidence">Build confidence</option>
-                  <option value="Learn Python basics">Learn Python basics</option>
-                  <option value="Prepare for advanced classes">Prepare for advanced classes</option>
+                  <option value="Learn Python / AI / data basics">
+                    Learn Python / AI / data basics
+                  </option>
+                  <option value="Structured enrichment">Structured enrichment</option>
                   <option value="Not sure">Not sure</option>
                 </select>
               </div>
             </div>
           ) : null}
 
-          {role === "educator_school" || role === "program_partner" ? (
+          {role === "teacher" || role === "school" || role === "partner" ? (
             <div className="grid gap-4 rounded-2xl border border-zinc-200/80 bg-zinc-50/60 p-4">
               <p className="text-sm font-semibold text-zinc-900">Details (optional)</p>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="grid gap-2">
-                  <Label htmlFor="grade-band">Grade band</Label>
+                  <Label htmlFor="grade-band">Who you&apos;re supporting</Label>
                   <select
                     id="grade-band"
                     name="gradeBand"
@@ -267,8 +276,10 @@ export function ContactForm() {
                     )}
                   >
                     <option value="">Select one</option>
-                    <option value="Grades 6–8 (recommended)">Grades 6–8 (recommended)</option>
-                    <option value="Grades 7–9">Grades 7–9</option>
+                    <option value="Middle school">Middle school</option>
+                    <option value="High school">High school</option>
+                    <option value="Mixed teens">Mixed teens</option>
+                    <option value="Adult / open enrollment">Adult / open enrollment</option>
                     <option value="Mixed / Other">Mixed / Other</option>
                     <option value="Not sure yet">Not sure yet</option>
                   </select>
@@ -338,19 +349,18 @@ export function ContactForm() {
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Tell us the learner’s age, experience level, and what you want to build."
+              placeholder="Tell us your role, who you’re supporting, timeline, and what you’re hoping to run."
               required
             />
-            {role === "parent_guardian" ? (
+            {role === "family" ? (
               <p className="text-xs text-muted-foreground">
-                Optional: include learner age, experience level, and what they’re excited
-                to build.
+                Optional: include learner age or experience level and what they’re excited
+                to learn.
               </p>
             ) : null}
-            {role === "educator_school" || role === "program_partner" ? (
+            {role === "teacher" || role === "school" || role === "partner" ? (
               <p className="text-xs text-muted-foreground">
-                If you don’t know the details yet, select “Not sure yet”—we can help you
-                plan.
+                Include who you’re supporting and preferred start window when you can.
               </p>
             ) : null}
           </div>

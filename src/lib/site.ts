@@ -1,20 +1,31 @@
+const appBase =
+  process.env.NEXT_PUBLIC_APP_URL ??
+  "https://kanam-academy-2026-v1.vercel.app";
+
+const normalizedBase = appBase.replace(/\/$/, "");
+
 export const siteConfig = {
   name: "Kanam Academy",
+  tagline: "Move forward.",
   description:
-    "Live, instructor-led Python + AI for kids—hands-on lessons, real projects, and progress you can track.",
+    "Browser-based coding, AI, data, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Four learning paths. Progress you can see.",
   links: {
-    app:
-      process.env.NEXT_PUBLIC_APP_URL ??
-      "https://kanam-academy-2026-v1-ewp3.vercel.app/welcome",
+    app: `${normalizedBase}/welcome`,
+    demo:
+      process.env.NEXT_PUBLIC_DEMO_URL ?? `${normalizedBase}/demo`,
+    instructor:
+      process.env.NEXT_PUBLIC_INSTRUCTOR_URL ?? `${normalizedBase}/instructor`,
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@kanamacademy.com",
     bookCall: process.env.NEXT_PUBLIC_BOOK_CALL_URL ?? "/contact",
+    standardsPdf:
+      "/images/docs/Kanam%20Academy%20Foundations%20Standards%20Alignment.pdf",
   },
   nav: [
     { href: "/", label: "Home" },
+    { href: "/learning-paths", label: "Learning paths" },
     { href: "/how-it-works", label: "How it works" },
-    { href: "/curriculum", label: "Curriculum" },
-    { href: "/parents", label: "Parents" },
-    { href: "/educators", label: "Educators" },
+    { href: "/educators", label: "For schools" },
+    { href: "/parents", label: "For families & learners" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
     { href: "/contact", label: "Contact" },
@@ -34,4 +45,3 @@ export const siteConfig = {
     },
   ],
 } as const;
-

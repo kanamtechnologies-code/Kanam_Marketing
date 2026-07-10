@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { HomeStory } from "@/components/site/HomeStory";
 
 export const metadata: Metadata = {
-  title: "Kanam Academy | Live, instructor-led Python + AI for kids",
+  title: "Kanam Academy | Real tech skills for teens and anyone ready to learn",
   description:
-    "Live Zoom instruction with real instructors. Beginner-friendly, project-based Python + AI learning for ages 11–14 that teaches understanding, not prompt-generated shortcuts.",
+    "Coding, AI, data, and digital literacy in the browser — live instruction or structured async classes. Try the guided lesson — no account needed.",
 };
 
 export default function HomePage() {
