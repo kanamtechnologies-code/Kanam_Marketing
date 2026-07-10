@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -9,13 +10,13 @@ import {
 } from "@/components/layout/SubpageShell";
 import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
 import { Button } from "@/components/ui/button";
-import { LEARNING_PATHS } from "@/lib/learning-paths";
+import { LEARNING_PATHS, DEVICE_READY_BLURB, DEVICE_READY_LABEL, PACING_BLURB } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "For families & learners | Kanam Academy",
   description:
-    "Try a guided Kanam lesson with no account. Then create an account, keep progress, and learn with live instruction or structured async classes — coding, AI, data, and digital literacy.",
+    "Try a guided Kanam lesson with no account. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async — coding, AI, data, and digital literacy.",
 };
 
 export default function ParentsPage() {
@@ -30,7 +31,7 @@ export default function ParentsPage() {
     },
     {
       title: "Follow the roadmap",
-      body: "Clear lessons, XP, badges, and capstone projects — live when you want a guide, async when you want to move at your own pace.",
+      body: `Clear lessons, XP, badges, and capstone projects — live when you want a guide, async when you want to move at your own pace. ${PACING_BLURB}`,
     },
   ] as const;
 
@@ -57,28 +58,41 @@ export default function ParentsPage() {
         { href: "#path", label: "How to start" },
         { href: "#demo", label: "What you’ll see" },
         { href: "#learning-paths", label: "Learning paths" },
-        { href: "#homeschool", label: "Homeschool & enrichment" },
+        { href: "#homeschool", label: "Homeschool & programs" },
         { href: "#faq", label: "FAQs" },
       ]}
     >
       <Section id="path" className="pt-0">
-        <H2>How to start</H2>
-        <ol className="mt-6 grid gap-4 md:grid-cols-3">
-          {path.map((step, idx) => (
-            <li
-              key={step.title}
-              className="rounded-2xl border border-foreground/10 bg-white/80 p-5"
-            >
-              <div className="font-mono text-xs font-semibold text-[var(--brand-2)]">
-                {String(idx + 1).padStart(2, "0")}
-              </div>
-              <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                {step.body}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
+          <div>
+            <H2>How to start</H2>
+            <ol className="mt-6 grid gap-4">
+              {path.map((step, idx) => (
+                <li
+                  key={step.title}
+                  className="rounded-2xl border border-foreground/10 bg-white/80 p-5"
+                >
+                  <div className="font-mono text-xs font-semibold text-[var(--brand-2)]">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {step.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-foreground/10">
+            <Image
+              src="/images/product/family-mom-son.png"
+              alt="Parent and teen getting started with a lesson"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </figure>
+        </div>
       </Section>
 
       <Section id="demo" className="border-t border-foreground/10 scroll-mt-24">
@@ -122,32 +136,58 @@ export default function ParentsPage() {
             <Link
               key={p.slug}
               href={`/learning-paths/${p.slug}`}
-              className="rounded-2xl border border-foreground/10 bg-white/80 p-5 transition-shadow hover:shadow-md"
+              className="group overflow-hidden rounded-2xl border border-foreground/10 bg-white/80 transition-shadow hover:shadow-md"
             >
-              <div className="font-semibold text-foreground">{p.name}</div>
-              <p className="mt-1 text-sm text-muted-foreground">{p.subtitle}</p>
-              <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
-                {p.lessons} lessons
-              </p>
+              <div className="relative aspect-[16/10] w-full">
+                <Image
+                  src={p.image}
+                  alt=""
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="(min-width: 640px) 40vw, 100vw"
+                />
+              </div>
+              <div className="p-5">
+                <div className="font-semibold text-foreground">{p.name}</div>
+                <p className="mt-1 text-sm text-muted-foreground">{p.subtitle}</p>
+                <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
+                  {p.lessons} lessons
+                </p>
+              </div>
             </Link>
           ))}
         </div>
       </Section>
 
       <Section id="homeschool" className="border-t border-foreground/10 scroll-mt-24">
-        <H2>Homeschool, enrichment &amp; self-paced</H2>
-        <Band className="mt-5">
-          <p className="text-muted-foreground leading-relaxed">
-            Kanam works for self-paced enrichment and family use. You do not need to be a
-            CS expert — lessons include coach notes and plain-language support, with
-            instant feedback on exercises.
-          </p>
-          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            <li>Browser-only · Chromebook and laptop friendly</li>
-            <li>No software install</li>
-            <li>Clear weekly pacing if you want structure — or move at your own pace</li>
-          </ul>
-        </Band>
+        <H2>Homeschool, enrichment &amp; youth programs</H2>
+        <div className="mt-5 grid gap-6 lg:grid-cols-2 lg:items-center">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-foreground/10">
+            <Image
+              src="/images/product/family-dad-son.png"
+              alt="Parent and teen reviewing a lesson together"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </figure>
+          <Band>
+            <p className="text-muted-foreground leading-relaxed">
+              Kanam works for self-paced enrichment, family use, and structured youth
+              programs — including after-school blocks, weekend cohorts, and Boy Scout or
+              Girl Scout troops. You do not need to be a CS expert — lessons include coach
+              notes and plain-language support, with instant feedback on exercises.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              <li>{DEVICE_READY_LABEL}</li>
+              <li>No special software to install</li>
+              <li>
+                Clear suggested pacing if you want structure — or move at your own pace
+                on a schedule that fits your family
+              </li>
+            </ul>
+          </Band>
+        </div>
       </Section>
 
       <Section id="faq" className="border-t border-foreground/10 scroll-mt-24 pb-0">
@@ -160,8 +200,12 @@ export default function ParentsPage() {
                 a: "Teens and anyone learning tech who wants strong live instruction or structured async classes — plus families supporting them.",
               },
               {
+                q: "Is the schedule fixed?",
+                a: PACING_BLURB,
+              },
+              {
                 q: "What device is needed?",
-                a: "A laptop, desktop, or Chromebook with internet. No install required.",
+                a: DEVICE_READY_BLURB,
               },
               {
                 q: "Is prior coding required?",

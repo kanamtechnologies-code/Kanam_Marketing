@@ -8,13 +8,13 @@ import {
   SubpageShell,
 } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
-import { LEARNING_PATHS, LESSONS_COUNT_LABEL } from "@/lib/learning-paths";
+import { LEARNING_PATHS, DEVICE_READY_BLURB, LESSONS_COUNT_LABEL, PACING_BLURB } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About | Kanam Academy",
   description:
-    "Kanam Academy: coding, AI, data, and digital literacy in the browser — for teens and anyone learning tech. Live instruction or structured async. Move forward.",
+    "Kanam Academy: coding, AI, data, and digital literacy — for teens and anyone learning tech. Chromebook and mobile ready. Flexible schedule. Live instruction or structured async. Move forward.",
 };
 
 export default function AboutPage() {
@@ -52,8 +52,8 @@ export default function AboutPage() {
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
             One platform. Four learning paths. Interactive lessons. Auto-feedback. Progress
-            visibility for instructors. Demo mode for families and decision-makers. No
-            software install.
+            visibility for instructors. Demo mode for families and decision-makers.{" "}
+            {DEVICE_READY_BLURB} {PACING_BLURB}
           </p>
         </Band>
       </Section>
@@ -92,8 +92,9 @@ export default function AboutPage() {
         <Band>
           <H2>Partner with Kanam</H2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            Schools, districts, after-school programs, and enrichment partners can request
-            a pilot. Learners and families can start with the guided demo today.
+            Schools, districts, after-school and weekend programs, Boy Scout and Girl Scout
+            troops, and enrichment partners can request a pilot. Learners and families can
+            start with the guided demo today.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild>

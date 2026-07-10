@@ -1,6 +1,7 @@
 "use client";
 
 import { type ReactNode } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   BookOpen,
@@ -22,9 +23,14 @@ import {
 import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
 import {
   DELIVERY_MODES,
+  DEVICE_READY_BLURB,
+  DEVICE_READY_LABEL,
+  DEVICE_READY_SHORT,
   LESSON_FLOW,
   LESSONS_COUNT_LABEL,
   LEARNING_PATHS,
+  PACING_BLURB,
+  PROGRAM_FIT_SHORT,
   PROOF_POINTS,
 } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
@@ -69,9 +75,9 @@ function HeroPanel() {
             Real tech skills for teens — and anyone ready to learn
           </h1>
           <p className="max-w-lg text-lg leading-relaxed text-[var(--muted)]">
-            Coding, AI, data, and digital literacy in the browser. Live instruction when
-            you want a guide; structured async lessons when you want to move at your own
-            pace. Progress you can see — no software install.
+            Coding, AI, data, and digital literacy. Live instruction when you want a
+            guide; structured async lessons when you want to move at your own pace.
+            Progress you can see. {DEVICE_READY_SHORT}.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -89,7 +95,7 @@ function HeroPanel() {
           </div>
 
           <p className="text-sm text-zinc-500">
-            No account needed for the demo · Live or async · Chromebook-ready
+            No account needed for the demo · Live or async · {DEVICE_READY_SHORT}
           </p>
         </div>
 
@@ -104,7 +110,7 @@ function HeroPanel() {
 function ProofStrip() {
   return (
     <section className="border-y border-zinc-900/8 bg-white">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-zinc-900/8 sm:grid-cols-3 lg:grid-cols-6">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-zinc-900/8 sm:grid-cols-3 lg:grid-cols-5">
         {PROOF_POINTS.map((item) => (
           <div
             key={item.label}
@@ -130,8 +136,7 @@ function LearningPathsPanel() {
         <SectionTitle>Four learning paths. One platform.</SectionTitle>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
           {LESSONS_COUNT_LABEL} interactive lessons across AI Literacy, Digital Literacy,
-          AI + Python, and Data Analyst — each paced as an 8-week path with about two
-          sessions per week.
+          AI + Python, and Data Analyst. {PACING_BLURB}
         </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -139,25 +144,36 @@ function LearningPathsPanel() {
             <Link
               key={path.slug}
               href={`/learning-paths/${path.slug}`}
-              className="group rounded-2xl border border-zinc-900/10 bg-white p-6 shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.1)]"
+              className="group overflow-hidden rounded-2xl border border-zinc-900/10 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.1)]"
             >
-              <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-display text-xl font-semibold text-zinc-950 group-hover:text-[rgb(var(--brand-2-rgb)/1)]">
-                  {path.name}
-                </h3>
-                <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500">
-                  {path.lessons} lessons
-                </span>
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[rgb(var(--brand-2-rgb)/0.06)]">
+                <Image
+                  src={path.image}
+                  alt=""
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                />
               </div>
-              <p className="mt-2 text-sm font-medium text-[rgb(var(--brand-2-rgb)/1)]">
-                {path.subtitle}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
-                {path.marketingAngle}
-              </p>
-              <p className="mt-4 text-sm font-semibold text-zinc-800">
-                Capstone: {path.capstone}
-              </p>
+              <div className="p-6">
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="font-display text-xl font-semibold text-zinc-950 group-hover:text-[rgb(var(--brand-2-rgb)/1)]">
+                    {path.name}
+                  </h3>
+                  <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500">
+                    {path.lessons} lessons
+                  </span>
+                </div>
+                <p className="mt-2 text-sm font-medium text-[rgb(var(--brand-2-rgb)/1)]">
+                  {path.subtitle}
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+                  {path.marketingAngle}
+                </p>
+                <p className="mt-4 text-sm font-semibold text-zinc-800">
+                  Capstone: {path.capstone}
+                </p>
+              </div>
             </Link>
           ))}
         </div>
@@ -176,35 +192,51 @@ function HowItWorksPanel() {
   return (
     <section className="w-full border-t border-zinc-900/8 bg-white py-14 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle>How learning works</SectionTitle>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
-          Learn the idea, practice with instant feedback, reflect, and earn XP and badges
-          on a clear roadmap.
-        </p>
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
+          <div>
+            <SectionTitle>How learning works</SectionTitle>
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
+              Learn the idea, practice with instant feedback, reflect, and earn XP and
+              badges on a clear roadmap.
+            </p>
 
-        <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" role="list">
-          {LESSON_FLOW.map((step, idx) => (
-            <li
-              key={step.title}
-              className="rounded-2xl border border-zinc-900/8 bg-[rgb(var(--background))] p-5"
-            >
-              <div className="font-mono text-xs font-semibold text-[rgb(var(--brand-2-rgb)/1)]">
-                {String(idx + 1).padStart(2, "0")}
-              </div>
-              <h3 className="mt-3 font-display text-xl font-semibold text-zinc-950">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">{step.body}</p>
-            </li>
-          ))}
-        </ol>
+            <ol className="mt-8 grid gap-4 sm:grid-cols-2" role="list">
+              {LESSON_FLOW.map((step, idx) => (
+                <li
+                  key={step.title}
+                  className="rounded-2xl border border-zinc-900/8 bg-[rgb(var(--background))] p-5"
+                >
+                  <div className="font-mono text-xs font-semibold text-[rgb(var(--brand-2-rgb)/1)]">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mt-3 font-display text-xl font-semibold text-zinc-950">
+                    {step.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                    {step.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-zinc-900/10 shadow-[0_18px_40px_rgba(15,23,42,0.1)]">
+            <Image
+              src="/images/product/teen-girl-coding.png"
+              alt="Teen learner practicing coding on a laptop"
+              fill
+              className="object-cover object-center"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </figure>
+        </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
           <div className="rounded-2xl border border-zinc-900/10 bg-[rgb(var(--background))] p-6">
-            <h3 className="font-semibold text-zinc-950">Path pacing</h3>
+            <h3 className="font-semibold text-zinc-950">Flexible schedule</h3>
             <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
-              <li>8 weeks per path · ~2 sessions per week</li>
-              <li>Dashboard labels lessons as Week X · Session Y</li>
+              <li>{PACING_BLURB}</li>
+              <li>Dashboard labels lessons as Week X · Session Y (suggested structure)</li>
               <li>Works self-paced, with light mentor support, or as a live cohort</li>
             </ul>
           </div>
@@ -235,79 +267,106 @@ function AudienceSplitPanel() {
   return (
     <section className="w-full border-t border-zinc-900/8 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.06)] to-[rgb(var(--background))] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div className="rounded-2xl border border-zinc-900/10 bg-white p-6 sm:p-8">
-          <School
-            className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
-            aria-hidden="true"
-          />
-          <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
-            For schools &amp; instructors
-          </h3>
-          <p className="mt-3 text-[var(--muted)] leading-relaxed">
-            Create a class, share a code, assign lessons, and see learner progress —
-            without needing a full-time CS specialist for every session.
-          </p>
-          <ul className="mt-5 space-y-2 text-sm text-zinc-700">
-            <li className="flex gap-2">
-              <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-              Class codes, roster, assignments, XP &amp; last activity
-            </li>
-            <li className="flex gap-2">
-              <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-              Chromebook-ready · no install · browser-only
-            </li>
-            <li className="flex gap-2">
-              <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-              Standards-aligned curriculum packet available
-            </li>
-          </ul>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild>
-              <Link href="/educators">For schools</Link>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/contact">Request a pilot</Link>
-            </Button>
+        <div className="overflow-hidden rounded-2xl border border-zinc-900/10 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+          <div className="relative aspect-[16/9] w-full">
+            <Image
+              src="/images/product/live-session-instructor.png"
+              alt="Learner in a live online lesson with an instructor"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </div>
+          <div className="p-6 sm:p-8">
+            <School
+              className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
+              aria-hidden="true"
+            />
+            <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
+              For schools &amp; programs
+            </h3>
+            <p className="mt-3 text-[var(--muted)] leading-relaxed">
+              Create a class, share a code, assign lessons, and see learner progress —
+              without needing a full-time CS specialist for every session. Fits class
+              periods, {PROGRAM_FIT_SHORT}.
+            </p>
+            <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+              <li className="flex gap-2">
+                <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                Class codes, roster, assignments, XP &amp; last activity
+              </li>
+              <li className="flex gap-2">
+                <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                {DEVICE_READY_LABEL}
+              </li>
+              <li className="flex gap-2">
+                <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                Standards-aligned curriculum packet available
+              </li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild>
+                <Link href="/educators">For schools &amp; programs</Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/contact">Request a pilot</Link>
+              </Button>
+            </div>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-zinc-900/10 bg-white p-6 sm:p-8">
-          <Users
-            className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
-            aria-hidden="true"
-          />
-          <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
-            For families &amp; learners
-          </h3>
-          <p className="mt-3 text-[var(--muted)] leading-relaxed">
-            Start with a guided demo lesson — no account needed. Then create an account,
-            keep progress, and follow a clear roadmap with badges and real projects. Live
-            instruction when you want a guide; structured async when you want to move at
-            your own pace.
-          </p>
-          <ul className="mt-5 space-y-2 text-sm text-zinc-700">
-            <li className="flex gap-2">
-              <Play className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-              Try the guided lesson in minutes
-            </li>
-            <li className="flex gap-2">
-              <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-              Structured alternative to random YouTube / AI chat wandering
-            </li>
-            <li className="flex gap-2">
-              <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-              Homeschool, enrichment, or self-paced use
-            </li>
-          </ul>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild>
-              <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
-                Try the guided lesson
-              </Link>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/parents">For families</Link>
-            </Button>
+        <div className="overflow-hidden rounded-2xl border border-zinc-900/10 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+          <div className="relative aspect-[16/9] w-full">
+            <Image
+              src="/images/product/family-mom-daughter.png"
+              alt="Parent and teen reviewing a lesson together"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </div>
+          <div className="p-6 sm:p-8">
+            <Users
+              className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
+              aria-hidden="true"
+            />
+            <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
+              For families &amp; learners
+            </h3>
+            <p className="mt-3 text-[var(--muted)] leading-relaxed">
+              Start with a guided demo lesson — no account needed. Then create an account,
+              keep progress, and follow a clear roadmap with badges and real projects. Live
+              instruction when you want a guide; structured async when you want to move at
+              your own pace.
+            </p>
+            <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+              <li className="flex gap-2">
+                <Play className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                Try the guided lesson in minutes
+              </li>
+              <li className="flex gap-2">
+                <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                Structured alternative to random YouTube / AI chat wandering
+              </li>
+              <li className="flex gap-2">
+                <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                Homeschool, enrichment, or self-paced — Chromebook & mobile ready
+              </li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild>
+                <Link
+                  href={siteConfig.links.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Try the guided lesson
+                </Link>
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/parents">For families</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </div>
@@ -362,11 +421,15 @@ function FaqPanel() {
   const items = [
     {
       q: "What is Kanam Academy?",
-      a: "A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four 8-week learning paths, interactive lessons, live or async options, and progress adults can see.",
+      a: `A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
     },
     {
       q: "Who is it for?",
-      a: "Teens and anyone learning tech who wants strong live instruction or structured async classes — plus teachers, schools, families, and enrichment partners.",
+      a: `Teens and anyone learning tech who wants strong live instruction or structured async classes — plus teachers, schools, families, ${PROGRAM_FIT_SHORT}, and enrichment partners.`,
+    },
+    {
+      q: "Is the schedule fixed?",
+      a: `No. ${PACING_BLURB} Go faster, slower, or build around class periods, after-school blocks, or family routines.`,
     },
     {
       q: "Can I try it without an account?",
@@ -374,11 +437,11 @@ function FaqPanel() {
     },
     {
       q: "Do learners need to install software?",
-      a: "No. Kanam is browser-only and Chromebook-ready. Python and SQL run in the browser.",
+      a: `No. ${DEVICE_READY_BLURB} Python and SQL run in the lesson.`,
     },
     {
       q: "How do schools use it?",
-      a: "Instructors create a class, share a code, assign lessons, and view roster progress. Lessons include coach notes so adults can support with minimal prep — live, hybrid, or structured async.",
+      a: `Instructors and program leaders create a class, share a code, assign lessons, and view roster progress. Lessons include coach notes so adults can support with minimal prep — live, hybrid, after-school, weekend, or structured async.`,
     },
   ];
 

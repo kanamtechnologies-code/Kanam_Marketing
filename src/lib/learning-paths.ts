@@ -17,6 +17,7 @@ export type LearningPath = {
   prerequisite?: string;
   weeklyThemes: string[];
   lessonTitles: string[];
+  image: string;
 };
 
 export const LEARNING_PATHS: LearningPath[] = [
@@ -60,6 +61,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "AI and the Future of Work",
       "Capstone: Be an AI-Smart Citizen",
     ],
+    image: "/images/product/path-ai-literacy.png",
   },
   {
     slug: "digital-literacy",
@@ -101,6 +103,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Digital Skills for Work & Career",
       "Capstone: Your Digital Toolkit",
     ],
+    image: "/images/product/path-digital-literacy.png",
   },
   {
     slug: "ai-python",
@@ -139,6 +142,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Guiding AI with Rules",
       "Build Your AI NPC",
     ],
+    image: "/images/product/path-ai-python.png",
   },
   {
     slug: "data-analyst",
@@ -180,6 +184,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Relationships",
       "Your Data Project",
     ],
+    image: "/images/product/path-data-analyst.png",
   },
 ];
 
@@ -191,11 +196,32 @@ export const LESSONS_COUNT_LABEL = "60+";
 export const PROOF_POINTS = [
   { label: "Learning paths", value: "4" },
   { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
-  { label: "Pacing", value: "8 weeks each" },
-  { label: "Sessions", value: "~2 / week" },
+  { label: "Schedule", value: "Flexible" },
+  { label: "Suggested pace", value: "~8 weeks" },
   { label: "Format", value: "Live + async" },
-  { label: "Access", value: "Browser-only" },
 ] as const;
+
+/** Designed pacing — always pair with flexibility language in UI copy. */
+export const PACING_DESIGNED =
+  "Designed for about 8 weeks at ~2 sessions per week";
+
+export const PACING_FLEXIBLE =
+  "The schedule flexes to your classroom, family, or self-paced needs";
+
+export const PACING_BLURB = `${PACING_DESIGNED} — ${PACING_FLEXIBLE.toLowerCase()}.`;
+
+export const PACING_SHORT =
+  "Flexible schedule — designed for ~8 weeks at ~2 sessions/week";
+
+export const PACING_LABEL = "Flexible — designed for ~8 weeks · ~2 sessions/week";
+
+/** Device access — Chromebook + mobile ready, no special install. */
+export const DEVICE_READY_SHORT = "Chromebook & mobile ready";
+
+export const DEVICE_READY_BLURB =
+  "Chromebook and mobile ready — works in the browser with no special software to install.";
+
+export const DEVICE_READY_LABEL = "Chromebook & mobile ready · no install";
 
 export const LESSON_FLOW = [
   {
@@ -218,10 +244,19 @@ export const LESSON_FLOW = [
 
 export const DELIVERY_MODES = [
   "Live cohort / classroom",
+  "After-school & weekend programs",
+  "Scout troops & youth groups",
   "Hybrid",
   "Self-paced enrichment",
   "Homeschool / family use",
 ] as const;
+
+/** Where Kanam fits beyond the school day — use in partner/program copy. */
+export const PROGRAM_FIT_SHORT =
+  "after-school programs, weekend cohorts, and Boy Scout & Girl Scout troops";
+
+export const PROGRAM_FIT_BLURB =
+  "Built for classrooms — and just as strong for after-school programs, weekend cohorts, and Boy Scout and Girl Scout troops that want structured tech learning without a full-time CS specialist.";
 
 export const CHART_TYPES = ["bar", "pie", "line", "histogram", "scatter"] as const;
 

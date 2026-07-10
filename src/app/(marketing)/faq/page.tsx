@@ -14,25 +14,38 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { siteConfig } from "@/lib/site";
+import { DEVICE_READY_BLURB, PACING_BLURB, PROGRAM_FIT_SHORT } from "@/lib/learning-paths";
 
 export const metadata: Metadata = {
   title: "FAQ | Kanam Academy",
   description:
-    "FAQ: who Kanam is for, four learning paths, browser-only lessons, guided demo, live or async learning, instructor class codes, and how to get started.",
+    "FAQ: who Kanam is for, four learning paths, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
 };
 
 const faqs = [
   {
     q: "What is Kanam Academy?",
-    a: "A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four 8-week learning paths, interactive lessons, XP and badges, and progress you can see. Live instruction when you want a guide; structured async when you want to move at your own pace.",
+    a: `A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
   },
   {
     q: "Who is it for?",
-    a: "Teens and anyone learning tech who wants great live instruction or strong async classes — plus teachers, schools, families, and enrichment partners.",
+    a: `Teens and anyone learning tech — plus teachers, schools, families, ${PROGRAM_FIT_SHORT}, and enrichment partners.`,
   },
   {
     q: "What are the four learning paths?",
     a: "AI Literacy (16 lessons), Digital Literacy (16), AI + Python Starter Pack (13), and Data Analyst Track (14) — 60+ interactive lessons total, including the guided demo.",
+  },
+  {
+    q: "Is the schedule fixed at 8 weeks?",
+    a: `No. ${PACING_BLURB} Go faster, slower, or build a calendar around class periods, after-school blocks, weekend meetings, Scout troop nights, or family routines.`,
+  },
+  {
+    q: "Can after-school, weekend, or Scout programs use Kanam?",
+    a: "Yes. After-school programs, weekend cohorts, and Boy Scout and Girl Scout troops are a natural fit: create a class, share a code, assign lessons, and track progress — with coach notes so adult leaders can support without being CS experts.",
+  },
+  {
+    q: "What devices work with Kanam?",
+    a: DEVICE_READY_BLURB,
   },
   {
     q: "Can I try it without creating an account?",
@@ -40,11 +53,11 @@ const faqs = [
   },
   {
     q: "Do learners need to install software?",
-    a: "No. Kanam is browser-only and Chromebook-ready. Python and SQL run in the browser. No special software install.",
+    a: `No. ${DEVICE_READY_BLURB} Python and SQL run in the lesson.`,
   },
   {
     q: "Is this only live cohorts?",
-    a: "No. Supported models include live cohort / classroom, hybrid, self-paced enrichment, and homeschool / family use.",
+    a: "No. Supported models include live cohort / classroom, after-school and weekend programs, Scout troops and youth groups, hybrid, self-paced enrichment, and homeschool / family use.",
   },
   {
     q: "How do instructors use Kanam?",
@@ -52,7 +65,7 @@ const faqs = [
   },
   {
     q: "Do adults need to be CS experts?",
-    a: "No. Lessons include coach notes and plain-language explainers so adults can support with minimal prep.",
+    a: "No. Lessons include coach notes and plain-language explainers so adults can support with minimal prep — including teachers, after-school staff, and Scout leaders.",
   },
   {
     q: "How does assessment work?",
@@ -68,7 +81,7 @@ const faqs = [
   },
   {
     q: "How do I get started?",
-    a: "Try the guided lesson, create an account from Welcome, or request a pilot if you are a school or partner.",
+    a: "Try the guided lesson, create an account from Welcome, or request a pilot if you are a school, after-school program, Scout troop, or partner.",
   },
 ] as const;
 

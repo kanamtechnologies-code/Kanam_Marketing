@@ -18,7 +18,7 @@ const sans = Source_Sans_3({
 export const metadata: Metadata = {
   title: "Kanam Academy",
   description:
-    "Coding, AI, data, and digital literacy in the browser — for teens and anyone learning tech. Live instruction or structured async classes.",
+    "Coding, AI, data, and digital literacy for teens and anyone learning tech. Chromebook and mobile ready. Flexible schedule. Live instruction or structured async classes.",
   icons: {
     icon: "/images/Logo.png",
   },

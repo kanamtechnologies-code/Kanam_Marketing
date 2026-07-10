@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -8,13 +9,19 @@ import {
   SubpageShell,
 } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
-import { DELIVERY_MODES, STANDARDS_BLURB } from "@/lib/learning-paths";
+import {
+  DELIVERY_MODES,
+  DEVICE_READY_LABEL,
+  PROGRAM_FIT_BLURB,
+  PROGRAM_FIT_SHORT,
+  STANDARDS_BLURB,
+} from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "For schools & instructors | Kanam Academy",
+  title: "For schools & programs | Kanam Academy",
   description:
-    "Class codes, instructor dashboard, assignments, and roster progress. Chromebook-ready, standards-aligned, pilot-ready with a guided demo — no full-time CS specialist required for every session.",
+    "Class codes, instructor dashboard, and roster progress for classrooms, after-school and weekend programs, and Boy Scout & Girl Scout troops. Flexible schedule. Chromebook and mobile ready.",
 };
 
 export default function EducatorsPage() {
@@ -31,16 +38,16 @@ export default function EducatorsPage() {
     "Manageable without a full-time CS teacher for every minute",
     "Standards-aligned documentation for adoption conversations",
     "Evidence of mastery: auto-checks, CFUs, capstones, progress visibility",
-    "Chromebook-ready · no install · browser-only",
+    DEVICE_READY_LABEL,
     "Pilot-ready with a guided demo (no account required)",
-    "Flexible: class period, after-school, enrichment, hybrid",
+    "Flexible schedule for class periods, after-school, weekends, Scout troops, or hybrid — designed for ~8 weeks, built around your calendar",
   ] as const;
 
   return (
     <SubpageShell
-      eyebrow="For schools & instructors"
+      eyebrow="For schools & programs"
       title="Create a class. Share a code. See progress."
-      subtitle="Kanam gives instructors class codes, assignments, and roster visibility — so classrooms, after-school programs, and partners can run structured CS, AI, digital literacy, and data learning without chaos."
+      subtitle={`${PROGRAM_FIT_BLURB} Class codes, assignments, and roster visibility keep learning organized.`}
       actions={
         <>
           <Button asChild>
@@ -63,7 +70,7 @@ export default function EducatorsPage() {
         </>
       }
       toc={[
-        { href: "#why", label: "Why schools use Kanam" },
+        { href: "#why", label: "Why partners choose Kanam" },
         { href: "#tools", label: "Instructor tools" },
         { href: "#delivery", label: "Delivery models" },
         { href: "#standards", label: "Standards" },
@@ -71,17 +78,28 @@ export default function EducatorsPage() {
       ]}
     >
       <Section id="why" className="pt-0">
-        <H2>Why schools &amp; partners choose Kanam</H2>
-        <Band className="mt-5">
-          <ul className="space-y-3 text-sm text-muted-foreground">
-            {whySchools.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Band>
+        <H2>Why schools &amp; programs choose Kanam</H2>
+        <div className="mt-5 grid gap-6 lg:grid-cols-2 lg:items-center">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-foreground/10">
+            <Image
+              src="/images/product/instructor-woman-live.png"
+              alt="Instructor leading a live online coding class"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </figure>
+          <Band>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              {whySchools.map((item) => (
+                <li key={item} className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Band>
+        </div>
       </Section>
 
       <Section id="tools" className="border-t border-foreground/10 scroll-mt-24">
@@ -116,7 +134,11 @@ export default function EducatorsPage() {
 
       <Section id="delivery" className="border-t border-foreground/10 scroll-mt-24">
         <H2>Delivery models</H2>
-        <div className="mt-5 grid gap-4 sm:grid-cols-2">
+        <p className="mt-3 max-w-3xl text-muted-foreground leading-relaxed">
+          Run Kanam in a school day — or as a structured block for {PROGRAM_FIT_SHORT}.
+          Leaders get the same class codes, assignments, and progress view either way.
+        </p>
+        <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {DELIVERY_MODES.map((mode) => (
             <div
               key={mode}
@@ -127,9 +149,9 @@ export default function EducatorsPage() {
           ))}
         </div>
         <p className="mt-4 text-sm text-muted-foreground">
-          Site license, per-class, and after-school block language are available as
-          offering models. Contact us for a pilot conversation — we do not list unverified
-          district logos or enrollment counts.
+          Site license, per-class, after-school, and weekend block language are available
+          as offering models. Contact us for a pilot conversation — we do not list
+          unverified district logos or enrollment counts.
         </p>
       </Section>
 
@@ -152,7 +174,8 @@ export default function EducatorsPage() {
           <H2>Request a pilot</H2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
             Tell us your role, who you&apos;re supporting, and timeline. We&apos;ll help you
-            evaluate Kanam for a class period, after-school block, or enrichment program.
+            evaluate Kanam for a class period, after-school or weekend block, Scout troop,
+            or enrichment program.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button asChild>

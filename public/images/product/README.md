@@ -1,31 +1,35 @@
 # Product assets for the marketing site
 
-Drop real screenshots and photos here, then pass the path as `src` on
-`AssetPlaceholder` / `LessonCanvasPreview` components.
+Lifestyle photos and path imagery used across the marketing site.
+All people photos feature teens, parents, and instructors of color.
 
-## Priority shots
+## Lifestyle photos (unique per section)
+
+| Filename | Used on |
+|----------|---------|
+| `teen-girl-coding.png` | Homepage — How learning works |
+| `live-session-instructor.png` | Homepage — Schools & instructors |
+| `family-mom-daughter.png` | Homepage — Families & learners |
+| `instructor-woman-live.png` | Educators page |
+| `instructor-man-teaching.png` | How it works — Pacing & delivery |
+| `cohort-teens-learning.png` | How it works — Lesson flow |
+| `family-mom-son.png` | Parents — How to start |
+| `family-dad-son.png` | Parents — Homeschool & enrichment |
+
+## Path graphics (learning tracks)
+
+| Filename | Path |
+|----------|------|
+| `path-ai-literacy.png` | AI Literacy |
+| `path-digital-literacy.png` | Digital Literacy |
+| `path-ai-python.png` | AI + Python |
+| `path-data-analyst.png` | Data Analyst |
+
+Lifestyle teen photos are reserved for homepage/audience sections — not path cards.
+
+## Product screenshots (optional later)
 
 | Filename | What to capture |
 |----------|-----------------|
-| `lesson-canvas-hero.png` | Full lesson canvas (coach note + Python workspace + Run & check) — used in hero when ready |
-| `lesson-canvas-full.png` | Same, wider crop for "Inside the lesson" section |
-| `run-and-check-success.png` | After a successful Run & check (console + XP) |
-| `ai-safety-moment.png` | Expanded "AI safety moment" from Quickstart lesson |
-| `instructor-or-cohort.jpg` | Real instructor / cohort / family moment (not stock) |
-| `project-data-tracker.png` | Student Data Tracker output |
-| `project-quiz-game.png` | Quiz Game running |
-| `project-mini-game.png` | Mini Game |
-| `project-story-generator.png` | Story Generator |
-| `project-ai-helper.png` | AI Helper exercise |
-| `project-capstone.png` | Capstone presentation or final project |
-
-## How to wire
-
-In `HomeStory.tsx` / page components:
-
-```tsx
-<LessonCanvasPreview screenshotSrc="/images/product/lesson-canvas-hero.png" />
-<AssetPlaceholder slot="..." guidance="..." src="/images/product/lesson-canvas-full.png" />
-```
-
-Until files exist, labeled placeholders render automatically.
+| `lesson-canvas-hero.png` | Full lesson canvas for hero |
+| `run-and-check-success.png` | Successful Run & check |

@@ -24,7 +24,7 @@ const helpOptionsByRole: Record<Role, string[]> = {
   teacher: [
     "Class codes & instructor tools",
     "Assigning lessons",
-    "Classroom / after-school use",
+    "Classroom / after-school / weekend use",
     "Curriculum overview",
     "Other",
   ],
@@ -32,11 +32,13 @@ const helpOptionsByRole: Record<Role, string[]> = {
     "Request a pilot",
     "Standards alignment & documentation",
     "Implementation / scheduling",
-    "Site license / per-class / after-school",
+    "Site license / per-class / after-school / weekend",
     "Other",
   ],
   partner: [
     "Request a pilot",
+    "After-school / weekend program",
+    "Boy Scout or Girl Scout troop",
     "Partnerships & enrichment programs",
     "Standards alignment & documentation",
     "Other",
@@ -181,7 +183,7 @@ export function ContactForm() {
               <option value="family">Family / Homeschool</option>
               <option value="teacher">Teacher / Instructor</option>
               <option value="school">School / District</option>
-              <option value="partner">Partner / Enrichment</option>
+              <option value="partner">Partner / after-school / Scout troop</option>
               <option value="other">Other</option>
             </select>
           </div>
@@ -279,6 +281,12 @@ export function ContactForm() {
                     <option value="Middle school">Middle school</option>
                     <option value="High school">High school</option>
                     <option value="Mixed teens">Mixed teens</option>
+                    <option value="After-school / weekend program">
+                      After-school / weekend program
+                    </option>
+                    <option value="Boy Scout or Girl Scout troop">
+                      Boy Scout or Girl Scout troop
+                    </option>
                     <option value="Adult / open enrollment">Adult / open enrollment</option>
                     <option value="Mixed / Other">Mixed / Other</option>
                     <option value="Not sure yet">Not sure yet</option>

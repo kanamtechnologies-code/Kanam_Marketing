@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Request a pilot | Kanam Academy",
   description:
-    "Request a pilot or ask a question. For schools, teachers, families, and anyone evaluating Kanam Academy — live instruction or structured async tech learning.",
+    "Request a pilot or ask a question. For schools, teachers, families, and anyone evaluating Kanam Academy — Chromebook and mobile ready, live instruction or structured async tech learning.",
 };
 
 export default function ContactPage() {
@@ -19,7 +19,7 @@ export default function ContactPage() {
     <SubpageShell
       eyebrow="Contact"
       title="Request a pilot or ask a question"
-      subtitle="Tell us your role, who you’re supporting, and your timeline. We’ll help you evaluate Kanam for a classroom, after-school block, enrichment program, or self-paced learning."
+      subtitle="Tell us your role, who you’re supporting, and your timeline. We’ll help you evaluate Kanam for a classroom, after-school or weekend program, Scout troop, enrichment block, or self-paced learning — and build a schedule around your needs."
       actions={
         <>
           <Button asChild>
@@ -41,9 +41,9 @@ export default function ContactPage() {
             <Band>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
-                  <h3 className="text-lg font-semibold">Schools &amp; partners</h3>
+                  <h3 className="text-lg font-semibold">Schools &amp; programs</h3>
                   <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground leading-relaxed marker:text-[var(--brand)]">
-                    <li>Pilot for a class, after-school, or enrichment block</li>
+                    <li>Pilot for a class, after-school, weekend, or Scout troop</li>
                     <li>Standards packet &amp; implementation questions</li>
                     <li>Instructor tools: class codes, roster, assignments</li>
                   </ul>

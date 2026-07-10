@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -12,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import {
   getLearningPath,
   LEARNING_PATHS,
+  DEVICE_READY_LABEL,
+  PACING_LABEL,
   type LearningPathSlug,
 } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
@@ -30,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!path) return { title: "Learning path | Kanam Academy" };
   return {
     title: `${path.name} | Kanam Academy`,
-    description: `${path.subtitle}. ${path.lessons} interactive lessons, 8-week pacing, capstone: ${path.capstone}.`,
+    description: `${path.subtitle}. ${path.lessons} interactive lessons, flexible schedule, capstone: ${path.capstone}.`,
   };
 }
 
@@ -62,47 +65,67 @@ export default async function LearningPathDetailPage({ params }: Props) {
       }
       toc={[
         { href: "#overview", label: "Overview" },
-        { href: "#weeks", label: "Weekly themes" },
+        { href: "#weeks", label: "Suggested themes" },
         { href: "#lessons", label: "Lesson list" },
         { href: "#capstone", label: "Capstone" },
       ]}
     >
       <Section id="overview" className="pt-0">
-        <Band>
-          <H2>Overview</H2>
-          <dl className="mt-4 space-y-2 text-sm">
-            {[
-              ["Lessons", String(path.lessons)],
-              ["Pacing", "8 weeks · ~2 sessions / week"],
-              ["Who it's for", "Teens & anyone learning tech"],
-              ["Format", "Browser-based · live or async · no install"],
-            ].map(([label, value]) => (
-              <div
-                key={label}
-                className="grid grid-cols-[120px_1fr] gap-3 border-b border-foreground/10 py-2 last:border-b-0"
-              >
-                <dt className="font-semibold">{label}</dt>
-                <dd className="text-muted-foreground">{value}</dd>
-              </div>
-            ))}
-          </dl>
-          <p className="mt-5 text-muted-foreground leading-relaxed">{path.outcome}</p>
-          {path.prerequisite ? (
-            <p className="mt-3 text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">Prerequisite:</span>{" "}
-              {path.prerequisite}
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:items-start">
+          <Band>
+            <H2>Overview</H2>
+            <dl className="mt-4 space-y-2 text-sm">
+              {[
+                ["Lessons", String(path.lessons)],
+                ["Schedule", PACING_LABEL],
+                ["Who it's for", "Teens & anyone learning tech"],
+                ["Format", `Live or async · ${DEVICE_READY_LABEL}`],
+              ].map(([label, value]) => (
+                <div
+                  key={label}
+                  className="grid grid-cols-[120px_1fr] gap-3 border-b border-foreground/10 py-2 last:border-b-0"
+                >
+                  <dt className="font-semibold">{label}</dt>
+                  <dd className="text-muted-foreground">{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-5 text-muted-foreground leading-relaxed">
+              {path.outcome}
             </p>
-          ) : null}
-          <p className="mt-3 text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">Who it&apos;s for:</span>{" "}
-            {path.whoFor}
-          </p>
-          <p className="mt-3 text-sm font-medium text-foreground">{path.marketingAngle}</p>
-        </Band>
+            {path.prerequisite ? (
+              <p className="mt-3 text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">Prerequisite:</span>{" "}
+                {path.prerequisite}
+              </p>
+            ) : null}
+            <p className="mt-3 text-sm text-muted-foreground">
+              <span className="font-semibold text-foreground">Who it&apos;s for:</span>{" "}
+              {path.whoFor}
+            </p>
+            <p className="mt-3 text-sm font-medium text-foreground">
+              {path.marketingAngle}
+            </p>
+          </Band>
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-foreground/10">
+            <Image
+              src={path.image}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 35vw, 100vw"
+              priority
+            />
+          </figure>
+        </div>
       </Section>
 
       <Section id="weeks" className="border-t border-foreground/10 scroll-mt-24">
-        <H2>Weekly themes</H2>
+        <H2>Suggested weekly themes</H2>
+        <p className="mt-2 max-w-3xl text-sm text-muted-foreground leading-relaxed">
+          Week labels are a suggested structure — move faster, slower, or rearrange to
+          fit your calendar.
+        </p>
         <ol className="mt-5 grid gap-3 sm:grid-cols-2">
           {path.weeklyThemes.map((theme, idx) => (
             <li

@@ -8,7 +8,7 @@ export const siteConfig = {
   name: "Kanam Academy",
   tagline: "Move forward.",
   description:
-    "Browser-based coding, AI, data, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Four learning paths. Progress you can see.",
+    "Coding, AI, data, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Four learning paths. Flexible schedule. Chromebook and mobile ready. Progress you can see.",
   links: {
     app: `${normalizedBase}/welcome`,
     demo:
@@ -24,7 +24,7 @@ export const siteConfig = {
     { href: "/", label: "Home" },
     { href: "/learning-paths", label: "Learning paths" },
     { href: "/how-it-works", label: "How it works" },
-    { href: "/educators", label: "For schools" },
+    { href: "/educators", label: "For schools & programs" },
     { href: "/parents", label: "For families & learners" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },

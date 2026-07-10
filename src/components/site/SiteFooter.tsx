@@ -19,7 +19,8 @@ export function SiteFooter() {
             </p>
             <p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
               Coding, AI, data, and digital literacy for teens and anyone learning tech —
-              live instruction or structured async classes. Progress you can see.
+              live instruction or structured async classes. Chromebook and mobile ready.
+              Flexible schedule. Progress you can see.
             </p>
             <p className="mt-4 text-sm text-[var(--muted)]">
               Contact:{" "}

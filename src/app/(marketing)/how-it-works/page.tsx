@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import {
@@ -11,7 +12,12 @@ import { Button } from "@/components/ui/button";
 import {
   CHART_TYPES,
   DELIVERY_MODES,
+  DEVICE_READY_BLURB,
+  DEVICE_READY_LABEL,
   LESSON_FLOW,
+  PACING_BLURB,
+  PACING_DESIGNED,
+  PACING_FLEXIBLE,
   STANDARDS_BLURB,
 } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
@@ -19,7 +25,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How it works | Kanam Academy",
   description:
-    "How Kanam lessons work: learn it, practice with instant feedback, reflect, earn XP. 8-week pacing, browser-only Python and SQL, standards-aligned documentation.",
+    "How Kanam lessons work: learn it, practice with instant feedback, reflect, earn XP. Flexible schedule, Chromebook and mobile ready, standards-aligned documentation.",
 };
 
 export default function HowItWorksPage() {
@@ -43,7 +49,7 @@ export default function HowItWorksPage() {
   ] as const;
 
   const tech = [
-    "Cloud web app · browser-only (Chromebooks and laptops)",
+    `Cloud web app · ${DEVICE_READY_LABEL}`,
     "No install / no special software",
     "Secure learner accounts",
     "Python lessons run in-browser",
@@ -70,30 +76,43 @@ export default function HowItWorksPage() {
       toc={[
         { href: "#flow", label: "Lesson flow" },
         { href: "#structure", label: "Inside a lesson" },
-        { href: "#pacing", label: "Pacing & delivery" },
+        { href: "#pacing", label: "Schedule & delivery" },
         { href: "#mastery", label: "Evidence of mastery" },
         { href: "#tech", label: "Technology" },
         { href: "#standards", label: "Standards" },
       ]}
     >
       <Section id="flow" className="pt-0">
-        <H2>Learn it → Do the activity → Reflect → Earn</H2>
-        <ol className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {LESSON_FLOW.map((step, idx) => (
-            <li
-              key={step.title}
-              className="rounded-2xl border border-foreground/10 bg-white/80 p-5"
-            >
-              <div className="font-mono text-xs font-semibold text-[var(--brand-2)]">
-                {String(idx + 1).padStart(2, "0")}
-              </div>
-              <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                {step.body}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center">
+          <div>
+            <H2>Learn it → Do the activity → Reflect → Earn</H2>
+            <ol className="mt-6 grid gap-4 sm:grid-cols-2">
+              {LESSON_FLOW.map((step, idx) => (
+                <li
+                  key={step.title}
+                  className="rounded-2xl border border-foreground/10 bg-white/80 p-5"
+                >
+                  <div className="font-mono text-xs font-semibold text-[var(--brand-2)]">
+                    {String(idx + 1).padStart(2, "0")}
+                  </div>
+                  <h3 className="mt-2 text-lg font-semibold">{step.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {step.body}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-foreground/10">
+            <Image
+              src="/images/product/cohort-teens-learning.png"
+              alt="Teens collaborating on coding lessons together"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
+          </figure>
+        </div>
       </Section>
 
       <Section id="structure" className="border-t border-foreground/10 scroll-mt-24">
@@ -114,29 +133,43 @@ export default function HowItWorksPage() {
       </Section>
 
       <Section id="pacing" className="border-t border-foreground/10 scroll-mt-24">
-        <H2>Pacing &amp; delivery</H2>
-        <div className="mt-5 grid gap-4 md:grid-cols-2">
-          <Band>
-            <h3 className="text-lg font-semibold">Path pacing</h3>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>8 weeks per path</li>
-              <li>~2 sessions per week</li>
-              <li>Dashboard labels lessons as Week X · Session Y</li>
-              <li>Works self-paced, with light mentor support, or as a live cohort</li>
-            </ul>
-          </Band>
-          <Band>
-            <h3 className="text-lg font-semibold">Delivery modes</h3>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              {DELIVERY_MODES.map((mode) => (
-                <li key={mode}>{mode}</li>
-              ))}
-            </ul>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Site license, per-class, and after-school block models are available for
-              schools and partners.
-            </p>
-          </Band>
+        <H2>Schedule &amp; delivery</H2>
+        <p className="mt-2 max-w-3xl text-sm text-muted-foreground leading-relaxed">
+          {PACING_BLURB}
+        </p>
+        <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-foreground/10">
+            <Image
+              src="/images/product/instructor-man-teaching.png"
+              alt="Instructor teaching a live online class"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 35vw, 100vw"
+            />
+          </figure>
+          <div className="grid gap-4 md:grid-cols-2">
+            <Band>
+              <h3 className="text-lg font-semibold">Flexible schedule</h3>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                <li>{PACING_DESIGNED}</li>
+                <li>{PACING_FLEXIBLE}</li>
+                <li>Dashboard labels lessons as Week X · Session Y (suggested structure)</li>
+                <li>Works self-paced, with light mentor support, or as a live cohort</li>
+              </ul>
+            </Band>
+            <Band>
+              <h3 className="text-lg font-semibold">Delivery modes</h3>
+              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                {DELIVERY_MODES.map((mode) => (
+                  <li key={mode}>{mode}</li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Site license, per-class, after-school, and weekend block models are
+                available for schools, Scout troops, and program partners.
+              </p>
+            </Band>
+          </div>
         </div>
       </Section>
 
@@ -166,7 +199,7 @@ export default function HowItWorksPage() {
             ))}
           </ul>
           <p className="mt-4 text-sm text-muted-foreground">
-            We do not claim native mobile apps, offline desktop installs, or that an
+            {DEVICE_READY_BLURB} We do not claim offline desktop installs, or that an
             instructor must be a CS expert to run a session.
           </p>
         </Band>
