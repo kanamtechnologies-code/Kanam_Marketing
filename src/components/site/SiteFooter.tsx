@@ -3,8 +3,19 @@ import Link from "next/link";
 import { Container } from "@/components/Container";
 import { siteConfig } from "@/lib/site";
 
+function isConfiguredSocial(href: string) {
+  try {
+    const host = new URL(href).hostname.replace(/^www\./, "");
+    // Hide bare platform homepages until real profile URLs are set in env.
+    return !["instagram.com", "linkedin.com", "youtube.com"].includes(host);
+  } catch {
+    return false;
+  }
+}
+
 export function SiteFooter() {
   const year = new Date().getFullYear();
+  const socials = siteConfig.socials.filter((item) => isConfiguredSocial(item.href));
 
   return (
     <footer className="border-t border-[rgb(var(--brand-2-rgb)/0.2)] bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.08)] to-[rgb(var(--background))]">
@@ -48,6 +59,12 @@ export function SiteFooter() {
               >
                 Get started / Sign in →
               </a>
+              <Link
+                className="text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+                href="/one-pager"
+              >
+                One-pager (print / PDF) →
+              </Link>
             </div>
           </div>
 
@@ -73,10 +90,10 @@ export function SiteFooter() {
 
               <div>
                 <div className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
-                  Social
+                  Connect
                 </div>
                 <ul className="mt-3 space-y-2">
-                  {siteConfig.socials.map((item) => (
+                  {socials.map((item) => (
                     <li key={item.label}>
                       <a
                         className="text-sm text-zinc-700 hover:text-zinc-950"
@@ -88,6 +105,19 @@ export function SiteFooter() {
                       </a>
                     </li>
                   ))}
+                  <li>
+                    <a
+                      className="text-sm text-zinc-700 hover:text-zinc-950"
+                      href={`mailto:${siteConfig.links.email}`}
+                    >
+                      {siteConfig.links.email}
+                    </a>
+                  </li>
+                  <li>
+                    <Link className="text-sm text-zinc-700 hover:text-zinc-950" href="/contact">
+                      Contact form
+                    </Link>
+                  </li>
                 </ul>
               </div>
 

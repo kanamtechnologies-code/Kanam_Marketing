@@ -1,7 +1,15 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-type Role = "parent_guardian" | "educator_school" | "program_partner" | "other";
+type Role =
+  | "family"
+  | "teacher"
+  | "school"
+  | "partner"
+  | "other"
+  | "parent_guardian"
+  | "educator_school"
+  | "program_partner";
 
 type ContactRequestBody = {
   name?: string;
@@ -19,10 +27,14 @@ type ContactRequestBody = {
 };
 
 const roleLabels: Record<Role, string> = {
+  family: "Family / Homeschool",
+  teacher: "Teacher / Instructor",
+  school: "School / District",
+  partner: "Partner / After-school / Scout troop",
+  other: "Other",
   parent_guardian: "Parent/Guardian",
   educator_school: "Educator/School",
   program_partner: "Program Partner",
-  other: "Other",
 };
 
 function sanitize(value: unknown): string {
