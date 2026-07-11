@@ -257,28 +257,38 @@ export default function OnePagerPage() {
             Get started today
           </h2>
           <div className="mt-3 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4 print:mt-2 print:gap-2 print:grid-cols-4">
-            <div className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 print:rounded-lg print:py-2">
+            <a
+              href={siteConfig.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.45)] print:rounded-lg print:py-2"
+            >
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
                 Try it
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--foreground)] print:text-[0.8rem]">
-                Guided lesson demo
+                Guided lesson demo →
               </p>
-              <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
+              <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] underline-offset-2 print:text-[0.65rem]">
                 {siteConfig.links.demo}
               </p>
-            </div>
-            <div className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 print:rounded-lg print:py-2">
+            </a>
+            <a
+              href={SITE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.45)] print:rounded-lg print:py-2"
+            >
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
                 Learn more
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--foreground)] print:text-[0.8rem]">
-                Marketing site
+                Marketing site →
               </p>
               <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
                 {SITE_URL}
               </p>
-            </div>
+            </a>
             <Link
               href="/one-pager/pricing"
               className="rounded-xl border border-[rgb(var(--brand-2-rgb)/0.3)] bg-white/90 px-3 py-2.5 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.55)] print:rounded-lg print:py-2"
@@ -293,17 +303,20 @@ export default function OnePagerPage() {
                 {SITE_URL}/one-pager/pricing
               </p>
             </Link>
-            <div className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 print:rounded-lg print:py-2">
+            <a
+              href={`mailto:${siteConfig.links.email}`}
+              className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.45)] print:rounded-lg print:py-2"
+            >
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
                 Schools & pilots
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--foreground)] print:text-[0.8rem]">
-                Request a conversation
+                Request a conversation →
               </p>
               <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
                 {siteConfig.links.email}
               </p>
-            </div>
+            </a>
           </div>
         </section>
 
