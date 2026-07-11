@@ -32,6 +32,12 @@ export default function OnePagerPage() {
         <div className="flex flex-wrap items-center gap-2">
           <PrintButton />
           <Link
+            href="/one-pager/pricing"
+            className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
+          >
+            Pricing one-pager
+          </Link>
+          <Link
             href="/"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
@@ -69,6 +75,14 @@ export default function OnePagerPage() {
             <div className="text-right text-xs leading-relaxed text-white/80 sm:text-sm">
               <p className="font-semibold text-white">{SITE_URL}</p>
               <p>{siteConfig.links.email}</p>
+              <p className="mt-1.5">
+                <Link
+                  href="/one-pager/pricing"
+                  className="font-semibold text-white underline underline-offset-2 hover:text-white/90"
+                >
+                  Pricing one-pager →
+                </Link>
+              </p>
             </div>
           </div>
         </header>
@@ -242,7 +256,7 @@ export default function OnePagerPage() {
           <h2 className="font-display text-lg font-semibold text-[var(--foreground)] print:text-base">
             Get started today
           </h2>
-          <div className="mt-3 grid gap-2.5 sm:grid-cols-3 print:mt-2 print:gap-2">
+          <div className="mt-3 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4 print:mt-2 print:gap-2 print:grid-cols-4">
             <div className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 print:rounded-lg print:py-2">
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
                 Try it
@@ -265,6 +279,20 @@ export default function OnePagerPage() {
                 {SITE_URL}
               </p>
             </div>
+            <Link
+              href="/one-pager/pricing"
+              className="rounded-xl border border-[rgb(var(--brand-2-rgb)/0.3)] bg-white/90 px-3 py-2.5 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.55)] print:rounded-lg print:py-2"
+            >
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
+                Pricing
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[var(--foreground)] print:text-[0.8rem]">
+                Pricing one-pager →
+              </p>
+              <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
+                {SITE_URL}/one-pager/pricing
+              </p>
+            </Link>
             <div className="rounded-xl border border-zinc-900/10 bg-white/90 px-3 py-2.5 print:rounded-lg print:py-2">
               <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
                 Schools & pilots
@@ -277,9 +305,6 @@ export default function OnePagerPage() {
               </p>
             </div>
           </div>
-          <p className="mt-3 text-[0.75rem] text-[var(--muted)] print:text-[0.68rem]">
-            Pricing one-pager: {SITE_URL}/one-pager/pricing
-          </p>
         </section>
 
         <footer className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-900/10 pt-3 text-[0.7rem] text-[var(--muted)] print:mt-3 print:pt-2">
@@ -287,7 +312,12 @@ export default function OnePagerPage() {
             {siteConfig.name} · Move forward. · Live instruction or structured
             async.
           </p>
-          <p className="font-medium text-[var(--brand-2)]">{SITE_URL}</p>
+          <Link
+            href="/one-pager/pricing"
+            className="font-medium text-[var(--brand-2)] underline-offset-2 hover:underline"
+          >
+            Pricing →
+          </Link>
         </footer>
       </article>
 
