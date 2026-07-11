@@ -16,11 +16,19 @@ const sans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "Kanam Academy",
+  title: {
+    default: "Kanam Academy",
+    template: "%s | Kanam Academy",
+  },
   description:
     "Coding, AI, data, and digital literacy for teens and anyone learning tech. Chromebook and mobile ready. Flexible schedule. Live instruction or structured async classes.",
   icons: {
-    icon: "/images/Logo.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 };
 
