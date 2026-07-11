@@ -9,6 +9,7 @@ import {
   LEARNING_PATHS,
   LESSONS_COUNT_LABEL,
   PACING_BLURB,
+  PATHS_COUNT_LABEL,
   PROGRAM_FIT_SHORT,
 } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
@@ -94,7 +95,7 @@ export default function OnePagerPage() {
             async.
           </h1>
           <p className="mt-2 max-w-3xl text-[0.95rem] leading-relaxed text-[var(--muted)] print:mt-1.5 print:text-[0.85rem]">
-            Kanam Academy is a browser-based platform with four learning paths,{" "}
+            Kanam Academy is a browser-based platform with five learning paths,{" "}
             {LESSONS_COUNT_LABEL} interactive lessons, instant feedback, and progress
             adults can see. {PACING_BLURB} {DEVICE_READY_BLURB}
           </p>
@@ -103,7 +104,7 @@ export default function OnePagerPage() {
         {/* Proof strip */}
         <section className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4 print:mt-3 print:gap-1.5">
           {[
-            { label: "Learning paths", value: "4" },
+            { label: "Learning paths", value: PATHS_COUNT_LABEL },
             { label: "Lessons", value: LESSONS_COUNT_LABEL },
             { label: "Schedule", value: "Flexible" },
             { label: "Format", value: "Live + async" },
@@ -156,7 +157,7 @@ export default function OnePagerPage() {
         <section className="mt-5 print:mt-3.5">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-display text-lg font-semibold text-[var(--foreground)] print:text-base">
-              Four learning paths
+              Five learning paths
             </h2>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
               Flexible schedule

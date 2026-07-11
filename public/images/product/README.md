@@ -24,6 +24,7 @@ All people photos feature teens, parents, and instructors of color.
 | `path-digital-literacy.png` | Digital Literacy |
 | `path-ai-python.png` | AI + Python |
 | `path-data-analyst.png` | Data Analyst |
+| `path-cybersecurity.png` | Cybersecurity |
 
 Lifestyle teen photos are reserved for homepage/audience sections — not path cards.
 

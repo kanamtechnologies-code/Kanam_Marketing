@@ -14,26 +14,26 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { siteConfig } from "@/lib/site";
-import { DEVICE_READY_BLURB, PACING_BLURB, PROGRAM_FIT_SHORT } from "@/lib/learning-paths";
+import { DEVICE_READY_BLURB, LESSONS_COUNT_LABEL, PACING_BLURB, PATHS_LIST_SHORT, PROGRAM_FIT_SHORT } from "@/lib/learning-paths";
 
 export const metadata: Metadata = {
   title: "FAQ | Kanam Academy",
   description:
-    "FAQ: who Kanam is for, four learning paths, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
+    "FAQ: who Kanam is for, five learning paths, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
 };
 
 const faqs = [
   {
     q: "What is Kanam Academy?",
-    a: `A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
+    a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, and cybersecurity — with five learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
   },
   {
     q: "Who is it for?",
     a: `Teens and anyone learning tech — plus teachers, schools, families, ${PROGRAM_FIT_SHORT}, and enrichment partners.`,
   },
   {
-    q: "What are the four learning paths?",
-    a: "AI Literacy (16 lessons), Digital Literacy (16), AI + Python Starter Pack (13), and Data Analyst Track (14) — 60+ interactive lessons total, including the guided demo.",
+    q: "What are the five learning paths?",
+    a: `AI Literacy (16 lessons), Digital Literacy (16), Cybersecurity (16), AI + Python Starter Pack (14), and Data Analyst Track (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
   },
   {
     q: "Is the schedule fixed at 8 weeks?",
@@ -57,7 +57,7 @@ const faqs = [
   },
   {
     q: "Is this only live cohorts?",
-    a: "No. Supported models include live cohort / classroom, after-school and weekend programs, Scout troops and youth groups, hybrid, self-paced enrichment, and homeschool / family use.",
+    a: "No. Supported models include live cohort / classroom, after-school and weekend programs, Scout troops and youth groups, hybrid, self-paced enrichment, and homeschool / family use. Self-paced learners can get a self-paced class code to follow a path on their own.",
   },
   {
     q: "How do instructors use Kanam?",
@@ -80,8 +80,12 @@ const faqs = [
     a: "It builds on intro Python foundations (recommended after starting AI + Python). Learners write real SQL and use charts (bar, pie, line, histogram, scatter) in the browser.",
   },
   {
+    q: "What about the Cybersecurity path?",
+    a: "Sixteen lessons of high-school cyber fundamentals focused on defending systems, data, and people — not learning to hack. Capstone: Defend the Scenario.",
+  },
+  {
     q: "How do I get started?",
-    a: "Try the guided lesson, create an account from Welcome, or request a pilot if you are a school, after-school program, Scout troop, or partner.",
+    a: "Try the guided lesson, create an account from Welcome (teachers share a class code; self-paced learners can get a self-paced class code), or request a pilot if you are a school, after-school program, Scout troop, or partner.",
   },
 ] as const;
 
@@ -122,7 +126,7 @@ export default function FaqPage() {
             </Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link href="/learning-paths">See the four learning paths</Link>
+            <Link href="/learning-paths">See the five learning paths</Link>
           </Button>
         </div>
       </Section>

@@ -9,21 +9,21 @@ import {
   SubpageShell,
 } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
-import { LEARNING_PATHS, LESSONS_COUNT_LABEL, PACING_BLURB } from "@/lib/learning-paths";
+import { LEARNING_PATHS, LESSONS_COUNT_LABEL, PACING_BLURB, PATHS_LIST_SHORT } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Learning paths | Kanam Academy",
   description:
-    "Four learning paths: AI Literacy, Digital Literacy, AI + Python, and Data Analyst — 60+ interactive lessons. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async.",
+    `Five learning paths: ${PATHS_LIST_SHORT} — ${LESSONS_COUNT_LABEL} interactive lessons. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async.`,
 };
 
 export default function LearningPathsPage() {
   return (
     <SubpageShell
       eyebrow="Learning paths"
-      title="Four learning paths. One platform."
-      subtitle={`${LESSONS_COUNT_LABEL} interactive lessons across AI Literacy, Digital Literacy, AI + Python, and Data Analyst. ${PACING_BLURB} Live, hybrid, or self-paced.`}
+      title="Five learning paths. One platform."
+      subtitle={`${LESSONS_COUNT_LABEL} interactive lessons across ${PATHS_LIST_SHORT}. ${PACING_BLURB} Live, hybrid, or self-paced.`}
       actions={
         <>
           <Button asChild>

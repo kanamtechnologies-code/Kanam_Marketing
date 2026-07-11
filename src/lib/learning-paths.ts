@@ -2,7 +2,8 @@ export type LearningPathSlug =
   | "ai-literacy"
   | "digital-literacy"
   | "ai-python"
-  | "data-analyst";
+  | "data-analyst"
+  | "cybersecurity";
 
 export type LearningPath = {
   slug: LearningPathSlug;
@@ -109,11 +110,11 @@ export const LEARNING_PATHS: LearningPath[] = [
     slug: "ai-python",
     name: "AI + Python Starter Pack",
     shortName: "AI + Python",
-    lessons: 13,
+    lessons: 14,
     subtitle: "Build your first AI helper with Python",
     outcome:
-      "Real Python fundamentals framed as teaching an AI helper exact instructions: output, variables, and input → conditionals → loops → lists and dicts → functions and parameters → rule-driven helper → AI NPC capstone.",
-    capstone: "Build Your AI NPC",
+      "Real Python fundamentals framed as teaching an AI helper exact instructions: output, variables, and input → conditionals → loops → lists and dicts → functions and parameters → rule-driven helper → AI NPC → Quest Adventure Bot capstone.",
+    capstone: "Quest Adventure Bot",
     marketingAngle:
       "Students don’t just learn about coding — they write and run Python in the browser and finish with a project.",
     whoFor: "Beginners ready to write and run real Python in the browser — with live help or async practice.",
@@ -125,7 +126,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Giving AI a Memory",
       "Reusable Skills",
       "Smart, Rule-Driven AI",
-      "Capstone: Build Your AI NPC",
+      "Capstone: Quest Adventure Bot",
     ],
     lessonTitles: [
       "My First AI Helper",
@@ -141,6 +142,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Giving Functions Better Information (Parameters)",
       "Guiding AI with Rules",
       "Build Your AI NPC",
+      "Capstone: Quest Adventure Bot",
     ],
     image: "/images/product/path-ai-python.png",
   },
@@ -186,15 +188,63 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     image: "/images/product/path-data-analyst.png",
   },
+  {
+    slug: "cybersecurity",
+    name: "Cybersecurity",
+    shortName: "Cybersecurity",
+    lessons: 16,
+    subtitle: "High-school cyber fundamentals — defend systems, data, and people",
+    outcome:
+      "Students learn defensive cybersecurity foundations: threats and risk, account hygiene, phishing defense, networks and secure connections, malware awareness, privacy and data protection, incident response basics, ethics and responsible reporting — finishing by defending a realistic scenario.",
+    capstone: "Defend the Scenario",
+    marketingAngle:
+      "Students learn to defend systems, data, and people — not how to hack.",
+    whoFor:
+      "Teens and beginners who want practical cyber defense skills for school, work, and everyday life online.",
+    weeklyThemes: [
+      "What Cybersecurity Is",
+      "People & Accounts",
+      "Social Engineering Defense",
+      "Networks & Safe Connections",
+      "Malware & Software Hygiene",
+      "Privacy & Data Protection",
+      "Incidents, Ethics & Careers",
+      "Capstone: Defend the Scenario",
+    ],
+    lessonTitles: [
+      "What Is Cybersecurity?",
+      "Why Systems Need Defenders",
+      "Threats, Risks & What Defenders Do",
+      "People, Process & Technology",
+      "Passwords, MFA & Account Hygiene",
+      "Phishing & Social Engineering Defense",
+      "Networks at a Glance",
+      "Firewalls & Secure Connections",
+      "Malware Awareness & Safe Software",
+      "Privacy, Data & Permissions",
+      "Secure Sharing & Cloud Habits",
+      "Incident Response Basics",
+      "Ethics & Responsible Reporting",
+      "Careers in Cyber Defense",
+      "Scenario Planning",
+      "Capstone: Defend the Scenario",
+    ],
+    image: "/images/product/path-cybersecurity.png",
+  },
 ];
 
 export const TOTAL_LESSONS = LEARNING_PATHS.reduce((sum, p) => sum + p.lessons, 0);
 
-/** Marketing total — includes the guided demo lesson alongside the four paths. */
-export const LESSONS_COUNT_LABEL = "60+";
+/** Marketing total across the five paths (16+16+16+14+14). */
+export const LESSONS_COUNT_LABEL = "76";
+
+export const PATHS_COUNT_LABEL = "5";
+
+export const PATHS_LIST_SHORT =
+  "AI Literacy, Digital Literacy, AI + Python, Data Analyst, and Cybersecurity";
 
 export const PROOF_POINTS = [
-  { label: "Learning paths", value: "4" },
+  { label: "Learning paths", value: PATHS_COUNT_LABEL },
   { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
   { label: "Schedule", value: "Flexible" },
   { label: "Format", value: "Live + async" },
@@ -233,7 +283,7 @@ export const LESSON_FLOW = [
   },
   {
     title: "Reflect",
-    body: "Ethics or reflection moments on AI, data, or digital citizenship.",
+    body: "Ethics or reflection moments on AI, data, cyber defense, or digital citizenship.",
   },
   {
     title: "Earn XP & badges",

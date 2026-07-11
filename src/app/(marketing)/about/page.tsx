@@ -31,7 +31,7 @@ export default function AboutPage() {
             </Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link href="/learning-paths">See the four learning paths</Link>
+            <Link href="/learning-paths">See the five learning paths</Link>
           </Button>
         </>
       }
@@ -46,12 +46,12 @@ export default function AboutPage() {
         <Band>
           <H2>What Kanam Academy is</H2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            Browser-based coding, AI literacy, digital literacy, and data skills. Every
-            lesson is designed to explain, check, and correct itself — so learners can
+            Browser-based coding, AI literacy, digital literacy, data, and cybersecurity.
+            Every lesson is designed to explain, check, and correct itself — so learners can
             progress confidently and instructors or families can support with minimal prep.
           </p>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            One platform. Four learning paths. Interactive lessons. Auto-feedback. Progress
+            One platform. Five learning paths. Interactive lessons. Auto-feedback. Progress
             visibility for instructors. Demo mode for families and decision-makers.{" "}
             {DEVICE_READY_BLURB} {PACING_BLURB}
           </p>
@@ -62,17 +62,17 @@ export default function AboutPage() {
         <H2>The problem we solve</H2>
         <Band className="mt-5">
           <p className="text-muted-foreground leading-relaxed">
-            People need credible pathways into coding, AI, data, and digital citizenship —
-            not more unstructured screen time. Schools and programs need something
-            standards-aligned, measurable, and manageable without requiring a full-time CS
-            specialist for every session. Families and self-paced learners need structure
-            that still feels human.
+            People need credible pathways into coding, AI, data, cybersecurity, and digital
+            citizenship — not more unstructured screen time. Schools and programs need
+            something standards-aligned, measurable, and manageable without requiring a
+            full-time CS specialist for every session. Families and self-paced learners need
+            structure that still feels human.
           </p>
         </Band>
       </Section>
 
       <Section id="learning-paths" className="border-t border-foreground/10 scroll-mt-24">
-        <H2>Four learning paths · {LESSONS_COUNT_LABEL} lessons</H2>
+        <H2>Five learning paths · {LESSONS_COUNT_LABEL} lessons</H2>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {LEARNING_PATHS.map((p) => (
             <li key={p.slug}>

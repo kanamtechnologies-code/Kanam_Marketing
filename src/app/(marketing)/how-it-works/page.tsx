@@ -69,7 +69,7 @@ export default function HowItWorksPage() {
             </Link>
           </Button>
           <Button asChild variant="secondary">
-            <Link href="/learning-paths">See the four learning paths</Link>
+            <Link href="/learning-paths">See the five learning paths</Link>
           </Button>
         </>
       }

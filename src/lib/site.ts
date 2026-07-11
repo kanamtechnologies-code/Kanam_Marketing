@@ -8,7 +8,7 @@ export const siteConfig = {
   name: "Kanam Academy",
   tagline: "Move forward.",
   description:
-    "Coding, AI, data, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Four learning paths. Flexible schedule. Chromebook and mobile ready. Progress you can see.",
+    "Coding, AI, data, cybersecurity, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Five learning paths. Flexible schedule. Chromebook and mobile ready. Progress you can see.",
   links: {
     app: `${normalizedBase}/welcome`,
     demo:

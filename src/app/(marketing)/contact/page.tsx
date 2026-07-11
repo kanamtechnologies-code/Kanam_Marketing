@@ -122,7 +122,7 @@ export default function ContactPage() {
               </li>
               <li>
                 <Link href="/learning-paths" className={textLinkClass}>
-                  See the four learning paths
+                  See the five learning paths
                 </Link>
               </li>
               <li>

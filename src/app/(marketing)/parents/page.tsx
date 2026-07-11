@@ -16,7 +16,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "For families & learners | Kanam Academy",
   description:
-    "Try a guided Kanam lesson with no account. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async — coding, AI, data, and digital literacy.",
+    "Try a guided Kanam lesson with no account. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async — coding, AI, data, cybersecurity, and digital literacy.",
 };
 
 export default function ParentsPage() {
@@ -27,7 +27,7 @@ export default function ParentsPage() {
     },
     {
       title: "Create an account",
-      body: "Sign up from Welcome. Optional class code joins a teacher’s class. Progress saves to the account.",
+      body: "Sign up from Welcome. Use a teacher’s class code — or get a self-paced class code to learn on your own. Progress saves to the account.",
     },
     {
       title: "Follow the roadmap",
@@ -39,7 +39,7 @@ export default function ParentsPage() {
     <SubpageShell
       eyebrow="For families & learners"
       title="Start with a real lesson — no account needed"
-      subtitle="Kanam Academy is a structured way for teens — and anyone learning tech — to build coding, AI, data, and digital literacy skills in the browser. Demo first. Then keep progress with an account."
+      subtitle="Kanam Academy is a structured way for teens — and anyone learning tech — to build coding, AI, data, cybersecurity, and digital literacy skills in the browser. Demo first. Then keep progress with an account."
       actions={
         <>
           <Button asChild>
@@ -130,7 +130,7 @@ export default function ParentsPage() {
       </Section>
 
       <Section id="learning-paths" className="border-t border-foreground/10 scroll-mt-24">
-        <H2>Four learning paths</H2>
+        <H2>Five learning paths</H2>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           {LEARNING_PATHS.map((p) => (
             <Link

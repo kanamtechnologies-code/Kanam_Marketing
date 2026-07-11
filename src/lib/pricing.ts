@@ -83,7 +83,7 @@ export const PILOT_PRICING = [
 ] as const;
 
 export const PRICING_INCLUDES = [
-  "Four learning paths · 60+ interactive lessons",
+  "Five learning paths · 76 interactive lessons",
   "Flexible schedule (designed for ~8 weeks at ~2 sessions/week)",
   "Chromebook & mobile ready · no special software install",
   "Instructor tools: class codes, roster, assignments, XP",

@@ -30,6 +30,7 @@ import {
   LESSONS_COUNT_LABEL,
   LEARNING_PATHS,
   PACING_BLURB,
+  PATHS_LIST_SHORT,
   PROGRAM_FIT_SHORT,
   PROOF_POINTS,
 } from "@/lib/learning-paths";
@@ -75,9 +76,9 @@ function HeroPanel() {
             Real tech skills for teens — and anyone ready to learn
           </h1>
           <p className="max-w-lg text-lg leading-relaxed text-[var(--muted)]">
-            Coding, AI, data, and digital literacy. Live instruction when you want a
-            guide; structured async lessons when you want to move at your own pace.
-            Progress you can see. {DEVICE_READY_SHORT}.
+            Coding, AI, data, cybersecurity, and digital literacy. Live instruction when
+            you want a guide; structured async lessons when you want to move at your own
+            pace. Progress you can see. {DEVICE_READY_SHORT}.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -133,13 +134,13 @@ function LearningPathsPanel() {
   return (
     <section className="w-full border-t border-zinc-900/8 bg-[rgb(var(--background))] py-14 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle>Four learning paths. One platform.</SectionTitle>
+        <SectionTitle>Five learning paths. One platform.</SectionTitle>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
-          {LESSONS_COUNT_LABEL} interactive lessons across AI Literacy, Digital Literacy,
-          AI + Python, and Data Analyst. {PACING_BLURB}
+          {LESSONS_COUNT_LABEL} interactive lessons across {PATHS_LIST_SHORT}.{" "}
+          {PACING_BLURB}
         </p>
 
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {LEARNING_PATHS.map((path) => (
             <Link
               key={path.slug}
@@ -180,7 +181,7 @@ function LearningPathsPanel() {
 
         <div className="mt-8">
           <Button asChild variant="secondary">
-            <Link href="/learning-paths">See the four learning paths</Link>
+            <Link href="/learning-paths">See the five learning paths</Link>
           </Button>
         </div>
       </div>
@@ -384,12 +385,13 @@ function TrustPanel() {
           adoption conversations. Clear enough for teens starting out — deep enough for
           anyone leveling up in tech.
         </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
             "Programming fundamentals (Python)",
             "Data analysis + visualization",
             "AI literacy / responsible use",
             "Digital citizenship & tech fluency",
+            "Cybersecurity fundamentals",
           ].map((pillar) => (
             <div
               key={pillar}
@@ -421,7 +423,7 @@ function FaqPanel() {
   const items = [
     {
       q: "What is Kanam Academy?",
-      a: `A browser-based learning platform for coding, AI literacy, digital literacy, and data skills — with four learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
+      a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, and cybersecurity — with five learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
     },
     {
       q: "Who is it for?",
