@@ -110,7 +110,7 @@ function HeroPanel() {
 function ProofStrip() {
   return (
     <section className="border-y border-zinc-900/8 bg-white">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-zinc-900/8 sm:grid-cols-3 lg:grid-cols-5">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-zinc-900/8 sm:grid-cols-4">
         {PROOF_POINTS.map((item) => (
           <div
             key={item.label}

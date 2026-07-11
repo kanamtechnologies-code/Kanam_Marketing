@@ -197,7 +197,6 @@ export const PROOF_POINTS = [
   { label: "Learning paths", value: "4" },
   { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
   { label: "Schedule", value: "Flexible" },
-  { label: "Suggested pace", value: "~8 weeks" },
   { label: "Format", value: "Live + async" },
 ] as const;
 

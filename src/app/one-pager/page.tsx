@@ -106,7 +106,7 @@ export default function OnePagerPage() {
             { label: "Learning paths", value: "4" },
             { label: "Lessons", value: LESSONS_COUNT_LABEL },
             { label: "Schedule", value: "Flexible" },
-            { label: "Suggested pace", value: "~8 weeks" },
+            { label: "Format", value: "Live + async" },
           ].map((item) => (
             <div
               key={item.label}

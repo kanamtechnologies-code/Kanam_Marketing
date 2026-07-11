@@ -164,14 +164,6 @@ name = "Alex"`}</pre>
             </div>
           </div>
         </div>
-
-        <div className="border-t border-dashed border-[rgb(var(--brand-2-rgb)/0.25)] bg-[rgb(var(--accent-rgb)/0.12)] px-3 py-2.5 sm:px-4">
-          <p className="text-[11px] leading-relaxed text-zinc-600">
-            <span className="font-semibold text-zinc-800">Placeholder visual.</span> Replace with a
-            real screenshot:{" "}
-            <span className="font-mono text-zinc-700">/images/product/lesson-canvas-hero.png</span>
-          </p>
-        </div>
       </div>
 
       {showCta ? (
