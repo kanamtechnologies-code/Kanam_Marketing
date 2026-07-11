@@ -277,6 +277,9 @@ export default function OnePagerPage() {
               </p>
             </div>
           </div>
+          <p className="mt-3 text-[0.75rem] text-[var(--muted)] print:text-[0.68rem]">
+            Pricing one-pager: {SITE_URL}/one-pager/pricing
+          </p>
         </section>
 
         <footer className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-900/10 pt-3 text-[0.7rem] text-[var(--muted)] print:mt-3 print:pt-2">

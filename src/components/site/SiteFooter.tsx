@@ -65,6 +65,12 @@ export function SiteFooter() {
               >
                 One-pager (print / PDF) →
               </Link>
+              <Link
+                className="text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+                href="/one-pager/pricing"
+              >
+                Pricing one-pager →
+              </Link>
             </div>
           </div>
 
