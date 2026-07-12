@@ -41,7 +41,7 @@ const faqs = [
   },
   {
     q: "Can after-school, weekend, or Scout programs use Kanam?",
-    a: "Yes. After-school programs, weekend cohorts, and Boy Scout and Girl Scout troops are a natural fit: create a class, share a code, assign lessons, and track progress — with coach notes so adult leaders can support without being CS experts.",
+    a: "Yes. After-school programs, weekend cohorts, and Boy Scout and Girl Scout troops are a natural fit: Kanam instructors teach live — online or in person where available — while leaders see roster progress.",
   },
   {
     q: "What devices work with Kanam?",
@@ -60,12 +60,12 @@ const faqs = [
     a: "No. Supported models include live cohort / classroom, after-school and weekend programs, Scout troops and youth groups, hybrid, self-paced enrichment, and homeschool / family use. Self-paced learners can get a self-paced class code to follow a path on their own.",
   },
   {
-    q: "How do instructors use Kanam?",
-    a: "Separate instructor sign-in. Create a class, share a class code, assign lessons, and view roster progress (lessons completed, XP, last activity).",
+    q: "How do schools and programs use Kanam?",
+    a: "Partner with Kanam for live instruction — online or in person where available. Your team brings learners and the schedule; we teach; you see lessons completed, XP, and last activity. Contact us to start a pilot.",
   },
   {
     q: "Do adults need to be CS experts?",
-    a: "No. Lessons include coach notes and plain-language explainers so adults can support with minimal prep — including teachers, after-school staff, and Scout leaders.",
+    a: "No. Kanam instructors teach the live sessions. Teachers, after-school staff, and Scout leaders host and coordinate — they don’t need to be the coding expert in the room.",
   },
   {
     q: "How does assessment work?",
@@ -77,7 +77,7 @@ const faqs = [
   },
   {
     q: "What about the Data Analyst track?",
-    a: "It builds on intro Python foundations (recommended after starting AI + Python). Learners write real SQL and use charts (bar, pie, line, histogram, scatter) in the browser.",
+    a: "Learners write real SQL and use charts (bar, pie, line, histogram, scatter) in the browser — no Python required. Ask questions, query tables, and tell the story with visuals.",
   },
   {
     q: "What about the Cybersecurity path?",

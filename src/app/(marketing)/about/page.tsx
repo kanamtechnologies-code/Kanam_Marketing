@@ -64,9 +64,9 @@ export default function AboutPage() {
           <p className="text-muted-foreground leading-relaxed">
             People need credible pathways into coding, AI, data, cybersecurity, and digital
             citizenship — not more unstructured screen time. Schools and programs need
-            something standards-aligned, measurable, and manageable without requiring a
-            full-time CS specialist for every session. Families and self-paced learners need
-            structure that still feels human.
+            something standards-aligned and measurable — with Kanam live instruction so their
+            own staff don&apos;t have to become CS teachers. Families and self-paced learners
+            need structure that still feels human.
           </p>
         </Band>
       </Section>

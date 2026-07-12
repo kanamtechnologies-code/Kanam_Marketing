@@ -5,7 +5,6 @@ import Link from "next/link";
 import { PrintButton } from "@/components/site/PrintButton";
 import {
   LIVE_ADD_ONS,
-  PILOT_PRICING,
   PRICING,
   PRICING_CONTEXT,
   PRICING_INCLUDES,
@@ -16,7 +15,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kanam Academy pricing one-pager",
   description:
-    "Market-calibrated pricing for Kanam Academy — platform access, optional 1:1 tutoring, pilots, and options for families, programs, Scout troops, and schools.",
+    "Kanam Academy pricing — $30/mo family subscription, or $100–200 per async learning track, plus optional 1:1 tutoring.",
   robots: { index: true, follow: true },
 };
 
@@ -88,12 +87,12 @@ export default function PricingOnePagerPage() {
 
         <section className="mt-3.5 print:mt-2.5">
           <h1 className="font-display text-[1.45rem] font-semibold leading-tight tracking-tight text-[var(--foreground)] sm:text-[1.6rem] print:text-[1.35rem]">
-            Market-calibrated pricing for families, programs &amp; schools
+            Clear pricing for families, programs &amp; schools
           </h1>
           <p className="mt-1.5 max-w-3xl text-[0.88rem] leading-relaxed text-[var(--muted)] print:text-[0.78rem]">
-            Platform access and live teaching are priced separately. Ranges below are
-            starting guidance for quotes — final pricing depends on learner count, cohort
-            size, and whether you need 1:1 tutoring or small-group live instruction.
+            Family subscription is {PRICING.family.price}, or {PRICING.family.alt}. Optional
+            live tutoring is priced separately. Programs and schools are quoted to fit your
+            cohort. Final pricing confirmed in writing before you start.
           </p>
         </section>
 
@@ -144,30 +143,6 @@ export default function PricingOnePagerPage() {
                 </p>
                 <p className="mt-1 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.66rem]">
                   {tier.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-3.5 print:mt-2.5">
-          <h2 className="font-display text-base font-semibold text-[var(--foreground)] print:text-[0.95rem]">
-            Pilots
-          </h2>
-          <div className="mt-1.5 grid gap-1.5 sm:grid-cols-3 print:gap-1.5">
-            {PILOT_PRICING.map((pilot) => (
-              <div
-                key={pilot.title}
-                className="rounded-xl border border-[rgb(var(--accent-rgb)/0.45)] bg-gradient-to-br from-white to-[rgb(var(--accent-rgb)/0.14)] px-3 py-2 print:rounded-lg print:px-2.5 print:py-2"
-              >
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--brand-2)]">
-                  {pilot.title}
-                </p>
-                <p className="mt-0.5 font-display text-lg font-semibold text-[var(--foreground)] print:text-base">
-                  {pilot.price}
-                </p>
-                <p className="mt-0.5 text-[0.7rem] leading-snug text-[var(--muted)] print:text-[0.64rem]">
-                  {pilot.detail}
                 </p>
               </div>
             ))}

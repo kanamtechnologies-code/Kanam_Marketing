@@ -11,7 +11,12 @@ export type LearningPath = {
   shortName: string;
   lessons: number;
   subtitle: string;
+  /** Short summary used in meta and overviews. */
   outcome: string;
+  /** Concrete learning outcomes for the path detail page. */
+  learnOutcomes: string[];
+  /** Skills shown on chooser tiles and detail (join for short labels). */
+  skills: string[];
   capstone: string;
   marketingAngle: string;
   whoFor: string;
@@ -19,6 +24,8 @@ export type LearningPath = {
   weeklyThemes: string[];
   lessonTitles: string[];
   image: string;
+  /** Overview section visual on the path detail page. */
+  overviewImage: string;
 };
 
 export const LEARNING_PATHS: LearningPath[] = [
@@ -30,6 +37,21 @@ export const LEARNING_PATHS: LearningPath[] = [
     subtitle: "What AI is, how it works, and how to use it wisely",
     outcome:
       "Students understand AI in daily life, prompting, verification, academic integrity, bias and fairness, privacy and deepfakes, and the future of work.",
+    learnOutcomes: [
+      "Explain what AI is (and isn’t) and where it shows up in everyday life",
+      "Describe how machines sense, represent data, and learn from examples",
+      "Write clearer prompts and iterate when answers are weak or wrong",
+      "Verify AI output instead of trusting it — including for schoolwork",
+      "Spot bias, fairness issues, deepfakes, and privacy risks",
+      "Connect AI literacy to careers and responsible digital citizenship",
+    ],
+    skills: [
+      "Stronger prompting",
+      "Verify, don’t trust",
+      "Bias & fairness awareness",
+      "Privacy & deepfake sense",
+      "AI integrity at school",
+    ],
     capstone: "Be an AI-Smart Citizen",
     marketingAngle:
       "Students learn to evaluate AI — not to paste prompts for answers.",
@@ -63,6 +85,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Capstone: Be an AI-Smart Citizen",
     ],
     image: "/images/product/path-ai-literacy.png",
+    overviewImage: "/images/product/overview-ai-literacy.png",
   },
   {
     slug: "digital-literacy",
@@ -72,6 +95,21 @@ export const LEARNING_PATHS: LearningPath[] = [
     subtitle: "Use technology safely, smartly, and ready for work",
     outcome:
       "Foundations of devices and the internet, files and cloud, search, misinformation, communication and collaboration, digital citizenship, content creation, copyright, security and privacy, wellbeing, troubleshooting, and career-ready digital skills.",
+    learnOutcomes: [
+      "Navigate devices, files, cloud storage, and how the internet fits together",
+      "Search smarter and judge whether information is trustworthy",
+      "Communicate and collaborate clearly online — with strong digital citizenship",
+      "Create and edit content while respecting copyright and giving credit",
+      "Protect accounts, privacy, and wellbeing with practical habits",
+      "Troubleshoot common tech problems and connect skills to school and work",
+    ],
+    skills: [
+      "Smart search & judgment",
+      "Digital citizenship",
+      "Privacy & account hygiene",
+      "Cloud collaboration",
+      "Content creation basics",
+    ],
     capstone: "Your Digital Toolkit",
     marketingAngle:
       "Practical tech fluency and digital citizenship — not random YouTube wandering.",
@@ -105,6 +143,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Capstone: Your Digital Toolkit",
     ],
     image: "/images/product/path-digital-literacy.png",
+    overviewImage: "/images/product/overview-digital-literacy.png",
   },
   {
     slug: "ai-python",
@@ -114,6 +153,21 @@ export const LEARNING_PATHS: LearningPath[] = [
     subtitle: "Build your first AI helper with Python",
     outcome:
       "Real Python fundamentals framed as teaching an AI helper exact instructions: output, variables, and input → conditionals → loops → lists and dicts → functions and parameters → rule-driven helper → AI NPC → Quest Adventure Bot capstone.",
+    learnOutcomes: [
+      "Write and run real Python in the browser — no special install",
+      "Use variables, input/output, and conditionals to make programs decide",
+      "Repeat work with loops and organize information with lists and dictionaries",
+      "Build reusable skills with functions and parameters",
+      "Guide a rule-driven AI helper and grow it into a playable project",
+      "Finish by shipping a Quest Adventure Bot you can demo and explain",
+    ],
+    skills: [
+      "Python fundamentals",
+      "Conditionals & loops",
+      "Lists, dicts & memory",
+      "Functions & parameters",
+      "Build an AI helper",
+    ],
     capstone: "Quest Adventure Bot",
     marketingAngle:
       "Students don’t just learn about coding — they write and run Python in the browser and finish with a project.",
@@ -145,6 +199,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Capstone: Quest Adventure Bot",
     ],
     image: "/images/product/path-ai-python.png",
+    overviewImage: "/images/product/overview-ai-python.png",
   },
   {
     slug: "data-analyst",
@@ -154,12 +209,25 @@ export const LEARNING_PATHS: LearningPath[] = [
     subtitle: "SQL, tables, and charts for real-world questions",
     outcome:
       "Data investigation cycle — ask → query → transform → summarize → visualize → communicate. Real SQL and charts in the browser.",
+    learnOutcomes: [
+      "Ask better data questions and choose the columns that matter",
+      "Write SQL to filter, sort, count, and summarize real tables",
+      "Combine tables with joins to sharpen an investigation",
+      "Build charts (bar, pie, line, histogram, scatter) that show the answer",
+      "Explain trends, distributions, and relationships in plain language",
+      "Complete a data project you can present — not worksheet busywork",
+    ],
+    skills: [
+      "SQL queries & filters",
+      "Joins & summarizing",
+      "Charts that communicate",
+      "Read trends & spread",
+      "Tell the data story",
+    ],
     capstone: "Your Data Project",
     marketingAngle:
       "Students query real tables and turn answers into charts — not worksheet busywork.",
-    whoFor: "Learners ready to investigate data with SQL and charts after intro Python foundations.",
-    prerequisite:
-      "Builds on intro Python foundations (recommended after starting AI + Python). Unlocks after early Python lessons 1–3.",
+    whoFor: "Anyone ready to investigate data with SQL and charts — teens, classrooms, and self-paced learners.",
     weeklyThemes: [
       "What Data Is",
       "Choosing & Filtering",
@@ -187,6 +255,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Your Data Project",
     ],
     image: "/images/product/path-data-analyst.png",
+    overviewImage: "/images/product/overview-data-analyst.png",
   },
   {
     slug: "cybersecurity",
@@ -196,6 +265,21 @@ export const LEARNING_PATHS: LearningPath[] = [
     subtitle: "High-school cyber fundamentals — defend systems, data, and people",
     outcome:
       "Students learn defensive cybersecurity foundations: threats and risk, account hygiene, phishing defense, networks and secure connections, malware awareness, privacy and data protection, incident response basics, ethics and responsible reporting — finishing by defending a realistic scenario.",
+    learnOutcomes: [
+      "Explain what cybersecurity is and why systems, data, and people need defenders",
+      "Separate threats from risks and choose practical protective habits",
+      "Strengthen accounts with passwords, MFA, and phishing resistance",
+      "Understand networks, secure connections, and safer software choices at a high level",
+      "Protect privacy, permissions, and shared/cloud data responsibly",
+      "Practice incident basics and ethics — then defend a realistic scenario",
+    ],
+    skills: [
+      "Threat & risk awareness",
+      "Account & phishing defense",
+      "Secure connection habits",
+      "Privacy & data protection",
+      "Incident response basics",
+    ],
     capstone: "Defend the Scenario",
     marketingAngle:
       "Students learn to defend systems, data, and people — not how to hack.",
@@ -230,6 +314,7 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Capstone: Defend the Scenario",
     ],
     image: "/images/product/path-cybersecurity.png",
+    overviewImage: "/images/product/overview-cybersecurity.png",
   },
 ];
 
@@ -305,12 +390,34 @@ export const PROGRAM_FIT_SHORT =
   "after-school programs, weekend cohorts, and Boy Scout & Girl Scout troops";
 
 export const PROGRAM_FIT_BLURB =
-  "Built for classrooms — and just as strong for after-school programs, weekend cohorts, and Boy Scout and Girl Scout troops that want structured tech learning without a full-time CS specialist.";
+  "Built for classrooms — and just as strong for after-school programs, weekend cohorts, and Boy Scout and Girl Scout troops that want Kanam live instruction plus a platform with progress adults can see.";
 
 export const CHART_TYPES = ["bar", "pie", "line", "histogram", "scatter"] as const;
 
 export function getLearningPath(slug: string): LearningPath | undefined {
   return LEARNING_PATHS.find((p) => p.slug === slug);
+}
+
+/** Pair weekly themes with lesson titles for a course-outline UX. */
+export type WeekModule = {
+  week: number;
+  theme: string;
+  lessons: string[];
+};
+
+export function groupLessonsByWeek(path: LearningPath): WeekModule[] {
+  const weeks = path.weeklyThemes.length || 1;
+  const titles = path.lessonTitles;
+  const base = Math.floor(titles.length / weeks);
+  const remainder = titles.length % weeks;
+  let cursor = 0;
+
+  return path.weeklyThemes.map((theme, index) => {
+    const count = base + (index < remainder ? 1 : 0);
+    const lessons = titles.slice(cursor, cursor + count);
+    cursor += count;
+    return { week: index + 1, theme, lessons };
+  });
 }
 
 export const STANDARDS_BLURB =

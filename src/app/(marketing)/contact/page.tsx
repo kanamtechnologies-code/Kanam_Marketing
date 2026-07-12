@@ -45,7 +45,7 @@ export default function ContactPage() {
                   <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground leading-relaxed marker:text-[var(--brand)]">
                     <li>Pilot for a class, after-school, weekend, or Scout troop</li>
                     <li>Standards packet &amp; implementation questions</li>
-                    <li>Instructor tools: class codes, roster, assignments</li>
+                    <li>Program tools: class codes, roster, assignments</li>
                   </ul>
                 </div>
                 <div className="rounded-2xl border border-foreground/10 bg-white/70 p-5">
@@ -108,16 +108,6 @@ export default function ContactPage() {
                   className={textLinkClass}
                 >
                   Student welcome / sign-in
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={siteConfig.links.instructor}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={textLinkClass}
-                >
-                  Instructor sign-in
                 </Link>
               </li>
               <li>

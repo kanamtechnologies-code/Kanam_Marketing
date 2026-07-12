@@ -15,6 +15,8 @@ type SubpageShellProps = {
   eyebrow?: string;
   actions?: ReactNode;
   toc?: TocItem[];
+  /** Pull content under the sticky nav (default). Set false when the first child is a hero. */
+  overlapNav?: boolean;
 };
 
 export function SubpageShell({
@@ -24,15 +26,28 @@ export function SubpageShell({
   eyebrow,
   actions,
   toc,
+  overlapNav = true,
 }: SubpageShellProps) {
   return (
-    <div className="relative isolate -mt-6 overflow-hidden bg-background md:-mt-16 lg:-mt-20">
+    <div
+      className={cn(
+        "relative isolate overflow-hidden bg-background",
+        overlapNav && "-mt-6 md:-mt-16 lg:-mt-20"
+      )}
+    >
       <div className="pointer-events-none absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.1)] via-transparent to-[rgb(var(--accent-rgb)/0.08)]" />
         <div className="absolute inset-0 opacity-[0.03] kanam-hex-pattern" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-8 max-[360px]:px-3 sm:px-6 sm:py-10 lg:px-10 md:py-14 2xl:max-w-[90rem] 2xl:px-12">
+      <div
+        className={cn(
+          "relative z-10 mx-auto w-full max-w-7xl px-4 max-[360px]:px-3 sm:px-6 lg:px-10 2xl:max-w-[90rem] 2xl:px-12",
+          title
+            ? "py-8 sm:py-10 md:py-14"
+            : "pb-8 pt-5 sm:pb-10 sm:pt-6 md:pb-14 md:pt-7"
+        )}
+      >
         {title ? (
           <header className="space-y-4 md:space-y-6">
             {eyebrow ? (
@@ -52,7 +67,15 @@ export function SubpageShell({
           </header>
         ) : null}
 
-        <div className={toc?.length ? "mt-8 grid gap-8 lg:grid-cols-[220px_1fr] lg:gap-10 2xl:grid-cols-[260px_1fr] 2xl:gap-12" : "mt-8"}>
+        <div
+          className={
+            toc?.length
+              ? "mt-8 grid gap-8 lg:grid-cols-[220px_1fr] lg:gap-10 2xl:grid-cols-[260px_1fr] 2xl:gap-12"
+              : title
+                ? "mt-8"
+                : undefined
+          }
+        >
           {toc?.length ? (
             <aside className="sticky top-24 hidden lg:block">
               <nav className="rounded-2xl border border-foreground/10 bg-white/82 p-4 backdrop-blur-sm">

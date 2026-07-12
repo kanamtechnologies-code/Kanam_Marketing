@@ -13,18 +13,19 @@ export const siteConfig = {
     app: `${normalizedBase}/welcome`,
     demo:
       process.env.NEXT_PUBLIC_DEMO_URL ?? `${normalizedBase}/demo`,
-    instructor:
-      process.env.NEXT_PUBLIC_INSTRUCTOR_URL ?? `${normalizedBase}/instructor`,
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@kanamacademy.com",
     bookCall: process.env.NEXT_PUBLIC_BOOK_CALL_URL ?? "/contact",
     standardsPdf:
       "/images/docs/Kanam%20Academy%20Foundations%20Standards%20Alignment.pdf",
+    /** Printable HTML one-pagers (Save as PDF / Print). */
+    onePager: "/one-pager",
+    pricingPdf: "/one-pager/pricing",
   },
   nav: [
     { href: "/", label: "Home" },
     { href: "/learning-paths", label: "Learning paths" },
     { href: "/how-it-works", label: "How it works" },
-    { href: "/educators", label: "For schools & programs" },
+    { href: "/educators", label: "For schools & leaders" },
     { href: "/parents", label: "For families & learners" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },

@@ -284,17 +284,17 @@ function AudienceSplitPanel() {
               aria-hidden="true"
             />
             <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
-              For schools &amp; programs
+              For schools &amp; leaders
             </h3>
             <p className="mt-3 text-[var(--muted)] leading-relaxed">
-              Create a class, share a code, assign lessons, and see learner progress —
-              without needing a full-time CS specialist for every session. Fits class
-              periods, {PROGRAM_FIT_SHORT}.
+              Kanam instructors teach live — online or in person where available. Your team
+              brings the learners and schedule; you see roster progress. Fits class periods,{" "}
+              {PROGRAM_FIT_SHORT}.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-zinc-700">
               <li className="flex gap-2">
                 <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-                Class codes, roster, assignments, XP &amp; last activity
+                Live Kanam instruction · progress adults can see
               </li>
               <li className="flex gap-2">
                 <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
@@ -307,7 +307,7 @@ function AudienceSplitPanel() {
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild>
-                <Link href="/educators">For schools &amp; programs</Link>
+                <Link href="/educators">For schools &amp; leaders</Link>
               </Button>
               <Button asChild variant="secondary">
                 <Link href="/contact">Request a pilot</Link>
@@ -443,7 +443,7 @@ function FaqPanel() {
     },
     {
       q: "How do schools use it?",
-      a: `Instructors and program leaders create a class, share a code, assign lessons, and view roster progress. Lessons include coach notes so adults can support with minimal prep — live, hybrid, after-school, weekend, or structured async.`,
+      a: `Schools and program leaders partner with Kanam for live instruction — online or in person where available — plus roster progress adults can see. Fits class periods, after-school, weekend, or structured async enrichment.`,
     },
   ];
 

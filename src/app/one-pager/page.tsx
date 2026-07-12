@@ -128,7 +128,7 @@ export default function OnePagerPage() {
           {[
             {
               title: "Schools & programs",
-              body: `Class codes, assignments, roster progress, and standards-aligned curriculum docs — without needing a full-time CS specialist. Strong fit for classrooms, ${PROGRAM_FIT_SHORT}.`,
+              body: `Kanam live instruction — online or in person where available — plus class codes, roster progress, and standards-aligned docs. Strong fit for classrooms, ${PROGRAM_FIT_SHORT}.`,
             },
             {
               title: "Parents & families",
@@ -239,7 +239,7 @@ export default function OnePagerPage() {
                 "Live cohorts, after-school, weekend, or Scout troop blocks",
                 "Schedule flexes to your classroom, family, or self-paced needs",
                 `${DEVICE_READY_SHORT} — no special software to install`,
-                "Instructor dashboard: classes, codes, roster, XP",
+                "Program tools: classes, codes, roster, XP",
                 "Standards-aligned curriculum packet available",
                 "Guided demo lesson — try before you commit",
               ].map((item) => (

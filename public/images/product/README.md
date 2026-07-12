@@ -25,8 +25,16 @@ All people photos feature teens, parents, and instructors of color.
 | `path-ai-python.png` | AI + Python |
 | `path-data-analyst.png` | Data Analyst |
 | `path-cybersecurity.png` | Cybersecurity |
+| `overview-ai-literacy.png` | Path detail overview — AI Literacy |
+| `overview-digital-literacy.png` | Path detail overview — Digital Literacy |
+| `overview-ai-python.png` | Path detail overview — AI + Python |
+| `overview-data-analyst.png` | Path detail overview — Data Analyst |
+| `overview-cybersecurity.png` | Path detail overview — Cybersecurity |
 
-Lifestyle teen photos are reserved for homepage/audience sections — not path cards.
+| `leaders-school-live.png` | Educators — schools audience |
+| `leaders-afterschool-live.png` | Educators — after-school audience |
+| `leaders-youth-live.png` | Educators — Scout / youth audience |
+| `leaders-kanam-instructor.png` | Educators — Kanam live instructor |
 
 ## Product screenshots (optional later)
 

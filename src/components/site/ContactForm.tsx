@@ -13,6 +13,13 @@ import { cn } from "@/lib/utils";
 
 type Role = "family" | "teacher" | "school" | "partner" | "other";
 
+type ContactFormProps = {
+  defaultRole?: Role;
+  defaultHelpTopic?: string;
+  title?: string;
+  submitLabel?: string;
+};
+
 const helpOptionsByRole: Record<Role, string[]> = {
   family: [
     "Try the product / guided demo",
@@ -22,7 +29,7 @@ const helpOptionsByRole: Record<Role, string[]> = {
     "Other",
   ],
   teacher: [
-    "Class codes & instructor tools",
+    "Class codes & program tools",
     "Assigning lessons",
     "Classroom / after-school / weekend use",
     "Curriculum overview",
@@ -46,12 +53,22 @@ const helpOptionsByRole: Record<Role, string[]> = {
   other: ["General question", "Partnerships", "Curriculum", "Other"],
 };
 
-export function ContactForm() {
+export function ContactForm({
+  defaultRole = "family",
+  defaultHelpTopic,
+  title = "Send a message",
+  submitLabel = "Send message",
+}: ContactFormProps = {}) {
+  const initialHelp =
+    defaultHelpTopic && helpOptionsByRole[defaultRole].includes(defaultHelpTopic)
+      ? defaultHelpTopic
+      : helpOptionsByRole[defaultRole][0];
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState<Role>("family");
-  const [helpTopic, setHelpTopic] = useState(helpOptionsByRole.family[0]);
+  const [role, setRole] = useState<Role>(defaultRole);
+  const [helpTopic, setHelpTopic] = useState(initialHelp);
   const [learnerAge, setLearnerAge] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
   const [goals, setGoals] = useState("");
@@ -71,7 +88,7 @@ export function ContactForm() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Send a message</CardTitle>
+        <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <form
@@ -116,8 +133,8 @@ export function ContactForm() {
               setName("");
               setEmail("");
 
-              setRole("family");
-              setHelpTopic(helpOptionsByRole.family[0]);
+              setRole(defaultRole);
+              setHelpTopic(initialHelp);
               setLearnerAge("");
               setExperienceLevel("");
               setGoals("");
@@ -381,7 +398,7 @@ export function ContactForm() {
               </a>
             </div>
             <Button type="submit" disabled={!isValid || isSubmitting}>
-              {isSubmitting ? "Sending…" : "Send message"}
+              {isSubmitting ? "Sending…" : submitLabel}
             </Button>
           </div>
         </form>

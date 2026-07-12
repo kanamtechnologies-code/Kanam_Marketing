@@ -199,8 +199,8 @@ export default function HowItWorksPage() {
             ))}
           </ul>
           <p className="mt-4 text-sm text-muted-foreground">
-            {DEVICE_READY_BLURB} We do not claim offline desktop installs, or that an
-            instructor must be a CS expert to run a session.
+            {DEVICE_READY_BLURB} Live Kanam instruction is available online — or in person
+            where available — so partner staff don&apos;t have to be the CS expert in the room.
           </p>
         </Band>
       </Section>
