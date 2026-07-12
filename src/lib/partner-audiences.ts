@@ -49,7 +49,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     heroBody:
       "Kanam instructors teach the sessions. Your team hosts the learners, schedule, and space — with roster progress and standards docs for adoption conversations.",
     contactRole: "school",
-    contactHelpTopic: "Implementation / scheduling",
+    contactHelpTopic: "Bring Kanam to our school",
     highlights: [
       `Five learning paths · ${LESSONS_COUNT_LABEL} interactive lessons`,
       `Flexible schedule · ${PACING_SHORT}`,

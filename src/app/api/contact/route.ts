@@ -99,7 +99,11 @@ export async function POST(request: Request) {
   }
 
   const fromEmail = process.env.CONTACT_FROM_EMAIL ?? smtpUser;
-  const contactInbox = process.env.CONTACT_INBOX_EMAIL ?? process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? smtpUser;
+  // Always deliver contact form submissions to the Kanam info inbox.
+  const contactInbox =
+    process.env.CONTACT_INBOX_EMAIL?.trim() ||
+    process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() ||
+    "info@kanamacademy.com";
 
   const transporter = nodemailer.createTransport({
     host: smtpHost,
@@ -138,7 +142,7 @@ export async function POST(request: Request) {
   const userText = [
     `Hi ${name},`,
     "",
-    "Thanks for reaching out to Kanam Academy. We received your message and will reply within 1-2 business days.",
+    "Thanks for reaching out to Kanam Academy. We received your message and will reply within 1 business day.",
     "",
     `Your topic: ${helpTopic || "General question"}`,
     "",
@@ -155,7 +159,7 @@ export async function POST(request: Request) {
   const safeTopic = escapeHtml(helpTopic || "General question");
   const userHtml = `
     <p>Hi ${safeName},</p>
-    <p>Thanks for reaching out to <strong>Kanam Academy</strong>. We received your message and will reply within 1-2 business days.</p>
+    <p>Thanks for reaching out to <strong>Kanam Academy</strong>. We received your message and will reply within 1 business day.</p>
     <p><strong>Your topic:</strong> ${safeTopic}</p>
     <p><strong>Your message:</strong><br/>${safeMessage}</p>
     <p>If you need anything urgent, reply to this email.</p>
