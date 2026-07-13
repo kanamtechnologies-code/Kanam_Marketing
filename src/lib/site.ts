@@ -6,7 +6,7 @@ const normalizedBase = appBase.replace(/\/$/, "");
 
 export const siteConfig = {
   name: "Kanam Academy",
-  tagline: "Move forward.",
+  tagline: "Move Forward.",
   description:
     "Coding, AI, data, cybersecurity, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Five learning paths. Flexible schedule. Chromebook and mobile ready. Progress you can see.",
   links: {

@@ -36,7 +36,7 @@ export function HeaderBrand() {
           aria-hidden
           className="mt-0.5 text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-[rgb(var(--accent-rgb)/1)] max-[360px]:text-[0.52rem] sm:text-[0.62rem] sm:tracking-[0.18em]"
         >
-          Move forward
+          Move Forward
         </span>
       </span>
     </Link>

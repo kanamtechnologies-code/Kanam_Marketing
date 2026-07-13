@@ -323,7 +323,7 @@ export default function OnePagerPage() {
 
         <footer className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-900/10 pt-3 text-[0.7rem] text-[var(--muted)] print:mt-3 print:pt-2">
           <p>
-            {siteConfig.name} · Move forward. · Live instruction or structured
+            {siteConfig.name} · Move Forward. · Live instruction or structured
             async.
           </p>
           <Link

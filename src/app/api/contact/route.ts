@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+import { buildContactReceiptEmail } from "@/lib/contact-receipt-email";
+
 type Role =
   | "family"
   | "teacher"
@@ -39,15 +41,6 @@ const roleLabels: Record<Role, string> = {
 
 function sanitize(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
-}
-
-function escapeHtml(value: string): string {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
 }
 
 function formatOptionalLine(label: string, value: string): string {
@@ -139,32 +132,12 @@ export async function POST(request: Request) {
     message,
   ].join("\n");
 
-  const userText = [
-    `Hi ${name},`,
-    "",
-    "Thanks for reaching out to Kanam Academy. We received your message and will reply within 1 business day.",
-    "",
-    `Your topic: ${helpTopic || "General question"}`,
-    "",
-    "Your message:",
+  const receipt = buildContactReceiptEmail({
+    name,
+    helpTopic,
     message,
-    "",
-    "If you need anything urgent, reply to this email.",
-    "",
-    "Kanam Academy",
-  ].join("\n");
-
-  const safeName = escapeHtml(name);
-  const safeMessage = escapeHtml(message).replaceAll("\n", "<br/>");
-  const safeTopic = escapeHtml(helpTopic || "General question");
-  const userHtml = `
-    <p>Hi ${safeName},</p>
-    <p>Thanks for reaching out to <strong>Kanam Academy</strong>. We received your message and will reply within 1 business day.</p>
-    <p><strong>Your topic:</strong> ${safeTopic}</p>
-    <p><strong>Your message:</strong><br/>${safeMessage}</p>
-    <p>If you need anything urgent, reply to this email.</p>
-    <p>Kanam Academy</p>
-  `;
+    contactEmail: contactInbox,
+  });
 
   try {
     await Promise.all([
@@ -176,12 +149,12 @@ export async function POST(request: Request) {
         text: teamText,
       }),
       transporter.sendMail({
-        from: fromEmail,
+        from: `Kanam Academy <${fromEmail}>`,
         to: email,
         replyTo: contactInbox,
-        subject: "We received your message - Kanam Academy",
-        text: userText,
-        html: userHtml,
+        subject: receipt.subject,
+        text: receipt.text,
+        html: receipt.html,
       }),
     ]);
 

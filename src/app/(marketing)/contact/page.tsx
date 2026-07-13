@@ -65,7 +65,7 @@ export default function ContactPage() {
             Tell us what you need.
             <span className="block">
               We’ll help you{" "}
-              <span className="text-[rgb(var(--accent-rgb)/1)]">Move forward.</span>
+              <span className="text-[rgb(var(--accent-rgb)/1)]">Move Forward.</span>
             </span>
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
