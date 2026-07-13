@@ -81,6 +81,7 @@ export default function PricingOnePagerPage() {
             <div className="text-right text-xs leading-relaxed text-white/80 sm:text-sm">
               <p className="font-semibold text-white">{SITE_URL}</p>
               <p>{siteConfig.links.email}</p>
+              <p>{siteConfig.links.phone}</p>
             </div>
           </div>
         </header>
@@ -197,7 +198,8 @@ export default function PricingOnePagerPage() {
               Request a quote
             </h2>
             <p className="mt-1 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.64rem]">
-              Email {siteConfig.links.email} · {SITE_URL}/contact · Guided demo available
+              Email {siteConfig.links.email} · {siteConfig.links.phone} ·{" "}
+              {SITE_URL}/contact · Guided demo available
               with no account.
             </p>
             <p className="mt-2 text-[0.68rem] leading-snug text-[var(--muted)] print:text-[0.62rem]">

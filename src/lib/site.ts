@@ -14,6 +14,8 @@ export const siteConfig = {
     demo:
       process.env.NEXT_PUBLIC_DEMO_URL ?? `${normalizedBase}/demo`,
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@kanamacademy.com",
+    phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? "(404) 941-6159",
+    phoneHref: process.env.NEXT_PUBLIC_CONTACT_PHONE_HREF ?? "tel:+14049416159",
     bookCall: process.env.NEXT_PUBLIC_BOOK_CALL_URL ?? "/contact",
     standardsPdf:
       "/images/docs/Kanam%20Academy%20Foundations%20Standards%20Alignment.pdf",

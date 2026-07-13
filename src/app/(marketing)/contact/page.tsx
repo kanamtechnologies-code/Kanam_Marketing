@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Clock3, Mail, ShieldCheck } from "lucide-react";
+import { ArrowRight, Clock3, Mail, Phone, ShieldCheck } from "lucide-react";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { ContactForm } from "@/components/site/ContactForm";
@@ -10,7 +10,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact | Request info | Kanam Academy",
   description:
-    "Talk to Kanam Academy about live tutoring, family subscriptions, or bringing live instruction to your school, after-school program, or Scout troop. Email info@kanamacademy.com.",
+    "Talk to Kanam Academy about live tutoring, family subscriptions, or bringing live instruction to your school, after-school program, or Scout troop. Call (404) 941-6159 or email info@kanamacademy.com.",
 };
 
 const PATHS = [
@@ -71,6 +71,22 @@ export default function ContactPage() {
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
             Live tutoring, family subscriptions, or a school/program cohort — send a
             request and we’ll help you get started.
+          </p>
+          <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-zinc-950">
+            <a
+              href={siteConfig.links.phoneHref}
+              className="inline-flex items-center gap-2 text-[var(--brand-2)] transition-colors hover:text-zinc-950"
+            >
+              <Phone className="h-4 w-4 shrink-0" aria-hidden />
+              {siteConfig.links.phone}
+            </a>
+            <a
+              href={`mailto:${siteConfig.links.email}`}
+              className="inline-flex items-center gap-2 text-[var(--brand-2)] transition-colors hover:text-zinc-950"
+            >
+              <Mail className="h-4 w-4 shrink-0" aria-hidden />
+              {siteConfig.links.email}
+            </a>
           </p>
         </header>
 

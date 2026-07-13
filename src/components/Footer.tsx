@@ -19,6 +19,12 @@ export function Footer() {
               <a className="font-medium text-zinc-950" href={`mailto:${siteConfig.links.email}`}>
                 {siteConfig.links.email}
               </a>
+              <span className="mx-1.5 text-zinc-400" aria-hidden>
+                ·
+              </span>
+              <a className="font-medium text-zinc-950" href={siteConfig.links.phoneHref}>
+                {siteConfig.links.phone}
+              </a>
             </p>
           </div>
 

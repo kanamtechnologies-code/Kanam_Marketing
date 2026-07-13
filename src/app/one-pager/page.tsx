@@ -76,6 +76,7 @@ export default function OnePagerPage() {
             <div className="text-right text-xs leading-relaxed text-white/80 sm:text-sm">
               <p className="font-semibold text-white">{SITE_URL}</p>
               <p>{siteConfig.links.email}</p>
+              <p>{siteConfig.links.phone}</p>
               <p className="mt-1.5">
                 <Link
                   href="/one-pager/pricing"
@@ -316,6 +317,9 @@ export default function OnePagerPage() {
               </p>
               <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
                 {siteConfig.links.email}
+              </p>
+              <p className="mt-0.5 text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
+                {siteConfig.links.phone}
               </p>
             </a>
           </div>

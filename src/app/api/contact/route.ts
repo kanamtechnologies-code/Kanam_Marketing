@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 import { buildContactReceiptEmail } from "@/lib/contact-receipt-email";
+import { buildContactTeamEmail } from "@/lib/contact-team-email";
 
 type Role =
   | "family"
@@ -16,6 +17,9 @@ type Role =
 type ContactRequestBody = {
   name?: string;
   email?: string;
+  phone?: string;
+  contactPreference?: string;
+  callWindow?: string;
   role?: Role;
   helpTopic?: string;
   learnerAge?: string;
@@ -43,10 +47,6 @@ function sanitize(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function formatOptionalLine(label: string, value: string): string {
-  return value ? `${label}: ${value}` : `${label}: (not provided)`;
-}
-
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => null)) as ContactRequestBody | null;
   if (!body) {
@@ -55,6 +55,15 @@ export async function POST(request: Request) {
 
   const name = sanitize(body.name);
   const email = sanitize(body.email);
+  const phone = sanitize(body.phone);
+  const contactPreference =
+    sanitize(body.contactPreference) === "call" ? "call" : "email";
+  const callWindowRaw = sanitize(body.callWindow);
+  const callWindow =
+    contactPreference === "call" &&
+    (callWindowRaw === "morning" || callWindowRaw === "afternoon")
+      ? callWindowRaw
+      : "";
   const role = body.role && roleLabels[body.role] ? body.role : "other";
   const helpTopic = sanitize(body.helpTopic);
   const learnerAge = sanitize(body.learnerAge);
@@ -69,6 +78,13 @@ export async function POST(request: Request) {
   if (!name || !email || !message) {
     return NextResponse.json(
       { error: "Name, email, and message are required." },
+      { status: 400 }
+    );
+  }
+
+  if (contactPreference === "call" && !phone) {
+    return NextResponse.json(
+      { error: "Please include a phone number so we can call you back." },
       { status: 400 }
     );
   }
@@ -109,32 +125,41 @@ export async function POST(request: Request) {
   });
 
   const roleLabel = roleLabels[role];
-  const detailsLines = [
-    formatOptionalLine("Help topic", helpTopic),
-    formatOptionalLine("Learner age", learnerAge),
-    formatOptionalLine("Experience level", experienceLevel),
-    formatOptionalLine("Goals", goals),
-    formatOptionalLine("Who you're supporting", gradeBand),
-    formatOptionalLine("Preferred start window", startWindow),
-    formatOptionalLine("Estimated learner count", learnerCount),
-    formatOptionalLine("School / Organization", organization),
-  ];
 
-  const teamText = [
-    "New contact form submission",
-    "",
-    `Name: ${name}`,
-    `Email: ${email}`,
-    `Role: ${roleLabel}`,
-    ...detailsLines,
-    "",
-    "Message:",
+  const callWindowLabel =
+    callWindow === "morning"
+      ? "Mornings"
+      : callWindow === "afternoon"
+        ? "Afternoons"
+        : "";
+
+  const teamEmail = buildContactTeamEmail({
+    name,
+    email,
+    phone,
+    roleLabel,
+    helpTopic,
+    organization,
+    startWindow,
+    contactPreference,
+    callWindowLabel,
+    learnerAge,
+    experienceLevel,
+    goals,
+    gradeBand,
+    learnerCount,
     message,
-  ].join("\n");
+  });
 
   const receipt = buildContactReceiptEmail({
     name,
+    roleLabel,
     helpTopic,
+    organization,
+    startWindow,
+    phone,
+    contactPreference,
+    callWindow,
     message,
     contactEmail: contactInbox,
   });
@@ -142,11 +167,12 @@ export async function POST(request: Request) {
   try {
     await Promise.all([
       transporter.sendMail({
-        from: fromEmail,
+        from: `Kanam Academy Contact <${fromEmail}>`,
         to: contactInbox,
         replyTo: email,
-        subject: `New contact form: ${name}`,
-        text: teamText,
+        subject: teamEmail.subject,
+        text: teamEmail.text,
+        html: teamEmail.html,
       }),
       transporter.sendMail({
         from: `Kanam Academy <${fromEmail}>`,

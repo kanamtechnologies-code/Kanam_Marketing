@@ -41,6 +41,15 @@ export function SiteFooter() {
               >
                 {siteConfig.links.email}
               </a>
+              <span className="mx-1.5 text-zinc-400" aria-hidden>
+                ·
+              </span>
+              <a
+                className="font-semibold text-zinc-950"
+                href={siteConfig.links.phoneHref}
+              >
+                {siteConfig.links.phone}
+              </a>
             </p>
             <div className="mt-3 flex flex-col gap-1">
               <a
@@ -117,6 +126,14 @@ export function SiteFooter() {
                       href={`mailto:${siteConfig.links.email}`}
                     >
                       {siteConfig.links.email}
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      className="text-sm text-zinc-700 hover:text-zinc-950"
+                      href={siteConfig.links.phoneHref}
+                    >
+                      {siteConfig.links.phone}
                     </a>
                   </li>
                   <li>

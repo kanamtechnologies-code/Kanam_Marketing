@@ -49,7 +49,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     heroBody:
       "Kanam instructors teach the sessions. Your team hosts the learners, schedule, and space — with roster progress and standards docs for adoption conversations.",
     contactRole: "school",
-    contactHelpTopic: "Bring Kanam to our school",
+    contactHelpTopic: "Live instruction for our school",
     highlights: [
       `Five learning paths · ${LESSONS_COUNT_LABEL} interactive lessons`,
       `Flexible schedule · ${PACING_SHORT}`,
@@ -115,7 +115,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     heroBody:
       "Your program brings the block, the room, and the learners. We bring live instructors and a structured platform — so staff don’t need to be the CS expert.",
     contactRole: "partner",
-    contactHelpTopic: "After-school / weekend program",
+    contactHelpTopic: "An after-school or weekend program",
     highlights: [
       "Live Kanam instruction — your staff hosts the space",
       `${PATHS_COUNT_LABEL} paths · ${LESSONS_COUNT_LABEL} lessons · ${PACING_SHORT}`,
@@ -175,7 +175,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     heroBody:
       "Leaders bring the troop and the schedule. Kanam brings live tech instruction and a roster adults can see — without asking volunteers to teach CS.",
     contactRole: "partner",
-    contactHelpTopic: "Boy Scout or Girl Scout troop",
+    contactHelpTopic: "A Scout troop or youth group",
     highlights: [
       "Built for troop nights, weekend cohorts, and youth groups",
       "Live Kanam instruction — online or in person where available",
