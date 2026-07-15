@@ -1,311 +1,235 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
-import {
-  DEVICE_READY_BLURB,
-  DEVICE_READY_SHORT,
-  LEARNING_PATHS,
-  LESSONS_COUNT_LABEL,
-  PACING_BLURB,
-  PATHS_COUNT_LABEL,
-} from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About | Kanam Academy",
   description:
-    "Kanam Academy: coding, AI, data, cybersecurity, and digital literacy — for teens and anyone learning tech. Chromebook and mobile ready. Flexible schedule. Live instruction or structured async. Move Forward.",
+    "Kanam Academy’s mission is to make real tech skills accessible early — for youth, parents, schools, and Scout troops — through live instruction first. Move Forward.",
 };
 
-const HERO_PROOF = [
-  { label: "Learning paths", value: PATHS_COUNT_LABEL },
-  { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
-  { label: "Instruction", value: "Live + async" },
-  { label: "Access", value: DEVICE_READY_SHORT },
-] as const;
-
-const BELIEFS = [
+const WHO_WE_SERVE = [
   {
-    title: "Structure beats screen time",
-    body: "People need credible pathways into tech — not more unstructured clicking.",
+    title: "Youth",
+    body: "Teens deserve more than another app to click through. They deserve a real instructor, a clear path, and the confidence that comes from building something that works.",
+    image: "/images/product/teen-girl-coding.png",
+    imageAlt: "Teen focused on building real tech skills",
   },
   {
-    title: "Adults shouldn’t have to become CS teachers",
-    body: "Schools and programs need measurable learning with Kanam live instruction.",
+    title: "Parents",
+    body: "You shouldn’t have to become a computer-science teacher overnight. We give your child live guidance — and progress you can actually see — so enrichment feels trustworthy, not vague.",
+    image: "/images/product/family-mom-son.png",
+    imageAlt: "Parent supporting a young learner at home",
   },
   {
-    title: "Progress should be visible",
-    body: "Families and self-paced learners deserve structure that still feels human.",
+    title: "Schools & Scouts",
+    body: "Classrooms, after-school programs, and Scout troops already hold the learners and the schedule. We bring the live teaching — online or in person where available — so your team can host without becoming the CS expert.",
+    image: "/images/product/leaders-youth-live.png",
+    imageAlt: "Youth leaders and learners in a Kanam live session",
   },
 ] as const;
 
 export default function AboutPage() {
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-12 md:space-y-14 lg:space-y-16">
-        {/* Hero */}
+      <div className="space-y-14 md:space-y-16 lg:space-y-20">
+        {/* Personal mission intro — editorial, not a product hero */}
+        <header className="kanam-fade-up mx-auto max-w-3xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            About Kanam Academy
+          </p>
+          <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.9rem] lg:leading-[1.08]">
+            Tech should be accessible early —
+            <span className="block text-[rgb(var(--accent-rgb)/1)]">
+              not reserved for later.
+            </span>
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+            We’re here for young people first. Kanam Academy exists so teens can learn
+            coding, AI, data, cybersecurity, and digital literacy with a real instructor —
+            and so parents, schools, and Scout leaders don’t have to figure it out alone.
+          </p>
+        </header>
+
+        {/* Mission essay + image */}
         <section
-          aria-labelledby="about-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          id="mission"
+          aria-labelledby="mission-heading"
+          className="scroll-mt-24 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12"
         >
-          <div className="absolute inset-0">
+          <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:aspect-[5/4] lg:col-span-5 lg:aspect-auto lg:min-h-[32rem]">
             <Image
               src="/images/product/about-hero.png"
-              alt="Learners and educators collaborating in a Kanam learning space"
+              alt="Young people and mentors learning together"
               fill
               priority
-              className="object-cover object-[55%_center] sm:object-center"
-              sizes="(min-width: 1280px) 90rem, 100vw"
+              className="object-cover object-[center_30%]"
+              sizes="(min-width: 1024px) 40vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/88 to-zinc-950/28 sm:via-zinc-950/78 sm:to-zinc-950/15" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-zinc-950/30" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-transparent to-[rgb(var(--accent-rgb)/0.12)]" />
-          </div>
+          </figure>
 
-          <div className="relative z-10 flex min-h-[26rem] flex-col justify-end p-6 sm:min-h-[28rem] sm:p-8 lg:min-h-[32rem] lg:p-10">
-            <div className="max-w-xl lg:max-w-2xl">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white/70">
-                About Kanam Academy
+          <div className="lg:col-span-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              Our mission
+            </p>
+            <h2
+              id="mission-heading"
+              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+            >
+              Help youth move forward in a tech-shaped world.
+            </h2>
+            <div className="mt-5 space-y-4 text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+              <p>
+                Too many young people wait until college — or never get a clear on-ramp —
+                to learn the skills that already shape every job, every device, every
+                decision. We believe that access should start earlier, with teaching that
+                feels human.
               </p>
-              <h1
-                id="about-hero-heading"
-                className="mt-3 font-display text-[2.1rem] font-semibold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.06]"
-              >
-                Real skills
-                <span className="block text-[rgb(var(--accent-rgb)/1)]">
-                  for a digital world.
-                </span>
-              </h1>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
-                A web learning platform where teens — and anyone ready to learn tech —
-                practice real skills, earn visible progress, and{" "}
+              <p>
+                Kanam Academy was built around a simple conviction:{" "}
+                <strong className="font-semibold text-zinc-900">
+                  live instruction comes first.
+                </strong>{" "}
+                Videos and self-paced tools can help practice stick, but a real instructor
+                is what unlocks confidence, accountability, and momentum — especially for
+                teens who are just getting started.
+              </p>
+              <p>
+                Async tracks support the journey. Live teaching leads it. That’s how we
+                help youth — and the adults who care for them —{" "}
                 <span className="font-semibold text-[rgb(var(--accent-rgb)/1)]">
                   Move Forward.
                 </span>
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button asChild>
-                  <Link
-                    href={siteConfig.links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Try the guided lesson
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="secondary"
-                  className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
-                >
-                  <Link href="/learning-paths">See learning paths</Link>
-                </Button>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Proof */}
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-[rgb(var(--brand-rgb)/0.14)] to-[rgb(var(--accent-rgb)/0.35)] px-5 py-5 sm:px-6">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.06] kanam-hex-pattern" />
-          <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
-            {HERO_PROOF.map((item, index) => (
-              <div
-                key={item.label}
-                className={
-                  index > 0
-                    ? "sm:border-l sm:border-[rgb(var(--brand-2-rgb)/0.28)] sm:px-4"
-                    : "sm:px-4 sm:pl-0"
-                }
-              >
-                <div className="font-display text-2xl font-semibold tracking-tight text-[rgb(var(--brand-2-rgb)/1)] sm:text-3xl">
-                  {item.value}
-                </div>
-                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--brand-2-rgb)/0.72)]">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* What we are */}
+        {/* Who we show up for */}
         <section
-          id="what"
-          aria-labelledby="what-heading"
-          className="scroll-mt-24 grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-10"
+          id="who"
+          aria-labelledby="who-heading"
+          className="scroll-mt-24 space-y-10"
         >
-          <div className="lg:col-span-6">
+          <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              What we are
+              Who we show up for
             </p>
             <h2
-              id="what-heading"
+              id="who-heading"
               className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
             >
-              One platform. Five paths. Progress you can see.
+              Youth first. Then the people who stand beside them.
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[var(--muted)]">
-              Browser-based coding, AI literacy, digital literacy, data, and cybersecurity.
-              Every lesson is designed to explain, check, and correct itself — so learners
-              progress confidently and instructors or families can support with minimal prep.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-[var(--muted)]">
-              Live instruction when you want a guide. Structured async when you want to move
-              at your own pace. {DEVICE_READY_BLURB} {PACING_BLURB}
-            </p>
-          </div>
-          <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:aspect-[5/4] lg:col-span-6 lg:aspect-auto lg:min-h-[26rem]">
-            <Image
-              src="/images/product/live-instruction.png"
-              alt="Kanam live instruction with learners practicing in the lesson canvas"
-              fill
-              className="object-cover object-center"
-              sizes="(min-width: 1024px) 45vw, 100vw"
-            />
-          </figure>
-        </section>
-
-        {/* Problem / beliefs */}
-        <section
-          id="problem"
-          aria-labelledby="problem-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-2-rgb)/0.2)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-white/85 to-[rgb(var(--accent-rgb)/0.2)] px-5 py-8 sm:px-8 sm:py-10"
-        >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05] kanam-hex-pattern" />
-          <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              Why Kanam exists
-            </p>
-            <h2
-              id="problem-heading"
-              className="mt-2 max-w-2xl font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
-            >
-              The gap between “interested in tech” and real skill.
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-zinc-700">
-              People need credible pathways into coding, AI, data, cybersecurity, and digital
-              citizenship. Schools need something standards-aligned and measurable. Families
-              need enrichment that doesn’t require becoming the CS teacher at home.
-            </p>
-            <div className="mt-8 grid gap-8 sm:grid-cols-3">
-              {BELIEFS.map((item) => (
-                <div key={item.title}>
-                  <h3 className="font-display text-lg font-semibold tracking-tight text-zinc-950">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-600">{item.body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Learning paths */}
-        <section
-          id="learning-paths"
-          aria-labelledby="paths-heading"
-          className="scroll-mt-24 space-y-6"
-        >
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              Learning paths
-            </p>
-            <h2
-              id="paths-heading"
-              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
-            >
-              Five paths · {LESSONS_COUNT_LABEL} interactive lessons
-            </h2>
-            <p className="mt-3 text-base text-[var(--muted)]">
-              Clear starting points for teens and beginners — with depth for anyone leveling
-              up in tech.
-            </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {LEARNING_PATHS.map((path, index) => (
-              <Link
-                key={path.slug}
-                href={`/learning-paths/${path.slug}`}
-                className={`group relative flex min-h-[14rem] flex-col overflow-hidden rounded-[1.35rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2 ${
-                  index === 0 ? "sm:col-span-2 lg:col-span-1 lg:min-h-[16rem]" : ""
+          <div className="space-y-12 md:space-y-16">
+            {WHO_WE_SERVE.map((item, index) => (
+              <article
+                key={item.title}
+                className={`grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-10 ${
+                  index % 2 === 1 ? "lg:[&>figure]:order-2" : ""
                 }`}
               >
-                <Image
-                  src={path.image}
-                  alt=""
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                  sizes="(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/55 to-zinc-950/15" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-transparent to-[rgb(var(--accent-rgb)/0.1)]" />
-                <div className="relative z-10 mt-auto p-5">
-                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/65">
-                    {path.lessons} lessons
+                <figure className="relative aspect-[16/11] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 shadow-[0_14px_36px_rgba(15,23,42,0.1)] lg:col-span-6 lg:aspect-auto lg:min-h-[20rem]">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                  />
+                </figure>
+                <div className="lg:col-span-6 lg:px-2">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--brand-2)]">
+                    {item.title}
                   </p>
-                  <h3 className="mt-1 font-display text-xl font-semibold tracking-tight text-white">
-                    {path.name}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-snug text-white/75">{path.subtitle}</p>
-                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--accent-rgb)/1)]">
-                    Explore
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-                  </span>
+                  <p className="mt-3 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+                    {item.title === "Youth"
+                      ? "The learners at the center of everything we do."
+                      : item.title === "Parents"
+                        ? "Partners at home who want clarity, not guesswork."
+                        : "Hosts who bring the community — we bring the teaching."}
+                  </p>
+                  <p className="mt-4 text-base leading-relaxed text-[var(--muted)]">
+                    {item.body}
+                  </p>
                 </div>
-              </Link>
+              </article>
             ))}
           </div>
         </section>
 
-        {/* Partner CTA */}
+        {/* Live over async */}
         <section
-          id="partner"
-          aria-labelledby="partner-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 px-5 py-8 sm:px-8 sm:py-10"
+          id="live"
+          aria-labelledby="live-heading"
+          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.16)] via-white/90 to-[rgb(var(--accent-rgb)/0.22)] px-5 py-10 sm:px-8 sm:py-12 lg:px-12"
         >
-          <div className="absolute inset-0">
-            <Image
-              src="/images/product/leaders-school-live.png"
-              alt=""
-              fill
-              className="object-cover object-center opacity-40"
-              sizes="(min-width: 1280px) 90rem, 100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/92 to-zinc-950/70" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.3)] via-transparent to-[rgb(var(--accent-rgb)/0.15)]" />
-          </div>
-          <div className="relative max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
-              Partner with Kanam
+          <div className="pointer-events-none absolute inset-0 opacity-[0.05] kanam-hex-pattern" />
+          <div className="relative mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              How we teach
             </p>
             <h2
-              id="partner-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+              id="live-heading"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
             >
-              Schools, programs, Scout troops — and families ready to start.
+              Live instruction first.
+              <span className="block text-[rgb(var(--accent-rgb)/1)]">
+                Async practice second.
+              </span>
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-white/75">
-              Request information for a pilot, or begin with the guided demo today. We’ll
-              help you choose the right next step.
+            <p className="mt-5 text-base leading-relaxed text-zinc-700 sm:text-lg">
+              We lead with people — Kanam instructors who teach live, answer questions in
+              the moment, and keep learners moving. Structured async lessons help skills
+              stick between sessions. That order matters: guidance first, practice next,
+              progress you can see throughout.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
-                <Link href="/contact">Request information</Link>
-              </Button>
-              <Button
-                asChild
-                variant="secondary"
-                className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
-              >
-                <Link href="/educators">For schools &amp; leaders</Link>
-              </Button>
-            </div>
+            <p className="mt-4 text-base leading-relaxed text-zinc-700 sm:text-lg">
+              Whether it’s a family tutoring session, a school cohort, or a Scout troop
+              night, the heart of Kanam is the same: a real teacher helping a young person
+              grow.
+            </p>
+          </div>
+        </section>
+
+        {/* Closing invitation */}
+        <section
+          id="join"
+          aria-labelledby="join-heading"
+          className="scroll-mt-24 grid gap-8 lg:grid-cols-12 lg:items-end"
+        >
+          <div className="lg:col-span-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              Join us
+            </p>
+            <h2
+              id="join-heading"
+              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+            >
+              If you care about a young person’s future in tech — we’re already on your
+              side.
+            </h2>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+              Tell us about your child, your classroom, your program, or your troop. We’ll
+              help you find the right next step — with live instruction at the center.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
+            <Button asChild>
+              <Link href="/contact">Talk with us</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/parents">For families</Link>
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href="/educators">For schools &amp; leaders</Link>
+            </Button>
           </div>
         </section>
       </div>
