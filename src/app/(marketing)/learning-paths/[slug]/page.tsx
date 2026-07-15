@@ -160,8 +160,8 @@ export default async function LearningPathDetailPage({ params }: Props) {
         </div>
 
         {/* Tight facts */}
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-[rgb(var(--brand-rgb)/0.14)] to-[rgb(var(--accent-rgb)/0.35)] px-5 py-5 sm:px-6">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.06] kanam-hex-pattern" />
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-5 sm:px-6">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
             {[
               { label: "Lessons", value: String(path.lessons) },
@@ -173,12 +173,12 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 key={item.label}
                 className={cn(
                   "sm:px-4 sm:first:pl-0 sm:last:pr-0",
-                  index > 0 && "sm:border-l sm:border-[rgb(var(--brand-2-rgb)/0.28)]"
+                  index > 0 && "sm:border-l sm:border-white/20"
                 )}
               >
                 <div
                   className={cn(
-                    "font-display font-semibold tracking-tight text-[rgb(var(--brand-2-rgb)/1)]",
+                    "font-display font-semibold tracking-tight text-white",
                     item.label === "Capstone"
                       ? "text-base sm:text-lg leading-snug"
                       : "text-2xl sm:text-3xl"
@@ -186,7 +186,7 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 >
                   {item.value}
                 </div>
-                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--brand-2-rgb)/0.72)]">
+                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--accent-rgb)/0.9)]">
                   {item.label}
                 </div>
               </div>

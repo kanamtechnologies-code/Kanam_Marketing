@@ -112,22 +112,37 @@ export default async function PartnerAudiencePage({ params }: Props) {
         </section>
 
         {/* Resources strip */}
-        <div className="flex flex-col gap-3 rounded-[1.25rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-white/80 to-[rgb(var(--accent-rgb)/0.2)] px-5 py-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">
-          <p className="text-sm font-medium text-zinc-800">
+        <div className="flex flex-col gap-3 rounded-[1.25rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">
+          <p className="text-sm font-medium text-white/90">
             Share with your team — printable pages you can save as PDF.
           </p>
           <div className="flex flex-wrap gap-2">
-            <Button asChild variant="secondary" size="sm">
+            <Button
+              asChild
+              variant="secondary"
+              size="sm"
+              className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+            >
               <Link href={siteConfig.links.onePager} target="_blank" rel="noreferrer">
                 Product one-pager
               </Link>
             </Button>
-            <Button asChild variant="secondary" size="sm">
+            <Button
+              asChild
+              variant="secondary"
+              size="sm"
+              className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+            >
               <Link href={siteConfig.links.pricingPdf} target="_blank" rel="noreferrer">
                 Pricing one-pager
               </Link>
             </Button>
-            <Button asChild variant="secondary" size="sm">
+            <Button
+              asChild
+              variant="secondary"
+              size="sm"
+              className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+            >
               <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
                 Standards PDF
               </Link>

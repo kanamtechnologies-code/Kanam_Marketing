@@ -172,22 +172,22 @@ export default function ParentsPage() {
         </section>
 
         {/* Facts */}
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-[rgb(var(--brand-rgb)/0.14)] to-[rgb(var(--accent-rgb)/0.35)] px-5 py-5 sm:px-6">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.06] kanam-hex-pattern" />
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-5 sm:px-6">
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
             {HERO_PROOF.map((item, index) => (
               <div
                 key={item.label}
                 className={
                   index > 0
-                    ? "sm:border-l sm:border-[rgb(var(--brand-2-rgb)/0.28)] sm:px-4 sm:first:pl-0"
+                    ? "sm:border-l sm:border-white/20 sm:px-4 sm:first:pl-0"
                     : "sm:px-4 sm:pl-0"
                 }
               >
-                <div className="font-display text-2xl font-semibold tracking-tight text-[rgb(var(--brand-2-rgb)/1)] sm:text-3xl">
+                <div className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                   {item.value}
                 </div>
-                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--brand-2-rgb)/0.72)]">
+                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--accent-rgb)/0.9)]">
                   {item.label}
                 </div>
               </div>
