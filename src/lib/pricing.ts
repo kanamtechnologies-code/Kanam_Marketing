@@ -9,14 +9,14 @@ export const PRICING = {
     price: "$30/mo",
     alt: "or $100–200 per learning track",
     detail:
-      "Platform access — structured paths, XP, and progress adults can see. Pay monthly for ongoing access, or pay per track for a clear finish line. Live 1:1 tutoring is optional and priced separately.",
+      "Platform access — six structured paths, XP, and progress adults can see. Pay monthly for ongoing access, or pay per track for a clear finish line. Live 1:1 tutoring is optional and priced separately.",
   },
   program: {
     title: "After-school & weekend programs",
     price: "Custom quote",
     alt: "based on learner count & schedule",
     detail:
-      "Class codes, roster, and assignments for cohorts. Add Kanam live instruction if needed. Contact us for a quote.",
+      "Class codes, roster, and assignments for cohorts. Add Kanam live instruction if needed — taught by industry professionals. Contact us for a quote.",
   },
   scout: {
     title: "Boy Scout & Girl Scout troops",
@@ -54,24 +54,25 @@ export const LIVE_ADD_ONS = {
     ],
     alt: "45–60 min · trial $49 · 4-pack $279–399 · 8-pack $499–749",
     detail:
-      "Private live instruction for families and individual learners. Never bundled into the monthly subscription or per-track fee.",
+      "Private live sessions with industry professionals who bring years of real-world experience. Never bundled into the monthly subscription or per-track fee.",
   },
   groupLive: {
     title: "Small-group live instruction",
     price: "Custom quote",
     alt: "for programs & schools",
     detail:
-      "Live cohort teaching on top of the platform. Best when a program wants a Kanam instructor for weekly sessions.",
+      "Live cohort teaching by Kanam instructors — industry professionals with years of experience — on top of the platform.",
   },
 } as const;
 
 export const PRICING_INCLUDES = [
-  "Five learning paths · 76 interactive lessons",
-  "Flexible schedule (designed for ~8 weeks at ~2 sessions/week)",
+  "Six learning paths · 92 interactive lessons",
+  "Grades 6–12 · flexible schedule (~8 weeks at ~2 sessions/week)",
+  "Instructors who are industry professionals with years of experience",
   "Chromebook & mobile ready · no special software install",
   "Program tools: class codes, roster, assignments, XP",
   "Standards-aligned curriculum documentation available",
-  "Guided demo lesson — try before you commit",
+  "Guided demo at learn.kanamacademy.com — try before you commit",
 ] as const;
 
 export const PRICING_OPTIONS = [
@@ -97,12 +98,12 @@ export const PRICING_CONTEXT = [
   {
     title: "Platform vs live",
     detail:
-      "Subscription or per-track = software + curriculum. Live 1:1 = human teaching time. Always priced separately.",
+      "Subscription or per-track = software + curriculum. Live 1:1 = human teaching time with industry professionals. Always priced separately.",
   },
   {
     title: "What a track is",
     detail:
-      "A learning track (path) is one structured curriculum — designed for about eight weeks at two sessions per week, with flexible pacing.",
+      "A learning track (path) is one structured curriculum — designed for about eight weeks at two sessions per week, with flexible pacing for grades 6–12.",
   },
   {
     title: "Not included",

@@ -92,8 +92,9 @@ export default function PricingOnePagerPage() {
           </h1>
           <p className="mt-1.5 max-w-3xl text-[0.88rem] leading-relaxed text-[var(--muted)] print:text-[0.78rem]">
             Family subscription is {PRICING.family.price}, or {PRICING.family.alt}. Optional
-            live tutoring is priced separately. Programs and schools are quoted to fit your
-            cohort. Final pricing confirmed in writing before you start.
+            live tutoring with industry professionals is priced separately. Programs and
+            schools are quoted to fit your cohort (grades 6–12). Final pricing confirmed in
+            writing before you start.
           </p>
         </section>
 
@@ -199,8 +200,8 @@ export default function PricingOnePagerPage() {
             </h2>
             <p className="mt-1 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.64rem]">
               Email {siteConfig.links.email} · {siteConfig.links.phone} ·{" "}
-              {SITE_URL}/contact · Guided demo available
-              with no account.
+              {SITE_URL}/contact · Guided demo at learn.kanamacademy.com/demo
+              (no account required).
             </p>
             <p className="mt-2 text-[0.68rem] leading-snug text-[var(--muted)] print:text-[0.62rem]">
               Tell us: who you serve, learner count, live vs async, and preferred start

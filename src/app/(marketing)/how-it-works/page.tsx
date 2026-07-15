@@ -10,11 +10,9 @@ import {
   DEVICE_READY_BLURB,
   DEVICE_READY_SHORT,
   LESSON_FLOW,
-  LESSONS_COUNT_LABEL,
   PACING_BLURB,
   PACING_DESIGNED,
   PACING_FLEXIBLE,
-  PATHS_COUNT_LABEL,
   STANDARDS_BLURB,
 } from "@/lib/learning-paths";
 import { siteConfig } from "@/lib/site";
@@ -24,13 +22,6 @@ export const metadata: Metadata = {
   description:
     "How Kanam lessons work: learn it, practice with instant feedback, reflect, earn XP. Flexible schedule, Chromebook and mobile ready, standards-aligned documentation.",
 };
-
-const HERO_PROOF = [
-  { label: "Lesson rhythm", value: "Learn → Do → Reflect" },
-  { label: "Learning paths", value: PATHS_COUNT_LABEL },
-  { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
-  { label: "Devices", value: DEVICE_READY_SHORT },
-] as const;
 
 const LESSON_PARTS = [
   {
@@ -141,30 +132,6 @@ export default function HowItWorksPage() {
             </div>
           </div>
         </section>
-
-        {/* Proof strip */}
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.22)] via-[rgb(var(--brand-rgb)/0.14)] to-[rgb(var(--accent-rgb)/0.35)] px-5 py-5 sm:px-6">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.06] kanam-hex-pattern" />
-          <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
-            {HERO_PROOF.map((item, index) => (
-              <div
-                key={item.label}
-                className={
-                  index > 0
-                    ? "sm:border-l sm:border-[rgb(var(--brand-2-rgb)/0.28)] sm:px-4"
-                    : "sm:px-4 sm:pl-0"
-                }
-              >
-                <div className="font-display text-xl font-semibold tracking-tight text-[rgb(var(--brand-2-rgb)/1)] sm:text-2xl lg:text-[1.65rem]">
-                  {item.value}
-                </div>
-                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--brand-2-rgb)/0.72)]">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Lesson flow */}
         <section id="flow" aria-labelledby="flow-heading" className="scroll-mt-24 space-y-8">
@@ -342,37 +309,37 @@ export default function HowItWorksPage() {
         <section
           id="mastery"
           aria-labelledby="mastery-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-2-rgb)/0.2)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-white/85 to-[rgb(var(--accent-rgb)/0.2)] px-5 py-8 sm:px-8 sm:py-10"
+          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-8 sm:px-8 sm:py-10"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05] kanam-hex-pattern" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative grid gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
                 Evidence of mastery
               </p>
               <h2
                 id="mastery-heading"
-                className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+                className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
               >
                 Progress you can prove.
               </h2>
-              <ul className="mt-6 space-y-3 text-sm leading-relaxed text-zinc-700">
+              <ul className="mt-6 space-y-3 text-sm leading-relaxed text-white/80">
                 {MASTERY.map((item) => (
                   <li key={item} className="flex gap-3">
-                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]" />
+                    <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent-rgb)/1)]" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
             <div id="tech" className="scroll-mt-24">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
                 Technology
               </p>
-              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
                 Built for real classrooms and homes.
               </h2>
-              <ul className="mt-6 space-y-3 text-sm leading-relaxed text-zinc-700">
+              <ul className="mt-6 space-y-3 text-sm leading-relaxed text-white/80">
                 {TECH.map((item) => (
                   <li key={item} className="flex gap-3">
                     <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent-rgb)/1)]" />
@@ -380,7 +347,7 @@ export default function HowItWorksPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-sm leading-relaxed text-zinc-600">{DEVICE_READY_BLURB}</p>
+              <p className="mt-5 text-sm leading-relaxed text-white/70">{DEVICE_READY_BLURB}</p>
             </div>
           </div>
         </section>

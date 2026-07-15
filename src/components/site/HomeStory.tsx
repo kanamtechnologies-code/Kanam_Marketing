@@ -134,7 +134,7 @@ function LearningPathsPanel() {
   return (
     <section className="w-full border-t border-zinc-900/8 bg-[rgb(var(--background))] py-14 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle>Five learning paths. One platform.</SectionTitle>
+        <SectionTitle>Six learning paths. One platform.</SectionTitle>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
           {LESSONS_COUNT_LABEL} interactive lessons across {PATHS_LIST_SHORT}.{" "}
           {PACING_BLURB}

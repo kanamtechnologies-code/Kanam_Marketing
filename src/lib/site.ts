@@ -1,6 +1,5 @@
 const appBase =
-  process.env.NEXT_PUBLIC_APP_URL ??
-  "https://kanam-academy-2026-v1.vercel.app";
+  process.env.NEXT_PUBLIC_APP_URL ?? "https://learn.kanamacademy.com";
 
 const normalizedBase = appBase.replace(/\/$/, "");
 
@@ -8,7 +7,7 @@ export const siteConfig = {
   name: "Kanam Academy",
   tagline: "Move Forward.",
   description:
-    "Coding, AI, data, cybersecurity, and digital literacy for teens and anyone learning tech — live instruction or structured async classes. Five learning paths. Flexible schedule. Chromebook and mobile ready. Progress you can see.",
+    "Coding, AI, data, cybersecurity, financial literacy, and digital skills for grades 6–12 — live instruction or structured async classes. Six learning paths. Taught by industry professionals. Chromebook and mobile ready. Progress you can see.",
   links: {
     app: `${normalizedBase}/welcome`,
     demo:

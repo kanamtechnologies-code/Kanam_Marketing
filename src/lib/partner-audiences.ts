@@ -51,7 +51,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     contactRole: "school",
     contactHelpTopic: "Live instruction for our school",
     highlights: [
-      `Five learning paths · ${LESSONS_COUNT_LABEL} interactive lessons`,
+      `${PATHS_COUNT_LABEL} learning paths · ${LESSONS_COUNT_LABEL} interactive lessons`,
       `Flexible schedule · ${PACING_SHORT}`,
       "Live instruction online — or in person where available",
       `Standards packet for adoption · ${DEVICE_READY_SHORT}`,

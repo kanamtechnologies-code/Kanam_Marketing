@@ -9,9 +9,7 @@ import {
   DEVICE_READY_BLURB,
   DEVICE_READY_SHORT,
   LEARNING_PATHS,
-  LESSONS_COUNT_LABEL,
   PACING_BLURB,
-  PATHS_COUNT_LABEL,
 } from "@/lib/learning-paths";
 import { LIVE_ADD_ONS, PRICING } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
@@ -80,10 +78,10 @@ const STEPS = [
 ] as const;
 
 const HERO_PROOF = [
-  { label: "Learning paths", value: PATHS_COUNT_LABEL },
-  { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
-  { label: "What parents get", value: "Real progress" },
-  { label: "Learning style", value: "Async + live" },
+  { label: "Live tutoring", value: "1:1" },
+  { label: "Trial session", value: LIVE_ADD_ONS.oneToOne.trial },
+  { label: "Parents see", value: "Real progress" },
+  { label: "Between sessions", value: "Async practice" },
 ] as const;
 
 const FAQS = [
@@ -454,27 +452,27 @@ export default function ParentsPage() {
         <section
           id="how-it-works"
           aria-labelledby="how-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-2-rgb)/0.2)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.16)] via-white/80 to-[rgb(var(--accent-rgb)/0.22)] px-5 py-8 sm:px-8 sm:py-10"
+          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-8 sm:px-8 sm:py-10"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05] kanam-hex-pattern" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
               How it works for parents
             </p>
             <h2
               id="how-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+              className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
             >
               Simple to start. Easy to trust.
             </h2>
             <div className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
               {STEPS.map((step) => (
                 <div key={step.n}>
-                  <p className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--brand-2-rgb)/1)]">
+                  <p className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--accent-rgb)/1)]">
                     {step.n}
                   </p>
-                  <p className="mt-2 font-semibold text-zinc-950 sm:text-lg">{step.title}</p>
-                  <p className="mt-1.5 text-sm leading-snug text-zinc-700">{step.body}</p>
+                  <p className="mt-2 font-semibold text-white sm:text-lg">{step.title}</p>
+                  <p className="mt-1.5 text-sm leading-snug text-white/75">{step.body}</p>
                 </div>
               ))}
             </div>
@@ -484,7 +482,11 @@ export default function ParentsPage() {
                   Try a free guided lesson
                 </Link>
               </Button>
-              <Button asChild variant="secondary">
+              <Button
+                asChild
+                variant="secondary"
+                className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+              >
                 <Link href="/contact">Ask about your child</Link>
               </Button>
             </div>

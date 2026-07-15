@@ -158,7 +158,7 @@ export default function OnePagerPage() {
         <section className="mt-5 print:mt-3.5">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-display text-lg font-semibold text-[var(--foreground)] print:text-base">
-              Five learning paths
+              Six learning paths
             </h2>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
               Flexible schedule

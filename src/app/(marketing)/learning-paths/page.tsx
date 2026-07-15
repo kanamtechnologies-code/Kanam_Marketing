@@ -20,7 +20,7 @@ import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Learning paths | Kanam Academy",
-  description: `Five learning paths: ${PATHS_LIST_SHORT} — ${LESSONS_COUNT_LABEL} interactive lessons. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async.`,
+  description: `${PATHS_COUNT_LABEL} learning paths: ${PATHS_LIST_SHORT} — ${LESSONS_COUNT_LABEL} interactive lessons. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async.`,
 };
 
 const FEATURED_SLUG = "ai-literacy";
@@ -137,8 +137,8 @@ export default function LearningPathsPage() {
   return (
     <SubpageShell
       eyebrow="Learning paths"
-      title="Five learning paths. One platform."
-      subtitle={`${LESSONS_COUNT_LABEL} interactive lessons across coding, AI, data, cybersecurity, and digital literacy. ${PACING_BLURB}`}
+      title="Six learning paths. One platform."
+      subtitle={`${LESSONS_COUNT_LABEL} interactive lessons across coding, AI, data, cybersecurity, financial literacy, and digital skills. ${PACING_BLURB}`}
       actions={
         <>
           <Button asChild>

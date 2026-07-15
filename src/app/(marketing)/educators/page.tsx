@@ -6,8 +6,6 @@ import { SubpageShell } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
 import {
   DEVICE_READY_SHORT,
-  LESSONS_COUNT_LABEL,
-  PATHS_COUNT_LABEL,
 } from "@/lib/learning-paths";
 import { PARTNER_AUDIENCES } from "@/lib/partner-audiences";
 import { siteConfig } from "@/lib/site";
@@ -44,10 +42,10 @@ const WHY = [
 ] as const;
 
 const HERO_PROOF = [
-  { label: "Learning paths", value: PATHS_COUNT_LABEL },
-  { label: "Lessons", value: LESSONS_COUNT_LABEL },
-  { label: "Instruction", value: "Live" },
-  { label: "Format", value: "Online · on-site*" },
+  { label: "Kanam brings", value: "Live teaching" },
+  { label: "You bring", value: "The cohort" },
+  { label: "Where", value: "Online · on-site*" },
+  { label: "You see", value: "Roster progress" },
 ] as const;
 
 export default function EducatorsPage() {
@@ -231,27 +229,27 @@ export default function EducatorsPage() {
         {/* How it works */}
         <section
           aria-labelledby="how-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-2-rgb)/0.2)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.16)] via-white/80 to-[rgb(var(--accent-rgb)/0.22)] px-5 py-8 sm:px-8 sm:py-10"
+          className="relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-8 sm:px-8 sm:py-10"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05] kanam-hex-pattern" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
               How it works
             </p>
             <h2
               id="how-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+              className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
             >
               You host. We teach.
             </h2>
             <div className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
               {STEPS.map((step) => (
                 <div key={step.n}>
-                  <p className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--brand-2-rgb)/1)]">
+                  <p className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--accent-rgb)/1)]">
                     {step.n}
                   </p>
-                  <p className="mt-2 font-semibold text-zinc-950 sm:text-lg">{step.title}</p>
-                  <p className="mt-1.5 text-sm leading-snug text-zinc-700">{step.body}</p>
+                  <p className="mt-2 font-semibold text-white sm:text-lg">{step.title}</p>
+                  <p className="mt-1.5 text-sm leading-snug text-white/75">{step.body}</p>
                 </div>
               ))}
             </div>

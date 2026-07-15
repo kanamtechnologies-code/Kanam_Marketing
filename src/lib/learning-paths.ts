@@ -1,9 +1,10 @@
 export type LearningPathSlug =
   | "ai-literacy"
   | "digital-literacy"
+  | "cybersecurity"
+  | "financial-literacy"
   | "ai-python"
-  | "data-analyst"
-  | "cybersecurity";
+  | "data-analyst";
 
 export type LearningPath = {
   slug: LearningPathSlug;
@@ -316,23 +317,82 @@ export const LEARNING_PATHS: LearningPath[] = [
     image: "/images/product/path-cybersecurity.png",
     overviewImage: "/images/product/overview-cybersecurity.png",
   },
+  {
+    slug: "financial-literacy",
+    name: "Financial Literacy",
+    shortName: "Financial Literacy",
+    lessons: 16,
+    subtitle: "Budgets, credit, investing, and money decisions for real life",
+    outcome:
+      "Money goals, needs vs wants, paychecks and taxes, banking, budgeting, credit, debt, saving, investing basics, insurance, scams, college costs, and a first-year money plan capstone.",
+    learnOutcomes: [
+      "Set money goals and tell needs from wants with clear tradeoffs",
+      "Read a paycheck and understand income, taxes, and banking basics",
+      "Build a budget, track spending, and start an emergency fund habit",
+      "Explain credit scores, interest, loans, and common debt traps",
+      "Compare saving vs investing and recognize consumer scams",
+      "Create a first-year money plan they can explain to a parent or mentor",
+    ],
+    skills: [
+      "Budgeting & cash flow",
+      "Credit & debt awareness",
+      "Saving & growth basics",
+      "Consumer protection",
+      "College & job money decisions",
+    ],
+    capstone: "Your First-Year Money Plan",
+    marketingAngle:
+      "Practical money skills for teens — not get-rich-quick tips.",
+    whoFor:
+      "Teens and families who want clear, responsible money skills for school, work, and the first years of independence.",
+    weeklyThemes: [
+      "Money & Goals",
+      "Income & Banking",
+      "Budgeting & Cash Flow",
+      "Credit & Debt",
+      "Saving & Investing",
+      "Protection & Consumer Rights",
+      "Taxes, College & Big Decisions",
+      "Capstone: First-Year Money Plan",
+    ],
+    lessonTitles: [
+      "Money, Goals & You",
+      "Needs, Wants & Tradeoffs",
+      "Paychecks, Income & Taxes",
+      "Banks, Accounts & Cards",
+      "Build a Budget That Works",
+      "Spending Tracking & Emergency Funds",
+      "Credit Scores & Reports",
+      "Interest, Loans & Debt Traps",
+      "Saving & Compound Growth",
+      "Investing Basics & Risk",
+      "Insurance: Protecting What Matters",
+      "Scams, Fraud & Consumer Rights",
+      "Taxes & Your First Job",
+      "College Costs, Aid & Loans",
+      "Big Money Decisions",
+      "Capstone: Your First-Year Money Plan",
+    ],
+    image: "/images/product/path-financial-literacy.png",
+    overviewImage: "/images/product/overview-financial-literacy.png",
+  },
 ];
 
 export const TOTAL_LESSONS = LEARNING_PATHS.reduce((sum, p) => sum + p.lessons, 0);
 
-/** Marketing total across the five paths (16+16+16+14+14). */
-export const LESSONS_COUNT_LABEL = "76";
+/** Marketing total across the six paths (16×4 + 14×2). */
+export const LESSONS_COUNT_LABEL = String(TOTAL_LESSONS);
 
-export const PATHS_COUNT_LABEL = "5";
+export const PATHS_COUNT_LABEL = String(LEARNING_PATHS.length);
 
 export const PATHS_LIST_SHORT =
-  "AI Literacy, Digital Literacy, AI + Python, Data Analyst, and Cybersecurity";
+  "AI Literacy, Digital Literacy, Cybersecurity, Financial Literacy, AI + Python, and Data Analyst";
 
 export const PROOF_POINTS = [
-  { label: "Learning paths", value: PATHS_COUNT_LABEL },
-  { label: "Interactive lessons", value: LESSONS_COUNT_LABEL },
-  { label: "Schedule", value: "Flexible" },
-  { label: "Format", value: "Live + async" },
+  { label: "Paths to choose", value: PATHS_COUNT_LABEL },
+  { label: "Lessons across paths", value: LESSONS_COUNT_LABEL },
+  { label: "Capstone on every path", value: "Yes" },
+  { label: "Browser ready", value: "Chromebook & mobile" },
 ] as const;
 
 /** Designed pacing — always pair with flexibility language in UI copy. */

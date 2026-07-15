@@ -168,29 +168,29 @@ export default function AboutPage() {
         <section
           id="live"
           aria-labelledby="live-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-2-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.16)] via-white/90 to-[rgb(var(--accent-rgb)/0.22)] px-5 py-10 sm:px-8 sm:py-12 lg:px-12"
+          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-10 sm:px-8 sm:py-12 lg:px-12"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.05] kanam-hex-pattern" />
+          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
               How we teach
             </p>
             <h2
               id="live-heading"
-              className="mt-3 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+              className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl"
             >
               Live instruction first.
               <span className="block text-[rgb(var(--accent-rgb)/1)]">
                 Async practice second.
               </span>
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-zinc-700 sm:text-lg">
+            <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
               We lead with people — Kanam instructors who teach live, answer questions in
               the moment, and keep learners moving. Structured async lessons help skills
               stick between sessions. That order matters: guidance first, practice next,
               progress you can see throughout.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-zinc-700 sm:text-lg">
+            <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
               Whether it’s a family tutoring session, a school cohort, or a Scout troop
               night, the heart of Kanam is the same: a real teacher helping a young person
               grow.
