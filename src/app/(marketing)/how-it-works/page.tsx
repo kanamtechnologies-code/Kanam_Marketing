@@ -20,7 +20,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How it works | Kanam Academy",
   description:
-    "How Kanam lessons work: learn it, practice with instant feedback, reflect, earn XP. Flexible schedule, Chromebook and mobile ready, standards-aligned documentation.",
+    "How Kanam lessons work: learn it, practice with instant feedback, reflect, earn XP. Built to align with CSTA K–12 Computer Science Standards. Flexible schedule, Chromebook and mobile ready.",
 };
 
 const LESSON_PARTS = [
@@ -360,13 +360,13 @@ export default function HowItWorksPage() {
         >
           <div className="lg:col-span-7">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              Standards &amp; credibility
+              CSTA standards
             </p>
             <h2
               id="standards-heading"
               className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
             >
-              Documentation ready for adoption conversations.
+              Built to align with CSTA K–12 Computer Science Standards.
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
               {STANDARDS_BLURB}

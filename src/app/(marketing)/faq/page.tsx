@@ -22,7 +22,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "FAQ | Kanam Academy",
   description:
-    "FAQ: who Kanam is for, five learning paths, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
+    "FAQ: who Kanam is for, six learning paths, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
 };
 
 const FAQ_GROUPS = [
@@ -33,14 +33,14 @@ const FAQ_GROUPS = [
     items: [
       {
         q: "What is Kanam Academy?",
-        a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, and cybersecurity — with five learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
+        a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, cybersecurity, and financial literacy — with six learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
       },
       {
         q: "Who is it for?",
         a: `Teens and anyone learning tech — plus teachers, schools, families, ${PROGRAM_FIT_SHORT}, and enrichment partners.`,
       },
       {
-        q: "What are the five learning paths?",
+        q: "What are the six learning paths?",
         a: `AI Literacy (16), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), AI + Python Starter Pack (14), and Data Analyst Track (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
       },
       {
@@ -55,8 +55,8 @@ const FAQ_GROUPS = [
     icon: BookOpen,
     items: [
       {
-        q: "Is the schedule fixed at 8 weeks?",
-        a: `No. ${PACING_BLURB} Go faster, slower, or build a calendar around class periods, after-school blocks, weekend meetings, Scout troop nights, or family routines.`,
+        q: "Is a track really 16 sessions over 8 weeks?",
+        a: `Yes — that’s the designed program length for one full track. ${PACING_BLURB} Go faster, slower, or build a calendar around class periods, after-school blocks, weekend meetings, Scout troop nights, or family routines.`,
       },
       {
         q: "Is this only live cohorts?",
@@ -75,8 +75,8 @@ const FAQ_GROUPS = [
         a: "Sixteen lessons of high-school cyber fundamentals focused on defending systems, data, and people — not learning to hack. Capstone: Defend the Scenario.",
       },
       {
-        q: "Is the curriculum standards-aligned?",
-        a: "Yes. Standards-aligned curriculum documentation is available (CSTA Levels 2 and 3A primary; also K–12 CS Framework, ISTE Students 2016, Common Core Math statistics/probability for data). Request the curriculum packet for adoption conversations.",
+        q: "Is Kanam aligned with CSTA standards?",
+        a: "Yes. Kanam Academy is built to align with the CSTA K–12 Computer Science Standards (2017), Levels 2 and 3A. Documentation is also mapped to the K–12 CS Framework, ISTE Students 2016, and Common Core Math statistics/probability for data. Request the curriculum packet for adoption conversations.",
       },
     ],
   },

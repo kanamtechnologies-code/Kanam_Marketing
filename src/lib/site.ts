@@ -7,7 +7,7 @@ export const siteConfig = {
   name: "Kanam Academy",
   tagline: "Move Forward.",
   description:
-    "Coding, AI, data, cybersecurity, financial literacy, and digital skills for grades 6–12 — live instruction or structured async classes. Six learning paths. Taught by industry professionals. Chromebook and mobile ready. Progress you can see.",
+    "Coding, AI, data, cybersecurity, financial literacy, and digital skills for grades 6–12 — live instruction or structured async classes. Built to align with CSTA K–12 Computer Science Standards. Six learning paths. Taught by industry professionals. Chromebook and mobile ready. Progress you can see.",
   links: {
     app: `${normalizedBase}/welcome`,
     demo:

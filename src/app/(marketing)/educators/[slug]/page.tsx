@@ -191,7 +191,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
             </ul>
             <div className="mt-6">
               <Button asChild variant="secondary">
-                <Link href="/learning-paths">See the five learning paths</Link>
+                <Link href="/learning-paths">See the six learning paths</Link>
               </Button>
             </div>
           </div>

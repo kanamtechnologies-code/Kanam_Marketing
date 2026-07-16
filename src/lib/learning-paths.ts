@@ -397,7 +397,7 @@ export const PROOF_POINTS = [
 
 /** Designed pacing — always pair with flexibility language in UI copy. */
 export const PACING_DESIGNED =
-  "Designed for about 8 weeks at ~2 sessions per week";
+  "Designed as 16 sessions over 8 weeks (~2 sessions per week)";
 
 export const PACING_FLEXIBLE =
   "The schedule flexes to your classroom, family, or self-paced needs";
@@ -405,9 +405,9 @@ export const PACING_FLEXIBLE =
 export const PACING_BLURB = `${PACING_DESIGNED} — ${PACING_FLEXIBLE.toLowerCase()}.`;
 
 export const PACING_SHORT =
-  "Flexible schedule — designed for ~8 weeks at ~2 sessions/week";
+  "Flexible schedule — 16 sessions over 8 weeks";
 
-export const PACING_LABEL = "Flexible — designed for ~8 weeks · ~2 sessions/week";
+export const PACING_LABEL = "Flexible — 16 sessions · 8 weeks";
 
 /** Device access — Chromebook + mobile ready, no special install. */
 export const DEVICE_READY_SHORT = "Chromebook & mobile ready";
@@ -480,5 +480,14 @@ export function groupLessonsByWeek(path: LearningPath): WeekModule[] {
   });
 }
 
+/** CSTA alignment — use these consistently on marketing surfaces. */
+export const CSTA_SHORT = "CSTA-aligned";
+
+export const CSTA_LABEL =
+  "Built to align with CSTA K–12 Computer Science Standards";
+
 export const STANDARDS_BLURB =
-  "Standards-aligned curriculum documentation is available for accreditation and adoption conversations. Primary mapping: CSTA K–12 CS Standards (2017), Levels 2 and 3A — also mapped to the K–12 CS Framework, ISTE Standards for Students (2016), and Common Core Math statistics/probability (especially the Data track), with forward-looking mapping toward CSTA Draft 3.0. Clear enough for teens starting out; deep enough for anyone leveling up in tech.";
+  "Kanam Academy is built to align with the CSTA K–12 Computer Science Standards (2017), Levels 2 and 3A — so schools and programs can adopt with confidence. Curriculum documentation is available for accreditation and adoption conversations. Also mapped to the K–12 CS Framework, ISTE Standards for Students (2016), and Common Core Math statistics/probability (especially the Data track), with forward-looking mapping toward CSTA Draft 3.0. Clear enough for teens starting out; deep enough for anyone leveling up in tech.";
+
+export const STANDARDS_SHORT =
+  "Built to align with CSTA K–12 CS Standards · curriculum packet available";

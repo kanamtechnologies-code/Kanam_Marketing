@@ -9,13 +9,16 @@ import {
   PRICING_CONTEXT,
   PRICING_INCLUDES,
   PRICING_OPTIONS,
+  TRACK_PRICES,
+  TRACK_PROGRAM,
+  TRACK_VALUE_BLURB,
 } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Kanam Academy pricing one-pager",
   description:
-    "Kanam Academy pricing — $30/mo family subscription, or $100–200 per async learning track, plus optional 1:1 tutoring.",
+    "Kanam Academy pricing — $30/mo family subscription, full learning tracks (16 sessions / 8 weeks) from $100–$200, plus optional 1:1 tutoring from $49 trial / $90 per session.",
   robots: { index: true, follow: true },
 };
 
@@ -29,7 +32,6 @@ export default function PricingOnePagerPage() {
     PRICING.classroom,
     PRICING.site,
   ];
-  const liveAddOns = [LIVE_ADD_ONS.oneToOne, LIVE_ADD_ONS.groupLive];
 
   return (
     <>
@@ -124,30 +126,77 @@ export default function PricingOnePagerPage() {
 
         <section className="mt-3.5 print:mt-2.5">
           <h2 className="font-display text-base font-semibold text-[var(--foreground)] print:text-[0.95rem]">
-            Optional live instruction (separate cost)
+            Learning track prices (self-serve)
           </h2>
-          <div className="mt-1.5 grid gap-1.5 sm:grid-cols-2 print:gap-1.5">
-            {liveAddOns.map((tier) => (
+          <p className="mt-1 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.66rem]">
+            {TRACK_VALUE_BLURB}
+          </p>
+          <p className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
+            Full track · {TRACK_PROGRAM.shortLabel}
+          </p>
+          <div className="mt-1.5 grid gap-1 sm:grid-cols-2 print:gap-1">
+            {TRACK_PRICES.map((track) => (
               <div
-                key={tier.title}
-                className="rounded-xl border border-[rgb(var(--brand-2-rgb)/0.25)] bg-[rgb(var(--brand-2-rgb)/0.06)] px-3 py-2.5 print:rounded-lg print:px-2.5 print:py-2"
+                key={track.slug}
+                className="flex items-baseline justify-between gap-2 rounded-lg border border-zinc-900/10 bg-white px-3 py-2 print:px-2.5 print:py-1.5"
               >
-                <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
-                  <h3 className="font-display text-[0.88rem] font-semibold text-[var(--foreground)] print:text-[0.8rem]">
-                    {tier.title}
-                  </h3>
-                  <p className="font-display text-base font-semibold text-[var(--brand-2)] print:text-[0.95rem]">
-                    {tier.price}
-                  </p>
-                </div>
-                <p className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
-                  {tier.alt}
+                <p className="text-[0.78rem] font-medium text-[var(--foreground)] print:text-[0.7rem]">
+                  {track.name}
                 </p>
-                <p className="mt-1 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.66rem]">
-                  {tier.detail}
+                <p className="font-display text-sm font-semibold text-[var(--brand-2)] print:text-[0.8rem]">
+                  {track.priceLabel}
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-3.5 print:mt-2.5">
+          <h2 className="font-display text-base font-semibold text-[var(--foreground)] print:text-[0.95rem]">
+            Optional live instruction (separate cost)
+          </h2>
+          <div className="mt-1.5 grid gap-1.5 sm:grid-cols-2 print:gap-1.5">
+            <div className="rounded-xl border border-[rgb(var(--brand-2-rgb)/0.25)] bg-[rgb(var(--brand-2-rgb)/0.06)] px-3 py-2.5 print:rounded-lg print:px-2.5 print:py-2">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                <h3 className="font-display text-[0.88rem] font-semibold text-[var(--foreground)] print:text-[0.8rem]">
+                  {LIVE_ADD_ONS.oneToOne.title}
+                </h3>
+                <p className="font-display text-base font-semibold text-[var(--brand-2)] print:text-[0.95rem]">
+                  {LIVE_ADD_ONS.oneToOne.sessionPriceLabel}/session
+                </p>
+              </div>
+              <p className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
+                {LIVE_ADD_ONS.oneToOne.duration}
+              </p>
+              <ul className="mt-1.5 space-y-0.5 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.66rem]">
+                <li>Trial session: {LIVE_ADD_ONS.oneToOne.trial}</li>
+                {LIVE_ADD_ONS.oneToOne.bundles.map((bundle) => (
+                  <li key={bundle.label}>
+                    {bundle.label}: {bundle.price}{" "}
+                    <span className="text-[var(--foreground)]">({bundle.note})</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-1.5 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.66rem]">
+                {LIVE_ADD_ONS.oneToOne.detail}
+              </p>
+            </div>
+            <div className="rounded-xl border border-[rgb(var(--brand-2-rgb)/0.25)] bg-[rgb(var(--brand-2-rgb)/0.06)] px-3 py-2.5 print:rounded-lg print:px-2.5 print:py-2">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
+                <h3 className="font-display text-[0.88rem] font-semibold text-[var(--foreground)] print:text-[0.8rem]">
+                  {LIVE_ADD_ONS.groupLive.title}
+                </h3>
+                <p className="font-display text-base font-semibold text-[var(--brand-2)] print:text-[0.95rem]">
+                  {LIVE_ADD_ONS.groupLive.price}
+                </p>
+              </div>
+              <p className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
+                {LIVE_ADD_ONS.groupLive.alt}
+              </p>
+              <p className="mt-1 text-[0.72rem] leading-snug text-[var(--muted)] print:text-[0.66rem]">
+                {LIVE_ADD_ONS.groupLive.detail}
+              </p>
+            </div>
           </div>
         </section>
 

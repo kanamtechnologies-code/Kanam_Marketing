@@ -22,7 +22,7 @@ function escapeHtml(value: string): string {
 function siteBaseUrl(): string {
   const raw =
     process.env.NEXT_PUBLIC_APP_URL?.trim() ||
-    "https://kanam-academy-2026-v1.vercel.app";
+    "https://learn.kanamacademy.com";
   return raw.replace(/\/$/, "");
 }
 

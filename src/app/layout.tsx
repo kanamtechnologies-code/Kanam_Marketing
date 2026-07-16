@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | Kanam Academy",
   },
   description:
-    "Coding, AI, data, and digital literacy for teens and anyone learning tech. Chromebook and mobile ready. Flexible schedule. Live instruction or structured async classes.",
+    "Coding, AI, data, cybersecurity, financial literacy, and digital skills for grades 6–12. Chromebook and mobile ready. Flexible schedule. Live instruction or structured async classes.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

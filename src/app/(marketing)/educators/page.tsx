@@ -13,7 +13,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "For schools, programs & youth leaders | Kanam Academy",
   description:
-    "Bring Kanam live instruction to your school, after-school program, or Scout troop — online or in person where available. Progress you can see. Request a pilot.",
+    "Bring Kanam live instruction to your school, after-school program, or Scout troop — online or in person where available. Built to align with CSTA K–12 Computer Science Standards. Progress you can see. Request a pilot.",
 };
 
 const STEPS = [
@@ -38,7 +38,7 @@ const WHY = [
   "Live instruction from Kanam — online or in person where available",
   "Your team hosts and coordinates; we teach the tech",
   "Auto-checks and capstones show real mastery, not click-through",
-  `Standards packet for adoption · ${DEVICE_READY_SHORT}`,
+  `CSTA-aligned curriculum packet · ${DEVICE_READY_SHORT}`,
 ] as const;
 
 const HERO_PROOF = [
@@ -295,7 +295,7 @@ export default function EducatorsPage() {
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button asChild variant="secondary">
-                <Link href="/learning-paths">See the five learning paths</Link>
+                <Link href="/learning-paths">See the six learning paths</Link>
               </Button>
               <Button asChild variant="secondary">
                 <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">

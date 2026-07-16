@@ -29,7 +29,7 @@ export function SiteFooter() {
               {siteConfig.tagline}
             </p>
             <p className="mt-3 max-w-md text-sm leading-6 text-[var(--muted)]">
-              Coding, AI, data, and digital literacy for teens and anyone learning tech —
+              Coding, AI, data, financial literacy, and digital skills for teens and anyone learning tech —
               live instruction or structured async classes. Chromebook and mobile ready.
               Flexible schedule. Progress you can see.
             </p>

@@ -50,7 +50,7 @@ export default function AboutPage() {
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
             We’re here for young people first. Kanam Academy exists so teens can learn
-            coding, AI, data, cybersecurity, and digital literacy with a real instructor —
+            coding, AI, data, cybersecurity, financial literacy, and digital literacy with a real instructor —
             and so parents, schools, and Scout leaders don’t have to figure it out alone.
           </p>
         </header>

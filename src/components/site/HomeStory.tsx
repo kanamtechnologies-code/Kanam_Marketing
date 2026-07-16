@@ -76,7 +76,7 @@ function HeroPanel() {
             Real tech skills for teens — and anyone ready to learn
           </h1>
           <p className="max-w-lg text-lg leading-relaxed text-[var(--muted)]">
-            Coding, AI, data, cybersecurity, and digital literacy. Live instruction when
+            Coding, AI, data, cybersecurity, financial literacy, and digital skills. Live instruction when
             you want a guide; structured async lessons when you want to move at your own
             pace. Progress you can see. {DEVICE_READY_SHORT}.
           </p>
@@ -181,7 +181,7 @@ function LearningPathsPanel() {
 
         <div className="mt-8">
           <Button asChild variant="secondary">
-            <Link href="/learning-paths">See the five learning paths</Link>
+            <Link href="/learning-paths">See the six learning paths</Link>
           </Button>
         </div>
       </div>
@@ -302,7 +302,7 @@ function AudienceSplitPanel() {
               </li>
               <li className="flex gap-2">
                 <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-                Standards-aligned curriculum packet available
+                Built to align with CSTA standards · curriculum packet available
               </li>
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -381,8 +381,12 @@ function TrustPanel() {
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionTitle>Built for classrooms and credibility</SectionTitle>
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">
-          Standards-aligned curriculum documentation is available for accreditation and
-          adoption conversations. Clear enough for teens starting out — deep enough for
+          Kanam Academy is built to align with the{" "}
+          <strong className="font-semibold text-zinc-900">
+            CSTA K–12 Computer Science Standards
+          </strong>{" "}
+          (Levels 2 and 3A). Curriculum documentation is available for accreditation and
+          adoption conversations — clear enough for teens starting out, deep enough for
           anyone leveling up in tech.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -411,7 +415,7 @@ function TrustPanel() {
             href="/how-it-works#standards"
             className="inline-flex items-center text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
           >
-            Standards details →
+            CSTA standards details →
           </Link>
         </div>
       </div>
@@ -423,7 +427,7 @@ function FaqPanel() {
   const items = [
     {
       q: "What is Kanam Academy?",
-      a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, and cybersecurity — with five learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
+      a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, cybersecurity, and financial literacy — with six learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
     },
     {
       q: "Who is it for?",

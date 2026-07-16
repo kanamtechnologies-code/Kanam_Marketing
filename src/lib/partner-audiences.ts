@@ -39,11 +39,11 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     title: "School admins & decision-makers",
     shortTitle: "Schools",
     tileBody:
-      "Add live tech instruction to your calendar — online or on-site where available. Standards-aligned paths and progress visibility for adoption conversations.",
+      "Add live tech instruction to your calendar — online or on-site where available. CSTA-aligned paths and progress visibility for adoption conversations.",
     image: "/images/product/leaders-school-admin.png",
     imageAlt: "School administrator reviewing learner progress on a roster dashboard",
     metaDescription:
-      "Bring Kanam live instruction to your school or classroom — online or in person where available. Standards packet, progress visibility, and pricing guidance.",
+      "Bring Kanam live instruction to your school or classroom — online or in person where available. CSTA standards packet, progress visibility, and pricing guidance.",
     heroHeadline: "Live tech instruction",
     heroAccent: "for your school calendar",
     heroBody:
@@ -54,7 +54,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
       `${PATHS_COUNT_LABEL} learning paths · ${LESSONS_COUNT_LABEL} interactive lessons`,
       `Flexible schedule · ${PACING_SHORT}`,
       "Live instruction online — or in person where available",
-      `Standards packet for adoption · ${DEVICE_READY_SHORT}`,
+      `CSTA-aligned standards packet · ${DEVICE_READY_SHORT}`,
       "Roster view: lessons completed, XP, and last activity",
     ],
     fitFor: [
@@ -66,7 +66,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     howItWorks: [
       {
         title: "Map a cohort",
-        body: "Pick a learning path and a schedule that fits your periods — designed for about eight weeks at two sessions per week, with room to flex.",
+        body: "Pick a learning path and a schedule that fits your periods — each track is designed as 16 sessions over 8 weeks, with room to flex.",
       },
       {
         title: "We teach live",
@@ -192,7 +192,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     howItWorks: [
       {
         title: "Fit your troop night",
-        body: "Choose a path and a pacing that works for weekly meetings — flexible around the designed ~8-week cadence.",
+        body: "Choose a path and a pacing that works for weekly meetings — each track is 16 sessions over 8 weeks, with flexible cadence.",
       },
       {
         title: "We teach the tech",

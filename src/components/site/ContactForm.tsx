@@ -36,7 +36,7 @@ const helpOptionsByRole: Record<Role, string[]> = {
   ],
   school: [
     "Live instruction for our school",
-    "Standards & curriculum documentation",
+    "CSTA standards & curriculum documentation",
     "Scheduling & implementation",
     "Pricing & licensing",
     "Something else",

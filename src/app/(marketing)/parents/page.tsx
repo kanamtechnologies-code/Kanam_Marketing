@@ -11,7 +11,13 @@ import {
   LEARNING_PATHS,
   PACING_BLURB,
 } from "@/lib/learning-paths";
-import { LIVE_ADD_ONS, PRICING } from "@/lib/pricing";
+import {
+  LIVE_ADD_ONS,
+  PRICING,
+  TRACK_PRICE_RANGE_LABEL,
+  TRACK_PRICES,
+  TRACK_PROGRAM,
+} from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -41,7 +47,7 @@ const OPTIONS = [
   },
   {
     title: "Homeschool enrichment that sticks",
-    body: "Future-ready skills — coding, AI, data, cybersecurity, digital literacy — without you becoming the CS teacher.",
+    body: "Future-ready skills — coding, AI, data, cybersecurity, financial literacy, digital literacy — without you becoming the CS teacher.",
     image: "/images/product/family-dad-son.png",
     imageAlt: "Parent supporting a teen’s enrichment learning at home",
     eyebrow: "At home",
@@ -55,8 +61,9 @@ const TRUST = [
   "Progress parents can see — roadmap, XP, badges, and capstones",
   "Clear pricing — async subscription and live sessions sold separately",
   "You don’t need to teach CS — coach notes and checks guide every lesson",
+  "Curriculum aligns with CSTA K–12 Computer Science Standards",
   `${DEVICE_READY_SHORT} · no special software to install`,
-  "Skills that matter: coding, AI literacy, data, cybersecurity, digital citizenship",
+  "Skills that matter: coding, AI literacy, data, cybersecurity, financial literacy, digital citizenship",
 ] as const;
 
 const STEPS = [
@@ -87,7 +94,7 @@ const HERO_PROOF = [
 const FAQS = [
   {
     q: "Is Kanam right for my child?",
-    a: "Kanam is built for teens and beginners learning tech — coding, AI, data, cybersecurity, and digital literacy. Paths start gentle and go deeper as confidence grows. Prior coding is not required.",
+    a: "Kanam is built for teens and beginners learning tech — coding, AI, data, cybersecurity, financial literacy, and digital literacy. Paths start gentle and go deeper as confidence grows. Prior coding is not required.",
   },
   {
     q: "Should we get live tutoring?",
@@ -95,7 +102,7 @@ const FAQS = [
   },
   {
     q: "How much does it cost?",
-    a: `Live 1:1 tutoring is ${LIVE_ADD_ONS.oneToOne.price} (${LIVE_ADD_ONS.oneToOne.duration}; trial ${LIVE_ADD_ONS.oneToOne.trial}). Platform access is ${PRICING.family.price}, or ${PRICING.family.alt}. Sibling discount: 25% off platform for each additional learner at home.`,
+    a: `Live 1:1 tutoring is ${LIVE_ADD_ONS.oneToOne.sessionPriceLabel}/session (${LIVE_ADD_ONS.oneToOne.duration}; trial ${LIVE_ADD_ONS.oneToOne.trial}). Platform access is ${PRICING.family.price} for all tracks, or one full track (${TRACK_PROGRAM.label}, ${TRACK_PRICE_RANGE_LABEL}). Sibling discount: 25% off platform for each additional learner at home.`,
   },
   {
     q: "Can we use this for homeschool enrichment?",
@@ -153,7 +160,7 @@ export default function ParentsPage() {
               </h1>
               <p className="mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
                 Live 1:1 tutoring plus structured async tracks — coding, AI, data,
-                cybersecurity, and digital literacy. Progress you can actually see.
+                cybersecurity, financial literacy, and digital literacy. Progress you can actually see.
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button asChild>
@@ -378,13 +385,13 @@ export default function ParentsPage() {
                     </dd>
                     <dd className="mt-1 text-xs text-zinc-500">Intro trial</dd>
                   </div>
-                  {LIVE_ADD_ONS.oneToOne.packs.map((pack) => (
-                    <div key={pack.label} className="rounded-2xl bg-zinc-50 px-4 py-4">
-                      <dt className="text-sm font-medium text-zinc-600">{pack.label}</dt>
+                  {LIVE_ADD_ONS.oneToOne.bundles.map((bundle) => (
+                    <div key={bundle.label} className="rounded-2xl bg-zinc-50 px-4 py-4">
+                      <dt className="text-sm font-medium text-zinc-600">{bundle.label}</dt>
                       <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
-                        {pack.price}
+                        {bundle.price}
                       </dd>
-                      <dd className="mt-1 text-xs text-zinc-500">Save with a pack</dd>
+                      <dd className="mt-1 text-xs text-zinc-500">{bundle.note}</dd>
                     </div>
                   ))}
                 </dl>
@@ -399,8 +406,8 @@ export default function ParentsPage() {
                   Async learning tracks
                 </h3>
                 <p className="mt-2 max-w-2xl text-sm text-zinc-600">
-                  Structured tracks with coach notes and auto-checks — so practice doesn’t
-                  stop when the live session ends.
+                  Structured tracks with coach notes and auto-checks — each full track is{" "}
+                  {TRACK_PROGRAM.label}, so practice doesn’t stop when the live session ends.
                 </p>
                 <dl className="mt-5 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl bg-zinc-50 px-4 py-4">
@@ -413,15 +420,21 @@ export default function ParentsPage() {
                   <div className="rounded-2xl bg-zinc-50 px-4 py-4">
                     <dt className="text-sm font-medium text-zinc-600">Per learning track</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
-                      {PRICING.family.alt
-                        .replace(/^or\s+/i, "")
-                        .replace(/\s+per learning track$/i, "")}
+                      {TRACK_PRICE_RANGE_LABEL}
                     </dd>
                     <dd className="mt-1 text-xs text-zinc-500">
-                      One track · clear finish line
+                      Full program · {TRACK_PROGRAM.shortLabel}
                     </dd>
                   </div>
                 </dl>
+                <ul className="mt-4 grid gap-1.5 text-sm text-zinc-700 sm:grid-cols-2">
+                  {TRACK_PRICES.map((track) => (
+                    <li key={track.slug} className="flex justify-between gap-3 border-b border-zinc-900/6 py-1.5">
+                      <span>{track.name}</span>
+                      <span className="font-semibold text-zinc-950">{track.priceLabel}</span>
+                    </li>
+                  ))}
+                </ul>
                 <p className="mt-4 text-sm text-zinc-700">
                   <span className="font-semibold text-zinc-950">Sibling discount:</span>{" "}
                   25% off platform for each additional learner in the household.
@@ -532,7 +545,7 @@ export default function ParentsPage() {
                 id="paths-heading"
                 className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
               >
-                Five paths toward future-ready skills
+                Six paths toward future-ready skills
               </h2>
               <p className="mt-3 text-base text-[var(--muted)]">
                 Choose what fits your child’s curiosity. Beginners welcome — with room to grow.

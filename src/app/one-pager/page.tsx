@@ -68,7 +68,7 @@ export default function OnePagerPage() {
                   {siteConfig.name}
                 </p>
                 <p className="text-sm font-medium text-white/85">
-                  {siteConfig.tagline} Coding, AI, data &amp; digital literacy —
+                  {siteConfig.tagline} Coding, AI, data, finance &amp; digital literacy —
                   in the browser.
                 </p>
               </div>
@@ -96,7 +96,7 @@ export default function OnePagerPage() {
             async.
           </h1>
           <p className="mt-2 max-w-3xl text-[0.95rem] leading-relaxed text-[var(--muted)] print:mt-1.5 print:text-[0.85rem]">
-            Kanam Academy is a browser-based platform with five learning paths,{" "}
+            Kanam Academy is a browser-based platform with six learning paths,{" "}
             {LESSONS_COUNT_LABEL} interactive lessons, instant feedback, and progress
             adults can see. {PACING_BLURB} {DEVICE_READY_BLURB}
           </p>
@@ -129,7 +129,7 @@ export default function OnePagerPage() {
           {[
             {
               title: "Schools & programs",
-              body: `Kanam live instruction — online or in person where available — plus class codes, roster progress, and standards-aligned docs. Strong fit for classrooms, ${PROGRAM_FIT_SHORT}.`,
+              body: `Kanam live instruction — online or in person where available — plus class codes, roster progress, and CSTA-aligned curriculum docs. Strong fit for classrooms, ${PROGRAM_FIT_SHORT}.`,
             },
             {
               title: "Parents & families",
@@ -241,7 +241,7 @@ export default function OnePagerPage() {
                 "Schedule flexes to your classroom, family, or self-paced needs",
                 `${DEVICE_READY_SHORT} — no special software to install`,
                 "Program tools: classes, codes, roster, XP",
-                "Standards-aligned curriculum packet available",
+                "Built to align with CSTA K–12 CS Standards · packet available",
                 "Guided demo lesson — try before you commit",
               ].map((item) => (
                 <li key={item} className="flex gap-2">
