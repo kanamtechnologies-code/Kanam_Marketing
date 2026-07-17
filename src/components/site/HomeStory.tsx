@@ -13,24 +13,21 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
 import {
   DELIVERY_MODES,
   DEVICE_READY_BLURB,
   DEVICE_READY_LABEL,
   DEVICE_READY_SHORT,
   LESSON_FLOW,
-  LESSONS_COUNT_LABEL,
   LEARNING_PATHS,
   PACING_BLURB,
-  PATHS_LIST_SHORT,
+  PACING_SHORT,
   PROGRAM_FIT_SHORT,
   PROOF_POINTS,
 } from "@/lib/learning-paths";
@@ -47,7 +44,7 @@ function SectionTitle({
   return (
     <h2
       className={cn(
-        "font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-5xl",
+        "font-display text-3xl font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl lg:text-5xl",
         className
       )}
     >
@@ -55,7 +52,7 @@ function SectionTitle({
         {children}
         <span
           aria-hidden="true"
-          className="mt-3 block h-1 w-12 rounded-full bg-[rgb(var(--accent-rgb)/0.85)]"
+          className="mt-3 block h-px w-16 bg-[rgb(var(--accent-rgb)/0.9)]"
         />
       </span>
     </h2>
@@ -64,44 +61,67 @@ function SectionTitle({
 
 function HeroPanel() {
   return (
-    <section className="relative w-full overflow-hidden bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.18)] via-[rgb(var(--background))] to-[rgb(var(--accent-rgb)/0.16)] pt-10 pb-14 md:pt-14 md:pb-20">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.035] kanam-hex-pattern" />
+    <section className="relative min-h-[82vh] w-full overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
+      <Image
+        src="/images/product/teen-girl-coding.png"
+        alt=""
+        fill
+        priority
+        className="object-cover object-[82%_18%] sm:object-[78%_14%]"
+        sizes="100vw"
+      />
+      {/* Heavy left veil for copy; keep her face clear on the right */}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,47,36,0.95)_0%,rgba(11,47,36,0.88)_38%,rgba(20,92,69,0.45)_62%,rgba(7,26,20,0.18)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,20,0.35)_0%,transparent_28%,transparent_55%,rgba(7,26,20,0.45)_100%)]" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12 lg:px-8">
-        <div className="kanam-fade-up space-y-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[rgb(var(--brand-2-rgb)/1)]">
-            Kanam Academy · {siteConfig.tagline}
+      <div className="relative z-10 mx-auto flex min-h-[82vh] w-full max-w-6xl flex-col justify-center px-4 pb-16 pt-28 sm:px-6 sm:pb-20 lg:px-8">
+        <div className="kanam-fade-up max-w-xl space-y-6 lg:-translate-y-6">
+          <p className="font-display text-[clamp(2rem,4.5vw,3.25rem)] font-semibold tracking-tight text-[#f7f3e8]">
+            Kanam Academy
           </p>
-          <h1 className="font-display max-w-xl text-[clamp(2.1rem,5vw,3.5rem)] font-semibold leading-[1.05] tracking-tight text-zinc-950">
-            Real tech skills for teens — and anyone ready to learn
-          </h1>
-          <p className="max-w-lg text-lg leading-relaxed text-[var(--muted)]">
-            Coding, AI, data, cybersecurity, financial literacy, and digital skills. Live instruction when
-            you want a guide; structured async lessons when you want to move at your own
-            pace. Progress you can see. {DEVICE_READY_SHORT}.
-          </p>
+          <div className="space-y-4">
+            <h1 className="font-display text-[clamp(2.75rem,8vw,5.25rem)] font-semibold leading-[0.95] tracking-tight text-[var(--accent)]">
+              Move Forward.
+            </h1>
+            <span
+              aria-hidden
+              className="block h-px w-20 bg-[rgb(var(--accent-rgb)/0.85)]"
+            />
+            <p className="max-w-md font-display text-xl font-semibold leading-snug tracking-tight text-[#f7f3e8] sm:text-2xl">
+              The skills that open doors — taught with clarity, rigor, and real progress.
+            </p>
+            <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg">
+              AI, coding, cyber, data, digital fluency, and money. Live with a Kanam
+              instructor — or move at your own pace. Built for teens, families, and schools.
+            </p>
+          </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button asChild size="lg" className="w-full sm:w-auto">
+          <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
+            <Button
+              asChild
+              size="lg"
+              className="w-full rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)] sm:w-auto"
+            >
               <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                 <Play className="h-4 w-4" />
-                Try the guided lesson
+                Start the free lesson
               </Link>
             </Button>
-            <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto">
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="w-full rounded-full border-white/45 bg-white/15 text-white hover:bg-white/25 sm:w-auto"
+            >
               <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
-                Get started
+                Create your account
               </Link>
             </Button>
           </div>
 
-          <p className="text-sm text-zinc-500">
-            No account needed for the demo · Live or async · {DEVICE_READY_SHORT}
+          <p className="text-sm text-white/70">
+            No account needed for the demo · {DEVICE_READY_SHORT}
           </p>
-        </div>
-
-        <div className="kanam-fade-up [animation-delay:120ms]">
-          <LessonCanvasPreview showCta={false} />
         </div>
       </div>
     </section>
@@ -110,17 +130,17 @@ function HeroPanel() {
 
 function ProofStrip() {
   return (
-    <section className="border-y border-zinc-900/8 bg-white">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-zinc-900/8 sm:grid-cols-4">
+    <section className="border-b border-[rgb(var(--accent-rgb)/0.35)] bg-gradient-to-b from-[#145c45] to-[rgb(var(--brand-2-rgb)/1)]">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-px bg-[rgb(var(--accent-rgb)/0.22)] sm:grid-cols-2 lg:grid-cols-4">
         {PROOF_POINTS.map((item) => (
           <div
             key={item.label}
-            className="bg-white px-4 py-5 text-center sm:px-5 sm:py-6"
+            className="bg-[#145c45] px-5 py-6 text-center sm:px-6 sm:py-7 lg:bg-transparent lg:bg-gradient-to-b lg:from-[#145c45] lg:to-[rgb(var(--brand-2-rgb)/1)]"
           >
-            <div className="font-display text-2xl font-semibold text-[rgb(var(--brand-2-rgb)/1)] sm:text-3xl">
+            <div className="font-display text-[1.35rem] font-semibold leading-tight tracking-tight text-[var(--accent)] sm:text-2xl">
               {item.value}
             </div>
-            <div className="mt-1 text-xs font-medium uppercase tracking-[0.12em] text-zinc-500">
+            <div className="mx-auto mt-2 max-w-[16rem] text-sm font-medium leading-snug text-white/85">
               {item.label}
             </div>
           </div>
@@ -132,12 +152,15 @@ function ProofStrip() {
 
 function LearningPathsPanel() {
   return (
-    <section className="w-full border-t border-zinc-900/8 bg-[rgb(var(--background))] py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.12)] bg-[#0e241c] py-14 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionTitle>Six learning paths. One platform.</SectionTitle>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
-          {LESSONS_COUNT_LABEL} interactive lessons across {PATHS_LIST_SHORT}.{" "}
-          {PACING_BLURB}
+        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
+          Learning paths
+        </p>
+        <SectionTitle className="mt-2">Six paths. One standard of excellence.</SectionTitle>
+        <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#c5d2cb]">
+          Every track is a complete program — guided practice, visible progress, and a
+          capstone that proves the skill.
         </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
@@ -145,9 +168,9 @@ function LearningPathsPanel() {
             <Link
               key={path.slug}
               href={`/learning-paths/${path.slug}`}
-              className="group overflow-hidden rounded-2xl border border-zinc-900/10 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)] transition-shadow hover:shadow-[0_16px_36px_rgba(15,23,42,0.1)]"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b] transition-[border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-[rgb(var(--accent-rgb)/0.55)]"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-[rgb(var(--brand-2-rgb)/0.06)]">
+              <div className="relative aspect-[16/10] w-full overflow-hidden">
                 <Image
                   src={path.image}
                   alt=""
@@ -155,34 +178,45 @@ function LearningPathsPanel() {
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   sizes="(min-width: 768px) 40vw, 100vw"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-[#16352b]/20 to-transparent" />
+                <span className="absolute bottom-3 left-4 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+                  {path.lessons} lessons · full path
+                </span>
               </div>
-              <div className="p-6">
-                <div className="flex items-baseline justify-between gap-3">
-                  <h3 className="font-display text-xl font-semibold text-zinc-950 group-hover:text-[rgb(var(--brand-2-rgb)/1)]">
-                    {path.name}
-                  </h3>
-                  <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500">
-                    {path.lessons} lessons
-                  </span>
-                </div>
-                <p className="mt-2 text-sm font-medium text-[rgb(var(--brand-2-rgb)/1)]">
+              <div className="flex flex-1 flex-col p-6">
+                <h3 className="font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] group-hover:text-[var(--accent)]">
+                  {path.name}
+                </h3>
+                <p className="mt-2 text-sm font-semibold leading-snug text-[var(--accent)]">
                   {path.subtitle}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--muted)]">
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-[#c5d2cb]">
                   {path.marketingAngle}
                 </p>
-                <p className="mt-4 text-sm font-semibold text-zinc-800">
-                  Capstone: {path.capstone}
-                </p>
+                <div className="mt-5 border-t border-[rgb(var(--accent-rgb)/0.2)] pt-4">
+                  <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[#a8b8b0]">
+                    Capstone
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-[#f7f3e8]">
+                    {path.capstone}
+                  </p>
+                </div>
               </div>
             </Link>
           ))}
         </div>
 
-        <div className="mt-8">
-          <Button asChild variant="secondary">
-            <Link href="/learning-paths">See the six learning paths</Link>
+        <div className="mt-8 flex flex-wrap items-center gap-4">
+          <Button
+            asChild
+            variant="secondary"
+            className="rounded-full border-[rgb(var(--accent-rgb)/0.45)] bg-transparent text-[var(--accent)] hover:bg-[rgb(var(--accent-rgb)/0.1)]"
+          >
+            <Link href="/learning-paths">Compare all six paths</Link>
           </Button>
+          <p className="text-sm text-[#a8b8b0]">
+            {PACING_SHORT} · live or self-paced
+          </p>
         </div>
       </div>
     </section>
@@ -191,12 +225,12 @@ function LearningPathsPanel() {
 
 function HowItWorksPanel() {
   return (
-    <section className="w-full border-t border-zinc-900/8 bg-white py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.12)] bg-[#122c24] py-14 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
           <div>
             <SectionTitle>How learning works</SectionTitle>
-            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
+            <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[#c5d2cb]">
               Learn the idea, practice with instant feedback, reflect, and earn XP and
               badges on a clear roadmap.
             </p>
@@ -205,15 +239,15 @@ function HowItWorksPanel() {
               {LESSON_FLOW.map((step, idx) => (
                 <li
                   key={step.title}
-                  className="rounded-2xl border border-zinc-900/8 bg-[rgb(var(--background))] p-5"
+                  className="rounded-2xl border border-[rgb(var(--accent-rgb)/0.16)] bg-[#0e241c]/80 p-5"
                 >
-                  <div className="font-mono text-xs font-semibold text-[rgb(var(--brand-2-rgb)/1)]">
+                  <div className="font-mono text-xs font-semibold text-[var(--accent)]">
                     {String(idx + 1).padStart(2, "0")}
                   </div>
-                  <h3 className="mt-3 font-display text-xl font-semibold text-zinc-950">
+                  <h3 className="mt-3 font-display text-xl font-semibold text-[#f7f3e8]">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+                  <p className="mt-2 text-sm leading-relaxed text-[#c5d2cb]">
                     {step.body}
                   </p>
                 </li>
@@ -221,29 +255,30 @@ function HowItWorksPanel() {
             </ol>
           </div>
 
-          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-zinc-900/10 shadow-[0_18px_40px_rgba(15,23,42,0.1)]">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)]">
             <Image
-              src="/images/product/teen-girl-coding.png"
-              alt="Teen learner practicing coding on a laptop"
+              src="/images/product/teen-mixed-chromebook.png"
+              alt="Teen learner practicing on a Chromebook"
               fill
               className="object-cover object-center"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#122c24]/55 to-transparent" />
           </figure>
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <div className="rounded-2xl border border-zinc-900/10 bg-[rgb(var(--background))] p-6">
-            <h3 className="font-semibold text-zinc-950">Flexible schedule</h3>
-            <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+          <div className="rounded-2xl border border-[rgb(var(--accent-rgb)/0.16)] bg-[#0e241c]/80 p-6">
+            <h3 className="font-semibold text-[#f7f3e8]">Flexible schedule</h3>
+            <ul className="mt-3 space-y-2 text-sm text-[#c5d2cb]">
               <li>{PACING_BLURB}</li>
               <li>Dashboard labels lessons as Week X · Session Y (suggested structure)</li>
               <li>Works self-paced, with light mentor support, or as a live cohort</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-zinc-900/10 bg-[rgb(var(--background))] p-6">
-            <h3 className="font-semibold text-zinc-950">Delivery modes</h3>
-            <ul className="mt-3 space-y-2 text-sm text-[var(--muted)]">
+          <div className="rounded-2xl border border-[rgb(var(--accent-rgb)/0.16)] bg-[#0e241c]/80 p-6">
+            <h3 className="font-semibold text-[#f7f3e8]">Delivery modes</h3>
+            <ul className="mt-3 space-y-2 text-sm text-[#c5d2cb]">
               {DELIVERY_MODES.map((mode) => (
                 <li key={mode}>{mode}</li>
               ))}
@@ -254,7 +289,7 @@ function HowItWorksPanel() {
         <div className="mt-8">
           <Link
             href="/how-it-works"
-            className="text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+            className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
           >
             See how lessons work in detail →
           </Link>
@@ -266,9 +301,9 @@ function HowItWorksPanel() {
 
 function AudienceSplitPanel() {
   return (
-    <section className="w-full border-t border-zinc-900/8 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.06)] to-[rgb(var(--background))] py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.12)] bg-[#0e241c] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div className="overflow-hidden rounded-2xl border border-zinc-900/10 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+        <div className="overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b]">
           <div className="relative aspect-[16/9] w-full">
             <Image
               src="/images/product/live-session-instructor.png"
@@ -277,46 +312,51 @@ function AudienceSplitPanel() {
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-transparent to-transparent" />
           </div>
           <div className="p-6 sm:p-8">
-            <School
-              className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
-              aria-hidden="true"
-            />
-            <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
+            <School className="h-6 w-6 text-[var(--accent)]" aria-hidden="true" />
+            <h3 className="mt-4 font-display text-2xl font-semibold text-[#f7f3e8]">
               For schools &amp; leaders
             </h3>
-            <p className="mt-3 text-[var(--muted)] leading-relaxed">
+            <p className="mt-3 leading-relaxed text-[#c5d2cb]">
               Kanam instructors teach live — online or in person where available. Your team
               brings the learners and schedule; you see roster progress. Fits class periods,{" "}
               {PROGRAM_FIT_SHORT}.
             </p>
-            <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+            <ul className="mt-5 space-y-2 text-sm text-[#d7e0db]">
               <li className="flex gap-2">
-                <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand)]" />
                 Live Kanam instruction · progress adults can see
               </li>
               <li className="flex gap-2">
-                <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand)]" />
                 {DEVICE_READY_LABEL}
               </li>
               <li className="flex gap-2">
-                <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand)]" />
                 Built to align with CSTA standards · standards packet available
               </li>
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild>
+              <Button
+                asChild
+                className="rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
+              >
                 <Link href="/educators">For schools &amp; leaders</Link>
               </Button>
-              <Button asChild variant="secondary">
-                <Link href="/contact">Request a pilot</Link>
+              <Button
+                asChild
+                variant="secondary"
+                className="rounded-full border-[rgb(var(--accent-rgb)/0.4)] bg-transparent text-[var(--accent)] hover:bg-[rgb(var(--accent-rgb)/0.1)]"
+              >
+                <Link href="/instructors">Meet our instructors</Link>
               </Button>
             </div>
           </div>
         </div>
 
-        <div className="overflow-hidden rounded-2xl border border-zinc-900/10 bg-white shadow-[0_10px_24px_rgba(15,23,42,0.05)]">
+        <div className="overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b]">
           <div className="relative aspect-[16/9] w-full">
             <Image
               src="/images/product/family-mom-daughter.png"
@@ -325,37 +365,38 @@ function AudienceSplitPanel() {
               className="object-cover"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-transparent to-transparent" />
           </div>
           <div className="p-6 sm:p-8">
-            <Users
-              className="h-6 w-6 text-[rgb(var(--brand-2-rgb)/1)]"
-              aria-hidden="true"
-            />
-            <h3 className="mt-4 font-display text-2xl font-semibold text-zinc-950">
+            <Users className="h-6 w-6 text-[var(--accent)]" aria-hidden="true" />
+            <h3 className="mt-4 font-display text-2xl font-semibold text-[#f7f3e8]">
               For families &amp; learners
             </h3>
-            <p className="mt-3 text-[var(--muted)] leading-relaxed">
+            <p className="mt-3 leading-relaxed text-[#c5d2cb]">
               Start with a guided demo lesson — no account needed. Then create an account,
               keep progress, and follow a clear roadmap with badges and real projects. Live
               instruction when you want a guide; structured async when you want to move at
               your own pace.
             </p>
-            <ul className="mt-5 space-y-2 text-sm text-zinc-700">
+            <ul className="mt-5 space-y-2 text-sm text-[#d7e0db]">
               <li className="flex gap-2">
-                <Play className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                <Play className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand)]" />
                 Try the guided lesson in minutes
               </li>
               <li className="flex gap-2">
-                <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand)]" />
                 Structured alternative to random YouTube / AI chat wandering
               </li>
               <li className="flex gap-2">
-                <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
+                <Monitor className="mt-0.5 h-4 w-4 shrink-0 text-[var(--brand)]" />
                 Homeschool, enrichment, or self-paced — Chromebook & mobile ready
               </li>
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild>
+              <Button
+                asChild
+                className="rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
+              >
                 <Link
                   href={siteConfig.links.demo}
                   target="_blank"
@@ -364,7 +405,11 @@ function AudienceSplitPanel() {
                   Try the guided lesson
                 </Link>
               </Button>
-              <Button asChild variant="secondary">
+              <Button
+                asChild
+                variant="secondary"
+                className="rounded-full border-[rgb(var(--accent-rgb)/0.4)] bg-transparent text-[var(--accent)] hover:bg-[rgb(var(--accent-rgb)/0.1)]"
+              >
                 <Link href="/parents">For families</Link>
               </Button>
             </div>
@@ -377,12 +422,12 @@ function AudienceSplitPanel() {
 
 function TrustPanel() {
   return (
-    <section className="w-full border-t border-zinc-900/8 bg-white py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.12)] bg-[#122c24] py-14 md:py-20">
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionTitle>Built for classrooms and credibility</SectionTitle>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">
+        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[#c5d2cb]">
           Kanam Academy is built to align with the{" "}
-          <strong className="font-semibold text-zinc-900">
+          <strong className="font-semibold text-[#f7f3e8]">
             CSTA K–12 Computer Science Standards (2017)
           </strong>
           , Levels 2 and 3A, with a forward map to the 2026 CSTA PK–12 Standards. The
@@ -400,21 +445,25 @@ function TrustPanel() {
           ].map((pillar) => (
             <div
               key={pillar}
-              className="rounded-2xl border border-zinc-900/8 bg-[rgb(var(--background))] p-5 text-sm font-semibold text-zinc-900"
+              className="rounded-2xl border border-[rgb(var(--accent-rgb)/0.16)] bg-[#0e241c]/80 p-5 text-sm font-semibold text-[#f7f3e8]"
             >
               {pillar}
             </div>
           ))}
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild variant="secondary">
+          <Button
+            asChild
+            variant="secondary"
+            className="rounded-full border-[rgb(var(--accent-rgb)/0.4)] bg-transparent text-[var(--accent)] hover:bg-[rgb(var(--accent-rgb)/0.1)]"
+          >
             <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
               Foundations Standards Alignment
             </Link>
           </Button>
           <Link
             href="/how-it-works#standards"
-            className="inline-flex items-center text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+            className="inline-flex items-center text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
           >
             CSTA standards details →
           </Link>
@@ -453,25 +502,29 @@ function FaqPanel() {
   ];
 
   return (
-    <section className="w-full border-t border-zinc-900/8 bg-[rgb(var(--background))] py-14 md:py-20">
+    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.12)] bg-[#0e241c] py-14 md:py-20">
       <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 lg:px-8">
         <SectionTitle>Common questions</SectionTitle>
-        <Card className="mt-8 border-zinc-900/10 bg-white shadow-[0_12px_28px_rgba(15,23,42,0.06)]">
-          <CardContent className="pt-2">
-            <Accordion type="single" collapsible defaultValue="item-0">
-              {items.map((item, idx) => (
-                <AccordionItem key={item.q} value={`item-${idx}`}>
-                  <AccordionTrigger>{item.q}</AccordionTrigger>
-                  <AccordionContent>{item.a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </CardContent>
-        </Card>
+        <div className="mt-8 rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b] px-5 sm:px-6">
+          <Accordion type="single" collapsible defaultValue="item-0">
+            {items.map((item, idx) => (
+              <AccordionItem
+                key={item.q}
+                value={`item-${idx}`}
+                className="border-[rgb(var(--accent-rgb)/0.15)]"
+              >
+                <AccordionTrigger className="text-[#f7f3e8] hover:text-[var(--accent)] [&_svg]:text-[var(--accent)]">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-[#c5d2cb]">{item.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
         <div className="mt-6">
           <Link
             href="/faq"
-            className="text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] underline-offset-4 hover:underline"
+            className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
           >
             View all FAQs
           </Link>
@@ -483,13 +536,21 @@ function FaqPanel() {
 
 function FinalPanel() {
   return (
-    <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.45)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-rgb)/0.95)] to-[rgb(var(--brand-2-rgb)/0.88)] py-14 md:py-20">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 text-white sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+    <section className="relative w-full overflow-hidden border-t border-[rgb(var(--accent-rgb)/0.35)] py-14 md:py-20">
+      <Image
+        src="/images/product/cohort-teens-learning.png"
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(20,92,69,0.92)_0%,rgba(36,120,100,0.86)_55%,rgba(11,47,36,0.78)_100%)]" />
+      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div className="max-w-xl">
-          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Move forward — try a real lesson today
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-white/80">
+          <p className="mt-4 text-lg leading-relaxed text-white/85">
             Open the guided demo, create an account, or request a pilot for your school or
             organization.
           </p>
@@ -498,7 +559,7 @@ function FinalPanel() {
           <Button
             asChild
             size="lg"
-            className="bg-white text-[rgb(var(--brand-2-rgb)/1)] hover:bg-white/95"
+            className="rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
           >
             <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
               <Play className="h-4 w-4" />
@@ -509,7 +570,7 @@ function FinalPanel() {
             asChild
             size="lg"
             variant="secondary"
-            className="border-white/40 bg-white/10 text-white hover:bg-white/20"
+            className="rounded-full border-white/45 bg-white/15 text-white hover:bg-white/25"
           >
             <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">
               Get started
@@ -519,7 +580,7 @@ function FinalPanel() {
             asChild
             size="lg"
             variant="secondary"
-            className="border-white/40 bg-white/10 text-white hover:bg-white/20"
+            className="rounded-full border-white/45 bg-white/15 text-white hover:bg-white/25"
           >
             <Link href="/contact">Request a pilot</Link>
           </Button>
@@ -531,7 +592,7 @@ function FinalPanel() {
 
 export function HomeStory() {
   return (
-    <div className="relative overflow-hidden bg-[var(--background)]">
+    <div className="relative overflow-hidden bg-[#0e241c] text-[#f3efe4]">
       <HeroPanel />
       <ProofStrip />
       <LearningPathsPanel />

@@ -55,7 +55,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     capstone: "Be an AI-Smart Citizen",
     marketingAngle:
-      "Students learn to evaluate AI — not to paste prompts for answers.",
+      "Learn to judge AI with confidence — stronger prompts, verification, and integrity that hold up at school.",
     whoFor: "Anyone new to AI who wants clear literacy before (or alongside) coding — teens, classrooms, and self-paced learners.",
     weeklyThemes: [
       "What AI Really Is",
@@ -113,7 +113,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     capstone: "Your Digital Toolkit",
     marketingAngle:
-      "Practical tech fluency and digital citizenship — not random YouTube wandering.",
+      "Master the tools of modern life — search, privacy, collaboration, and digital judgment that travel with you.",
     whoFor: "Anyone building stronger digital foundations for school, work, and everyday life online.",
     weeklyThemes: [
       "Digital Foundations",
@@ -171,7 +171,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     capstone: "Quest Adventure Bot",
     marketingAngle:
-      "Students don’t just learn about coding — they write and run Python in the browser and finish with a project.",
+      "Write and run real Python in the browser — then ship a working AI helper you built yourself.",
     whoFor: "Beginners ready to write and run real Python in the browser — with live help or async practice.",
     weeklyThemes: [
       "Meet Your AI Helper",
@@ -227,7 +227,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     capstone: "Your Data Project",
     marketingAngle:
-      "Students query real tables and turn answers into charts — not worksheet busywork.",
+      "Ask better questions of real data — SQL, charts, and a story you can defend.",
     whoFor: "Anyone ready to investigate data with SQL and charts — teens, classrooms, and self-paced learners.",
     weeklyThemes: [
       "What Data Is",
@@ -283,7 +283,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     capstone: "Defend the Scenario",
     marketingAngle:
-      "Students learn to defend systems, data, and people — not how to hack.",
+      "Defend systems, data, and people — practical cyber fundamentals without the hacker fantasy.",
     whoFor:
       "Teens and beginners who want practical cyber defense skills for school, work, and everyday life online.",
     weeklyThemes: [
@@ -342,7 +342,7 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     capstone: "Your First-Year Money Plan",
     marketingAngle:
-      "Practical money skills for teens — not get-rich-quick tips.",
+      "Budgets, credit, investing, and big decisions — money skills for real independence.",
     whoFor:
       "Teens and families who want clear, responsible money skills for school, work, and the first years of independence.",
     weeklyThemes: [
@@ -389,10 +389,22 @@ export const PATHS_LIST_SHORT =
   "AI Literacy, Digital Literacy, Cybersecurity, Financial Literacy, Python & AI, and Data Analyst";
 
 export const PROOF_POINTS = [
-  { label: "Paths to choose", value: PATHS_COUNT_LABEL },
-  { label: "Lessons across paths", value: LESSONS_COUNT_LABEL },
-  { label: "Capstone on every path", value: "Yes" },
-  { label: "Browser ready", value: "Chromebook & mobile" },
+  {
+    value: "CSTA-aligned",
+    label: "Built for school adoption & accreditation",
+  },
+  {
+    value: `${LESSONS_COUNT_LABEL} lessons`,
+    label: "Six complete paths with real capstones",
+  },
+  {
+    value: "Live + async",
+    label: "Industry instructors or self-paced",
+  },
+  {
+    value: "No install",
+    label: "Chromebook & mobile ready in the browser",
+  },
 ] as const;
 
 /** Designed pacing — always pair with flexibility language in UI copy. */

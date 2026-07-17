@@ -9,7 +9,6 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { HeaderBrand } from "@/components/site/HeaderBrand";
-import { HeaderVideo } from "@/components/site/HeaderVideo";
 import {
   Sheet,
   SheetClose,
@@ -23,7 +22,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col items-center gap-2 text-center lg:flex-row lg:items-center lg:justify-center lg:gap-7">
+    <div className="flex flex-col items-center gap-2 text-center lg:flex-row lg:items-center lg:justify-center lg:gap-6">
       {siteConfig.nav.map((item) => {
         const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
         return (
@@ -32,9 +31,8 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
             href={item.href}
             onClick={onNavigate}
             className={cn(
-              "relative rounded-lg px-3 py-2 text-base font-semibold tracking-[0.01em] text-white/90 transition-all duration-200 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.55)] after:absolute after:bottom-0 after:left-1/2 after:h-[2.5px] after:w-0 after:-translate-x-1/2 after:rounded-full after:bg-white/90 after:transition-all after:duration-200 hover:after:w-[72%] lg:px-0 lg:py-0 lg:after:-bottom-1",
-              isActive &&
-                "bg-white/15 text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.65)] after:w-[72%] after:bg-white lg:bg-transparent"
+              "relative rounded-lg px-3 py-2 text-sm font-semibold tracking-[0.01em] text-[#d7e0db] transition-colors duration-200 hover:text-[var(--accent)] after:absolute after:bottom-0 after:left-1/2 after:h-px after:w-0 after:-translate-x-1/2 after:bg-[var(--accent)] after:transition-all after:duration-200 hover:after:w-[70%] lg:px-0 lg:py-0 lg:after:-bottom-1",
+              isActive && "text-[var(--accent)] after:w-[70%]"
             )}
           >
             {item.label}
@@ -53,16 +51,10 @@ export function SiteNavbar() {
   }, []);
 
   return (
-    <header className="sticky inset-x-0 top-0 z-[60] overflow-hidden border-b-2 border-[rgb(var(--accent-rgb)/0.98)] bg-gradient-to-r from-[rgb(var(--brand-2-rgb)/0.98)] via-[rgb(var(--brand-rgb)/0.92)] to-[rgb(var(--accent-rgb)/0.86)] shadow-xl supports-[backdrop-filter]:backdrop-blur-md">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-[rgb(var(--accent-rgb)/0.92)] via-[rgb(var(--brand-rgb)/0.92)] to-[rgb(var(--accent-rgb)/0.92)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.16),transparent_55%)]" />
-      <div className="pointer-events-none absolute inset-0 hidden lg:block">
-        <HeaderVideo
-          className="h-full w-full object-cover opacity-[0.06] saturate-0"
-          src="/video/8733062-uhd_3840_2160_30fps.mp4"
-          playbackRate={0.35}
-        />
-      </div>
+    <header className="sticky inset-x-0 top-0 z-[60] overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[#145c45] via-[rgb(var(--brand-2-rgb)/0.96)] to-[#1a6b52] shadow-lg supports-[backdrop-filter]:backdrop-blur-md">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[rgb(var(--accent-rgb)/0.85)] to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(216,192,122,0.16),transparent_50%)]" />
+
       <div className="relative w-full px-4 py-3 max-[360px]:px-3 max-[360px]:py-2.5 sm:px-6 lg:px-4 xl:px-6">
         <div className="flex items-center justify-between gap-4 sm:gap-6">
           <HeaderBrand />
@@ -74,8 +66,7 @@ export function SiteNavbar() {
           <div className="hidden items-center gap-2 lg:flex">
             <Button
               asChild
-              variant="secondary"
-              className="rounded-full border border-[rgb(var(--accent-rgb)/0.98)] bg-white/95 px-3 py-1.5 text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)] shadow-md hover:bg-white"
+              className="rounded-full bg-[var(--accent)] px-4 py-1.5 text-sm font-semibold text-[#14201c] shadow-none hover:bg-[rgb(var(--accent-rgb)/0.92)]"
             >
               <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                 Try the guided lesson
@@ -88,7 +79,7 @@ export function SiteNavbar() {
               <Sheet>
                 <SheetTrigger asChild>
                   <button
-                    className="inline-flex h-11 items-center justify-center rounded-xl border border-white/30 bg-white/12 px-4 text-sm font-semibold text-white shadow-sm hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--brand-2-rgb)/0.85)]"
+                    className="inline-flex h-11 items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                     aria-label="Open menu"
                   >
                     Menu
@@ -96,7 +87,7 @@ export function SiteNavbar() {
                 </SheetTrigger>
                 <SheetContent
                   side="right"
-                  className="border-l-2 border-[rgb(var(--accent-rgb)/0.95)] bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.98)] via-[rgb(var(--brand-rgb)/0.94)] to-[rgb(var(--accent-rgb)/0.9)] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-white"
+                  className="border-l border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-b from-[#145c45] via-[rgb(var(--brand-2-rgb)/0.98)] to-[#1a6b52] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-[var(--accent)]"
                 >
                   <SheetHeader className="pr-12">
                     <SheetTitle className="sr-only">Site navigation menu</SheetTitle>
@@ -107,7 +98,7 @@ export function SiteNavbar() {
                   <SheetClose asChild>
                     <button
                       type="button"
-                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/35 bg-white/12 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--brand-2-rgb)/0.85)]"
+                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 py-2.5 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
                     >
                       <X className="h-4 w-4" />
                       Close menu
@@ -116,8 +107,11 @@ export function SiteNavbar() {
 
                   <div className="mt-6 flex flex-col items-center gap-4">
                     <NavLinks />
-                    <div className="h-px w-full bg-white/30" />
-                    <Button asChild variant="secondary" className="w-full max-w-xs">
+                    <div className="h-px w-full bg-[rgb(var(--accent-rgb)/0.25)]" />
+                    <Button
+                      asChild
+                      className="w-full max-w-xs rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
+                    >
                       <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                         Try the guided lesson
                       </Link>
@@ -129,7 +123,7 @@ export function SiteNavbar() {
               <button
                 type="button"
                 disabled
-                className="inline-flex h-11 items-center justify-center rounded-xl border border-white/30 bg-white/12 px-4 text-sm font-semibold text-white/85"
+                className="inline-flex h-11 items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.35)] bg-white/5 px-4 text-sm font-semibold text-[#f3efe4]/80"
                 aria-label="Open menu"
               >
                 Menu
@@ -141,4 +135,3 @@ export function SiteNavbar() {
     </header>
   );
 }
-
