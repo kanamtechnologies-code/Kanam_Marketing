@@ -28,7 +28,7 @@ export const siteConfig = {
     { href: "/", label: "Home" },
     { href: "/learning-paths", label: "Learning paths" },
     { href: "/how-it-works", label: "How it works" },
-    { href: "/instructors", label: "Instructors" },
+    { href: "/instructors", label: "Meet our instructors" },
     { href: "/educators", label: "For schools & leaders" },
     { href: "/parents", label: "For families & learners" },
     { href: "/about", label: "About" },

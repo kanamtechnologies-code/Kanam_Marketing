@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
@@ -17,6 +16,7 @@ import {
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { brandCtaPrimaryBtnClass } from "@/components/site/BrandCtaBand";
 import { ContactForm } from "@/components/site/ContactForm";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 import { getPartnerAudience, PARTNER_AUDIENCES } from "@/lib/partner-audiences";
 import { siteConfig } from "@/lib/site";
@@ -55,12 +55,13 @@ export default async function PartnerAudiencePage({ params }: Props) {
           className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]"
         >
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src={audience.image}
               alt={audience.imageAlt}
-              fill
               priority
-              className="object-cover object-center"
+              intensity={140}
+              scale={1.36}
+              className="object-center"
               sizes="100vw"
             />
             <HomeHeroVeil />

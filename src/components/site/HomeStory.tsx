@@ -19,6 +19,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import {
   DELIVERY_MODES,
   DEVICE_READY_BLURB,
@@ -62,17 +63,18 @@ function SectionTitle({
 function HeroPanel() {
   return (
     <section className="relative min-h-[82vh] w-full overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
-      <Image
+      <ParallaxImage
         src="/images/product/teen-girl-coding.png"
         alt=""
-        fill
         priority
-        className="object-cover object-[82%_18%] sm:object-[78%_14%]"
+        intensity={150}
+        scale={1.38}
+        className="object-[82%_18%] sm:object-[78%_14%]"
         sizes="100vw"
       />
       {/* Heavy left veil for copy; keep her face clear on the right */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,47,36,0.95)_0%,rgba(11,47,36,0.88)_38%,rgba(20,92,69,0.45)_62%,rgba(7,26,20,0.18)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,20,0.35)_0%,transparent_28%,transparent_55%,rgba(7,26,20,0.45)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(11,47,36,0.95)_0%,rgba(11,47,36,0.88)_38%,rgba(20,92,69,0.45)_62%,rgba(7,26,20,0.18)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,26,20,0.35)_0%,transparent_28%,transparent_55%,rgba(7,26,20,0.45)_100%)]" />
 
       <div className="relative z-10 mx-auto flex min-h-[82vh] w-full max-w-6xl flex-col justify-center px-4 pb-16 pt-28 sm:px-6 sm:pb-20 lg:px-8">
         <div className="kanam-fade-up max-w-xl space-y-6 lg:-translate-y-6">
@@ -257,14 +259,15 @@ function HowItWorksPanel() {
           </div>
 
           <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)]">
-            <Image
+            <ParallaxImage
               src="/images/product/teen-mixed-chromebook.png"
               alt="Teen learner practicing on a Chromebook"
-              fill
-              className="object-cover object-center"
+              intensity={95}
+              scale={1.3}
+              className="object-center"
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#122c24]/55 to-transparent" />
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#122c24]/55 to-transparent" />
           </figure>
         </div>
 
@@ -305,15 +308,15 @@ function AudienceSplitPanel() {
     <section className="w-full border-t border-[rgb(var(--accent-rgb)/0.12)] bg-[#0e241c] py-14 md:py-20">
       <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <div className="overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b]">
-          <div className="relative aspect-[16/9] w-full">
-            <Image
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <ParallaxImage
               src="/images/product/live-session-instructor.png"
               alt="Learner in a live online lesson with an instructor"
-              fill
-              className="object-cover"
+              intensity={80}
+              scale={1.28}
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#16352b] via-transparent to-transparent" />
           </div>
           <div className="p-6 sm:p-8">
             <School className="h-6 w-6 text-[var(--accent)]" aria-hidden="true" />
@@ -358,15 +361,15 @@ function AudienceSplitPanel() {
         </div>
 
         <div className="overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b]">
-          <div className="relative aspect-[16/9] w-full">
-            <Image
+          <div className="relative aspect-[16/9] w-full overflow-hidden">
+            <ParallaxImage
               src="/images/product/family-mom-daughter.png"
               alt="Parent and teen reviewing a lesson together"
-              fill
-              className="object-cover"
+              intensity={80}
+              scale={1.28}
               sizes="(min-width: 1024px) 40vw, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-transparent to-transparent" />
+            <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#16352b] via-transparent to-transparent" />
           </div>
           <div className="p-6 sm:p-8">
             <Users className="h-6 w-6 text-[var(--accent)]" aria-hidden="true" />
@@ -538,15 +541,16 @@ function FaqPanel() {
 function FinalPanel() {
   return (
     <section className="relative w-full overflow-hidden border-t border-[rgb(var(--accent-rgb)/0.35)] py-14 md:py-20">
-      <Image
+      <ParallaxImage
         src="/images/product/cohort-teens-learning.png"
         alt=""
-        fill
-        className="object-cover object-center"
+        intensity={130}
+        scale={1.34}
+        className="object-center"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(20,92,69,0.92)_0%,rgba(36,120,100,0.86)_55%,rgba(11,47,36,0.78)_100%)]" />
-      <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(100deg,rgba(20,92,69,0.92)_0%,rgba(36,120,100,0.86)_55%,rgba(11,47,36,0.78)_100%)]" />
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
         <div className="max-w-xl">
           <h2 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Move forward — try a real lesson today

@@ -23,6 +23,7 @@ import {
   lightTitleClass,
   PageBand,
 } from "@/components/layout/PageBands";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
 import { Button } from "@/components/ui/button";
 import {
@@ -152,12 +153,13 @@ export default function ParentsPage() {
           className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]"
         >
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src="/images/product/family-learning.png"
               alt="Parent and child learning together with Kanam"
-              fill
               priority
-              className="object-cover object-[62%_center] sm:object-[58%_center] lg:object-center"
+              intensity={140}
+              scale={1.36}
+              className="object-[62%_center] sm:object-[58%_center] lg:object-center"
               sizes="(min-width: 1280px) 90rem, 100vw"
             />
             <HomeHeroVeil />

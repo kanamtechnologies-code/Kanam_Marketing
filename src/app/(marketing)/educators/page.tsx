@@ -20,6 +20,7 @@ import {
   brandCtaSecondaryBtnClass,
   brandCtaTitleClass,
 } from "@/components/site/BrandCtaBand";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 import { DEVICE_READY_SHORT } from "@/lib/learning-paths";
 import { PARTNER_AUDIENCES } from "@/lib/partner-audiences";
@@ -75,12 +76,13 @@ export default function EducatorsPage() {
           className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]"
         >
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src="/images/product/leaders-inperson-kanam.png"
               alt="Kanam instructor teaching learners in person with the lesson canvas on a laptop"
-              fill
               priority
-              className="object-cover object-[58%_center] sm:object-[55%_center] lg:object-center"
+              intensity={140}
+              scale={1.36}
+              className="object-[58%_center] sm:object-[55%_center] lg:object-center"
               sizes="100vw"
             />
             <HomeHeroVeil />

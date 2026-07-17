@@ -16,14 +16,15 @@ import {
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
 } from "@/components/site/BrandCtaBand";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 import { INSTRUCTORS } from "@/lib/instructors";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Meet Our Live Instructors | Kanam Academy",
+  title: "Meet Our Instructors | Kanam Academy",
   description:
-    "Meet the Kanam Academy live instructors — industry professionals who teach coding, AI, data, cybersecurity, and more. Move Forward.",
+    "Meet the Kanam Academy instructors — industry professionals who teach coding, AI, data, cybersecurity, and more. Move Forward.",
 };
 
 export default function InstructorsPage() {
@@ -32,19 +33,20 @@ export default function InstructorsPage() {
       <FullBleed>
         <section className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src="/images/product/instructors-hero.png"
               alt="Kanam instructor leading a live online lesson"
-              fill
               priority
-              className="object-cover object-[72%_center] sm:object-[68%_center]"
+              intensity={140}
+              scale={1.36}
+              className="object-[72%_center] sm:object-[68%_center]"
               sizes="100vw"
             />
             <HomeHeroVeil />
           </div>
           <div className="relative z-10 mx-auto flex min-h-[30rem] w-full max-w-6xl flex-col justify-center px-4 pb-12 pt-28 sm:min-h-[34rem] sm:px-6 sm:pb-16 lg:min-h-[38rem] lg:px-8">
             <div className="max-w-xl">
-              <p className={duskEyebrowClass}>Live instruction</p>
+              <p className={duskEyebrowClass}>Meet our instructors</p>
               <h1 className={`mt-3 text-[2.15rem] sm:text-4xl lg:text-[3rem] lg:leading-[1.05] ${duskTitleClass}`}>
                 Meet the people who <span className="block text-[var(--accent)]">teach the lesson.</span>
               </h1>
@@ -56,7 +58,7 @@ export default function InstructorsPage() {
         </section>
 
         <PageBand tone="mid">
-        <section aria-label="Instructors" className="space-y-8">
+        <section aria-label="Meet our instructors" className="space-y-8">
           {INSTRUCTORS.map((person, index) => (
             <article
               key={person.slug}

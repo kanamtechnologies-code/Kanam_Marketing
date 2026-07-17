@@ -19,6 +19,7 @@ import {
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
 } from "@/components/site/BrandCtaBand";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { PathInside } from "@/components/site/PathInside";
 import { Button } from "@/components/ui/button";
 import { billingLinks } from "@/lib/billing-links";
@@ -180,12 +181,13 @@ export default async function LearningPathDetailPage({ params }: Props) {
         {/* Hero */}
         <section className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src={path.image}
               alt=""
-              fill
               priority
-              className="object-cover object-center"
+              intensity={140}
+              scale={1.36}
+              className="object-center"
               sizes="(min-width: 1280px) 90rem, 100vw"
             />
             <HomeHeroVeil />
@@ -269,17 +271,17 @@ export default async function LearningPathDetailPage({ params }: Props) {
         >
           <div className="grid lg:grid-cols-2 lg:items-stretch">
             <figure className="relative min-h-[18rem] overflow-hidden sm:min-h-[22rem] lg:min-h-[32rem]">
-              <Image
+              <ParallaxImage
                 src={path.overviewImage}
                 alt=""
-                fill
-                className="object-cover"
+                intensity={90}
+                scale={1.28}
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 priority
               />
               <div
                 aria-hidden
-                className="absolute inset-0 bg-gradient-to-t from-[#0b2f24]/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#f3efe4]/25"
+                className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#0b2f24]/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#f3efe4]/25"
               />
             </figure>
 

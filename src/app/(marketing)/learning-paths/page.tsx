@@ -18,6 +18,7 @@ import {
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
 } from "@/components/site/BrandCtaBand";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 import { billingLinks } from "@/lib/billing-links";
 import {
@@ -186,12 +187,13 @@ export default function LearningPathsPage() {
       <FullBleed>
         <section className="relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src="/images/product/learning-paths-hero.png"
               alt="Teen learner working through a Kanam learning path on a Chromebook"
-              fill
               priority
-              className="object-cover object-[74%_center] sm:object-[70%_center]"
+              intensity={140}
+              scale={1.36}
+              className="object-[74%_center] sm:object-[70%_center]"
               sizes="100vw"
             />
             <HomeHeroVeil />

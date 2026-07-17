@@ -22,6 +22,7 @@ import {
   PageBand,
 } from "@/components/layout/PageBands";
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
@@ -57,12 +58,13 @@ export default function AboutPage() {
       <FullBleed>
         <section aria-labelledby="about-hero-heading" className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src="/images/product/about-hero.png"
               alt="Young people and mentors learning together"
-              fill
               priority
-              className="object-cover object-[62%_center]"
+              intensity={140}
+              scale={1.36}
+              className="object-[62%_center]"
               sizes="100vw"
             />
             <HomeHeroVeil />
@@ -86,7 +88,14 @@ export default function AboutPage() {
         <PageBand tone="mid" id="mission" aria-labelledby="mission-heading">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
           <figure className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] sm:aspect-[5/4] lg:col-span-5 lg:aspect-auto lg:min-h-[32rem]">
-            <Image src="/images/product/about-hero.png" alt="Young people and mentors learning together" fill className="object-cover object-[center_30%]" sizes="(min-width: 1024px) 40vw, 100vw" />
+            <ParallaxImage
+              src="/images/product/about-hero.png"
+              alt="Young people and mentors learning together"
+              intensity={85}
+              scale={1.28}
+              className="object-[center_30%]"
+              sizes="(min-width: 1024px) 40vw, 100vw"
+            />
           </figure>
           <div className="lg:col-span-7">
             <p className={duskEyebrowClass}>

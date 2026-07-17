@@ -75,8 +75,8 @@ export const duskGhostBtnClass =
 export function HomeHeroVeil() {
   return (
     <>
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(11,47,36,0.95)_0%,rgba(11,47,36,0.88)_38%,rgba(20,92,69,0.45)_62%,rgba(7,26,20,0.18)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,26,20,0.35)_0%,transparent_28%,transparent_55%,rgba(7,26,20,0.45)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(90deg,rgba(11,47,36,0.95)_0%,rgba(11,47,36,0.88)_38%,rgba(20,92,69,0.45)_62%,rgba(7,26,20,0.18)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(180deg,rgba(7,26,20,0.35)_0%,transparent_28%,transparent_55%,rgba(7,26,20,0.45)_100%)]" />
     </>
   );
 }

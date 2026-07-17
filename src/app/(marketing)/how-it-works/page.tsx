@@ -15,6 +15,7 @@ import {
   brandCtaSecondaryBtnClass,
   brandCtaTitleClass,
 } from "@/components/site/BrandCtaBand";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 import {
   DEVICE_READY_BLURB,
@@ -145,12 +146,13 @@ export default function HowItWorksPage() {
           className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]"
         >
           <div className="absolute inset-0">
-            <Image
+            <ParallaxImage
               src="/images/product/how-it-works-hero.png"
               alt="Teen focused on a structured Kanam lesson at a laptop"
-              fill
               priority
-              className="object-cover object-[72%_center] sm:object-[68%_center] lg:object-[65%_center]"
+              intensity={140}
+              scale={1.36}
+              className="object-[72%_center] sm:object-[68%_center] lg:object-[65%_center]"
               sizes="100vw"
             />
             <HomeHeroVeil />
@@ -455,14 +457,15 @@ export default function HowItWorksPage() {
               </ol>
             </div>
             <figure className="relative min-h-[20rem] overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] lg:col-span-6 lg:min-h-[26rem]">
-              <Image
+              <ParallaxImage
                 src="/images/product/path-detail-learning.png"
                 alt="Learner working through a guided Kanam lesson"
-                fill
-                className="object-cover object-center"
+                intensity={90}
+                scale={1.28}
+                className="object-center"
                 sizes="(min-width: 1024px) 45vw, 100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#122c24]/55 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-[#122c24]/55 to-transparent" />
             </figure>
           </div>
         </section>
@@ -549,15 +552,16 @@ export default function HowItWorksPage() {
           aria-labelledby="how-cta-heading"
           className="relative overflow-hidden border-t border-[rgb(var(--accent-rgb)/0.35)] py-14 md:py-20"
         >
-          <Image
+          <ParallaxImage
             src="/images/product/cohort-teens-learning.png"
             alt=""
-            fill
-            className="object-cover object-center"
+            intensity={130}
+            scale={1.34}
+            className="object-center"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(100deg,rgba(20,92,69,0.92)_0%,rgba(36,120,100,0.86)_55%,rgba(11,47,36,0.78)_100%)]" />
-          <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+          <div className="pointer-events-none absolute inset-0 z-[1] bg-[linear-gradient(100deg,rgba(20,92,69,0.92)_0%,rgba(36,120,100,0.86)_55%,rgba(11,47,36,0.78)_100%)]" />
+          <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
             <div className="max-w-xl">
               <p className={brandCtaEyebrowClass}>Ready when you are</p>
               <h2

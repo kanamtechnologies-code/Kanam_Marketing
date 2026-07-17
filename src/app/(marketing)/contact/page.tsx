@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Clock3, Mail, Phone, ShieldCheck } from "lucide-react";
 
@@ -14,6 +13,7 @@ import {
 } from "@/components/layout/PageBands";
 import { BrandCtaBand } from "@/components/site/BrandCtaBand";
 import { ContactForm } from "@/components/site/ContactForm";
+import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -108,15 +108,16 @@ export default function ContactPage() {
 
           <aside className="space-y-5 lg:col-span-5">
             <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:aspect-[5/6] lg:aspect-auto lg:min-h-[22rem]">
-              <Image
+              <ParallaxImage
                 src="/images/product/contact-hero.png"
                 alt="Kanam team member ready to help parents and school partners"
-                fill
                 priority
-                className="object-cover object-[center_20%]"
+                intensity={85}
+                scale={1.28}
+                className="object-[center_20%]"
                 sizes="(min-width: 1024px) 35vw, 100vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent" />
+              <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-zinc-950/75 via-transparent to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/70">
                   Real humans · Real replies
