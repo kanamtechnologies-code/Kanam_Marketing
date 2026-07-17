@@ -3,6 +3,11 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, GraduationCap, HelpCircle, Users } from "lucide-react";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import {
+  BrandCtaBand,
+  brandCtaPrimaryBtnClass,
+  brandCtaSecondaryBtnClass,
+} from "@/components/site/BrandCtaBand";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -215,13 +220,13 @@ export default function FaqPage() {
                   </h2>
                 </div>
 
-                <div className="overflow-hidden rounded-[1.35rem] border border-zinc-900/10 bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.06)]">
+                <div className="overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.06)]">
                   <Accordion type="single" collapsible className="px-1 sm:px-2">
                     {group.items.map((item, idx) => (
                       <AccordionItem
                         key={item.q}
                         value={`${group.id}-${idx}`}
-                        className="border-zinc-900/8 px-4 sm:px-5"
+                        className="border-[rgb(var(--accent-rgb)/0.16)] px-4 sm:px-5"
                       >
                         <AccordionTrigger className="py-5 text-left font-semibold text-zinc-950 hover:no-underline">
                           {item.q}
@@ -239,16 +244,16 @@ export default function FaqPage() {
         </div>
 
         {/* Quick links */}
-        <section
+        <BrandCtaBand
           aria-labelledby="faq-links-heading"
-          className="rounded-[1.5rem] border border-zinc-900/8 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.1)] via-[rgb(var(--background))] to-[rgb(var(--accent-rgb)/0.16)] px-5 py-7 sm:px-7 sm:py-8"
+          className="px-5 py-7 sm:px-7 sm:py-8"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
             Keep exploring
           </p>
           <h2
             id="faq-links-heading"
-            className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+            className="mt-2 font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl"
           >
             Useful next steps
           </h2>
@@ -257,51 +262,48 @@ export default function FaqPage() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="group flex flex-col rounded-[1.15rem] border border-zinc-900/8 bg-white/80 px-5 py-4 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.35)] hover:bg-white"
+                className="group flex flex-col rounded-[1.15rem] border border-[rgb(var(--accent-rgb)/0.28)] bg-[rgb(247_243_232/0.08)] px-5 py-4 transition-colors hover:border-[rgb(var(--accent-rgb)/0.55)] hover:bg-[rgb(247_243_232/0.14)]"
               >
-                <span className="font-display text-lg font-semibold text-zinc-950">
+                <span className="font-display text-lg font-semibold text-[#f7f3e8]">
                   {item.title}
                 </span>
-                <span className="mt-1 flex-1 text-sm leading-snug text-zinc-600">
+                <span className="mt-1 flex-1 text-sm leading-snug text-white/80">
                   {item.body}
                 </span>
-                <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[var(--brand-2)]">
+                <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent)]">
                   Go
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                 </span>
               </Link>
             ))}
           </div>
-        </section>
+        </BrandCtaBand>
 
         {/* Closing CTA */}
-        <section
-          aria-labelledby="faq-cta-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 px-5 py-8 sm:px-8 sm:py-10"
-        >
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.35)] via-transparent to-[rgb(var(--accent-rgb)/0.2)]" />
-          <div className="relative max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
+        <BrandCtaBand aria-labelledby="faq-cta-heading">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
               Still curious?
             </p>
             <h2
               id="faq-cta-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+              className="mt-2 font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl"
             >
               Ask us directly — or try a lesson first.
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-white/75">
+            <p className="mt-3 text-base leading-relaxed text-white/85">
               We’ll reply within 1 business day. Or open the guided demo and see the real
               experience in minutes.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
                 <Link href="/contact">Contact Kanam</Link>
               </Button>
               <Button
                 asChild
+                size="lg"
                 variant="secondary"
-                className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+                className={brandCtaSecondaryBtnClass}
               >
                 <Link
                   href={siteConfig.links.app}
@@ -313,7 +315,7 @@ export default function FaqPage() {
               </Button>
             </div>
           </div>
-        </section>
+        </BrandCtaBand>
       </div>
     </SubpageShell>
   );

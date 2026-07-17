@@ -18,7 +18,7 @@ export default function TermsPage() {
           <h1 className="mt-5 text-4xl font-black tracking-tight text-zinc-950 sm:text-5xl">
             Terms
           </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-zinc-600">
+          <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted)]">
             This page is a placeholder. Before launch, we’ll replace it with your final
             terms of service.
           </p>

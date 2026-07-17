@@ -5,6 +5,11 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { notFound } from "next/navigation";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import {
+  BrandCtaBand,
+  brandCtaPrimaryBtnClass,
+  brandCtaSecondaryBtnClass,
+} from "@/components/site/BrandCtaBand";
 import { Button } from "@/components/ui/button";
 import {
   DEVICE_READY_SHORT,
@@ -40,7 +45,7 @@ function OtherPathTile({ path }: { path: LearningPath }) {
   return (
     <Link
       href={`/learning-paths/${path.slug}`}
-      className="group relative flex min-h-[10rem] flex-col overflow-hidden rounded-[1.25rem] border border-zinc-900/10 bg-zinc-950 text-white shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+      className="group relative flex min-h-[10rem] flex-col overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 text-white shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
     >
       <div className="absolute inset-0">
         <Image
@@ -71,19 +76,20 @@ function CtaPair({
 }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-      <Button asChild>
+      <Button
+        asChild
+        size={onDark ? "lg" : "default"}
+        className={onDark ? brandCtaPrimaryBtnClass : undefined}
+      >
         <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
           Try the guided lesson
         </Link>
       </Button>
       <Button
         asChild
+        size={onDark ? "lg" : "default"}
         variant="secondary"
-        className={
-          onDark
-            ? "border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
-            : undefined
-        }
+        className={onDark ? brandCtaSecondaryBtnClass : undefined}
       >
         <Link href="/contact">Talk to us about getting started</Link>
       </Button>
@@ -114,7 +120,7 @@ export default async function LearningPathDetailPage({ params }: Props) {
     <SubpageShell overlapNav={false}>
       <div className="space-y-12 md:space-y-14 lg:space-y-16">
         {/* Hero */}
-        <div className="kanam-fade-up relative overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_20px_48px_rgba(15,23,42,0.14)]">
+        <div className="kanam-fade-up relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_20px_48px_rgba(15,23,42,0.14)]">
           <div className="absolute inset-0">
             <Image
               src={path.image}
@@ -197,7 +203,7 @@ export default async function LearningPathDetailPage({ params }: Props) {
         {/* What you get — no “learning outcomes” jargon */}
         <section aria-labelledby="overview-heading">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch lg:gap-7">
-            <figure className="relative min-h-[14rem] overflow-hidden rounded-[1.25rem] border border-zinc-900/10 sm:min-h-[16rem]">
+            <figure className="relative min-h-[14rem] overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] sm:min-h-[16rem]">
               <Image
                 src={path.overviewImage}
                 alt=""
@@ -221,8 +227,8 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 {path.whoFor} {PACING_SHORT}.
               </p>
               {path.prerequisite ? (
-                <p className="mt-2 text-sm text-zinc-600">
-                  <span className="font-semibold text-zinc-900">Note:</span> {path.prerequisite}
+                <p className="mt-2 text-sm text-[var(--muted)]">
+                  <span className="font-semibold text-zinc-950">Note:</span> {path.prerequisite}
                 </p>
               ) : null}
 
@@ -266,7 +272,7 @@ export default async function LearningPathDetailPage({ params }: Props) {
             </div>
           </div>
 
-          <div className="mt-5 divide-y divide-zinc-900/8 overflow-hidden rounded-[1.25rem] border border-zinc-900/10 bg-white/75">
+          <div className="mt-5 divide-y divide-[rgb(var(--accent-rgb)/0.15)] overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/75">
             {outline.map((mod) => (
               <details key={mod.theme} className="group">
                 <summary className="flex cursor-pointer list-none items-center gap-4 px-4 py-3.5 marker:content-none transition-colors hover:bg-[rgb(var(--brand-2-rgb)/0.04)] sm:px-5 [&::-webkit-details-marker]:hidden">
@@ -305,49 +311,45 @@ export default async function LearningPathDetailPage({ params }: Props) {
         </section>
 
         {/* Conversion CTA — learners + admins */}
-        <section
-          aria-labelledby="next-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-zinc-900/8 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-[rgb(var(--background))] to-[rgb(var(--accent-rgb)/0.22)] px-6 py-8 sm:px-8 sm:py-10 lg:px-10"
-        >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.04] kanam-hex-pattern" />
-          <div className="relative grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-10">
+        <BrandCtaBand aria-labelledby="next-heading" className="lg:px-10">
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-10">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
                 Get started
               </p>
               <h2
                 id="next-heading"
-                className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+                className="mt-3 font-display text-3xl font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl"
               >
                 Try a lesson — then talk to us
               </h2>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-[#e8e0cf]/90">
                 Learners and families can demo the real lesson canvas first. Schools and
                 programs: tell us your timeline and we&apos;ll help you pilot a class,
                 after-school block, or Scout troop.
               </p>
-              <div className="mt-5">
-                <CtaPair />
+              <div className="mt-8">
+                <CtaPair onDark />
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-              <div className="border-t border-zinc-900/10 pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <p className="font-semibold text-zinc-950">Families &amp; learners</p>
-                <p className="mt-1.5 text-sm leading-snug text-[var(--muted)]">
+              <div className="border-t border-white/20 pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                <p className="font-semibold text-[#f7f3e8]">Families &amp; learners</p>
+                <p className="mt-1.5 text-sm leading-snug text-white/80">
                   Demo with no account. Then reach out for a self-paced class code or live
                   support.
                 </p>
               </div>
-              <div className="border-t border-zinc-900/10 pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <p className="font-semibold text-zinc-950">Schools &amp; admins</p>
-                <p className="mt-1.5 text-sm leading-snug text-[var(--muted)]">
+              <div className="border-t border-white/20 pt-4 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+                <p className="font-semibold text-[#f7f3e8]">Schools &amp; admins</p>
+                <p className="mt-1.5 text-sm leading-snug text-white/80">
                   Class codes, roster progress, and standards docs — request a pilot when
                   you&apos;re ready.
                 </p>
               </div>
             </div>
           </div>
-        </section>
+        </BrandCtaBand>
 
         {/* Other paths */}
         <section aria-labelledby="other-heading">

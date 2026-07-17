@@ -40,8 +40,6 @@ export const INSTRUCTORS: Instructor[] = [
       "Data analyst pathways — SQL, analysis, and turning questions into clear answers",
       "Senior developer practices: debugging, code review, architecture thinking, and building things that actually ship",
       "Curriculum design that takes learners from first concepts to advanced, career-ready work",
-      "Live sessions with honest feedback so people don’t get stuck in silence",
-      "Coaching other instructors to teach like engineers, not just present slides",
     ],
     credentials: [
       "Directs software engineering and data analyst tracks at a national nonprofit",

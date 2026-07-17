@@ -77,7 +77,7 @@ export default function HowItWorksPage() {
         {/* Hero */}
         <section
           aria-labelledby="how-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
         >
           <div className="absolute inset-0">
             <Image
@@ -161,11 +161,11 @@ export default function HowItWorksPage() {
                   <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-zinc-950">
                     {step.title}
                   </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-zinc-600">{step.body}</p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-[var(--muted)]">{step.body}</p>
                 </li>
               ))}
             </ol>
-            <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 shadow-[0_18px_44px_rgba(15,23,42,0.12)] lg:col-span-5 lg:aspect-auto lg:min-h-[28rem]">
+            <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_18px_44px_rgba(15,23,42,0.12)] lg:col-span-5 lg:aspect-auto lg:min-h-[28rem]">
               <Image
                 src="/images/product/path-detail-learning.png"
                 alt="Learner working through a guided Kanam lesson"
@@ -197,7 +197,7 @@ export default function HowItWorksPage() {
               Interactive lessons follow a research-based structure so support stays light
               and learning stays clear.
             </p>
-            <figure className="relative mt-8 hidden aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-zinc-900/10 lg:block">
+            <figure className="relative mt-8 hidden aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] lg:block">
               <Image
                 src="/images/product/learner-coding.png"
                 alt="Close view of a learner practicing in the browser"
@@ -211,14 +211,14 @@ export default function HowItWorksPage() {
             {LESSON_PARTS.map((part, idx) => (
               <li
                 key={part.title}
-                className="grid grid-cols-[auto_1fr] gap-4 border-b border-zinc-900/8 pb-5 last:border-b-0 last:pb-0"
+                className="grid grid-cols-[auto_1fr] gap-4 border-b border-[rgb(var(--accent-rgb)/0.16)] pb-5 last:border-b-0 last:pb-0"
               >
                 <span className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--brand-2-rgb)/1)]">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
                 <div>
                   <h3 className="font-semibold text-zinc-950">{part.title}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-zinc-600">{part.body}</p>
+                  <p className="mt-1 text-sm leading-relaxed text-[var(--muted)]">{part.body}</p>
                 </div>
               </li>
             ))}
@@ -245,7 +245,7 @@ export default function HowItWorksPage() {
           </div>
 
           <div className="grid gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-8">
-            <figure className="relative min-h-[18rem] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 lg:col-span-5 lg:min-h-full">
+            <figure className="relative min-h-[18rem] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] lg:col-span-5 lg:min-h-full">
               <Image
                 src="/images/product/instructor-woman-live.png"
                 alt="Kanam instructor leading a live online session"
@@ -269,7 +269,7 @@ export default function HowItWorksPage() {
                 <h3 className="font-display text-xl font-semibold tracking-tight text-zinc-950">
                   Flexible schedule
                 </h3>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-zinc-600">
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[var(--muted)]">
                   <li className="flex gap-3">
                     <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]" />
                     {PACING_DESIGNED}
@@ -292,7 +292,7 @@ export default function HowItWorksPage() {
                 <h3 className="font-display text-xl font-semibold tracking-tight text-zinc-950">
                   Delivery modes
                 </h3>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-zinc-600">
+                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-[var(--muted)]">
                   {DELIVERY_MODES.map((mode) => (
                     <li key={mode} className="flex gap-3">
                       <span className="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent-rgb)/1)]" />
@@ -387,7 +387,7 @@ export default function HowItWorksPage() {
         {/* Closing CTA */}
         <section
           aria-labelledby="how-cta-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 px-5 py-8 sm:px-8 sm:py-10"
+          className="relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 px-5 py-8 sm:px-8 sm:py-10"
         >
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.35)] via-transparent to-[rgb(var(--accent-rgb)/0.2)]" />
           <div className="relative max-w-2xl">

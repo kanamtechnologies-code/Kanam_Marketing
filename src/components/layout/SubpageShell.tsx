@@ -31,13 +31,13 @@ export function SubpageShell({
   return (
     <div
       className={cn(
-        "relative isolate overflow-hidden bg-background",
+        "relative isolate overflow-hidden bg-[var(--background)] text-[#14201c]",
         overlapNav && "-mt-6 md:-mt-16 lg:-mt-20"
       )}
     >
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.1)] via-transparent to-[rgb(var(--accent-rgb)/0.08)]" />
-        <div className="absolute inset-0 opacity-[0.03] kanam-hex-pattern" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.12)] via-transparent to-[rgb(var(--accent-rgb)/0.1)]" />
+        <div className="absolute inset-0 opacity-[0.035] kanam-hex-pattern" />
       </div>
 
       <div
@@ -55,11 +55,11 @@ export function SubpageShell({
                 {eyebrow}
               </p>
             ) : null}
-            <h1 className="text-3xl font-bold tracking-tight leading-[1.08] max-[360px]:text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[4rem]">
+            <h1 className="font-display text-3xl font-semibold tracking-tight leading-[1.08] text-zinc-950 max-[360px]:text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[4rem]">
               {title}
             </h1>
             {subtitle ? (
-              <p className="max-w-4xl text-base max-[360px]:text-[15px] md:text-lg text-muted-foreground leading-relaxed 2xl:max-w-5xl">
+              <p className="max-w-4xl text-base leading-relaxed text-[var(--muted)] max-[360px]:text-[15px] md:text-lg 2xl:max-w-5xl">
                 {subtitle}
               </p>
             ) : null}
@@ -78,7 +78,7 @@ export function SubpageShell({
         >
           {toc?.length ? (
             <aside className="sticky top-24 hidden lg:block">
-              <nav className="rounded-2xl border border-foreground/10 bg-white/82 p-4 backdrop-blur-sm">
+              <nav className="rounded-2xl border border-[rgb(var(--accent-rgb)/0.35)] bg-white/90 p-4 shadow-sm backdrop-blur-sm">
                 <ul className="space-y-2">
                   {toc.map((item) => (
                     <li key={item.href}>
@@ -91,7 +91,7 @@ export function SubpageShell({
               </nav>
             </aside>
           ) : null}
-          <main className="min-w-0 [&>section]:rounded-3xl [&>section]:border [&>section]:border-[rgb(var(--accent-rgb)/0.22)] [&>section]:px-4 [&>section]:sm:px-5 [&>section]:md:px-6 [&>section]:shadow-[0_14px_34px_rgba(15,23,42,0.08)] [&>section]:ring-1 [&>section]:ring-[rgb(var(--accent-rgb)/0.18)] [&>section:nth-of-type(odd)]:bg-gradient-to-br [&>section:nth-of-type(odd)]:from-[rgb(var(--brand-rgb)/0.30)] [&>section:nth-of-type(odd)]:via-[rgb(var(--brand-2-rgb)/0.22)] [&>section:nth-of-type(odd)]:to-[rgb(var(--accent-rgb)/0.26)] [&>section:nth-of-type(even)]:bg-gradient-to-br [&>section:nth-of-type(even)]:from-[rgb(var(--brand-2-rgb)/0.30)] [&>section:nth-of-type(even)]:via-[rgb(var(--accent-rgb)/0.18)] [&>section:nth-of-type(even)]:to-[rgb(var(--brand-rgb)/0.26)] [&_p]:text-[15px] [&_p]:sm:text-base [&_p]:md:text-lg [&_p]:leading-relaxed [&_li]:text-[15px] [&_li]:sm:text-base [&_li]:md:text-lg [&_li]:leading-relaxed [&_h3]:text-lg [&_h3]:md:text-xl [&_h3]:font-semibold [&_p]:2xl:text-[1.125rem] [&_li]:2xl:text-[1.125rem]">
+          <main className="min-w-0 [&>section]:rounded-3xl [&>section]:border [&>section]:border-[rgb(var(--accent-rgb)/0.28)] [&>section]:bg-white/90 [&>section]:px-4 [&>section]:shadow-[0_14px_34px_rgba(15,23,42,0.07)] [&>section]:sm:px-5 [&>section]:md:px-6 [&>section:nth-of-type(even)]:bg-gradient-to-br [&>section:nth-of-type(even)]:from-white [&>section:nth-of-type(even)]:via-[rgb(var(--brand-2-rgb)/0.06)] [&>section:nth-of-type(even)]:to-[rgb(var(--accent-rgb)/0.1)] [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:sm:text-base [&_p]:md:text-lg [&_li]:text-[15px] [&_li]:leading-relaxed [&_li]:sm:text-base [&_li]:md:text-lg [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:md:text-xl [&_p]:2xl:text-[1.125rem] [&_li]:2xl:text-[1.125rem]">
             {children}
           </main>
         </div>
@@ -126,7 +126,7 @@ export function Band({ className, children }: { className?: string; children: Re
   return (
     <div
       className={cn(
-        "rounded-3xl border border-foreground/15 bg-white/72 p-4 max-[360px]:p-3.5 sm:p-6 2xl:p-7 shadow-[0_12px_34px_rgba(15,23,42,0.10)] ring-1 ring-[rgb(var(--accent-rgb)/0.14)] backdrop-blur-sm transition-shadow hover:shadow-[0_16px_40px_rgba(15,23,42,0.13)] dark:bg-background/55",
+        "rounded-3xl border border-[rgb(var(--accent-rgb)/0.3)] bg-white/90 p-4 shadow-[0_12px_34px_rgba(15,23,42,0.08)] ring-1 ring-[rgb(var(--accent-rgb)/0.12)] backdrop-blur-sm transition-shadow hover:shadow-[0_16px_40px_rgba(15,23,42,0.11)] max-[360px]:p-3.5 sm:p-6 2xl:p-7",
         className
       )}
     >
@@ -138,12 +138,13 @@ export function Band({ className, children }: { className?: string; children: Re
 export function H2({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div className={className}>
-      <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">{children}</h2>
-      <div className="mt-3 h-1 w-12 rounded-full bg-amber-400/70" />
+      <h2 className="font-display text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl">
+        {children}
+      </h2>
+      <div className="mt-3 h-px w-14 bg-[rgb(var(--accent-rgb)/0.9)]" />
     </div>
   );
 }
 
 export const textLinkClass =
-  "block rounded-md px-2 py-1.5 text-zinc-900 font-medium hover:bg-zinc-900/5 hover:text-black hover:underline underline-offset-4";
-
+  "block rounded-md px-2 py-1.5 text-sm font-medium text-zinc-800 hover:bg-[rgb(var(--brand-2-rgb)/0.08)] hover:text-[var(--brand-2)] hover:underline underline-offset-4";

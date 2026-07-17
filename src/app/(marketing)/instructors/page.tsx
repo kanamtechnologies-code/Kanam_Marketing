@@ -3,6 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import {
+  BrandCtaBand,
+  brandCtaPrimaryBtnClass,
+  brandCtaSecondaryBtnClass,
+} from "@/components/site/BrandCtaBand";
 import { Button } from "@/components/ui/button";
 import { INSTRUCTORS } from "@/lib/instructors";
 import { siteConfig } from "@/lib/site";
@@ -39,7 +44,7 @@ export default function InstructorsPage() {
             <article
               key={person.slug}
               id={person.slug}
-              className="scroll-mt-28 overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.07)]"
+              className="scroll-mt-28 overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]"
             >
               <div
                 className={`grid lg:grid-cols-12 ${
@@ -70,7 +75,7 @@ export default function InstructorsPage() {
                     <p className="mt-5 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                       {person.role}
                     </p>
-                    <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight">
+                    <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight text-white">
                       {person.name}
                     </h2>
                     <p className="mt-2 text-sm leading-relaxed text-white/85">
@@ -149,17 +154,16 @@ export default function InstructorsPage() {
           ))}
         </section>
 
-        <section className="relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-8 text-white sm:px-8 sm:py-10">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
-          <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <BrandCtaBand className="px-5 py-8 sm:px-8 sm:py-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
                 Learn with us
               </p>
-              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl">
                 Ready for a real instructor?
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-white/85 sm:text-base">
+              <p className="mt-4 text-base leading-relaxed text-[#e8e0cf]/90">
                 Try a guided lesson, book live tutoring, or request a pilot for your school,
                 after-school program, or Scout troop.
               </p>
@@ -168,7 +172,7 @@ export default function InstructorsPage() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
+                className={brandCtaPrimaryBtnClass}
               >
                 <Link
                   href={siteConfig.links.demo}
@@ -182,13 +186,13 @@ export default function InstructorsPage() {
                 asChild
                 size="lg"
                 variant="secondary"
-                className="rounded-full border-white/40 bg-white/10 text-white hover:bg-white/20"
+                className={brandCtaSecondaryBtnClass}
               >
                 <Link href="/contact">Request a pilot</Link>
               </Button>
             </div>
           </div>
-        </section>
+        </BrandCtaBand>
       </div>
     </SubpageShell>
   );

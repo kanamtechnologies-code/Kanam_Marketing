@@ -44,7 +44,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
         {/* Hero */}
         <section
           aria-labelledby="audience-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
         >
           <div className="absolute inset-0">
             <Image
@@ -256,7 +256,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
             {audience.pricingCards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-[1.25rem] border border-zinc-900/10 bg-white/80 p-5 shadow-[0_10px_28px_rgba(15,23,42,0.06)]"
+                className="rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/80 p-5 shadow-[0_10px_28px_rgba(15,23,42,0.06)]"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
                   {card.title}
@@ -264,7 +264,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                 <p className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                   {card.price}
                 </p>
-                <p className="mt-1 text-sm font-medium text-zinc-600">{card.alt}</p>
+                <p className="mt-1 text-sm font-medium text-[var(--muted)]">{card.alt}</p>
                 <p className="mt-3 text-sm leading-snug text-zinc-700">{card.detail}</p>
               </div>
             ))}
@@ -345,7 +345,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
               <Link
                 key={item.slug}
                 href={item.href}
-                className="group rounded-[1.15rem] border border-zinc-900/10 bg-white/70 px-5 py-4 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.35)] hover:bg-white"
+                className="group rounded-[1.15rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/70 px-5 py-4 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.35)] hover:bg-white"
               >
                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
                   {item.eyebrow}

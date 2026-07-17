@@ -97,7 +97,7 @@ export function ContactForm({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-[1.35rem] border border-zinc-900/10 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]",
+        "overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.35)] bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]",
         className
       )}
     >

@@ -3,6 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import {
+  BrandCtaBand,
+  brandCtaBodyClass,
+  brandCtaEyebrowClass,
+  brandCtaPrimaryBtnClass,
+  brandCtaSecondaryBtnClass,
+  brandCtaTitleClass,
+} from "@/components/site/BrandCtaBand";
 import { Button } from "@/components/ui/button";
 import {
   DEVICE_READY_SHORT,
@@ -57,7 +65,7 @@ export default function EducatorsPage() {
         {/* Hero — image-led, benefit-first */}
         <section
           aria-labelledby="educators-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
         >
           <div className="absolute inset-0">
             <Image
@@ -161,7 +169,7 @@ export default function EducatorsPage() {
           <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
             <Link
               href={featured.href}
-              className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+              className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
             >
               <div className="absolute inset-0">
                 <Image
@@ -195,7 +203,7 @@ export default function EducatorsPage() {
                 <Link
                   key={item.slug}
                   href={item.href}
-                  className="group relative flex min-h-[16rem] flex-col overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_14px_36px_rgba(15,23,42,0.12)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(15,23,42,0.16)] sm:min-h-[17rem] lg:min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+                  className="group relative flex min-h-[16rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_14px_36px_rgba(15,23,42,0.12)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(15,23,42,0.16)] sm:min-h-[17rem] lg:min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -258,7 +266,7 @@ export default function EducatorsPage() {
 
         {/* Visual + why */}
         <section aria-labelledby="why-heading" className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10">
-          <figure className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-zinc-900/10 shadow-[0_16px_40px_rgba(15,23,42,0.1)]">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_16px_40px_rgba(15,23,42,0.1)]">
             <Image
               src="/images/product/leaders-kanam-instructor.png"
               alt="Kanam instructor teaching a live online session"
@@ -307,38 +315,38 @@ export default function EducatorsPage() {
         </section>
 
         {/* CTA */}
-        <section
-          aria-labelledby="pilot-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-zinc-900/8 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-[rgb(var(--background))] to-[rgb(var(--accent-rgb)/0.22)] px-6 py-8 sm:px-8 sm:py-10"
-        >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.04] kanam-hex-pattern" />
-          <div className="relative max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              Next step
-            </p>
-            <h2
-              id="pilot-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
-            >
-              Request a pilot for your school or program
+        <BrandCtaBand aria-labelledby="pilot-heading">
+          <div className="max-w-2xl">
+            <p className={brandCtaEyebrowClass}>Next step</p>
+            <div
+              aria-hidden
+              className="mt-3 h-px w-12 bg-gradient-to-r from-[var(--accent)] to-transparent"
+            />
+            <h2 id="pilot-heading" className={brandCtaTitleClass}>
+              Bring live Kanam instruction to your school or program
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
-              Tell us your role, group size, location, and timeline. We&apos;ll map live
-              instruction — online or in person where available — for a class period,
+            <p className={brandCtaBodyClass}>
+              Share your role, group size, location, and timeline. We&apos;ll design a
+              pilot that fits — online or in person where available — for a class period,
               after-school block, weekend cohort, or Scout troop.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
                 <Link href="/contact">Request a pilot</Link>
               </Button>
-              <Button asChild variant="secondary">
+              <Button
+                asChild
+                size="lg"
+                variant="secondary"
+                className={brandCtaSecondaryBtnClass}
+              >
                 <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                   Try the guided lesson
                 </Link>
               </Button>
             </div>
           </div>
-        </section>
+        </BrandCtaBand>
       </div>
     </SubpageShell>
   );

@@ -3,6 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import {
+  BrandCtaBand,
+  brandCtaBodyClass,
+  brandCtaEyebrowClass,
+  brandCtaPrimaryBtnClass,
+  brandCtaSecondaryBtnClass,
+  brandCtaTitleClass,
+} from "@/components/site/BrandCtaBand";
 import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
 import { Button } from "@/components/ui/button";
 import {
@@ -128,7 +136,7 @@ export default function ParentsPage() {
         {/* Hero — parent-first */}
         <section
           aria-labelledby="parents-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
         >
           <div className="absolute inset-0">
             <Image
@@ -223,7 +231,7 @@ export default function ParentsPage() {
           <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
             <Link
               href={featured.href}
-              className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+              className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
             >
               <div className="absolute inset-0">
                 <Image
@@ -257,7 +265,7 @@ export default function ParentsPage() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="group relative flex min-h-[16rem] flex-col overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_14px_36px_rgba(15,23,42,0.12)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(15,23,42,0.16)] sm:min-h-[17rem] lg:min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+                  className="group relative flex min-h-[16rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_14px_36px_rgba(15,23,42,0.12)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(15,23,42,0.16)] sm:min-h-[17rem] lg:min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -293,7 +301,7 @@ export default function ParentsPage() {
           aria-labelledby="trust-heading"
           className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10"
         >
-          <figure className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-zinc-900/10 shadow-[0_16px_40px_rgba(15,23,42,0.1)]">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_16px_40px_rgba(15,23,42,0.1)]">
             <Image
               src="/images/product/family-mom-daughter.png"
               alt="Parent reviewing a child’s learning progress together"
@@ -337,8 +345,8 @@ export default function ParentsPage() {
           aria-labelledby="pricing-heading"
           className="scroll-mt-24"
         >
-          <div className="overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-white/90 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
-            <div className="border-b border-zinc-900/8 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.12)] via-white to-[rgb(var(--accent-rgb)/0.14)] px-6 py-7 sm:px-8 sm:py-8">
+          <div className="overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/90 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
+            <div className="border-b border-[rgb(var(--accent-rgb)/0.16)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.12)] via-white to-[rgb(var(--accent-rgb)/0.14)] px-6 py-7 sm:px-8 sm:py-8">
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
                 Family pricing
               </p>
@@ -364,13 +372,13 @@ export default function ParentsPage() {
                 <h3 className="mt-1 font-display text-xl font-semibold text-zinc-950 sm:text-2xl">
                   1:1 live tutoring
                 </h3>
-                <p className="mt-2 max-w-2xl text-sm text-zinc-600">
+                <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
                   A Kanam instructor online — focused on your child. Unblock stuck moments,
                   keep them accountable, and turn “I tried” into real skills.
                 </p>
                 <dl className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                   <div className="rounded-2xl bg-[rgb(var(--brand-2-rgb)/0.08)] px-4 py-4 ring-1 ring-[rgb(var(--brand-2-rgb)/0.2)]">
-                    <dt className="text-sm font-medium text-zinc-600">Per session</dt>
+                    <dt className="text-sm font-medium text-[var(--muted)]">Per session</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {LIVE_ADD_ONS.oneToOne.price.replace("/session", "")}
                     </dd>
@@ -379,7 +387,7 @@ export default function ParentsPage() {
                     </dd>
                   </div>
                   <div className="rounded-2xl bg-zinc-50 px-4 py-4">
-                    <dt className="text-sm font-medium text-zinc-600">Try one session</dt>
+                    <dt className="text-sm font-medium text-[var(--muted)]">Try one session</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {LIVE_ADD_ONS.oneToOne.trial}
                     </dd>
@@ -387,7 +395,7 @@ export default function ParentsPage() {
                   </div>
                   {LIVE_ADD_ONS.oneToOne.bundles.map((bundle) => (
                     <div key={bundle.label} className="rounded-2xl bg-zinc-50 px-4 py-4">
-                      <dt className="text-sm font-medium text-zinc-600">{bundle.label}</dt>
+                      <dt className="text-sm font-medium text-[var(--muted)]">{bundle.label}</dt>
                       <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                         {bundle.price}
                       </dd>
@@ -405,20 +413,20 @@ export default function ParentsPage() {
                 <h3 className="mt-1 font-display text-xl font-semibold text-zinc-950 sm:text-2xl">
                   Async learning tracks
                 </h3>
-                <p className="mt-2 max-w-2xl text-sm text-zinc-600">
+                <p className="mt-2 max-w-2xl text-sm text-[var(--muted)]">
                   Structured tracks with coach notes and auto-checks — each full track is{" "}
                   {TRACK_PROGRAM.label}, so practice doesn’t stop when the live session ends.
                 </p>
                 <dl className="mt-5 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl bg-zinc-50 px-4 py-4">
-                    <dt className="text-sm font-medium text-zinc-600">Monthly subscription</dt>
+                    <dt className="text-sm font-medium text-[var(--muted)]">Monthly subscription</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {PRICING.family.price}
                     </dd>
                     <dd className="mt-1 text-xs text-zinc-500">Ongoing access to all tracks</dd>
                   </div>
                   <div className="rounded-2xl bg-zinc-50 px-4 py-4">
-                    <dt className="text-sm font-medium text-zinc-600">Per learning track</dt>
+                    <dt className="text-sm font-medium text-[var(--muted)]">Per learning track</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {TRACK_PRICE_RANGE_LABEL}
                     </dd>
@@ -559,7 +567,7 @@ export default function ParentsPage() {
           <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
             <Link
               href={`/learning-paths/${featuredPath.slug}`}
-              className="group relative flex min-h-[18rem] flex-col overflow-hidden rounded-[1.5rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[20rem] lg:col-span-5 lg:min-h-[28rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+              className="group relative flex min-h-[18rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[20rem] lg:col-span-5 lg:min-h-[28rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
             >
               <div className="absolute inset-0">
                 <Image
@@ -589,7 +597,7 @@ export default function ParentsPage() {
                 <Link
                   key={path.slug}
                   href={`/learning-paths/${path.slug}`}
-                  className="group relative flex min-h-[12rem] flex-col overflow-hidden rounded-[1.35rem] border border-zinc-900/10 bg-zinc-950 shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+                  className="group relative flex min-h-[12rem] flex-col overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -628,7 +636,7 @@ export default function ParentsPage() {
               Straight answers
             </h2>
           </div>
-          <div className="divide-y divide-zinc-900/10 overflow-hidden rounded-[1.35rem] border border-zinc-900/10 bg-white/80">
+          <div className="divide-y divide-zinc-900/10 overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/80">
             {FAQS.map((item) => (
               <div key={item.q} className="px-5 py-5 sm:px-6">
                 <h3 className="font-semibold text-zinc-950">{item.q}</h3>
@@ -639,37 +647,37 @@ export default function ParentsPage() {
         </section>
 
         {/* CTA */}
-        <section
-          aria-labelledby="cta-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-zinc-900/8 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.14)] via-[rgb(var(--background))] to-[rgb(var(--accent-rgb)/0.22)] px-6 py-8 sm:px-8 sm:py-10"
-        >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.04] kanam-hex-pattern" />
-          <div className="relative max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              Next step
-            </p>
-            <h2
-              id="cta-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
-            >
-              Get your child a Kanam tutor
+        <BrandCtaBand aria-labelledby="cta-heading">
+          <div className="max-w-2xl">
+            <p className={brandCtaEyebrowClass}>Next step</p>
+            <div
+              aria-hidden
+              className="mt-3 h-px w-12 bg-gradient-to-r from-[var(--accent)] to-transparent"
+            />
+            <h2 id="cta-heading" className={brandCtaTitleClass}>
+              Give your child a real Kanam tutor
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+            <p className={brandCtaBodyClass}>
               Start with a {LIVE_ADD_ONS.oneToOne.trial} trial session. Add async tracks so
               practice continues between classes — with progress you can see.
             </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
                 <Link href="/contact">Book a tutoring trial</Link>
               </Button>
-              <Button asChild variant="secondary">
+              <Button
+                asChild
+                size="lg"
+                variant="secondary"
+                className={brandCtaSecondaryBtnClass}
+              >
                 <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                   Try a free guided lesson
                 </Link>
               </Button>
             </div>
           </div>
-        </section>
+        </BrandCtaBand>
       </div>
     </SubpageShell>
   );

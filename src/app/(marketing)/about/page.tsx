@@ -61,7 +61,7 @@ export default function AboutPage() {
           aria-labelledby="mission-heading"
           className="scroll-mt-24 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12"
         >
-          <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:aspect-[5/4] lg:col-span-5 lg:aspect-auto lg:min-h-[32rem]">
+          <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:aspect-[5/4] lg:col-span-5 lg:aspect-auto lg:min-h-[32rem]">
             <Image
               src="/images/product/about-hero.png"
               alt="Young people and mentors learning together"
@@ -91,7 +91,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Kanam Academy was built around a simple conviction:{" "}
-                <strong className="font-semibold text-zinc-900">
+                <strong className="font-semibold text-zinc-950">
                   live instruction comes first.
                 </strong>{" "}
                 Videos and self-paced tools can help practice stick, but a real instructor
@@ -135,7 +135,7 @@ export default function AboutPage() {
                   index % 2 === 1 ? "lg:[&>figure]:order-2" : ""
                 }`}
               >
-                <figure className="relative aspect-[16/11] overflow-hidden rounded-[1.5rem] border border-zinc-900/10 shadow-[0_14px_36px_rgba(15,23,42,0.1)] lg:col-span-6 lg:aspect-auto lg:min-h-[20rem]">
+                <figure className="relative aspect-[16/11] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_14px_36px_rgba(15,23,42,0.1)] lg:col-span-6 lg:aspect-auto lg:min-h-[20rem]">
                   <Image
                     src={item.image}
                     alt={item.imageAlt}
