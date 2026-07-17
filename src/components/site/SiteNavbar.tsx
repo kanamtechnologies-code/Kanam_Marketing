@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 import { siteConfig } from "@/lib/site";
@@ -18,16 +18,22 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
+function NavLinks({
+  onNavigate,
+  closeOnNavigate = false,
+}: {
+  onNavigate?: () => void;
+  /** Wrap each link in SheetClose so the mobile drawer dismisses on tap. */
+  closeOnNavigate?: boolean;
+}) {
   const pathname = usePathname();
 
   return (
     <div className="flex flex-col items-center gap-2 text-center lg:flex-row lg:items-center lg:justify-center lg:gap-6">
       {siteConfig.nav.map((item) => {
         const isActive = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-        return (
+        const link = (
           <Link
-            key={item.href}
             href={item.href}
             onClick={onNavigate}
             className={cn(
@@ -38,17 +44,32 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
             {item.label}
           </Link>
         );
+
+        return closeOnNavigate ? (
+          <SheetClose key={item.href} asChild>
+            {link}
+          </SheetClose>
+        ) : (
+          <Fragment key={item.href}>{link}</Fragment>
+        );
       })}
     </div>
   );
 }
 
 export function SiteNavbar() {
+  const pathname = usePathname();
   const [isClient, setIsClient] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Close the drawer after route changes (covers logo taps and back/forward).
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="sticky inset-x-0 top-0 z-[60] overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[#145c45] via-[rgb(var(--brand-2-rgb)/0.96)] to-[#1a6b52] shadow-lg supports-[backdrop-filter]:backdrop-blur-md">
@@ -76,7 +97,7 @@ export function SiteNavbar() {
 
           <div className="lg:hidden">
             {isClient ? (
-              <Sheet>
+              <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
                 <SheetTrigger asChild>
                   <button
                     className="inline-flex h-11 items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
@@ -91,7 +112,7 @@ export function SiteNavbar() {
                 >
                   <SheetHeader className="pr-12">
                     <SheetTitle className="sr-only">Site navigation menu</SheetTitle>
-                    <div className="w-fit">
+                    <div className="w-fit" onClick={() => setMenuOpen(false)}>
                       <HeaderBrand />
                     </div>
                   </SheetHeader>
@@ -106,7 +127,10 @@ export function SiteNavbar() {
                   </SheetClose>
 
                   <div className="mt-6 flex flex-col items-center gap-4">
-                    <NavLinks />
+                    <NavLinks
+                      closeOnNavigate
+                      onNavigate={() => setMenuOpen(false)}
+                    />
                     <div className="h-px w-full bg-[rgb(var(--accent-rgb)/0.25)]" />
                     <Button
                       asChild
