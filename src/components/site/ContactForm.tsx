@@ -31,7 +31,7 @@ const helpOptionsByRole: Record<Role, string[]> = {
   teacher: [
     "Classroom or enrichment use",
     "Class codes & program tools",
-    "Curriculum overview",
+    "Standards alignment packet",
     "Something else",
   ],
   school: [

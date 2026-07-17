@@ -299,7 +299,7 @@ export default function EducatorsPage() {
               </Button>
               <Button asChild variant="secondary">
                 <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
-                  Curriculum overview (PDF)
+                  Standards alignment packet
                 </Link>
               </Button>
             </div>

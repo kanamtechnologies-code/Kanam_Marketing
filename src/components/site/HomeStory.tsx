@@ -302,7 +302,7 @@ function AudienceSplitPanel() {
               </li>
               <li className="flex gap-2">
                 <BookOpen className="mt-0.5 h-4 w-4 shrink-0 text-[rgb(var(--brand-rgb)/1)]" />
-                Built to align with CSTA standards · curriculum packet available
+                Built to align with CSTA standards · standards packet available
               </li>
             </ul>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -383,11 +383,12 @@ function TrustPanel() {
         <p className="mt-4 max-w-3xl text-lg leading-relaxed text-[var(--muted)]">
           Kanam Academy is built to align with the{" "}
           <strong className="font-semibold text-zinc-900">
-            CSTA K–12 Computer Science Standards
-          </strong>{" "}
-          (Levels 2 and 3A). Curriculum documentation is available for accreditation and
-          adoption conversations — clear enough for teens starting out, deep enough for
-          anyone leveling up in tech.
+            CSTA K–12 Computer Science Standards (2017)
+          </strong>
+          , Levels 2 and 3A, with a forward map to the 2026 CSTA PK–12 Standards. The
+          Foundations Standards Alignment packet is ready for accreditation and adoption
+          conversations — clear enough for teens starting out, deep enough for anyone
+          leveling up in tech.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {[
@@ -408,7 +409,7 @@ function TrustPanel() {
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild variant="secondary">
             <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
-              Get the curriculum overview
+              Foundations Standards Alignment
             </Link>
           </Button>
           <Link

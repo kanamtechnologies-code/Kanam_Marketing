@@ -148,8 +148,8 @@ export const LEARNING_PATHS: LearningPath[] = [
   },
   {
     slug: "ai-python",
-    name: "AI + Python Starter Pack",
-    shortName: "AI + Python",
+    name: "Python & AI Foundations",
+    shortName: "Python & AI",
     lessons: 14,
     subtitle: "Build your first AI helper with Python",
     outcome:
@@ -386,7 +386,7 @@ export const LESSONS_COUNT_LABEL = String(TOTAL_LESSONS);
 export const PATHS_COUNT_LABEL = String(LEARNING_PATHS.length);
 
 export const PATHS_LIST_SHORT =
-  "AI Literacy, Digital Literacy, Cybersecurity, Financial Literacy, AI + Python, and Data Analyst";
+  "AI Literacy, Digital Literacy, Cybersecurity, Financial Literacy, Python & AI, and Data Analyst";
 
 export const PROOF_POINTS = [
   { label: "Paths to choose", value: PATHS_COUNT_LABEL },
@@ -487,7 +487,7 @@ export const CSTA_LABEL =
   "Built to align with CSTA K–12 Computer Science Standards";
 
 export const STANDARDS_BLURB =
-  "Kanam Academy is built to align with the CSTA K–12 Computer Science Standards (2017), Levels 2 and 3A — so schools and programs can adopt with confidence. Curriculum documentation is available for accreditation and adoption conversations. Also mapped to the K–12 CS Framework, ISTE Standards for Students (2016), and Common Core Math statistics/probability (especially the Data track), with forward-looking mapping toward CSTA Draft 3.0. Clear enough for teens starting out; deep enough for anyone leveling up in tech.";
+  "Kanam Academy is built to align with the CSTA K–12 Computer Science Standards (2017), Levels 2 and 3A — so schools and programs can adopt with confidence. Also mapped to the K–12 CS Framework, ISTE Standards for Students (2024), Common Core Math statistics/probability (Data track), Jump$tart/CEE 2021 (Financial Literacy), and a forward map to the 2026 CSTA PK–12 Standards. Request the Foundations Standards Alignment packet for accreditation conversations.";
 
 export const STANDARDS_SHORT =
-  "Built to align with CSTA K–12 CS Standards · curriculum packet available";
+  "Built to align with CSTA K–12 CS Standards · standards packet available";

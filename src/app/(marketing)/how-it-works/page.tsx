@@ -375,7 +375,7 @@ export default function HowItWorksPage() {
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
             <Button asChild>
               <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
-                Curriculum overview
+                Standards alignment packet
               </Link>
             </Button>
             <Button asChild variant="secondary">

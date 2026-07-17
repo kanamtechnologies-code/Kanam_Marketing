@@ -42,6 +42,12 @@ export default function PricingOnePagerPage() {
         <div className="flex flex-wrap items-center gap-2">
           <PrintButton />
           <Link
+            href="/one-pager/standards"
+            className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
+          >
+            Standards
+          </Link>
+          <Link
             href="/one-pager"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >

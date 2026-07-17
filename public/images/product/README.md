@@ -22,12 +22,12 @@ All people photos feature teens, parents, and instructors of color.
 |----------|------|
 | `path-ai-literacy.png` | AI Literacy |
 | `path-digital-literacy.png` | Digital Literacy |
-| `path-ai-python.png` | AI + Python |
+| `path-ai-python.png` | Python & AI Foundations |
 | `path-data-analyst.png` | Data Analyst |
 | `path-cybersecurity.png` | Cybersecurity |
 | `overview-ai-literacy.png` | Path detail overview — AI Literacy |
 | `overview-digital-literacy.png` | Path detail overview — Digital Literacy |
-| `overview-ai-python.png` | Path detail overview — AI + Python |
+| `overview-ai-python.png` | Path detail overview — Python & AI Foundations |
 | `overview-data-analyst.png` | Path detail overview — Data Analyst |
 | `overview-cybersecurity.png` | Path detail overview — Cybersecurity |
 

@@ -36,7 +36,13 @@ export default function OnePagerPage() {
             href="/one-pager/pricing"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
-            Pricing one-pager
+            Pricing
+          </Link>
+          <Link
+            href="/one-pager/standards"
+            className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
+          >
+            Standards
           </Link>
           <Link
             href="/"

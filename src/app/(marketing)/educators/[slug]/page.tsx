@@ -144,7 +144,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
               className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
             >
               <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
-                Standards PDF
+                Standards packet
               </Link>
             </Button>
           </div>

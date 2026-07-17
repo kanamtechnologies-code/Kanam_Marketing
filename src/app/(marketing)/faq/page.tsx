@@ -41,7 +41,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "What are the six learning paths?",
-        a: `AI Literacy (16), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), AI + Python Starter Pack (14), and Data Analyst Track (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
+        a: `AI Literacy (16), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), Python & AI Foundations (14), and Data Analyst Track (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
       },
       {
         q: "How do I get started?",
@@ -76,7 +76,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "Is Kanam aligned with CSTA standards?",
-        a: "Yes. Kanam Academy is built to align with the CSTA K–12 Computer Science Standards (2017), Levels 2 and 3A. Documentation is also mapped to the K–12 CS Framework, ISTE Students 2016, and Common Core Math statistics/probability for data. Request the curriculum packet for adoption conversations.",
+        a: "Yes. Kanam Academy is built to align with the CSTA K–12 Computer Science Standards (2017), Levels 2 (grades 6–8) and 3A (grades 9–10). We also map to the K–12 CS Framework, ISTE Standards for Students (2024), Common Core Math statistics/probability (Data track), Jump$tart/CEE 2021 (Financial Literacy), and a forward map to the 2026 CSTA PK–12 Standards. Request the Foundations Standards Alignment packet for adoption conversations.",
       },
     ],
   },

@@ -77,7 +77,7 @@ export const TRACK_PRICES = [
   },
   {
     slug: "ai-python",
-    name: "AI + Python Starter Pack",
+    name: "Python & AI Foundations",
     price: 169,
     priceLabel: "$169",
   },
