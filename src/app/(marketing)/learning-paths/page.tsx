@@ -38,67 +38,93 @@ export const metadata: Metadata = {
   description: `${PATHS_COUNT_LABEL} learning paths: ${PATHS_LIST_SHORT} — ${LESSONS_COUNT_LABEL} interactive lessons. Flexible schedule. Chromebook and mobile ready. Live instruction or structured async.`,
 };
 
-const FEATURED_SLUG = "ai-literacy";
+type TileTone = "spotlight" | "companion" | "panel";
+
+/** Curated mosaic order — literacy hero, defense stack, then build tracks. */
+const PATH_MOSAIC: Array<{ slug: LearningPath["slug"]; tone: TileTone }> = [
+  { slug: "ai-literacy", tone: "spotlight" },
+  { slug: "digital-literacy", tone: "companion" },
+  { slug: "cybersecurity", tone: "companion" },
+  { slug: "ai-python", tone: "panel" },
+  { slug: "data-analyst", tone: "panel" },
+  { slug: "financial-literacy", tone: "panel" },
+];
 
 function PathTile({
   path,
+  tone,
+  priority = false,
   className,
-  size = "standard",
 }: {
   path: LearningPath;
+  tone: TileTone;
+  priority?: boolean;
   className?: string;
-  size?: "featured" | "standard" | "compact";
 }) {
-  const isFeatured = size === "featured";
-  const isCompact = size === "compact";
-  const skillsLabel = path.skills.join(", ");
+  const isSpotlight = tone === "spotlight";
+  const isCompanion = tone === "companion";
+  const skillsLabel = path.skills.slice(0, isSpotlight ? 4 : 3).join(" · ");
 
   return (
     <Link
       href={`/learning-paths/${path.slug}`}
       className={cn(
-        "group relative flex min-h-0 flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.22)] bg-[#16352b] text-white transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(7,26,20,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2",
+        "group flex min-h-0 flex-col overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.22)] bg-[#16352b] text-white",
+        "transition-[transform,box-shadow,border-color] duration-500 ease-out",
+        "hover:-translate-y-0.5 hover:border-[rgb(var(--accent-rgb)/0.45)] hover:shadow-[0_28px_56px_rgba(7,26,20,0.32)]",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0e241c]",
         className
       )}
     >
-      <div className="absolute inset-0">
+      {/* Photo reads clearly — not buried under a full-bleed green wash */}
+      <div
+        className={cn(
+          "relative w-full overflow-hidden",
+          isSpotlight
+            ? "aspect-[16/11] min-h-[14rem] flex-1 sm:min-h-[16rem] lg:min-h-0 lg:aspect-auto lg:h-full"
+            : isCompanion
+              ? "aspect-[16/10] min-h-[11rem]"
+              : "aspect-[16/10] min-h-[10.5rem]"
+        )}
+      >
         <Image
           src={path.image}
           alt=""
           fill
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
           sizes={
-            isFeatured
+            isSpotlight
               ? "(min-width: 1024px) 55vw, 100vw"
-              : "(min-width: 1024px) 30vw, (min-width: 640px) 50vw, 100vw"
+              : "(min-width: 1024px) 28vw, (min-width: 640px) 50vw, 100vw"
           }
-          priority={isFeatured}
+          priority={priority}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-[#16352b]/50 to-[#16352b]/10" />
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.25)] via-transparent to-[rgb(var(--accent-rgb)/0.12)] opacity-80" />
+        <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#16352b]/80 to-transparent" />
+        {isSpotlight ? (
+          <p className="absolute left-5 top-4 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)] drop-shadow sm:left-6 sm:top-5">
+            Start here
+          </p>
+        ) : null}
       </div>
 
       <div
         className={cn(
-          "relative z-10 mt-auto flex flex-1 flex-col justify-end",
-          isFeatured ? "p-7 sm:p-9 lg:p-10" : isCompact ? "p-5 sm:p-6" : "p-6 sm:p-7"
+          "flex flex-col justify-end border-t border-white/10",
+          isSpotlight ? "p-6 sm:p-7 lg:p-8" : "p-5 sm:p-6"
         )}
       >
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/65">
           {path.lessons} lessons
-          {path.prerequisite ? (
-            <span className="text-white/45"> · builds on Python</span>
-          ) : null}
         </p>
 
         <h2
           className={cn(
-            "mt-3 font-display font-semibold tracking-tight text-white",
-            isFeatured
-              ? "text-3xl sm:text-4xl lg:text-[2.65rem] lg:leading-[1.08]"
-              : isCompact
+            "mt-2 font-display font-semibold tracking-tight text-[#f7f3e8]",
+            isSpotlight
+              ? "text-3xl sm:text-4xl lg:text-[2.6rem] lg:leading-[1.08]"
+              : isCompanion
                 ? "text-xl sm:text-2xl"
-                : "text-2xl sm:text-[1.65rem]"
+                : "text-xl sm:text-[1.35rem]"
           )}
         >
           {path.name}
@@ -106,32 +132,32 @@ function PathTile({
 
         <p
           className={cn(
-            "mt-2 font-medium text-[rgb(var(--accent-rgb)/1)]",
-            isFeatured ? "max-w-md text-base sm:text-lg" : "text-sm sm:text-[0.95rem]"
+            "mt-1.5 font-medium text-[rgb(var(--accent-rgb)/1)]",
+            isSpotlight ? "max-w-md text-base sm:text-lg" : "text-sm"
           )}
         >
           {path.subtitle}
         </p>
 
-        {!isCompact ? (
-          <p
-            className={cn(
-              "mt-3 text-white/75",
-              isFeatured ? "max-w-lg text-base leading-relaxed" : "line-clamp-2 text-sm leading-relaxed"
-            )}
-          >
+        {isSpotlight ? (
+          <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#c5d2cb] sm:text-base">
             {path.marketingAngle}
           </p>
         ) : null}
 
         <div
           className={cn(
-            "mt-5 flex items-end justify-between gap-4 border-t border-white/15 pt-4",
-            isCompact && "mt-4 pt-3"
+            "mt-4 flex items-end justify-between gap-3 border-t border-white/12 pt-3",
+            isSpotlight && "mt-5 pt-4"
           )}
         >
-          <p className={cn("text-white/85", isCompact ? "text-xs leading-snug" : "text-sm leading-snug")}>
-            <span className="font-semibold text-white">Skills:</span> {skillsLabel}
+          <p
+            className={cn(
+              "line-clamp-2 leading-snug text-[#c5d2cb]",
+              isSpotlight ? "text-sm" : "text-xs sm:text-sm"
+            )}
+          >
+            {skillsLabel}
           </p>
           <span className="inline-flex shrink-0 items-center gap-1 text-sm font-semibold text-white">
             Explore
@@ -144,10 +170,16 @@ function PathTile({
 }
 
 export default function LearningPathsPage() {
-  const featured =
-    LEARNING_PATHS.find((p) => p.slug === FEATURED_SLUG) ?? LEARNING_PATHS[0];
-  const secondary = LEARNING_PATHS.filter((p) => p.slug !== featured.slug);
-  const [second, ...rest] = secondary;
+  const mosaic = PATH_MOSAIC.map((slot) => {
+    const path = LEARNING_PATHS.find((p) => p.slug === slot.slug);
+    return path ? { ...slot, path } : null;
+  }).filter((item): item is { slug: LearningPath["slug"]; tone: TileTone; path: LearningPath } =>
+    Boolean(item)
+  );
+
+  const spotlight = mosaic.find((m) => m.tone === "spotlight");
+  const companions = mosaic.filter((m) => m.tone === "companion");
+  const panels = mosaic.filter((m) => m.tone === "panel");
 
   return (
     <SubpageShell overlapNav={false}>
@@ -186,16 +218,13 @@ export default function LearningPathsPage() {
         </section>
 
         <PageBand tone="light">
-          <div className="kanam-fade-up grid grid-cols-2 gap-5 sm:grid-cols-4">
+          <div className="kanam-fade-up grid grid-cols-2 gap-x-5 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
           {PROOF_POINTS.map((item) => (
-            <div
-              key={item.label}
-              className="border-b border-[rgb(var(--accent-rgb)/0.2)] pb-3 pt-1 sm:border-b-0 sm:border-l sm:border-[rgb(var(--accent-rgb)/0.2)] sm:pb-0 sm:pl-5 sm:first:border-l-0 sm:first:pl-0"
-            >
-              <div className="font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+            <div key={item.label} className="min-w-0">
+              <div className="font-display text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl">
                 {item.value}
               </div>
-              <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-zinc-500">
+              <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-zinc-500">
                 {item.label}
               </div>
             </div>
@@ -208,8 +237,11 @@ export default function LearningPathsPage() {
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className={duskEyebrowClass}>Choose a path</p>
+              <h2 className={cn("mt-2 text-2xl sm:text-3xl", duskTitleClass)}>
+                Start where curiosity is strongest
+              </h2>
               <p className={cn("mt-2 max-w-xl text-base", duskMutedClass)}>
-                Each path is a complete track with lessons, practice, and a capstone — pick
+                Each path is a full journey with lessons, practice, and a capstone — pick
                 where you want to start.
               </p>
             </div>
@@ -218,26 +250,36 @@ export default function LearningPathsPage() {
             </p>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
-            <PathTile
-              path={featured}
-              size="featured"
-              className="min-h-[22rem] sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem]"
-            />
-            {second ? (
+          {/* Premium bento: hero + stack + full bottom row of three */}
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+            {spotlight ? (
               <PathTile
-                path={second}
-                size="standard"
-                className="min-h-[18rem] sm:min-h-[20rem] lg:col-span-5 lg:min-h-[32rem]"
+                path={spotlight.path}
+                tone="spotlight"
+                priority
+                className="sm:col-span-2 lg:col-span-7 lg:row-span-2 lg:min-h-[34rem]"
               />
             ) : null}
 
-            {rest.map((path) => (
+            {companions.map((item, index) => (
               <PathTile
-                key={path.slug}
-                path={path}
-                size="compact"
-                className="min-h-[16rem] sm:min-h-[17.5rem] lg:col-span-4"
+                key={item.slug}
+                path={item.path}
+                tone="companion"
+                priority={index === 0}
+                className="lg:col-span-5"
+              />
+            ))}
+
+            {panels.map((item, index) => (
+              <PathTile
+                key={item.slug}
+                path={item.path}
+                tone="panel"
+                className={cn(
+                  "lg:col-span-4",
+                  index === panels.length - 1 && "sm:col-span-2 lg:col-span-4"
+                )}
               />
             ))}
           </div>

@@ -76,7 +76,7 @@ export const PATH_COVERAGE = [
     frameworks: "CSTA 2017 AP + IC · ISTE Computational Thinker",
   },
   {
-    path: "Data Analyst Track",
+    path: "Data Analyst",
     focus: "Data & Analysis (primary); Common Core stats/probability",
     frameworks: "CSTA 2017 DA + IC · CCSS 6–8.SP / S-ID · ISTE Knowledge Constructor",
   },

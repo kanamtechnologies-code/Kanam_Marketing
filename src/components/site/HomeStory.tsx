@@ -132,16 +132,16 @@ function HeroPanel() {
 function ProofStrip() {
   return (
     <section className="border-b border-[rgb(var(--accent-rgb)/0.35)] bg-gradient-to-b from-[#145c45] to-[rgb(var(--brand-2-rgb)/1)]">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-px bg-[rgb(var(--accent-rgb)/0.22)] sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-[rgb(var(--accent-rgb)/0.22)] sm:grid-cols-3 lg:grid-cols-6">
         {PROOF_POINTS.map((item) => (
           <div
             key={item.label}
-            className="bg-[#145c45] px-5 py-6 text-center sm:px-6 sm:py-7 lg:bg-transparent lg:bg-gradient-to-b lg:from-[#145c45] lg:to-[rgb(var(--brand-2-rgb)/1)]"
+            className="bg-[#145c45] px-4 py-6 text-center sm:px-5 sm:py-7 lg:bg-transparent lg:bg-gradient-to-b lg:from-[#145c45] lg:to-[rgb(var(--brand-2-rgb)/1)] lg:px-4 lg:py-8"
           >
-            <div className="font-display text-[1.35rem] font-semibold leading-tight tracking-tight text-[var(--accent)] sm:text-2xl">
+            <div className="font-display text-xl font-semibold leading-tight tracking-tight text-[var(--accent)] sm:text-2xl">
               {item.value}
             </div>
-            <div className="mx-auto mt-2 max-w-[16rem] text-sm font-medium leading-snug text-white/85">
+            <div className="mx-auto mt-2.5 max-w-[14rem] text-sm font-medium leading-snug text-white/90">
               {item.label}
             </div>
           </div>
@@ -179,7 +179,7 @@ function LearningPathsPanel() {
                   className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   sizes="(min-width: 768px) 40vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-[#16352b]/20 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#16352b]/85 to-transparent" />
                 <span className="absolute bottom-3 left-4 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                   {path.lessons} lessons · full path
                 </span>

@@ -23,7 +23,11 @@ export type LearningPath = {
   whoFor: string;
   prerequisite?: string;
   weeklyThemes: string[];
+  /** One plain-language focus line per week — shown in the path explorer. */
+  weeklyFocus: string[];
   lessonTitles: string[];
+  /** Per-session synopsis from the live lesson goal in the app. */
+  lessonSynopses: string[];
   image: string;
   /** Overview section visual on the path detail page. */
   overviewImage: string;
@@ -67,6 +71,16 @@ export const LEARNING_PATHS: LearningPath[] = [
       "AI, Society & Ethics",
       "Your Future With AI + capstone",
     ],
+    weeklyFocus: [
+      "Define artificial intelligence and spot where it already shapes your day.",
+      "Perception (seeing/hearing) and turning the messy world into data.",
+      "Machine learning from examples, training vs. testing, and why AI gets things wrong.",
+      "How tools like ChatGPT and image generators create new text and pictures.",
+      "Write clear prompts, add context, and refine answers like a pro.",
+      "Fact-check AI output and use it honestly for schoolwork.",
+      "Bias and fairness, then privacy, deepfakes, and misinformation.",
+      "Jobs and creativity, plus a capstone to become an AI-smart citizen.",
+    ],
     lessonTitles: [
       "What Is AI, Really?",
       "AI Is All Around You",
@@ -85,8 +99,26 @@ export const LEARNING_PATHS: LearningPath[] = [
       "AI and the Future of Work",
       "Capstone: Be an AI-Smart Citizen",
     ],
-    image: "/images/product/path-ai-literacy.png",
-    overviewImage: "/images/product/overview-ai-literacy.png",
+    lessonSynopses: [
+      "Define artificial intelligence in plain language, separate real AI from sci-fi myths, and tell the difference between narrow and general AI.",
+      "Spot the AI hidden in everyday apps and devices, understand the trade you make — convenience in exchange for your data — and meet the hidden human labor behind it.",
+      "Understand how AI 'perceives' the world — turning pixels and sound waves into numbers it can analyze (the Big Idea of Perception) — and why that process can be unfair to some people.",
+      "See how words, categories, and ideas get represented as numbers — the foundation that lets AI 'reason' about almost anything (the Big Idea of Representation) — and why what gets left out can cause real unfairness.",
+      "Understand machine learning: instead of being programmed with rules, AI learns patterns from labeled examples (the Big Idea of Learning) — and why the examples chosen shape everything the AI does.",
+      "Learn how we check whether a model really learned, why AI makes confident mistakes, and what 'overfitting' and 'accuracy' mean — including how a shiny accuracy number can hide dangerous failures.",
+      "Understand the AI that creates new text, images, audio, and video — how it differs from older AI, where its content comes from, and the real questions that raises about ownership and consent.",
+      "Open up the 'LLM' behind chatbots: tokens, the context window, and why these models 'hallucinate' confidently wrong answers — including a real case where that got someone in serious trouble.",
+      "Learn the building blocks of a great prompt — role, task, context, format, and constraints — so you get useful answers instead of vague ones, and prompt in a way that's honest and respectful of others' privacy.",
+      "Level up your prompting with examples, step-by-step requests, and iteration — turning a first draft answer into exactly what you need, while staying honest about how you got there.",
+      "Build the habit of fact-checking AI output, recognizing hallucinations, knowing which tasks are risky to trust, and understanding your responsibility not to spread unverified claims.",
+      "Draw a clear line between using AI to learn and using it to cheat, navigate the gray areas honestly, and build personal rules for effective AI use in school.",
+      "Understand how AI picks up human bias from its data, why that leads to unfair outcomes, and how it can be reduced (the Big Idea of Societal Impact).",
+      "Protect your privacy when using AI, recognize deepfakes and AI-driven scams, think before you share, and respect other people's consent when AI-generated media is involved.",
+      "Explore how AI is changing jobs and creativity, why 'AI + human' beats either alone, what skills keep you valuable, and the fairness questions around who bears the cost of that change.",
+      "Put it all together: review the big ideas, evaluate a real AI tool with a full adoption checklist, and write your own responsible-use guidelines.",
+    ],
+    image: "/images/product/path-card-ai-literacy.png",
+    overviewImage: "/images/product/overview-photo-ai-literacy.png",
   },
   {
     slug: "digital-literacy",
@@ -125,6 +157,16 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Wellbeing & Problem-Solving",
       "Digital Skills for the Real World + capstone",
     ],
+    weeklyFocus: [
+      "How devices, software, and the internet actually work — and how to manage your files.",
+      "Search smart, then tell reliable information from misinformation.",
+      "Communicate clearly and kindly online and work together in the cloud.",
+      "Your digital footprint, reputation, and being a positive digital citizen.",
+      "Make and edit content, and use it legally with proper credit.",
+      "Strong security habits and protecting your privacy and personal data.",
+      "Healthy tech habits, plus troubleshooting tech problems like a pro.",
+      "Workplace-ready digital skills and your personal digital toolkit.",
+    ],
     lessonTitles: [
       "How Computers & the Internet Work",
       "Files, Folders & the Cloud",
@@ -143,8 +185,26 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Digital Skills for Work & Career",
       "Capstone: Your Digital Toolkit",
     ],
-    image: "/images/product/path-digital-literacy.png",
-    overviewImage: "/images/product/overview-digital-literacy.png",
+    lessonSynopses: [
+      "Understand the basic parts of a computer (hardware vs software), what an operating system does, and how the internet, web, and cloud move information.",
+      "Organize files in folders, understand file types and extensions, know the difference between save and save-as, and use cloud storage with sync and backups.",
+      "Find reliable information quickly using strong keywords, search operators, and filters — and know why the top result isn't always the best.",
+      "Evaluate the credibility of online information, spot misinformation, and fact-check using lateral reading and the SIFT method.",
+      "Communicate effectively and respectfully across email, chat, and posts — understanding tone, audience, netiquette, and the difference between casual and professional messages.",
+      "Work together effectively using shared documents, comments, version history, and video meetings — the way modern schools and workplaces operate.",
+      "Understand what a digital footprint is, that online actions can be permanent and public, and how to manage your online reputation for school, jobs, and life.",
+      "Act responsibly, safely, and kindly in online communities — showing empathy, standing up to cyberbullying, reporting harm, and contributing positively.",
+      "Create and edit clear, well-designed digital content — documents, images, and audio/video — using simple formatting and design principles, make it accessible to everyone, and export the right formats for school, college apps, and first jobs.",
+      "Use other people's content legally and ethically — understand copyright, licenses, Creative Commons, public domain, and fair use, avoid plagiarism, and give proper credit (including for AI-generated work) in school projects, scholarship videos, and portfolios.",
+      "Protect your accounts and devices with strong unique passwords, password managers, and two-factor authentication — and learn to spot phishing, scams, and malware before they catch you, including fake internship and college-portal messages.",
+      "Understand how your personal data is collected and used online, and take control with privacy settings, smart app permissions, and more careful sharing — including what colleges, scholarships, and employers can see.",
+      "Build healthy technology habits — balancing screen time, protecting your focus and sleep, caring for your mental health, and using your body well — including during college apps, exams, and first-job remote work.",
+      "Solve everyday technology problems with a calm, logical process — the same problem-solving pros use — and know how to find help and ask good questions when college portals, job sites, or shared docs break.",
+      "Build the digital skills employers expect in almost every modern job — professional communication and email, a positive online presence, productivity and spreadsheet basics, remote collaboration, and readiness for college apps, internships, and first jobs.",
+      "Pull the whole Digital Literacy track together — review the big areas, self-assess your digital habits, and build a personal 'digital readiness' action plan for school, life, college apps, first jobs, and a future career in tech.",
+    ],
+    image: "/images/product/path-card-digital-literacy.png",
+    overviewImage: "/images/product/overview-photo-digital-literacy-v3.png",
   },
   {
     slug: "ai-python",
@@ -183,6 +243,16 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Smart, Rule-Driven AI",
       "Capstone: Quest Adventure Bot",
     ],
+    weeklyFocus: [
+      "Output, variables, and input — your AI says hello and listens.",
+      "Conditionals: if / else and chained if / elif / else rules.",
+      "for loops and combining a loop with a rule to make patterns.",
+      "Loops that build up a value (counters/accumulators) + a checkpoint review.",
+      "Lists and dictionaries — storing many values and looking them up by name.",
+      "Functions and parameters — package a skill once, reuse it everywhere.",
+      "Rules inside functions, then plan your capstone NPC.",
+      "Craft an NPC brain, then ship a Quest Adventure Bot that combines the whole track.",
+    ],
     lessonTitles: [
       "My First AI Helper",
       "My AI Helper Listens",
@@ -199,12 +269,28 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Build Your AI NPC",
       "Capstone: Quest Adventure Bot",
     ],
-    image: "/images/product/path-ai-python.png",
-    overviewImage: "/images/product/overview-ai-python.png",
+    lessonSynopses: [
+      "Write your first Python program: use a variable + print() to introduce your AI helper.",
+      "Use input() to collect information and respond using the user’s input.",
+      "Use if / else to make your AI respond differently based on input.",
+      "Use if / elif / else to make your AI follow multiple rules in order.",
+      "Use a for loop to repeat instructions a specific number of times.",
+      "Combine a loop + a rule to create a predictable pattern.",
+      "Use a loop + a changing value to create a pattern you can predict.",
+      "Use a list to remember multiple choices over time.",
+      "Use a dictionary (key → value) to store information with meaning.",
+      "Use functions to package a skill and reuse it without rewriting code.",
+      "Use a parameter so one function can work with different details.",
+      "Use if/else rules inside a function to control behavior based on the parameter.",
+      "Modify a rule-based NPC, add memory, and explain which rule ran — like a real game AI builder.",
+      "Invent your own adventure, build a rule-based AI bot people can talk to, then play it live in Adventure mode — your final AI + Python product.",
+    ],
+    image: "/images/product/path-card-ai-python.png",
+    overviewImage: "/images/product/overview-photo-ai-python-v2.png",
   },
   {
     slug: "data-analyst",
-    name: "Data Analyst Track",
+    name: "Data Analyst",
     shortName: "Data Analyst",
     lessons: 14,
     subtitle: "SQL, tables, and charts for real-world questions",
@@ -239,6 +325,16 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Relationships & Planning (scatter)",
       "Capstone data project",
     ],
+    weeklyFocus: [
+      "Rows, columns, and your first SELECT queries.",
+      "Pick the columns you need and filter rows with WHERE.",
+      "ORDER BY for ranking, then COUNT / SUM / AVG with GROUP BY.",
+      "JOIN two tables, then layer WHERE + GROUP BY + HAVING.",
+      "Bar charts (compare categories) and pie charts (parts of a whole).",
+      "Line charts (change over time) and histograms (distributions).",
+      "Scatter plots (are two numbers related?) + plan your capstone.",
+      "Run a full investigation: explore → join → summarize → visualize → conclude.",
+    ],
     lessonTitles: [
       "What Is Data?",
       "Your First Query",
@@ -255,8 +351,24 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Relationships",
       "Your Data Project",
     ],
-    image: "/images/product/path-data-analyst.png",
-    overviewImage: "/images/product/overview-data-analyst.png",
+    lessonSynopses: [
+      "Learn rows, columns, and your first SQL commands — one exercise at a time, then put them together.",
+      "Write and run complete SQL queries — see every row, use LIMIT, and pick the columns you care about.",
+      "Choose exactly the columns you want, control their order, and use DISTINCT to remove duplicates.",
+      "Use WHERE to filter rows — match text, compare numbers, and combine conditions with AND / OR.",
+      "Use ORDER BY to sort rows, flip the direction with DESC, and combine with LIMIT to find top results.",
+      "Turn many rows into one answer with COUNT, SUM, and AVG — then break totals down by group with GROUP BY.",
+      "Use JOIN to connect two tables — match orders to the students who placed them with a shared key.",
+      "Stack clauses together — filter, group, and use HAVING to ask sharper questions of your data.",
+      "Shape query results into a chart — a label column and a number column — and let sorting tell the story.",
+      "Use a pie chart to show how each item is a slice of all the orders — and learn when a pie helps and when it misleads.",
+      "Use a line chart to show how a number changes over time — and read the trend, peaks, and dips across a week.",
+      "Use a histogram to see how a set of numbers is spread out — where scores cluster, and how high and low they reach.",
+      "Use a scatter plot to see whether two numbers are related — does more studying go with higher scores?",
+      "Put it all together — explore, join, summarize, and rank to answer a real question: who spent the most?",
+    ],
+    image: "/images/product/path-card-data-analyst.png",
+    overviewImage: "/images/product/overview-photo-data-analyst.png",
   },
   {
     slug: "cybersecurity",
@@ -281,41 +393,69 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Privacy & data protection",
       "Incident response basics",
     ],
-    capstone: "Defend the Scenario",
+    capstone: "Defend & Justify",
     marketingAngle:
       "Defend systems, data, and people — practical cyber fundamentals without the hacker fantasy.",
     whoFor:
       "Teens and beginners who want practical cyber defense skills for school, work, and everyday life online.",
     weeklyThemes: [
-      "What Cybersecurity Is",
-      "People & Accounts",
-      "Social Engineering Defense",
-      "Networks & Safe Connections",
-      "Malware & Software Hygiene",
-      "Privacy & Data Protection",
-      "Incidents, Ethics & Careers",
-      "Capstone: Defend the Scenario",
+      "Principles & Ethics",
+      "Threats & Human Risk",
+      "Identity & Access Control",
+      "Networks & Defense Architecture",
+      "Cryptography & Trust Models",
+      "Hardening & Incident Response",
+      "Attacks, Privacy & Tradeoffs",
+      "Risk Analysis & Capstone",
+    ],
+    weeklyFocus: [
+      "Define cybersecurity goals, evaluate ethical constraints, and apply the CIA triad with authentication.",
+      "Analyze how malware and social engineering affect sensitive data — and recommend first responses.",
+      "Compare credential protections (hashing, MFA) and design least-privilege access with usability tradeoffs.",
+      "Evaluate network reliability (routers, switches, topology, addressing) and recommend firewall/config controls.",
+      "Compare encryption and hashing approaches, then evaluate HTTPS/certificate trust and its limits.",
+      "Recommend hardening/patching priorities, then design logging, monitoring, and incident workflows.",
+      "Map attack patterns and program-security issues, then evaluate OSINT/privacy risks and legal-ethical tradeoffs.",
+      "Select and justify controls by feasibility, ethics, and usability — then defend a full scenario plan.",
     ],
     lessonTitles: [
-      "What Is Cybersecurity?",
-      "Why Systems Need Defenders",
-      "Threats, Risks & What Defenders Do",
-      "People, Process & Technology",
-      "Passwords, MFA & Account Hygiene",
-      "Phishing & Social Engineering Defense",
-      "Networks at a Glance",
-      "Firewalls & Secure Connections",
-      "Malware Awareness & Safe Software",
-      "Privacy, Data & Permissions",
-      "Secure Sharing & Cloud Habits",
-      "Incident Response Basics",
-      "Ethics & Responsible Reporting",
-      "Careers in Cyber Defense",
-      "Scenario Planning",
-      "Capstone: Defend the Scenario",
+      "Cybersecurity Principles & Ethics",
+      "CIA Triad, Auth & Tradeoffs",
+      "Malware Impact on Sensitive Data",
+      "Social Engineering Defense",
+      "Credentials, Hashing & MFA",
+      "Access Control & Least Privilege",
+      "Network Architecture for Defenders",
+      "Firewalls, Ports & Secure Config",
+      "Cryptography & Secure Transmission",
+      "HTTPS, Certificates & Trust",
+      "System Hardening & Patching",
+      "Logging, Monitoring & Incidents",
+      "Attack Patterns & Program Security",
+      "OSINT, Privacy & Ethics",
+      "Risk Analysis & Control Selection",
+      "Capstone: Defend & Justify",
     ],
-    image: "/images/product/path-cybersecurity.png",
-    overviewImage: "/images/product/overview-cybersecurity.png",
+    lessonSynopses: [
+      "Evaluate ethical and social impacts of cybersecurity choices; explain tradeoffs among protecting data, systems, and people; and justify why authorized use is a non-negotiable professional and legal boundary.",
+      "Recommend authentication measures that protect CIA goals; compare usability vs. security tradeoffs across passwords, MFA, biometrics, and tokens; and explain how weak auth cascades into Confidentiality, Integrity, and Availability failures.",
+      "Analyze how malware categories affect the Confidentiality, Integrity, and Availability of sensitive data; give case-based examples of impact; and recommend feasible defender responses that reduce risk without unauthorized experimentation.",
+      "Analyze how social engineering and phishing impact accounts and sensitive data; recommend layered, feasible defenses; and justify verify-and-report habits that protect individuals and school communities.",
+      "Compare MFA types, hashing+salting, and password-manager approaches; recommend credential protections with usability tradeoffs; and explain how developers protect stored credentials without exposing secrets.",
+      "Recommend least-privilege designs with usability tradeoffs; compare RBAC approaches and admin vs standard accounts; and evaluate shared-account risks for accountability and offboarding.",
+      "Evaluate how routers, switches, servers, topology, and addressing affect network scalability and reliability; describe impacts of bandwidth, load, delay, and topology; and diagnose path failures like DNS vs link issues — without attack techniques.",
+      "Recommend firewall and secure-configuration measures; compare default-deny vs default-allow; and explain security vs usability/availability tradeoffs for ports, exposure, and segmentation.",
+      "Compare symmetric encryption, asymmetric encryption, and hashing; model how software protects data in secure transmission; and evaluate tradeoffs of crypto choices (speed, key distribution, integrity vs confidentiality) — without treating crypto as a complete defense.",
+      "Evaluate what the padlock and certificates actually prove (and their trust limits); compare HTTPS with other security measures and with physical protections; and recommend layered checks when a warning, lookalike domain, or untrusted network appears.",
+      "Recommend hardening and patching actions by feasibility and ethics; explain tradeoffs such as uptime vs timely patching and usability vs lockdown; and justify prioritization, change management, and recovery plans for school/club systems.",
+      "Recommend detection and incident-response measures for realistic scenarios by efficiency and feasibility; design a simple IR playbook with clear roles; and justify what to log, preserve, escalate, and practice before a real incident.",
+      "Analyze how common attack patterns affect sensitive data and availability; explain program-security issues that can compromise software (unsafe input handling, insecure secret storage, dependency risk, misconfiguration) from a defender/developer-hygiene view; and map each pattern to layered controls — without learning how to exploit.",
+      "Evaluate privacy concerns from automated and nonevident data collection; evaluate social, economic, legal, and ethical implications of privacy versus safety; and recommend defensive minimization habits — without offensive OSINT recipes or targeting others.",
+      "Analyze risk with assets, threats, vulnerabilities, likelihood, and impact; recommend controls by efficiency, feasibility, and ethics; compare alternative measures; and explain tradeoffs among mitigate, avoid, transfer, and accept — including residual risk.",
+      "Synthesize the cybersecurity track into a justified security plan for a school club — recommend prioritized controls, compare alternatives, and justify each choice with feasibility, usability, and ethics tradeoffs, not just a control checklist.",
+    ],
+    image: "/images/product/path-card-cybersecurity.png",
+    overviewImage: "/images/product/overview-photo-cybersecurity.png",
   },
   {
     slug: "financial-literacy",
@@ -355,6 +495,16 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Taxes, College & Big Decisions",
       "Capstone: First-Year Money Plan",
     ],
+    weeklyFocus: [
+      "What money is for, goals, values, and smart needs-vs-wants decisions.",
+      "Paychecks and taxes basics, then checking, savings, and debit vs credit cards.",
+      "Build a real budget, track spending, and start an emergency fund.",
+      "Credit scores and reports, then interest, loans, and avoiding debt traps.",
+      "Compound growth, saving strategies, and investing basics with risk in mind.",
+      "Insurance basics, then scams, fraud, and consumer rights.",
+      "First-job taxes and pay stubs, then college costs, aid, and student loan awareness.",
+      "Big money tradeoffs, then ship your First-Year Money Plan.",
+    ],
     lessonTitles: [
       "Money, Goals & You",
       "Needs, Wants & Tradeoffs",
@@ -373,8 +523,26 @@ export const LEARNING_PATHS: LearningPath[] = [
       "Big Money Decisions",
       "Capstone: Your First-Year Money Plan",
     ],
-    image: "/images/product/path-financial-literacy.png",
-    overviewImage: "/images/product/overview-financial-literacy.png",
+    lessonSynopses: [
+      "Explain money as a tool (not an identity), tell short-, medium-, and long-term goals apart, and write SMART-ish money goals that fit a high school life.",
+      "Tell needs from wants in everyday teen decisions, explain opportunity cost, spot advertising's influence, and practice delayed gratification without pretending wants are \\\"bad.\\\"",
+      "Distinguish gross pay from net pay, recognize common paycheck deductions at a teen level, understand what a W-4 is for, and see how your human capital shapes future income — without filing taxes for you.",
+      "Compare checking and savings, explain debit vs. credit at a conceptual level, spot common fees, and describe FDIC (and NCUA) insurance in plain English.",
+      "Build a simple budget with clear categories, try 50/30/20 as one model (not the only one), and understand zero-based budgeting in plain English.",
+      "Track spending without obsessive guilt, use sinking funds for planned irregular costs, and start a small emergency fund for true surprises.",
+      "Explain what credit is, summarize major FICO factor categories at overview level, describe free annual credit reports, and bust common credit myths.",
+      "Define APR and principal, explain how interest grows balances, and recognize debt traps like payday loans, risky BNPL use, and minimum-payment cycles — educational awareness only.",
+      "Explain interest, compounding, pay-yourself-first, and the time value of money — and build habits that let your savings grow without get-rich promises.",
+      "Describe stocks, bonds, and funds at a high level; explain diversification and risk vs return; and frame investing as a long-horizon habit for teens — not day trading.",
+      "Explain insurance as risk transfer; define premium and deductible; and apply auto, renters, and health insurance concepts at a teen-appropriate level.",
+      "Spot phishing and money scams, understand identity theft basics, practice compare-before-you-buy habits, and know conceptual paths for consumer complaints.",
+      "Explain why taxes exist, lightly compare W-2 vs 1099 work, build awareness of filing basics, and bust common refund myths — educational, not tax advice.",
+      "Distinguish sticker price from net price, compare grants vs loans, build FAFSA awareness, and practice comparing financial aid offers carefully.",
+      "Apply decision frameworks to cars, phones, and housing tradeoffs — weighing total cost, opportunity cost, and flexibility without prestige pressure.",
+      "Synthesize the Financial Literacy track into a practical 12-month plan for your first year after high school — college, work, or a mix — without get-rich promises.",
+    ],
+    image: "/images/product/path-card-financial-literacy.png",
+    overviewImage: "/images/product/overview-photo-financial-literacy.png",
   },
 ];
 
@@ -390,6 +558,10 @@ export const PATHS_LIST_SHORT =
 
 export const PROOF_POINTS = [
   {
+    value: "Industry trainers",
+    label: "Instructors with real tech experience",
+  },
+  {
     value: "CSTA-aligned",
     label: "Built for school adoption & accreditation",
   },
@@ -398,8 +570,12 @@ export const PROOF_POINTS = [
     label: "Six complete paths with real capstones",
   },
   {
+    value: "Progress you see",
+    label: "Roadmap, XP, and badges adults can trust",
+  },
+  {
     value: "Live + async",
-    label: "Industry instructors or self-paced",
+    label: "Guided instruction or self-paced tracks",
   },
   {
     value: "No install",
@@ -474,21 +650,32 @@ export function getLearningPath(slug: string): LearningPath | undefined {
 export type WeekModule = {
   week: number;
   theme: string;
-  lessons: string[];
+  focus: string;
+  lessons: Array<{ title: string; synopsis: string }>;
 };
 
 export function groupLessonsByWeek(path: LearningPath): WeekModule[] {
   const weeks = path.weeklyThemes.length || 1;
   const titles = path.lessonTitles;
+  const synopses = path.lessonSynopses;
   const base = Math.floor(titles.length / weeks);
   const remainder = titles.length % weeks;
   let cursor = 0;
 
   return path.weeklyThemes.map((theme, index) => {
     const count = base + (index < remainder ? 1 : 0);
-    const lessons = titles.slice(cursor, cursor + count);
+    const slice = titles.slice(cursor, cursor + count);
+    const lessons = slice.map((title, i) => ({
+      title,
+      synopsis: synopses[cursor + i] ?? "",
+    }));
     cursor += count;
-    return { week: index + 1, theme, lessons };
+    return {
+      week: index + 1,
+      theme,
+      focus: path.weeklyFocus[index] ?? "",
+      lessons,
+    };
   });
 }
 

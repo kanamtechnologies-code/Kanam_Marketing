@@ -54,7 +54,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "What are the six learning paths?",
-        a: `AI Literacy (16), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), Python & AI Foundations (14), and Data Analyst Track (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
+        a: `AI Literacy (16), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), Python & AI Foundations (14), and Data Analyst (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
       },
       {
         q: "How do I get started?",

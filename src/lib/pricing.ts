@@ -89,7 +89,7 @@ export const TRACK_PRICES = [
   },
   {
     slug: "data-analyst",
-    name: "Data Analyst Track",
+    name: "Data Analyst",
     price: 200,
     priceLabel: "$200",
   },

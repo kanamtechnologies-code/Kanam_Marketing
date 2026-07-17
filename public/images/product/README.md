@@ -20,18 +20,22 @@ All people photos feature teens, parents, and instructors of color.
 
 ## Path graphics (learning tracks)
 
+Track-specific flat illustrations (forest green / gold / cream) for path cards and heroes.
+
 | Filename | Path |
 |----------|------|
-| `path-ai-literacy.png` | AI Literacy |
-| `path-digital-literacy.png` | Digital Literacy |
-| `path-ai-python.png` | Python & AI Foundations |
-| `path-data-analyst.png` | Data Analyst |
-| `path-cybersecurity.png` | Cybersecurity |
-| `overview-ai-literacy.png` | Path detail overview — AI Literacy |
-| `overview-digital-literacy.png` | Path detail overview — Digital Literacy |
-| `overview-ai-python.png` | Path detail overview — Python & AI Foundations |
-| `overview-data-analyst.png` | Path detail overview — Data Analyst |
-| `overview-cybersecurity.png` | Path detail overview — Cybersecurity |
+| `path-ai-literacy.png` | AI Literacy — verify / responsible AI |
+| `path-digital-literacy.png` | Digital Literacy — search & judgment |
+| `path-ai-python.png` | Python & AI Foundations — code + helper |
+| `path-data-analyst.png` | Data Analyst — charts & tables |
+| `path-cybersecurity.png` | Cybersecurity — shield & lock |
+| `path-financial-literacy.png` | Financial Literacy — budget & growth |
+| `overview-card-ai-literacy.png` | Path detail overview — AI Literacy |
+| `overview-card-digital-literacy.png` | Path detail overview — Digital Literacy |
+| `overview-card-ai-python.png` | Path detail overview — Python & AI Foundations |
+| `overview-card-data-analyst.png` | Path detail overview — Data Analyst |
+| `overview-card-cybersecurity.png` | Path detail overview — Cybersecurity |
+| `overview-card-financial-literacy.png` | Path detail overview — Financial Literacy |
 
 | `leaders-school-live.png` | Educators — schools audience |
 | `leaders-afterschool-live.png` | Educators — after-school audience |

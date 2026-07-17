@@ -9,8 +9,6 @@ import {
   FullBleed,
   HomeHeroVeil,
   PageBand,
-  duskEyebrowClass,
-  duskMutedClass,
   duskTitleClass,
   lightEyebrowClass,
   lightMutedClass,
@@ -21,6 +19,7 @@ import {
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
 } from "@/components/site/BrandCtaBand";
+import { PathInside } from "@/components/site/PathInside";
 import { Button } from "@/components/ui/button";
 import { billingLinks } from "@/lib/billing-links";
 import {
@@ -29,6 +28,7 @@ import {
   groupLessonsByWeek,
   LEARNING_PATHS,
   PACING_SHORT,
+  STANDARDS_SHORT,
   type LearningPath,
   type LearningPathSlug,
 } from "@/lib/learning-paths";
@@ -145,22 +145,33 @@ export default async function LearningPathDetailPage({ params }: Props) {
 
   const others = LEARNING_PATHS.filter((p) => p.slug !== (slug as LearningPathSlug));
   const modules = groupLessonsByWeek(path);
-  type OutlineModule = Omit<(typeof modules)[number], "lessons"> & {
-    lessons: Array<{ n: number; title: string }>;
-  };
-  const outline = modules.reduce<OutlineModule[]>((items, mod) => {
+  const outline = modules.reduce<
+    Array<
+      Omit<(typeof modules)[number], "lessons"> & {
+        lessons: Array<{
+          n: number;
+          title: string;
+          session: number;
+          synopsis: string;
+        }>;
+      }
+    >
+  >((items, mod) => {
     const start = items.reduce((count, item) => count + item.lessons.length, 0);
     return [
       ...items,
       {
         ...mod,
-        lessons: mod.lessons.map((title, index) => ({ n: start + index + 1, title })),
+        lessons: mod.lessons.map((lesson, index) => ({
+          n: start + index + 1,
+          title: lesson.title,
+          synopsis: lesson.synopsis,
+          session: index + 1,
+        })),
       },
     ];
   }, []);
 
-  /** Keep the walk-away list short and high-impact. */
-  const highlights = path.learnOutcomes.slice(0, 4);
   const trackPrice = TRACK_PRICES.find((t) => t.slug === path.slug);
 
   return (
@@ -217,11 +228,9 @@ export default async function LearningPathDetailPage({ params }: Props) {
           </div>
         </section>
 
-        {/* Tight facts */}
-        <PageBand tone="mid">
-        <div className="relative overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#0e241c]/75 px-5 py-5 sm:px-6">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
-          <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
+        {/* Facts — same proof-strip language as the rest of the site */}
+        <PageBand tone="proof" className="py-8 md:py-10">
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
             {[
               { label: "Lessons", value: String(path.lessons) },
               { label: "Schedule", value: "Flexible" },
@@ -231,15 +240,15 @@ export default async function LearningPathDetailPage({ params }: Props) {
               <div
                 key={item.label}
                 className={cn(
-                  "sm:px-4 sm:first:pl-0 sm:last:pr-0",
-                  index > 0 && "sm:border-l sm:border-white/20"
+                  "border-b border-white/15 pb-3 pt-1 sm:border-b-0 sm:border-l sm:border-white/15 sm:pb-0 sm:pl-5 sm:first:border-l-0 sm:first:pl-0",
+                  index === 0 && "sm:border-l-0 sm:pl-0"
                 )}
               >
                 <div
                   className={cn(
-                    "font-display font-semibold tracking-tight text-white",
+                    "font-display font-semibold tracking-tight text-[#f7f3e8]",
                     item.label === "Capstone"
-                      ? "text-base sm:text-lg leading-snug"
+                      ? "text-base leading-snug sm:text-lg"
                       : "text-2xl sm:text-3xl"
                   )}
                 >
@@ -251,117 +260,86 @@ export default async function LearningPathDetailPage({ params }: Props) {
               </div>
             ))}
           </div>
-        </div>
         </PageBand>
 
-        {/* What you get — no “learning outcomes” jargon */}
-        <PageBand tone="light" aria-labelledby="overview-heading">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch lg:gap-7">
-            <figure className="relative min-h-[14rem] overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] sm:min-h-[16rem]">
+        {/* What you get — full-bleed split, tighter, photo-led */}
+        <section
+          aria-labelledby="overview-heading"
+          className="scroll-mt-24 border-t border-[rgb(var(--accent-rgb)/0.2)] bg-[#f3efe4]"
+        >
+          <div className="grid lg:grid-cols-2 lg:items-stretch">
+            <figure className="relative min-h-[18rem] overflow-hidden sm:min-h-[22rem] lg:min-h-[32rem]">
               <Image
                 src={path.overviewImage}
                 alt=""
                 fill
                 className="object-cover"
-                sizes="(min-width: 1024px) 35vw, 100vw"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                priority
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-[#0b2f24]/35 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-transparent lg:to-[#f3efe4]/25"
               />
             </figure>
 
-            <div className="flex flex-col justify-center">
-              <p className={lightEyebrowClass}>
-                For learners &amp; program leaders
-              </p>
+            <div className="flex flex-col justify-center px-4 py-8 sm:px-8 sm:py-10 lg:px-10 lg:py-12 xl:px-14">
+              <p className={lightEyebrowClass}>For learners &amp; program leaders</p>
               <h2
                 id="overview-heading"
-                className={cn("mt-2 text-2xl sm:text-3xl", lightTitleClass)}
+                className={cn("mt-2 text-2xl sm:text-3xl lg:text-[2.15rem]", lightTitleClass)}
               >
                 What you&apos;ll walk away with
               </h2>
-              <p className={cn("mt-2 text-sm sm:text-base", lightMutedClass)}>
+              <p className={cn("mt-2 max-w-xl text-sm sm:text-[0.95rem]", lightMutedClass)}>
                 {path.whoFor} {PACING_SHORT}.
               </p>
               {path.prerequisite ? (
                 <p className="mt-2 text-sm text-[var(--muted)]">
-                  <span className="font-semibold text-zinc-950">Note:</span> {path.prerequisite}
+                  <span className="font-semibold text-zinc-950">Note:</span>{" "}
+                  {path.prerequisite}
                 </p>
               ) : null}
 
-              <ul className="mt-5 space-y-2.5">
-                {highlights.map((item) => (
-                  <li key={item} className="flex gap-3 text-sm leading-snug text-zinc-800 sm:text-[0.95rem]">
+              <ul className="mt-5 grid gap-x-6 gap-y-2.5 sm:grid-cols-2">
+                {path.learnOutcomes.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-2.5 text-sm leading-snug text-zinc-800"
+                  >
                     <span
                       aria-hidden
                       className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]"
                     />
-                    {item}
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-5 flex flex-wrap gap-x-4 gap-y-1 text-sm font-medium text-[rgb(var(--brand-2-rgb)/1)]">
-                {path.skills.slice(0, 4).map((skill) => (
-                  <span key={skill}>{skill}</span>
-                ))}
+              <div className="mt-6 border-t border-[rgb(var(--brand-2-rgb)/0.18)] pt-4">
+                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--brand-2-rgb)/0.85)]">
+                  Skills · Capstone · Standards
+                </p>
+                <p className="mt-2 text-sm font-medium leading-snug text-[rgb(var(--brand-2-rgb)/1)]">
+                  {path.skills.join(" · ")}
+                </p>
+                <p className={cn("mt-2 text-xs leading-snug", lightMutedClass)}>
+                  Capstone:{" "}
+                  <span className="font-semibold text-zinc-800">{path.capstone}</span>
+                  {" · "}
+                  {STANDARDS_SHORT}
+                </p>
               </div>
             </div>
           </div>
-        </PageBand>
+        </section>
 
-        {/* Outline — collapsed by default for speed */}
         <PageBand tone="base" aria-labelledby="outline-heading">
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <p className={duskEyebrowClass}>
-                Inside the path
-              </p>
-              <h2
-                id="outline-heading"
-                className={cn("mt-2 text-2xl sm:text-3xl", duskTitleClass)}
-              >
-                {path.lessons} lessons · {outline.length} weeks
-              </h2>
-              <p className={cn("mt-1 max-w-xl text-sm", duskMutedClass)}>
-                Open a week for lesson titles. Pace flexes to your classroom, family, or program.
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-5 divide-y divide-white/10 overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b]">
-            {outline.map((mod) => (
-              <details key={mod.theme} className="group">
-                <summary className="flex cursor-pointer list-none items-center gap-4 px-4 py-3.5 marker:content-none transition-colors hover:bg-white/5 sm:px-5 [&::-webkit-details-marker]:hidden">
-                  <span className="font-display text-sm font-semibold tabular-nums text-[var(--accent)]">
-                    {String(mod.week).padStart(2, "0")}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-semibold text-[#f7f3e8]">{mod.theme}</span>
-                    <span className="text-xs text-[#c5d2cb]">
-                      {mod.lessons.length}{" "}
-                      {mod.lessons.length === 1 ? "lesson" : "lessons"}
-                    </span>
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-[#c5d2cb] transition-transform duration-300 group-open:rotate-90" />
-                </summary>
-                <ol className="space-y-1.5 border-t border-white/10 bg-[#0e241c]/65 px-4 py-3 sm:px-5 sm:pl-[3.75rem]">
-                  {mod.lessons.map(({ n, title }) => (
-                    <li key={`${n}-${title}`} className="flex gap-3 text-sm text-[#c5d2cb]">
-                      <span className="w-6 shrink-0 font-display text-xs font-semibold tabular-nums text-white/45">
-                        {String(n).padStart(2, "0")}
-                      </span>
-                      <span
-                        className={cn(
-                          title.toLowerCase().startsWith("capstone") &&
-                            "font-semibold text-[#f7f3e8]"
-                        )}
-                      >
-                        {title}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </details>
-            ))}
-          </div>
+          <PathInside
+            pathName={path.name}
+            lessonCount={path.lessons}
+            weeks={outline}
+          />
         </PageBand>
 
         {/* Conversion CTA — learners + admins */}
