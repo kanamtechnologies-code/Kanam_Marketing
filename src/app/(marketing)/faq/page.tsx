@@ -4,6 +4,14 @@ import { ArrowRight, BookOpen, GraduationCap, HelpCircle, Users } from "lucide-r
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import {
+  duskEyebrowClass,
+  duskInsetClass,
+  duskMutedClass,
+  duskTitleClass,
+  FullBleed,
+  PageBand,
+} from "@/components/layout/PageBands";
+import {
   BrandCtaBand,
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
@@ -146,108 +154,87 @@ const QUICK_LINKS = [
 export default function FaqPage() {
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-12 md:space-y-14 lg:space-y-16">
-        <header className="kanam-fade-up max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-            FAQ
-          </p>
-          <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
-            Clear answers.
-            <span className="block">
-              Then{" "}
-              <span className="text-[rgb(var(--accent-rgb)/1)]">Move Forward.</span>
-            </span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
-            Straight answers for learners, families, teachers, and school decision-makers —
-            without the sales fog.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button asChild>
-              <Link
-                href={siteConfig.links.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Try the guided lesson
-              </Link>
-            </Button>
-            <Button asChild variant="secondary">
-              <Link href="/contact">Still have a question?</Link>
-            </Button>
-          </div>
-        </header>
+      <FullBleed>
+        <PageBand tone="mid" className="pt-16 md:pt-24">
+          <header className="kanam-fade-up max-w-3xl">
+            <p className={duskEyebrowClass}>FAQ</p>
+            <h1 className={`mt-3 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08] ${duskTitleClass}`}>
+              Clear answers. <span className="text-[var(--accent)]">Then move forward.</span>
+            </h1>
+            <p className={`mt-4 max-w-2xl text-base sm:text-lg ${duskMutedClass}`}>
+              Straight answers for learners, families, teachers, and school decision-makers —
+              without the sales fog.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Button asChild className={brandCtaPrimaryBtnClass}>
+                <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                  Try the guided lesson
+                </Link>
+              </Button>
+              <Button asChild variant="secondary" className={brandCtaSecondaryBtnClass}>
+                <Link href="/contact">Still have a question?</Link>
+              </Button>
+            </div>
+          </header>
+        </PageBand>
 
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-          <nav
-            aria-label="FAQ topics"
-            className="hidden lg:col-span-3 lg:block"
-          >
-            <div className="sticky top-24 space-y-1">
-              <p className="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--brand-2)]">
-                Topics
-              </p>
+        <PageBand tone="base">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            <nav aria-label="FAQ topics" className="hidden lg:col-span-3 lg:block">
+              <div className="sticky top-24 space-y-1">
+                <p className="mb-3 text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+                  Topics
+                </p>
+                {FAQ_GROUPS.map((group) => (
+                  <a
+                    key={group.id}
+                    href={`#${group.id}`}
+                    className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-[#c5d2cb] transition-colors hover:bg-white/10 hover:text-[#f7f3e8]"
+                  >
+                    <group.icon className="h-4 w-4 text-[var(--accent)]" aria-hidden />
+                    {group.label}
+                  </a>
+                ))}
+              </div>
+            </nav>
+
+            <div className="space-y-10 lg:col-span-9">
               {FAQ_GROUPS.map((group) => (
-                <a
-                  key={group.id}
-                  href={`#${group.id}`}
-                  className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-zinc-700 transition-colors hover:bg-[rgb(var(--brand-2-rgb)/0.08)] hover:text-zinc-950"
-                >
-                  <group.icon className="h-4 w-4 text-[var(--brand-2)]" aria-hidden />
-                  {group.label}
-                </a>
+                <section key={group.id} id={group.id} aria-labelledby={`${group.id}-heading`}>
+                  <div className="mb-4 flex items-center gap-2.5">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb)/0.12)] text-[var(--accent)]">
+                      <group.icon className="h-4 w-4" aria-hidden />
+                    </span>
+                    <h2 id={`${group.id}-heading`} className={`text-2xl ${duskTitleClass}`}>
+                      {group.label}
+                    </h2>
+                  </div>
+                  <div className={`overflow-hidden px-4 sm:px-5 ${duskInsetClass}`}>
+                    <Accordion type="single" collapsible>
+                      {group.items.map((item, idx) => (
+                        <AccordionItem
+                          key={item.q}
+                          value={`${group.id}-${idx}`}
+                          className="border-[rgb(var(--accent-rgb)/0.15)]"
+                        >
+                          <AccordionTrigger className="py-5 text-left font-semibold text-[#f7f3e8] hover:text-[var(--accent)] hover:no-underline [&_svg]:text-[var(--accent)]">
+                            {item.q}
+                          </AccordionTrigger>
+                          <AccordionContent className="pb-5 text-[#c5d2cb]">
+                            {item.a}
+                          </AccordionContent>
+                        </AccordionItem>
+                      ))}
+                    </Accordion>
+                  </div>
+                </section>
               ))}
             </div>
-          </nav>
-
-          <div className="space-y-10 lg:col-span-9">
-            {FAQ_GROUPS.map((group) => (
-              <section
-                key={group.id}
-                id={group.id}
-                aria-labelledby={`${group.id}-heading`}
-                className="scroll-mt-24"
-              >
-                <div className="mb-4 flex items-center gap-2.5">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[rgb(var(--brand-2-rgb)/0.12)] text-[var(--brand-2)]">
-                    <group.icon className="h-4 w-4" aria-hidden />
-                  </span>
-                  <h2
-                    id={`${group.id}-heading`}
-                    className="font-display text-2xl font-semibold tracking-tight text-zinc-950"
-                  >
-                    {group.label}
-                  </h2>
-                </div>
-
-                <div className="overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/90 shadow-[0_12px_28px_rgba(15,23,42,0.06)]">
-                  <Accordion type="single" collapsible className="px-1 sm:px-2">
-                    {group.items.map((item, idx) => (
-                      <AccordionItem
-                        key={item.q}
-                        value={`${group.id}-${idx}`}
-                        className="border-[rgb(var(--accent-rgb)/0.16)] px-4 sm:px-5"
-                      >
-                        <AccordionTrigger className="py-5 text-left font-semibold text-zinc-950 hover:no-underline">
-                          {item.q}
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-5 text-[var(--muted)] leading-relaxed">
-                          {item.a}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </div>
-              </section>
-            ))}
           </div>
-        </div>
+        </PageBand>
 
-        {/* Quick links */}
-        <BrandCtaBand
-          aria-labelledby="faq-links-heading"
-          className="px-5 py-7 sm:px-7 sm:py-8"
-        >
+        <PageBand tone="mid">
+          <BrandCtaBand aria-labelledby="faq-links-heading" className="px-5 py-7 sm:px-7 sm:py-8">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
             Keep exploring
           </p>
@@ -277,46 +264,27 @@ export default function FaqPage() {
               </Link>
             ))}
           </div>
-        </BrandCtaBand>
+          </BrandCtaBand>
+        </PageBand>
 
-        {/* Closing CTA */}
-        <BrandCtaBand aria-labelledby="faq-cta-heading">
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
-              Still curious?
-            </p>
-            <h2
-              id="faq-cta-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl"
-            >
+        <PageBand tone="proof">
+          <div className="mx-auto max-w-6xl">
+            <p className={duskEyebrowClass}>Still curious?</p>
+            <h2 id="faq-cta-heading" className={`mt-2 text-3xl sm:text-4xl ${duskTitleClass}`}>
               Ask us directly — or try a lesson first.
             </h2>
-            <p className="mt-3 text-base leading-relaxed text-white/85">
-              We’ll reply within 1 business day. Or open the guided demo and see the real
-              experience in minutes.
+            <p className={`mt-3 max-w-2xl text-base ${duskMutedClass}`}>
+              We’ll reply within 1 business day. Or open the guided demo and see the real experience in minutes.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
-                <Link href="/contact">Contact Kanam</Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="secondary"
-                className={brandCtaSecondaryBtnClass}
-              >
-                <Link
-                  href={siteConfig.links.app}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Get started
-                </Link>
+              <Button asChild size="lg" className={brandCtaPrimaryBtnClass}><Link href="/contact">Contact Kanam</Link></Button>
+              <Button asChild size="lg" variant="secondary" className={brandCtaSecondaryBtnClass}>
+                <Link href={siteConfig.links.app} target="_blank" rel="noopener noreferrer">Get started</Link>
               </Button>
             </div>
           </div>
-        </BrandCtaBand>
-      </div>
+        </PageBand>
+      </FullBleed>
     </SubpageShell>
   );
 }

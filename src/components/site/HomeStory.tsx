@@ -91,8 +91,9 @@ function HeroPanel() {
               The skills that open doors — taught with clarity, rigor, and real progress.
             </p>
             <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg">
-              AI, coding, cyber, data, digital fluency, and money. Live with a Kanam
-              instructor — or move at your own pace. Built for teens, families, and schools.
+              From AI and coding to cybersecurity, data, digital fluency, and money skills —
+              learn live with a Kanam instructor, or at a pace that fits your life. Built for
+              teens, families, and schools.
             </p>
           </div>
 

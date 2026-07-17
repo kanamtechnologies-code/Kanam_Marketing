@@ -2,9 +2,27 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import {
+  BrandCtaBand,
+  brandCtaBodyClass,
+  brandCtaEyebrowClass,
+  brandCtaPrimaryBtnClass,
+  brandCtaSecondaryBtnClass,
+  brandCtaTitleClass,
+} from "@/components/site/BrandCtaBand";
+import {
+  duskEyebrowClass,
+  duskMutedClass,
+  duskTitleClass,
+  FullBleed,
+  HomeHeroVeil,
+  lightEyebrowClass,
+  lightMutedClass,
+  lightTitleClass,
+  PageBand,
+} from "@/components/layout/PageBands";
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About | Kanam Academy",
@@ -36,53 +54,51 @@ const WHO_WE_SERVE = [
 export default function AboutPage() {
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-14 md:space-y-16 lg:space-y-20">
-        {/* Personal mission intro — editorial, not a product hero */}
-        <header className="kanam-fade-up mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-            About Kanam Academy
-          </p>
-          <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.9rem] lg:leading-[1.08]">
-            Tech should be accessible early —
-            <span className="block text-[rgb(var(--accent-rgb)/1)]">
-              not reserved for later.
-            </span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
-            We’re here for young people first. Kanam Academy exists so teens can learn
-            coding, AI, data, cybersecurity, financial literacy, and digital literacy with a real instructor —
-            and so parents, schools, and Scout leaders don’t have to figure it out alone.
-          </p>
-        </header>
-
-        {/* Mission essay + image */}
-        <section
-          id="mission"
-          aria-labelledby="mission-heading"
-          className="scroll-mt-24 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12"
-        >
-          <figure className="relative aspect-[4/5] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_18px_44px_rgba(15,23,42,0.12)] sm:aspect-[5/4] lg:col-span-5 lg:aspect-auto lg:min-h-[32rem]">
+      <FullBleed>
+        <section aria-labelledby="about-hero-heading" className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
+          <div className="absolute inset-0">
             <Image
               src="/images/product/about-hero.png"
               alt="Young people and mentors learning together"
               fill
               priority
-              className="object-cover object-[center_30%]"
-              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-[62%_center]"
+              sizes="100vw"
             />
-          </figure>
+            <HomeHeroVeil />
+          </div>
+          <div className="relative z-10 mx-auto flex min-h-[29rem] w-full max-w-6xl flex-col justify-center px-4 pb-12 pt-28 sm:min-h-[33rem] sm:px-6 sm:pb-16 lg:min-h-[37rem] lg:px-8">
+            <div className="max-w-xl">
+              <p className={duskEyebrowClass}>About Kanam Academy</p>
+              <h1 id="about-hero-heading" className="mt-3 font-display text-[2.15rem] font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl lg:text-[3rem] lg:leading-[1.05]">
+                Tech should be accessible early —
+                <span className="block text-[var(--accent)]">not reserved for later.</span>
+              </h1>
+              <p className={`mt-5 max-w-xl text-base sm:text-lg ${duskMutedClass}`}>
+                We’re here for young people first. Kanam Academy exists so teens can learn
+                coding, AI, data, cybersecurity, financial literacy, and digital literacy with a real instructor —
+                and so parents, schools, and Scout leaders don’t have to figure it out alone.
+              </p>
+            </div>
+          </div>
+        </section>
 
+        <PageBand tone="mid" id="mission" aria-labelledby="mission-heading">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-12">
+          <figure className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] sm:aspect-[5/4] lg:col-span-5 lg:aspect-auto lg:min-h-[32rem]">
+            <Image src="/images/product/about-hero.png" alt="Young people and mentors learning together" fill className="object-cover object-[center_30%]" sizes="(min-width: 1024px) 40vw, 100vw" />
+          </figure>
           <div className="lg:col-span-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={duskEyebrowClass}>
               Our mission
             </p>
             <h2
               id="mission-heading"
-              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+              className={`mt-2 text-3xl sm:text-4xl ${duskTitleClass}`}
             >
               Help youth move forward in a tech-shaped world.
             </h2>
-            <div className="mt-5 space-y-4 text-base leading-relaxed text-[var(--muted)] sm:text-lg">
+            <div className={`mt-5 space-y-4 text-base sm:text-lg ${duskMutedClass}`}>
               <p>
                 Too many young people wait until college — or never get a clear on-ramp —
                 to learn the skills that already shape every job, every device, every
@@ -91,7 +107,7 @@ export default function AboutPage() {
               </p>
               <p>
                 Kanam Academy was built around a simple conviction:{" "}
-                <strong className="font-semibold text-zinc-950">
+                <strong className="font-semibold text-[#f7f3e8]">
                   live instruction comes first.
                 </strong>{" "}
                 Videos and self-paced tools can help practice stick, but a real instructor
@@ -101,33 +117,34 @@ export default function AboutPage() {
               <p>
                 Async tracks support the journey. Live teaching leads it. That’s how we
                 help youth — and the adults who care for them —{" "}
-                <span className="font-semibold text-[rgb(var(--accent-rgb)/1)]">
+                <span className="font-semibold text-[var(--accent)]">
                   Move Forward.
                 </span>
               </p>
             </div>
           </div>
-        </section>
+          </div>
+        </PageBand>
 
         {/* Who we show up for */}
-        <section
+        <PageBand
+          tone="light"
           id="who"
           aria-labelledby="who-heading"
-          className="scroll-mt-24 space-y-10"
         >
           <div className="mx-auto max-w-2xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={lightEyebrowClass}>
               Who we show up for
             </p>
             <h2
               id="who-heading"
-              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+              className={`mt-2 text-3xl sm:text-4xl ${lightTitleClass}`}
             >
               Youth first. Then the people who stand beside them.
             </h2>
           </div>
 
-          <div className="space-y-12 md:space-y-16">
+          <div className="mt-12 space-y-12 md:space-y-16">
             {WHO_WE_SERVE.map((item, index) => (
               <article
                 key={item.title}
@@ -135,7 +152,7 @@ export default function AboutPage() {
                   index % 2 === 1 ? "lg:[&>figure]:order-2" : ""
                 }`}
               >
-                <figure className="relative aspect-[16/11] overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_14px_36px_rgba(15,23,42,0.1)] lg:col-span-6 lg:aspect-auto lg:min-h-[20rem]">
+                <figure className="relative aspect-[16/11] overflow-hidden rounded-2xl border border-[rgb(var(--brand-2-rgb)/0.28)] lg:col-span-6 lg:aspect-auto lg:min-h-[20rem]">
                   <Image
                     src={item.image}
                     alt={item.imageAlt}
@@ -145,94 +162,99 @@ export default function AboutPage() {
                   />
                 </figure>
                 <div className="lg:col-span-6 lg:px-2">
-                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--brand-2)]">
+                  <p className={lightEyebrowClass}>
                     {item.title}
                   </p>
-                  <p className="mt-3 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+                  <p className={`mt-3 text-2xl sm:text-3xl ${lightTitleClass}`}>
                     {item.title === "Youth"
                       ? "The learners at the center of everything we do."
                       : item.title === "Parents"
                         ? "Partners at home who want clarity, not guesswork."
                         : "Hosts who bring the community — we bring the teaching."}
                   </p>
-                  <p className="mt-4 text-base leading-relaxed text-[var(--muted)]">
+                  <p className={`mt-4 text-base ${lightMutedClass}`}>
                     {item.body}
                   </p>
                 </div>
               </article>
             ))}
           </div>
-        </section>
+        </PageBand>
 
         {/* Live over async */}
-        <section
+        <PageBand
+          tone="proof"
           id="live"
           aria-labelledby="live-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-10 sm:px-8 sm:py-12 lg:px-12"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
-          <div className="relative mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className={duskEyebrowClass}>
               How we teach
             </p>
             <h2
               id="live-heading"
-              className="mt-3 font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+              className={`mt-3 text-3xl sm:text-4xl ${duskTitleClass}`}
             >
               Live instruction first.
-              <span className="block text-[rgb(var(--accent-rgb)/1)]">
+              <span className="block text-[var(--accent)]">
                 Async practice second.
               </span>
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className={`mt-5 text-base sm:text-lg ${duskMutedClass}`}>
               We lead with people — Kanam instructors who teach live, answer questions in
               the moment, and keep learners moving. Structured async lessons help skills
               stick between sessions. That order matters: guidance first, practice next,
               progress you can see throughout.
             </p>
-            <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className={`mt-4 text-base sm:text-lg ${duskMutedClass}`}>
               Whether it’s a family tutoring session, a school cohort, or a Scout troop
               night, the heart of Kanam is the same: a real teacher helping a young person
               grow.
             </p>
           </div>
-        </section>
+        </PageBand>
 
         {/* Closing invitation */}
-        <section
+        <div className="bg-[#0e241c] px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+        <BrandCtaBand
           id="join"
           aria-labelledby="join-heading"
-          className="scroll-mt-24 grid gap-8 lg:grid-cols-12 lg:items-end"
+          className="scroll-mt-24"
         >
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={brandCtaEyebrowClass}>
               Join us
             </p>
             <h2
               id="join-heading"
-              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+              className={brandCtaTitleClass}
             >
               If you care about a young person’s future in tech — we’re already on your
               side.
             </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+            <p className={brandCtaBodyClass}>
               Tell us about your child, your classroom, your program, or your troop. We’ll
               help you find the right next step — with live instruction at the center.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:col-span-5 lg:justify-end">
-            <Button asChild>
+            <Button asChild className={brandCtaPrimaryBtnClass}>
               <Link href="/contact">Talk with us</Link>
             </Button>
-            <Button asChild variant="secondary">
+            <Button asChild variant="secondary" className={brandCtaSecondaryBtnClass}>
               <Link href="/parents">For families</Link>
             </Button>
-            <Button asChild variant="secondary">
+            <Button asChild variant="secondary" className={brandCtaSecondaryBtnClass}>
               <Link href="/educators">For schools &amp; leaders</Link>
             </Button>
           </div>
-        </section>
-      </div>
+          </div>
+        </BrandCtaBand>
+        </div>
+        </div>
+      </FullBleed>
     </SubpageShell>
   );
 }

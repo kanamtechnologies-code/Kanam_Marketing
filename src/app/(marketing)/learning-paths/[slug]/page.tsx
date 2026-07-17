@@ -6,6 +6,17 @@ import { notFound } from "next/navigation";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import {
+  FullBleed,
+  HomeHeroVeil,
+  PageBand,
+  duskEyebrowClass,
+  duskMutedClass,
+  duskTitleClass,
+  lightEyebrowClass,
+  lightMutedClass,
+  lightTitleClass,
+} from "@/components/layout/PageBands";
+import {
   BrandCtaBand,
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
@@ -45,7 +56,7 @@ function OtherPathTile({ path }: { path: LearningPath }) {
   return (
     <Link
       href={`/learning-paths/${path.slug}`}
-      className="group relative flex min-h-[10rem] flex-col overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 text-white shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+      className="group relative flex min-h-[10rem] flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.2)] bg-[#16352b] text-white transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(7,26,20,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
     >
       <div className="absolute inset-0">
         <Image
@@ -55,7 +66,7 @@ function OtherPathTile({ path }: { path: LearningPath }) {
           className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/40 to-zinc-950/5" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-[#16352b]/45 to-[#16352b]/5" />
       </div>
       <div className="relative z-10 mt-auto p-4 sm:p-5">
         <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/65">
@@ -104,23 +115,28 @@ export default async function LearningPathDetailPage({ params }: Props) {
 
   const others = LEARNING_PATHS.filter((p) => p.slug !== (slug as LearningPathSlug));
   const modules = groupLessonsByWeek(path);
-  let runningLesson = 0;
-  const outline = modules.map((mod) => {
-    const lessons = mod.lessons.map((title) => {
-      runningLesson += 1;
-      return { n: runningLesson, title };
-    });
-    return { ...mod, lessons };
-  });
+  type OutlineModule = Omit<(typeof modules)[number], "lessons"> & {
+    lessons: Array<{ n: number; title: string }>;
+  };
+  const outline = modules.reduce<OutlineModule[]>((items, mod) => {
+    const start = items.reduce((count, item) => count + item.lessons.length, 0);
+    return [
+      ...items,
+      {
+        ...mod,
+        lessons: mod.lessons.map((title, index) => ({ n: start + index + 1, title })),
+      },
+    ];
+  }, []);
 
   /** Keep the walk-away list short and high-impact. */
   const highlights = path.learnOutcomes.slice(0, 4);
 
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-12 md:space-y-14 lg:space-y-16">
+      <FullBleed>
         {/* Hero */}
-        <div className="kanam-fade-up relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_20px_48px_rgba(15,23,42,0.14)]">
+        <section className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
           <div className="absolute inset-0">
             <Image
               src={path.image}
@@ -130,11 +146,11 @@ export default async function LearningPathDetailPage({ params }: Props) {
               className="object-cover object-center"
               sizes="(min-width: 1280px) 90rem, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/92 via-zinc-950/72 to-zinc-950/35" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-zinc-950/20" />
+            <HomeHeroVeil />
           </div>
 
-          <div className="relative z-10 flex flex-col gap-5 p-5 sm:gap-6 sm:p-7 lg:p-8">
+          <div className="relative z-10 mx-auto flex min-h-[30rem] w-full max-w-6xl flex-col justify-center px-4 pb-12 pt-28 sm:min-h-[34rem] sm:px-6 sm:pb-16 lg:min-h-[38rem] lg:px-8">
+            <div className="max-w-2xl">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <Link
                 href="/learning-paths"
@@ -148,8 +164,8 @@ export default async function LearningPathDetailPage({ params }: Props) {
               </p>
             </div>
 
-            <div className="max-w-2xl">
-              <h1 className="font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
+            <div className="mt-8">
+              <h1 className={cn("text-3xl sm:text-4xl lg:text-[3rem] lg:leading-[1.05]", duskTitleClass)}>
                 {path.name}
               </h1>
               <p className="mt-2 max-w-xl text-base font-medium text-[rgb(var(--accent-rgb)/1)] sm:text-lg">
@@ -162,11 +178,13 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 <CtaPair onDark />
               </div>
             </div>
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Tight facts */}
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-5 sm:px-6">
+        <PageBand tone="mid">
+        <div className="relative overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#0e241c]/75 px-5 py-5 sm:px-6">
           <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
           <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
             {[
@@ -199,9 +217,10 @@ export default async function LearningPathDetailPage({ params }: Props) {
             ))}
           </div>
         </div>
+        </PageBand>
 
         {/* What you get — no “learning outcomes” jargon */}
-        <section aria-labelledby="overview-heading">
+        <PageBand tone="light" aria-labelledby="overview-heading">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-stretch lg:gap-7">
             <figure className="relative min-h-[14rem] overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] sm:min-h-[16rem]">
               <Image
@@ -214,16 +233,16 @@ export default async function LearningPathDetailPage({ params }: Props) {
             </figure>
 
             <div className="flex flex-col justify-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p className={lightEyebrowClass}>
                 For learners &amp; program leaders
               </p>
               <h2
                 id="overview-heading"
-                className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+                className={cn("mt-2 text-2xl sm:text-3xl", lightTitleClass)}
               >
                 What you&apos;ll walk away with
               </h2>
-              <p className="mt-2 text-sm text-[var(--muted)] sm:text-base">
+              <p className={cn("mt-2 text-sm sm:text-base", lightMutedClass)}>
                 {path.whoFor} {PACING_SHORT}.
               </p>
               {path.prerequisite ? (
@@ -251,53 +270,53 @@ export default async function LearningPathDetailPage({ params }: Props) {
               </div>
             </div>
           </div>
-        </section>
+        </PageBand>
 
         {/* Outline — collapsed by default for speed */}
-        <section aria-labelledby="outline-heading">
+        <PageBand tone="base" aria-labelledby="outline-heading">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p className={duskEyebrowClass}>
                 Inside the path
               </p>
               <h2
                 id="outline-heading"
-                className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+                className={cn("mt-2 text-2xl sm:text-3xl", duskTitleClass)}
               >
                 {path.lessons} lessons · {outline.length} weeks
               </h2>
-              <p className="mt-1 max-w-xl text-sm text-[var(--muted)]">
+              <p className={cn("mt-1 max-w-xl text-sm", duskMutedClass)}>
                 Open a week for lesson titles. Pace flexes to your classroom, family, or program.
               </p>
             </div>
           </div>
 
-          <div className="mt-5 divide-y divide-[rgb(var(--accent-rgb)/0.15)] overflow-hidden rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/75">
+          <div className="mt-5 divide-y divide-white/10 overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b]">
             {outline.map((mod) => (
               <details key={mod.theme} className="group">
-                <summary className="flex cursor-pointer list-none items-center gap-4 px-4 py-3.5 marker:content-none transition-colors hover:bg-[rgb(var(--brand-2-rgb)/0.04)] sm:px-5 [&::-webkit-details-marker]:hidden">
-                  <span className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--brand-2-rgb)/1)]">
+                <summary className="flex cursor-pointer list-none items-center gap-4 px-4 py-3.5 marker:content-none transition-colors hover:bg-white/5 sm:px-5 [&::-webkit-details-marker]:hidden">
+                  <span className="font-display text-sm font-semibold tabular-nums text-[var(--accent)]">
                     {String(mod.week).padStart(2, "0")}
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block font-semibold text-zinc-950">{mod.theme}</span>
-                    <span className="text-xs text-zinc-500">
+                    <span className="block font-semibold text-[#f7f3e8]">{mod.theme}</span>
+                    <span className="text-xs text-[#c5d2cb]">
                       {mod.lessons.length}{" "}
                       {mod.lessons.length === 1 ? "lesson" : "lessons"}
                     </span>
                   </span>
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-300 group-open:rotate-90" />
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-[#c5d2cb] transition-transform duration-300 group-open:rotate-90" />
                 </summary>
-                <ol className="space-y-1.5 border-t border-zinc-900/6 bg-[rgb(var(--brand-2-rgb)/0.03)] px-4 py-3 sm:px-5 sm:pl-[3.75rem]">
+                <ol className="space-y-1.5 border-t border-white/10 bg-[#0e241c]/65 px-4 py-3 sm:px-5 sm:pl-[3.75rem]">
                   {mod.lessons.map(({ n, title }) => (
-                    <li key={`${n}-${title}`} className="flex gap-3 text-sm text-zinc-800">
-                      <span className="w-6 shrink-0 font-display text-xs font-semibold tabular-nums text-zinc-400">
+                    <li key={`${n}-${title}`} className="flex gap-3 text-sm text-[#c5d2cb]">
+                      <span className="w-6 shrink-0 font-display text-xs font-semibold tabular-nums text-white/45">
                         {String(n).padStart(2, "0")}
                       </span>
                       <span
                         className={cn(
                           title.toLowerCase().startsWith("capstone") &&
-                            "font-semibold text-zinc-950"
+                            "font-semibold text-[#f7f3e8]"
                         )}
                       >
                         {title}
@@ -308,9 +327,10 @@ export default async function LearningPathDetailPage({ params }: Props) {
               </details>
             ))}
           </div>
-        </section>
+        </PageBand>
 
         {/* Conversion CTA — learners + admins */}
+        <PageBand tone="mid">
         <BrandCtaBand aria-labelledby="next-heading" className="lg:px-10">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:items-center lg:gap-10">
             <div>
@@ -350,19 +370,20 @@ export default async function LearningPathDetailPage({ params }: Props) {
             </div>
           </div>
         </BrandCtaBand>
+        </PageBand>
 
         {/* Other paths */}
-        <section aria-labelledby="other-heading">
+        <PageBand tone="proof" aria-labelledby="other-heading">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <h2
               id="other-heading"
-              className="font-display text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl"
+              className={cn("text-xl sm:text-2xl", duskTitleClass)}
             >
               Other learning paths
             </h2>
             <Link
               href="/learning-paths"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--brand-2-rgb)/1)]"
+              className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--accent)]"
             >
               View all
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -373,8 +394,8 @@ export default async function LearningPathDetailPage({ params }: Props) {
               <OtherPathTile key={p.slug} path={p} />
             ))}
           </div>
-        </section>
-      </div>
+        </PageBand>
+      </FullBleed>
     </SubpageShell>
   );
 }

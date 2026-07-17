@@ -4,6 +4,14 @@ import Link from "next/link";
 import { ArrowRight, Clock3, Mail, Phone, ShieldCheck } from "lucide-react";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import {
+  duskEyebrowClass,
+  duskInsetClass,
+  duskMutedClass,
+  duskTitleClass,
+  FullBleed,
+  PageBand,
+} from "@/components/layout/PageBands";
 import { BrandCtaBand } from "@/components/site/BrandCtaBand";
 import { ContactForm } from "@/components/site/ContactForm";
 import { siteConfig } from "@/lib/site";
@@ -56,47 +64,41 @@ const EXPECT = [
 export default function ContactPage() {
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-10 md:space-y-12 lg:space-y-14">
-        {/* Intro — light, not a dark full-bleed hero */}
-        <header className="kanam-fade-up max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-            Contact
-          </p>
-          <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08]">
-            Tell us what you need.
-            <span className="block">
-              We’ll help you{" "}
-              <span className="text-[rgb(var(--accent-rgb)/1)]">Move Forward.</span>
-            </span>
+      <FullBleed>
+        <PageBand tone="mid" className="pt-16 md:pt-24">
+          <header className="kanam-fade-up max-w-3xl">
+          <p className={duskEyebrowClass}>Contact</p>
+          <h1 className={`mt-3 text-3xl sm:text-4xl lg:text-[2.75rem] lg:leading-[1.08] ${duskTitleClass}`}>
+            Tell us what you need. <span className="text-[var(--accent)]">We’ll help you move forward.</span>
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
-            Live tutoring, family subscriptions, or a school/program cohort — send a
-            request and we’ll help you get started.
+          <p className={`mt-4 max-w-2xl text-base sm:text-lg ${duskMutedClass}`}>
+            Live tutoring, family subscriptions, or a school/program cohort — send a request and we’ll help you get started.
           </p>
-          <p className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-zinc-950">
+          <p className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-semibold text-[#f7f3e8]">
             <a
               href={siteConfig.links.phoneHref}
-              className="inline-flex items-center gap-2 text-[var(--brand-2)] transition-colors hover:text-zinc-950"
+              className="inline-flex items-center gap-2 text-[var(--accent)] transition-colors hover:text-white"
             >
               <Phone className="h-4 w-4 shrink-0" aria-hidden />
               {siteConfig.links.phone}
             </a>
             <a
               href={`mailto:${siteConfig.links.email}`}
-              className="inline-flex items-center gap-2 text-[var(--brand-2)] transition-colors hover:text-zinc-950"
+              className="inline-flex items-center gap-2 text-[var(--accent)] transition-colors hover:text-white"
             >
               <Mail className="h-4 w-4 shrink-0" aria-hidden />
               {siteConfig.links.email}
             </a>
           </p>
-        </header>
+          </header>
+        </PageBand>
 
-        {/* Form-forward split: form left, photo + trust right */}
-        <section
+        <PageBand
+          tone="base"
           id="request"
           aria-labelledby="request-heading"
-          className="scroll-mt-24 grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-8"
         >
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-8">
           <div className="lg:col-span-7">
             <h2 id="request-heading" className="sr-only">
               Request information
@@ -125,29 +127,30 @@ export default function ContactPage() {
               </figcaption>
             </figure>
 
-            <div className="rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/90 p-5 shadow-[0_12px_28px_rgba(15,23,42,0.06)] sm:p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <div className={`p-5 sm:p-6 ${duskInsetClass}`}>
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
                 What happens next
               </p>
               <ul className="mt-4 space-y-4">
                 {EXPECT.map((item) => (
                   <li key={item.title} className="flex gap-3">
-                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--brand-2-rgb)/0.12)] text-[var(--brand-2)]">
+                    <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--accent-rgb)/0.12)] text-[var(--accent)]">
                       <item.icon className="h-4 w-4" aria-hidden />
                     </span>
                     <div>
-                      <p className="font-semibold text-zinc-950">{item.title}</p>
-                      <p className="mt-0.5 text-sm leading-snug text-[var(--muted)]">{item.body}</p>
+                      <p className="font-semibold text-[#f7f3e8]">{item.title}</p>
+                      <p className="mt-0.5 text-sm leading-snug text-[#c5d2cb]">{item.body}</p>
                     </div>
                   </li>
                 ))}
               </ul>
             </div>
           </aside>
-        </section>
+          </div>
+        </PageBand>
 
-        {/* Compact path strip — below the form, not competing with it */}
-        <BrandCtaBand
+        <PageBand tone="mid">
+          <BrandCtaBand
           aria-labelledby="paths-heading"
           className="px-5 py-7 sm:px-7 sm:py-8"
         >
@@ -187,8 +190,9 @@ export default function ContactPage() {
               </Link>
             ))}
           </div>
-        </BrandCtaBand>
-      </div>
+          </BrandCtaBand>
+        </PageBand>
+      </FullBleed>
     </SubpageShell>
   );
 }

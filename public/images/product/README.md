@@ -13,6 +13,8 @@ All people photos feature teens, parents, and instructors of color.
 | `instructor-woman-live.png` | Educators page |
 | `instructor-man-teaching.png` | How it works — Pacing & delivery |
 | `cohort-teens-learning.png` | How it works — Lesson flow |
+| `instructors-hero.png` | Instructors — page hero |
+| `learning-paths-hero.png` | Learning paths — page hero |
 | `family-mom-son.png` | Parents — How to start |
 | `family-dad-son.png` | Parents — Homeschool & enrichment |
 

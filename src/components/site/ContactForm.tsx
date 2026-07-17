@@ -97,11 +97,11 @@ export function ContactForm({
   return (
     <div
       className={cn(
-        "overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.35)] bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]",
+        "overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.45)] bg-white shadow-[0_20px_48px_rgba(7,26,20,0.28)]",
         className
       )}
     >
-      <div className="border-b border-zinc-900/8 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.1)] via-white to-[rgb(var(--accent-rgb)/0.12)] px-5 py-5 sm:px-6">
+      <div className="border-b border-[rgb(var(--accent-rgb)/0.22)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.1)] via-white to-[rgb(var(--accent-rgb)/0.14)] px-5 py-5 sm:px-6">
         <h2 className="font-display text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl">
           {title}
         </h2>

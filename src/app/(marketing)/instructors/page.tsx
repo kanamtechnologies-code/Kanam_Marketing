@@ -4,6 +4,14 @@ import Link from "next/link";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import {
+  FullBleed,
+  HomeHeroVeil,
+  PageBand,
+  duskEyebrowClass,
+  duskMutedClass,
+  duskTitleClass,
+} from "@/components/layout/PageBands";
+import {
   BrandCtaBand,
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
@@ -21,30 +29,39 @@ export const metadata: Metadata = {
 export default function InstructorsPage() {
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-14 md:space-y-16 lg:space-y-20">
-        <header className="kanam-fade-up mx-auto max-w-3xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-            Live instruction
-          </p>
-          <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl lg:text-[2.9rem] lg:leading-[1.08]">
-            Meet the people who
-            <span className="block text-[rgb(var(--accent-rgb)/1)]">
-              teach the lesson.
-            </span>
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[var(--muted)] sm:text-lg">
-            Kanam Academy is built around live instruction first. Our instructors bring
-            real industry experience — and the patience to make hard skills click for teens,
-            families, and classroom partners.
-          </p>
-        </header>
+      <FullBleed>
+        <section className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/product/instructors-hero.png"
+              alt="Kanam instructor leading a live online lesson"
+              fill
+              priority
+              className="object-cover object-[72%_center] sm:object-[68%_center]"
+              sizes="100vw"
+            />
+            <HomeHeroVeil />
+          </div>
+          <div className="relative z-10 mx-auto flex min-h-[30rem] w-full max-w-6xl flex-col justify-center px-4 pb-12 pt-28 sm:min-h-[34rem] sm:px-6 sm:pb-16 lg:min-h-[38rem] lg:px-8">
+            <div className="max-w-xl">
+              <p className={duskEyebrowClass}>Live instruction</p>
+              <h1 className={`mt-3 text-[2.15rem] sm:text-4xl lg:text-[3rem] lg:leading-[1.05] ${duskTitleClass}`}>
+                Meet the people who <span className="block text-[var(--accent)]">teach the lesson.</span>
+              </h1>
+              <p className={`mt-5 text-base sm:text-lg ${duskMutedClass}`}>
+                Kanam Academy is built around live instruction first. Our instructors bring real industry experience — and the patience to make hard skills click for teens, families, and classroom partners.
+              </p>
+            </div>
+          </div>
+        </section>
 
+        <PageBand tone="mid">
         <section aria-label="Instructors" className="space-y-8">
           {INSTRUCTORS.map((person, index) => (
             <article
               key={person.slug}
               id={person.slug}
-              className="scroll-mt-28 overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]"
+              className="scroll-mt-28 overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#0e241c]"
             >
               <div
                 className={`grid lg:grid-cols-12 ${
@@ -102,7 +119,7 @@ export default function InstructorsPage() {
                 </div>
 
                 <div className="px-6 py-8 sm:px-8 lg:col-span-8 lg:py-10">
-                  <div className="space-y-4 text-base leading-relaxed text-[var(--muted)]">
+                  <div className="space-y-4 text-base leading-relaxed text-[#c5d2cb]">
                     {person.bio.map((paragraph) => (
                       <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                     ))}
@@ -110,14 +127,14 @@ export default function InstructorsPage() {
 
                   <div className="mt-8 grid gap-6 sm:grid-cols-2">
                     <div>
-                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
+                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                         What they bring
                       </p>
                       <ul className="mt-3 space-y-2">
                         {person.focus.map((item) => (
                           <li
                             key={item}
-                            className="flex gap-2 text-sm font-medium text-zinc-800"
+                            className="flex gap-2 text-sm font-medium text-[#f7f3e8]"
                           >
                             <span
                               aria-hidden
@@ -129,14 +146,14 @@ export default function InstructorsPage() {
                       </ul>
                     </div>
                     <div>
-                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
+                      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                         Background highlights
                       </p>
                       <ul className="mt-3 space-y-2">
                         {person.credentials.map((item) => (
                           <li
                             key={item}
-                            className="flex gap-2 text-sm font-medium text-zinc-800"
+                            className="flex gap-2 text-sm font-medium text-[#f7f3e8]"
                           >
                             <span
                               aria-hidden
@@ -153,7 +170,9 @@ export default function InstructorsPage() {
             </article>
           ))}
         </section>
+        </PageBand>
 
+        <PageBand tone="base">
         <BrandCtaBand className="px-5 py-8 sm:px-8 sm:py-10">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl">
@@ -193,7 +212,8 @@ export default function InstructorsPage() {
             </div>
           </div>
         </BrandCtaBand>
-      </div>
+        </PageBand>
+      </FullBleed>
     </SubpageShell>
   );
 }

@@ -11,6 +11,18 @@ import {
   brandCtaSecondaryBtnClass,
   brandCtaTitleClass,
 } from "@/components/site/BrandCtaBand";
+import {
+  duskEyebrowClass,
+  duskGhostBtnClass,
+  duskMutedClass,
+  duskTitleClass,
+  FullBleed,
+  HomeHeroVeil,
+  lightEyebrowClass,
+  lightMutedClass,
+  lightTitleClass,
+  PageBand,
+} from "@/components/layout/PageBands";
 import { LessonCanvasPreview } from "@/components/site/LessonCanvasPreview";
 import { Button } from "@/components/ui/button";
 import {
@@ -132,11 +144,11 @@ export default function ParentsPage() {
 
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-12 md:space-y-14 lg:space-y-16">
+      <FullBleed>
         {/* Hero — parent-first */}
         <section
           aria-labelledby="parents-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]"
         >
           <div className="absolute inset-0">
             <Image
@@ -147,37 +159,35 @@ export default function ParentsPage() {
               className="object-cover object-[62%_center] sm:object-[58%_center] lg:object-center"
               sizes="(min-width: 1280px) 90rem, 100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/88 to-zinc-950/25 sm:via-zinc-950/75 sm:to-zinc-950/12" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-zinc-950/30" />
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.2)] via-transparent to-[rgb(var(--accent-rgb)/0.1)]" />
+            <HomeHeroVeil />
           </div>
-
-          <div className="relative z-10 flex min-h-[26rem] flex-col justify-end p-6 sm:min-h-[28rem] sm:p-8 lg:min-h-[32rem] lg:p-10">
+          <div className="relative z-10 mx-auto flex min-h-[29rem] w-full max-w-6xl flex-col justify-center px-4 pb-12 pt-28 sm:min-h-[33rem] sm:px-6 sm:pb-16 lg:min-h-[37rem] lg:px-8">
             <div className="max-w-xl lg:max-w-2xl">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white/70">
+              <p className={duskEyebrowClass}>
                 For parents · Homeschool · Enrichment
               </p>
               <h1
                 id="parents-hero-heading"
-                className="mt-3 font-display text-[2.1rem] font-semibold tracking-tight text-white sm:text-4xl lg:text-[2.75rem] lg:leading-[1.06]"
+                className="mt-3 font-display text-[2.15rem] font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl lg:text-[3rem] lg:leading-[1.05]"
               >
                 Prepare your child
-                <span className="block text-[rgb(var(--accent-rgb)/1)]">
+                <span className="block text-[var(--accent)]">
                   for a tech-shaped future.
                 </span>
               </h1>
-              <p className="mt-4 max-w-lg text-base leading-relaxed text-white/85 sm:text-lg">
+              <p className={`mt-5 max-w-xl text-base sm:text-lg ${duskMutedClass}`}>
                 Live 1:1 tutoring plus structured async tracks — coding, AI, data,
                 cybersecurity, financial literacy, and digital literacy. Progress you can actually see.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button asChild>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
                   <Link href="/contact">Book a tutoring trial</Link>
                 </Button>
                 <Button
                   asChild
+                  size="lg"
                   variant="secondary"
-                  className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+                  className={brandCtaSecondaryBtnClass}
                 >
                   <Link href="#pricing">See pricing</Link>
                 </Button>
@@ -186,52 +196,50 @@ export default function ParentsPage() {
           </div>
         </section>
 
-        {/* Facts */}
-        <div className="relative overflow-hidden rounded-[1.25rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-5 sm:px-6">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
-          <div className="relative grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-0">
+        <PageBand tone="proof" className="py-8 md:py-10">
+          <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-0">
             {HERO_PROOF.map((item, index) => (
               <div
                 key={item.label}
                 className={
                   index > 0
-                    ? "sm:border-l sm:border-white/20 sm:px-4 sm:first:pl-0"
-                    : "sm:px-4 sm:pl-0"
+                    ? "sm:border-l sm:border-[rgb(var(--accent-rgb)/0.28)] sm:px-6 sm:first:pl-0"
+                    : "sm:px-6 sm:pl-0"
                 }
               >
-                <div className="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                <div className="font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl">
                   {item.value}
                 </div>
-                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--accent-rgb)/0.9)]">
+                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                   {item.label}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </PageBand>
 
         {/* Ways to learn */}
-        <section aria-labelledby="options-heading" className="space-y-6">
+        <PageBand tone="base" aria-labelledby="options-heading">
           <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={duskEyebrowClass}>
               Ways to learn
             </p>
             <h2
               id="options-heading"
-              className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+              className={`mt-2 text-3xl sm:text-4xl ${duskTitleClass}`}
             >
               Live guidance. Real practice. Progress you can see.
             </h2>
-            <p className="mt-3 text-base text-[var(--muted)]">
+            <p className={`mt-4 text-base sm:text-lg ${duskMutedClass}`}>
               Book a tutor who teaches. Pair it with async tracks so skills stick between
               sessions.
             </p>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
+          <div className="mt-10 grid gap-4 lg:grid-cols-12 lg:gap-5">
             <Link
               href={featured.href}
-              className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+              className="group relative flex min-h-[22rem] flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] bg-[#16352b] transition-transform duration-500 hover:-translate-y-0.5 sm:min-h-[26rem] lg:col-span-7 lg:min-h-[32rem]"
             >
               <div className="absolute inset-0">
                 <Image
@@ -241,20 +249,19 @@ export default function ParentsPage() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   sizes="(min-width: 1024px) 55vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/45 to-zinc-950/10" />
-                <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.28)] via-transparent to-[rgb(var(--accent-rgb)/0.12)]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e241c]/95 via-[#0e241c]/45 to-transparent" />
               </div>
               <div className="relative z-10 mt-auto p-6 sm:p-8 lg:p-9">
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                   {featured.eyebrow}
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl lg:text-[2.1rem] lg:leading-tight">
+                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl lg:text-[2.1rem] lg:leading-tight">
                   {featured.title}
                 </h3>
-                <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/80 sm:text-base">
+                <p className="mt-3 max-w-lg text-sm leading-relaxed text-[#c5d2cb] sm:text-base">
                   {featured.body}
                 </p>
-                <p className="mt-4 text-sm font-semibold text-[rgb(var(--accent-rgb)/1)]">
+                <p className="mt-4 text-sm font-semibold text-[var(--accent)]">
                   {featured.cta}
                 </p>
               </div>
@@ -265,7 +272,7 @@ export default function ParentsPage() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="group relative flex min-h-[16rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_14px_36px_rgba(15,23,42,0.12)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(15,23,42,0.16)] sm:min-h-[17rem] lg:min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+                  className="group relative flex min-h-[16rem] flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] bg-[#16352b] transition-transform duration-500 hover:-translate-y-0.5 sm:min-h-[17rem] lg:min-h-0"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -275,18 +282,17 @@ export default function ParentsPage() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                       sizes="(min-width: 1024px) 40vw, 100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/50 to-zinc-950/15" />
-                    <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.25)] via-transparent to-[rgb(var(--accent-rgb)/0.1)]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e241c]/95 via-[#0e241c]/50 to-transparent" />
                   </div>
                   <div className="relative z-10 mt-auto p-5 sm:p-6">
-                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                       {item.eyebrow}
                     </p>
-                    <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                    <h3 className="mt-2 font-display text-xl font-semibold tracking-tight text-[#f7f3e8] sm:text-2xl">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-snug text-white/80">{item.body}</p>
-                    <p className="mt-3 text-sm font-semibold text-[rgb(var(--accent-rgb)/1)]">
+                    <p className="mt-2 text-sm leading-snug text-[#c5d2cb]">{item.body}</p>
+                    <p className="mt-3 text-sm font-semibold text-[var(--accent)]">
                       {item.cta}
                     </p>
                   </div>
@@ -294,14 +300,15 @@ export default function ParentsPage() {
               ))}
             </div>
           </div>
-        </section>
+        </PageBand>
 
         {/* Trust / future */}
-        <section
+        <PageBand
+          tone="mid"
           aria-labelledby="trust-heading"
-          className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-10"
         >
-          <figure className="relative aspect-[4/3] overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] shadow-[0_16px_40px_rgba(15,23,42,0.1)]">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12">
+          <figure className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)]">
             <Image
               src="/images/product/family-mom-daughter.png"
               alt="Parent reviewing a child’s learning progress together"
@@ -311,61 +318,64 @@ export default function ParentsPage() {
             />
           </figure>
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={duskEyebrowClass}>
               Why parents choose Kanam
             </p>
             <h2
               id="trust-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+              className={`mt-2 text-2xl sm:text-3xl ${duskTitleClass}`}
             >
               Skills that prepare them — transparency that reassures you
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+            <p className={`mt-4 text-sm sm:text-base ${duskMutedClass}`}>
               The future asks for more than typing and apps. Kanam helps your child
               understand how technology works, use AI wisely, protect themselves online, and
               build real projects — at a price built for families.
             </p>
             <ul className="mt-5 space-y-3">
               {TRUST.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-snug text-zinc-800 sm:text-base">
+                <li key={item} className="flex gap-3 text-sm leading-snug text-[#c5d2cb] sm:text-base">
                   <span
                     aria-hidden
-                    className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]"
+                    className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
                   />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-        </section>
+          </div>
+        </PageBand>
 
         {/* Pricing */}
-        <section
+        <PageBand
+          tone="light"
           id="pricing"
           aria-labelledby="pricing-heading"
-          className="scroll-mt-24"
         >
-          <div className="overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/90 shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
-            <div className="border-b border-[rgb(var(--accent-rgb)/0.16)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.12)] via-white to-[rgb(var(--accent-rgb)/0.14)] px-6 py-7 sm:px-8 sm:py-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+          <div className="overflow-hidden border-y border-[rgb(var(--brand-2-rgb)/0.24)]">
+            <div className="bg-[#e8e2d3] px-1 pb-7 pt-1 sm:pb-8">
+              <div className="px-5 py-6 sm:px-7">
+              <p className={lightEyebrowClass}>
                 Family pricing
               </p>
               <h2
                 id="pricing-heading"
-                className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+                className={`mt-2 text-2xl sm:text-3xl ${lightTitleClass}`}
               >
                 Give your child a real instructor — not just another app
               </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+              <p className={`mt-3 max-w-2xl text-sm sm:text-base ${lightMutedClass}`}>
                 Live 1:1 tutoring builds confidence faster. Pair it with our async
                 platform so they keep practicing between sessions — with progress you can
                 actually see.
               </p>
             </div>
+            </div>
 
-            <div className="divide-y divide-zinc-900/10">
+            <div className="divide-y divide-[rgb(var(--brand-2-rgb)/0.18)] bg-[#f3efe4]">
               {/* Live tutoring — lead with the sell */}
-              <div className="px-6 py-6 sm:px-8">
+              <div className="px-5 py-7 sm:px-7">
                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
                   Best results
                 </p>
@@ -377,7 +387,7 @@ export default function ParentsPage() {
                   keep them accountable, and turn “I tried” into real skills.
                 </p>
                 <dl className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                  <div className="rounded-2xl bg-[rgb(var(--brand-2-rgb)/0.08)] px-4 py-4 ring-1 ring-[rgb(var(--brand-2-rgb)/0.2)]">
+                  <div className="border-t-2 border-[var(--brand-2)] bg-[#e8e2d3] px-4 py-4">
                     <dt className="text-sm font-medium text-[var(--muted)]">Per session</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {LIVE_ADD_ONS.oneToOne.price.replace("/session", "")}
@@ -386,7 +396,7 @@ export default function ParentsPage() {
                       {LIVE_ADD_ONS.oneToOne.duration}
                     </dd>
                   </div>
-                  <div className="rounded-2xl bg-zinc-50 px-4 py-4">
+                  <div className="border-t border-[rgb(var(--brand-2-rgb)/0.28)] bg-[#e8e2d3] px-4 py-4">
                     <dt className="text-sm font-medium text-[var(--muted)]">Try one session</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {LIVE_ADD_ONS.oneToOne.trial}
@@ -394,7 +404,7 @@ export default function ParentsPage() {
                     <dd className="mt-1 text-xs text-zinc-500">Intro trial</dd>
                   </div>
                   {LIVE_ADD_ONS.oneToOne.bundles.map((bundle) => (
-                    <div key={bundle.label} className="rounded-2xl bg-zinc-50 px-4 py-4">
+                    <div key={bundle.label} className="border-t border-[rgb(var(--brand-2-rgb)/0.28)] bg-[#e8e2d3] px-4 py-4">
                       <dt className="text-sm font-medium text-[var(--muted)]">{bundle.label}</dt>
                       <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                         {bundle.price}
@@ -406,7 +416,7 @@ export default function ParentsPage() {
               </div>
 
               {/* Async platform */}
-              <div className="px-6 py-6 sm:px-8">
+              <div className="px-5 py-7 sm:px-7">
                 <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
                   Pair with the platform
                 </p>
@@ -418,14 +428,14 @@ export default function ParentsPage() {
                   {TRACK_PROGRAM.label}, so practice doesn’t stop when the live session ends.
                 </p>
                 <dl className="mt-5 grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-2xl bg-zinc-50 px-4 py-4">
+                  <div className="border-t border-[rgb(var(--brand-2-rgb)/0.28)] bg-[#e8e2d3] px-4 py-4">
                     <dt className="text-sm font-medium text-[var(--muted)]">Monthly subscription</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {PRICING.family.price}
                     </dd>
                     <dd className="mt-1 text-xs text-zinc-500">Ongoing access to all tracks</dd>
                   </div>
-                  <div className="rounded-2xl bg-zinc-50 px-4 py-4">
+                  <div className="border-t border-[rgb(var(--brand-2-rgb)/0.28)] bg-[#e8e2d3] px-4 py-4">
                     <dt className="text-sm font-medium text-[var(--muted)]">Per learning track</dt>
                     <dd className="mt-1 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                       {TRACK_PRICE_RANGE_LABEL}
@@ -449,7 +459,7 @@ export default function ParentsPage() {
                 </p>
               </div>
 
-              <div className="flex flex-col gap-4 bg-zinc-50/80 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+              <div className="flex flex-col gap-4 bg-[#e8e2d3] px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-7">
                 <p className="text-sm font-medium text-zinc-800">
                   Ready to get your child a tutor? Start with a {LIVE_ADD_ONS.oneToOne.trial}{" "}
                   trial session.
@@ -467,22 +477,20 @@ export default function ParentsPage() {
               </div>
             </div>
           </div>
-        </section>
+        </PageBand>
 
         {/* How it works */}
-        <section
+        <PageBand
+          tone="proof"
           id="how-it-works"
           aria-labelledby="how-heading"
-          className="scroll-mt-24 relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-8 sm:px-8 sm:py-10"
         >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
-          <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
+            <p className={duskEyebrowClass}>
               How it works for parents
             </p>
             <h2
               id="how-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
+              className={`mt-2 text-2xl sm:text-3xl ${duskTitleClass}`}
             >
               Simple to start. Easy to trust.
             </h2>
@@ -492,13 +500,13 @@ export default function ParentsPage() {
                   <p className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--accent-rgb)/1)]">
                     {step.n}
                   </p>
-                  <p className="mt-2 font-semibold text-white sm:text-lg">{step.title}</p>
-                  <p className="mt-1.5 text-sm leading-snug text-white/75">{step.body}</p>
+                  <p className="mt-2 font-semibold text-[#f7f3e8] sm:text-lg">{step.title}</p>
+                  <p className="mt-1.5 text-sm leading-snug text-[#c5d2cb]">{step.body}</p>
                 </div>
               ))}
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild>
+              <Button asChild className={brandCtaPrimaryBtnClass}>
                 <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                   Try a free guided lesson
                 </Link>
@@ -506,33 +514,33 @@ export default function ParentsPage() {
               <Button
                 asChild
                 variant="secondary"
-                className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+                className={brandCtaSecondaryBtnClass}
               >
                 <Link href="/contact">Ask about your child</Link>
               </Button>
             </div>
-          </div>
-        </section>
+        </PageBand>
 
         {/* Lesson preview */}
-        <section aria-labelledby="demo-heading" className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-10">
+        <PageBand tone="mid" aria-labelledby="demo-heading">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-start lg:gap-12">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={duskEyebrowClass}>
               See it yourself
             </p>
             <h2
               id="demo-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+              className={`mt-2 text-2xl sm:text-3xl ${duskTitleClass}`}
             >
               A real lesson — not a sales video
             </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
+            <p className={`mt-3 text-sm sm:text-base ${duskMutedClass}`}>
               Open the guided demo with your child. You’ll see coach notes, a practice
               workspace, and Run &amp; check feedback — the same experience they use every
               day.
             </p>
             <div className="mt-6">
-              <Button asChild>
+              <Button asChild className={brandCtaPrimaryBtnClass}>
                 <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
                   Open the free demo
                 </Link>
@@ -540,34 +548,35 @@ export default function ParentsPage() {
             </div>
           </div>
           <LessonCanvasPreview compact />
-        </section>
+          </div>
+        </PageBand>
 
         {/* Paths */}
-        <section aria-labelledby="paths-heading" className="space-y-6">
+        <PageBand tone="base" aria-labelledby="paths-heading">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p className={duskEyebrowClass}>
                 What they’ll learn
               </p>
               <h2
                 id="paths-heading"
-                className="mt-2 font-display text-3xl font-semibold tracking-tight text-zinc-950 sm:text-4xl"
+                className={`mt-2 text-3xl sm:text-4xl ${duskTitleClass}`}
               >
                 Six paths toward future-ready skills
               </h2>
-              <p className="mt-3 text-base text-[var(--muted)]">
+              <p className={`mt-3 text-base ${duskMutedClass}`}>
                 Choose what fits your child’s curiosity. Beginners welcome — with room to grow.
               </p>
             </div>
-            <Button asChild variant="secondary">
+            <Button asChild variant="secondary" className={duskGhostBtnClass}>
               <Link href="/learning-paths">Browse all paths</Link>
             </Button>
           </div>
 
-          <div className="grid gap-4 lg:grid-cols-12 lg:gap-5">
+          <div className="mt-8 grid gap-4 lg:grid-cols-12 lg:gap-5">
             <Link
               href={`/learning-paths/${featuredPath.slug}`}
-              className="group relative flex min-h-[18rem] flex-col overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_18px_44px_rgba(15,23,42,0.14)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_52px_rgba(15,23,42,0.18)] sm:min-h-[20rem] lg:col-span-5 lg:min-h-[28rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+              className="group relative flex min-h-[18rem] flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] bg-[#16352b] transition-transform duration-500 hover:-translate-y-0.5 sm:min-h-[20rem] lg:col-span-5 lg:min-h-[28rem]"
             >
               <div className="absolute inset-0">
                 <Image
@@ -577,16 +586,16 @@ export default function ParentsPage() {
                   className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                   sizes="(min-width: 1024px) 40vw, 100vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/45 to-zinc-950/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0e241c]/95 via-[#0e241c]/45 to-transparent" />
               </div>
               <div className="relative z-10 mt-auto p-6 sm:p-7">
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-white/70">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                   {featuredPath.lessons} lessons
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl">
                   {featuredPath.name}
                 </h3>
-                <p className="mt-2 text-sm font-medium text-[rgb(var(--accent-rgb)/1)]">
+                <p className="mt-2 text-sm font-medium text-[var(--accent)]">
                   {featuredPath.subtitle}
                 </p>
               </div>
@@ -597,7 +606,7 @@ export default function ParentsPage() {
                 <Link
                   key={path.slug}
                   href={`/learning-paths/${path.slug}`}
-                  className="group relative flex min-h-[12rem] flex-col overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_12px_28px_rgba(15,23,42,0.1)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(15,23,42,0.16)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2"
+                  className="group relative flex min-h-[12rem] flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.28)] bg-[#16352b] transition-transform duration-500 hover:-translate-y-0.5"
                 >
                   <div className="absolute inset-0">
                     <Image
@@ -607,13 +616,13 @@ export default function ParentsPage() {
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                       sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/50 to-zinc-950/15" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0e241c]/95 via-[#0e241c]/50 to-transparent" />
                   </div>
                   <div className="relative z-10 mt-auto p-5">
-                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-white/65">
+                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                       {path.lessons} lessons
                     </p>
-                    <h3 className="mt-1 font-display text-lg font-semibold tracking-tight text-white sm:text-xl">
+                    <h3 className="mt-1 font-display text-lg font-semibold tracking-tight text-[#f7f3e8] sm:text-xl">
                       {path.name}
                     </h3>
                   </div>
@@ -621,32 +630,34 @@ export default function ParentsPage() {
               ))}
             </div>
           </div>
-        </section>
+        </PageBand>
 
         {/* FAQ */}
-        <section aria-labelledby="faq-heading" className="space-y-5">
+        <PageBand tone="light" aria-labelledby="faq-heading">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+            <p className={lightEyebrowClass}>
               Parent FAQ
             </p>
             <h2
               id="faq-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+              className={`mt-2 text-2xl sm:text-3xl ${lightTitleClass}`}
             >
               Straight answers
             </h2>
           </div>
-          <div className="divide-y divide-zinc-900/10 overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/80">
+          <div className="mt-7 divide-y divide-[rgb(var(--brand-2-rgb)/0.18)] border-y border-[rgb(var(--brand-2-rgb)/0.28)]">
             {FAQS.map((item) => (
-              <div key={item.q} className="px-5 py-5 sm:px-6">
+              <div key={item.q} className="px-1 py-5 sm:px-2">
                 <h3 className="font-semibold text-zinc-950">{item.q}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-[var(--muted)]">{item.a}</p>
               </div>
             ))}
           </div>
-        </section>
+        </PageBand>
 
         {/* CTA */}
+        <div className="bg-[#0e241c] px-4 py-14 sm:px-6 md:py-20 lg:px-8">
+        <div className="mx-auto max-w-6xl">
         <BrandCtaBand aria-labelledby="cta-heading">
           <div className="max-w-2xl">
             <p className={brandCtaEyebrowClass}>Next step</p>
@@ -678,7 +689,9 @@ export default function ParentsPage() {
             </div>
           </div>
         </BrandCtaBand>
-      </div>
+        </div>
+        </div>
+      </FullBleed>
     </SubpageShell>
   );
 }

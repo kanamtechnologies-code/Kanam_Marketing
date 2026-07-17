@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 
-import { Container } from "@/components/Container";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { FullBleed, PageBand } from "@/components/layout/PageBands";
+import { SubpageShell } from "@/components/layout/SubpageShell";
 
 export const metadata: Metadata = {
   title: "Terms | Kanam Academy",
@@ -11,21 +10,21 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="bg-[var(--background)]">
-      <Container>
-        <div className="py-16">
-          <Badge variant="brand">Legal</Badge>
-          <h1 className="mt-5 text-4xl font-black tracking-tight text-zinc-950 sm:text-5xl">
-            Terms
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg leading-8 text-[var(--muted)]">
-            This page is a placeholder. Before launch, we’ll replace it with your final
-            terms of service.
-          </p>
-
-          <Card className="mt-10">
-            <CardContent className="pt-6">
-              <div className="space-y-6 text-sm leading-6 text-zinc-700">
+    <SubpageShell overlapNav={false}>
+      <FullBleed>
+        <PageBand tone="mid" className="pt-16 md:pt-24">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">Legal</p>
+            <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight text-[#f7f3e8] sm:text-5xl">Terms</h1>
+            <p className="mt-5 text-lg leading-8 text-[#c5d2cb]">The expectations for using Kanam Academy.</p>
+          </div>
+        </PageBand>
+        <PageBand tone="light">
+          <article className="mx-auto max-w-3xl rounded-2xl border border-[rgb(var(--accent-rgb)/0.2)] bg-white/55 p-6 shadow-sm sm:p-10">
+            <p className="text-base leading-relaxed text-[var(--muted)]">
+              This page is a placeholder. Before launch, we’ll replace it with your final terms of service.
+            </p>
+            <div className="mt-8 space-y-6 text-sm leading-6 text-zinc-700">
                 <section>
                   <h2 className="text-base font-bold text-zinc-950">Use of service</h2>
                   <p className="mt-2">
@@ -46,12 +45,11 @@ export default function TermsPage() {
                     We may update these terms by posting a revised version on this page.
                   </p>
                 </section>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </Container>
-    </div>
+            </div>
+          </article>
+        </PageBand>
+      </FullBleed>
+    </SubpageShell>
   );
 }
 

@@ -5,6 +5,15 @@ import { ArrowUpRight } from "lucide-react";
 
 import { SubpageShell } from "@/components/layout/SubpageShell";
 import {
+  FullBleed,
+  HomeHeroVeil,
+  PageBand,
+  duskEyebrowClass,
+  duskGhostBtnClass,
+  duskMutedClass,
+  duskTitleClass,
+} from "@/components/layout/PageBands";
+import {
   BrandCtaBand,
   brandCtaPrimaryBtnClass,
   brandCtaSecondaryBtnClass,
@@ -47,7 +56,7 @@ function PathTile({
     <Link
       href={`/learning-paths/${path.slug}`}
       className={cn(
-        "group relative flex min-h-0 flex-col overflow-hidden rounded-[1.35rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 text-white shadow-[0_18px_40px_rgba(15,23,42,0.12)] transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(15,23,42,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2",
+        "group relative flex min-h-0 flex-col overflow-hidden rounded-2xl border border-[rgb(var(--accent-rgb)/0.22)] bg-[#16352b] text-white transition-[transform,box-shadow] duration-500 hover:-translate-y-0.5 hover:shadow-[0_24px_48px_rgba(7,26,20,0.28)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[rgb(var(--accent-rgb)/0.8)] focus-visible:ring-offset-2",
         className
       )}
     >
@@ -64,7 +73,7 @@ function PathTile({
           }
           priority={isFeatured}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/95 via-zinc-950/45 to-zinc-950/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#16352b] via-[#16352b]/50 to-[#16352b]/10" />
         <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/0.25)] via-transparent to-[rgb(var(--accent-rgb)/0.12)] opacity-80" />
       </div>
 
@@ -140,25 +149,43 @@ export default function LearningPathsPage() {
   const [second, ...rest] = secondary;
 
   return (
-    <SubpageShell
-      eyebrow="Learning paths"
-      title="Six learning paths. One platform."
-      subtitle={`${LESSONS_COUNT_LABEL} interactive lessons across coding, AI, data, cybersecurity, financial literacy, and digital skills. ${PACING_BLURB}`}
-      actions={
-        <>
-          <Button asChild>
-            <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
-              Try the guided lesson
-            </Link>
-          </Button>
-          <Button asChild variant="secondary">
-            <Link href="/contact">Talk to us about getting started</Link>
-          </Button>
-        </>
-      }
-    >
-      <div className="space-y-14 md:space-y-16 lg:space-y-20">
-        <div className="kanam-fade-up grid grid-cols-2 gap-3 sm:grid-cols-4">
+    <SubpageShell overlapNav={false}>
+      <FullBleed>
+        <section className="relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/product/learning-paths-hero.png"
+              alt="Teen learner working through a Kanam learning path on a Chromebook"
+              fill
+              priority
+              className="object-cover object-[74%_center] sm:object-[70%_center]"
+              sizes="100vw"
+            />
+            <HomeHeroVeil />
+          </div>
+          <div className="relative z-10 mx-auto flex min-h-[30rem] w-full max-w-6xl flex-col justify-center px-4 pb-12 pt-28 sm:min-h-[34rem] sm:px-6 sm:pb-16 lg:min-h-[38rem] lg:px-8">
+            <div className="max-w-xl">
+              <p className={duskEyebrowClass}>Learning paths</p>
+              <h1 className={cn("mt-3 text-[2.15rem] sm:text-4xl lg:text-[3rem] lg:leading-[1.05]", duskTitleClass)}>
+                Six learning paths. <span className="block text-[var(--accent)]">One platform.</span>
+              </h1>
+              <p className={cn("mt-5 text-base sm:text-lg", duskMutedClass)}>
+                {LESSONS_COUNT_LABEL} interactive lessons across coding, AI, data, cybersecurity, financial literacy, and digital skills. {PACING_BLURB}
+              </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
+                  <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">Try the guided lesson</Link>
+                </Button>
+                <Button asChild size="lg" variant="secondary" className={duskGhostBtnClass}>
+                  <Link href="/contact">Talk to us about getting started</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <PageBand tone="light">
+          <div className="kanam-fade-up grid grid-cols-2 gap-5 sm:grid-cols-4">
           {PROOF_POINTS.map((item) => (
             <div
               key={item.label}
@@ -172,20 +199,20 @@ export default function LearningPathsPage() {
               </div>
             </div>
           ))}
-        </div>
+          </div>
+        </PageBand>
 
-        <div className="space-y-5">
+        <PageBand tone="proof">
+          <div className="space-y-5">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-                Choose a path
-              </p>
-              <p className="mt-2 max-w-xl text-base text-[var(--muted)]">
+              <p className={duskEyebrowClass}>Choose a path</p>
+              <p className={cn("mt-2 max-w-xl text-base", duskMutedClass)}>
                 Each path is a complete track with lessons, practice, and a capstone — pick
                 where you want to start.
               </p>
             </div>
-            <p className="text-sm font-medium text-zinc-500">
+            <p className="text-sm font-medium text-[#e8e0cf]/80">
               {PATHS_COUNT_LABEL} paths · {LESSONS_COUNT_LABEL} lessons
             </p>
           </div>
@@ -213,9 +240,11 @@ export default function LearningPathsPage() {
               />
             ))}
           </div>
-        </div>
+          </div>
+        </PageBand>
 
-        <BrandCtaBand className="rounded-[1.75rem] px-6 py-10 sm:px-8 sm:py-12 lg:px-12">
+        <PageBand tone="base">
+          <BrandCtaBand className="px-6 py-10 sm:px-8 sm:py-12 lg:px-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-14">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
@@ -274,8 +303,9 @@ export default function LearningPathsPage() {
               </div>
             </div>
           </div>
-        </BrandCtaBand>
-      </div>
+          </BrandCtaBand>
+        </PageBand>
+      </FullBleed>
     </SubpageShell>
   );
 }

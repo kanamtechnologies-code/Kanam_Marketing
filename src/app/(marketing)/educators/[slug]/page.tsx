@@ -4,13 +4,21 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
+import {
+  duskGhostBtnClass,
+  duskInsetClass,
+  FullBleed,
+  HomeHeroVeil,
+  lightEyebrowClass,
+  lightMutedClass,
+  lightTitleClass,
+  PageBand,
+} from "@/components/layout/PageBands";
 import { SubpageShell } from "@/components/layout/SubpageShell";
+import { brandCtaPrimaryBtnClass } from "@/components/site/BrandCtaBand";
 import { ContactForm } from "@/components/site/ContactForm";
 import { Button } from "@/components/ui/button";
-import {
-  getPartnerAudience,
-  PARTNER_AUDIENCES,
-} from "@/lib/partner-audiences";
+import { getPartnerAudience, PARTNER_AUDIENCES } from "@/lib/partner-audiences";
 import { siteConfig } from "@/lib/site";
 
 type Props = {
@@ -40,11 +48,11 @@ export default async function PartnerAudiencePage({ params }: Props) {
 
   return (
     <SubpageShell overlapNav={false}>
-      <div className="space-y-12 md:space-y-14 lg:space-y-16">
+      <FullBleed>
         {/* Hero */}
         <section
           aria-labelledby="audience-hero-heading"
-          className="kanam-fade-up relative isolate overflow-hidden rounded-[1.5rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-zinc-950 shadow-[0_22px_56px_rgba(15,23,42,0.16)]"
+          className="kanam-fade-up relative isolate overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.25)]"
         >
           <div className="absolute inset-0">
             <Image
@@ -53,56 +61,65 @@ export default async function PartnerAudiencePage({ params }: Props) {
               fill
               priority
               className="object-cover object-center"
-              sizes="(min-width: 1280px) 90rem, 100vw"
+              sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/88 to-zinc-950/25 sm:via-zinc-950/75 sm:to-zinc-950/15" />
-            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-zinc-950/30" />
+            <HomeHeroVeil />
           </div>
 
-          <div className="relative z-10 flex min-h-[24rem] flex-col justify-between gap-8 p-6 sm:min-h-[26rem] sm:p-8 lg:min-h-[28rem] lg:p-10">
+          <div className="relative z-10 mx-auto flex min-h-[28rem] w-full max-w-6xl flex-col justify-between gap-8 px-4 pb-12 pt-28 sm:min-h-[32rem] sm:px-6 sm:pb-16 lg:min-h-[36rem] lg:px-8">
             <Link
               href="/educators"
-              className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-white/85 transition-colors hover:text-white"
+              className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-[#e8e0cf]/90 transition-colors hover:text-[var(--accent)]"
             >
               <ArrowLeft className="h-4 w-4" />
               All schools & leaders
             </Link>
 
             <div className="max-w-2xl">
-              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white/70">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
                 {audience.eyebrow}
               </p>
               <h1
                 id="audience-hero-heading"
-                className="mt-3 font-display text-[2rem] font-semibold tracking-tight text-white sm:text-4xl lg:text-[2.65rem] lg:leading-[1.06]"
+                className="mt-3 font-display text-[2.15rem] font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl lg:text-[3rem] lg:leading-[1.05]"
               >
                 {audience.heroHeadline}
-                <span className="block text-[rgb(var(--accent-rgb)/1)]">
+                <span className="block text-[var(--accent)]">
                   {audience.heroAccent}
                 </span>
               </h1>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
+              <p className="mt-5 max-w-xl text-base leading-relaxed text-[#c5d2cb] sm:text-lg">
                 {audience.heroBody}
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Button asChild>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
                   <Link href="#request-info">Request information</Link>
                 </Button>
                 <Button
                   asChild
+                  size="lg"
                   variant="secondary"
-                  className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+                  className={duskGhostBtnClass}
                 >
-                  <Link href={siteConfig.links.pricingPdf} target="_blank" rel="noreferrer">
+                  <Link
+                    href={siteConfig.links.pricingPdf}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Pricing PDF
                   </Link>
                 </Button>
                 <Button
                   asChild
+                  size="lg"
                   variant="secondary"
-                  className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
+                  className={duskGhostBtnClass}
                 >
-                  <Link href={siteConfig.links.onePager} target="_blank" rel="noreferrer">
+                  <Link
+                    href={siteConfig.links.onePager}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     One-pager PDF
                   </Link>
                 </Button>
@@ -112,151 +129,178 @@ export default async function PartnerAudiencePage({ params }: Props) {
         </section>
 
         {/* Resources strip */}
-        <div className="flex flex-col gap-3 rounded-[1.25rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">
-          <p className="text-sm font-medium text-white/90">
-            Share with your team — printable pages you can save as PDF.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <Button
-              asChild
-              variant="secondary"
-              size="sm"
-              className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
-            >
-              <Link href={siteConfig.links.onePager} target="_blank" rel="noreferrer">
-                Product one-pager
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="secondary"
-              size="sm"
-              className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
-            >
-              <Link href={siteConfig.links.pricingPdf} target="_blank" rel="noreferrer">
-                Pricing one-pager
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="secondary"
-              size="sm"
-              className="border-white/25 bg-white/10 text-white hover:bg-white/18 hover:text-white"
-            >
-              <Link href={siteConfig.links.standardsPdf} target="_blank" rel="noreferrer">
-                Standards packet
-              </Link>
-            </Button>
-          </div>
-        </div>
-
-        {/* At a glance + fit */}
-        <section className="grid gap-8 lg:grid-cols-2 lg:gap-10">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              At a glance
+        <PageBand tone="proof" className="py-7 md:py-8">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+            <p className="text-sm font-medium text-[#f7f3e8]">
+              Share with your team — printable pages you can save as PDF.
             </p>
-            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
-              What you get
-            </h2>
-            <ul className="mt-5 space-y-3">
-              {audience.highlights.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-snug text-zinc-800 sm:text-base">
-                  <span
-                    aria-hidden
-                    className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--brand)]"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              A good fit if
-            </p>
-            <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
-              Built for your setting
-            </h2>
-            <ul className="mt-5 space-y-3">
-              {audience.fitFor.map((item) => (
-                <li key={item} className="flex gap-3 text-sm leading-snug text-zinc-800 sm:text-base">
-                  <span
-                    aria-hidden
-                    className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent-rgb)/1)]"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6">
-              <Button asChild variant="secondary">
-                <Link href="/learning-paths">See the six learning paths</Link>
+            <div className="flex flex-wrap gap-2">
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className={duskGhostBtnClass}
+              >
+                <Link
+                  href={siteConfig.links.onePager}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Product one-pager
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className={duskGhostBtnClass}
+              >
+                <Link
+                  href={siteConfig.links.pricingPdf}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Pricing one-pager
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="secondary"
+                size="sm"
+                className={duskGhostBtnClass}
+              >
+                <Link
+                  href={siteConfig.links.standardsPdf}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Standards packet
+                </Link>
               </Button>
             </div>
           </div>
-        </section>
+        </PageBand>
 
-        {/* How it works */}
-        <section
-          aria-labelledby="how-heading"
-          className="relative overflow-hidden rounded-[1.5rem] border border-[rgb(var(--brand-rgb)/0.35)] bg-gradient-to-br from-[rgb(var(--brand-2-rgb)/1)] via-[rgb(var(--brand-2-rgb)/0.94)] to-[rgb(var(--brand-rgb)/0.88)] px-5 py-8 sm:px-8 sm:py-10"
-        >
-          <div className="pointer-events-none absolute inset-0 opacity-[0.07] kanam-hex-pattern" />
-          <div className="relative">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--accent-rgb)/1)]">
-              How it works
-            </p>
-            <h2
-              id="how-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl"
-            >
-              You host. We teach.
-            </h2>
-            <div className="mt-8 grid gap-8 sm:grid-cols-3 sm:gap-6">
-              {audience.howItWorks.map((step, i) => (
-                <div key={step.title}>
-                  <p className="font-display text-sm font-semibold tabular-nums text-[rgb(var(--accent-rgb)/1)]">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="mt-2 font-semibold text-white sm:text-lg">{step.title}</p>
-                  <p className="mt-1.5 text-sm leading-snug text-white/75">{step.body}</p>
-                </div>
-              ))}
+        {/* At a glance + fit */}
+        <PageBand tone="mid">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                At a glance
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl">
+                What you get
+              </h2>
+              <ul className="mt-5 space-y-3">
+                {audience.highlights.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm leading-snug text-[#c5d2cb] sm:text-base"
+                  >
+                    <span
+                      aria-hidden
+                      className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                A good fit if
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl">
+                Built for your setting
+              </h2>
+              <ul className="mt-5 space-y-3">
+                {audience.fitFor.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 text-sm leading-snug text-[#c5d2cb] sm:text-base"
+                  >
+                    <span
+                      aria-hidden
+                      className="mt-[0.4rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[rgb(var(--accent-rgb)/1)]"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-6">
+                <Button
+                  asChild
+                  variant="secondary"
+                  className={duskGhostBtnClass}
+                >
+                  <Link href="/learning-paths">See the six learning paths</Link>
+                </Button>
+              </div>
             </div>
           </div>
-        </section>
+        </PageBand>
+
+        {/* How it works */}
+        <PageBand tone="base" aria-labelledby="how-heading">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+            How it works
+          </p>
+          <h2
+            id="how-heading"
+            className="mt-2 font-display text-3xl font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl"
+          >
+            You host. We teach.
+          </h2>
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {audience.howItWorks.map((step, i) => (
+              <div key={step.title} className={`${duskInsetClass} p-5`}>
+                <p className="font-mono text-xs font-semibold text-[var(--accent)]">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className="mt-3 font-display text-lg font-semibold text-[#f7f3e8]">
+                  {step.title}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-[#c5d2cb]">
+                  {step.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </PageBand>
 
         {/* Pricing guidance */}
-        <section aria-labelledby="pricing-heading" className="space-y-6">
+        <PageBand tone="light" aria-labelledby="pricing-heading">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div className="max-w-2xl">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-                Starting guidance
-              </p>
+              <p className={lightEyebrowClass}>Starting guidance</p>
               <h2
                 id="pricing-heading"
-                className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
+                className={`${lightTitleClass} mt-2 text-3xl sm:text-4xl`}
               >
                 Pricing for {audience.shortTitle.toLowerCase()}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
-                Ranges below are starting guidance for quotes — final pricing depends on
-                learner count, cohort length, and whether you add live Kanam instruction.
+              <p className={`${lightMutedClass} mt-3 text-sm sm:text-base`}>
+                Ranges below are starting guidance for quotes — final pricing
+                depends on learner count, cohort length, and whether you add
+                live Kanam instruction.
               </p>
             </div>
-            <Button asChild>
-              <Link href={siteConfig.links.pricingPdf} target="_blank" rel="noreferrer">
+            <Button asChild className={brandCtaPrimaryBtnClass}>
+              <Link
+                href={siteConfig.links.pricingPdf}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Full pricing PDF
               </Link>
             </Button>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {audience.pricingCards.map((card) => (
               <div
                 key={card.title}
-                className="rounded-[1.25rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/80 p-5 shadow-[0_10px_28px_rgba(15,23,42,0.06)]"
+                className="rounded-2xl border border-[rgb(var(--brand-2-rgb)/0.2)] bg-white/75 p-5 shadow-[0_10px_28px_rgba(15,23,42,0.06)]"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
                   {card.title}
@@ -264,100 +308,107 @@ export default async function PartnerAudiencePage({ params }: Props) {
                 <p className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950">
                   {card.price}
                 </p>
-                <p className="mt-1 text-sm font-medium text-[var(--muted)]">{card.alt}</p>
-                <p className="mt-3 text-sm leading-snug text-zinc-700">{card.detail}</p>
+                <p className="mt-1 text-sm font-medium text-[var(--muted)]">
+                  {card.alt}
+                </p>
+                <p className="mt-3 text-sm leading-snug text-zinc-700">
+                  {card.detail}
+                </p>
               </div>
             ))}
           </div>
-        </section>
+        </PageBand>
 
         {/* Request info */}
-        <section
+        <PageBand
+          tone="base"
           id="request-info"
           aria-labelledby="request-heading"
-          className="scroll-mt-24 grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-10"
         >
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
-              Next step
-            </p>
-            <h2
-              id="request-heading"
-              className="mt-2 font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl"
-            >
-              Request information
-            </h2>
-            <p className="mt-3 text-sm leading-relaxed text-[var(--muted)] sm:text-base">
-              Tell us your role, group size, location, and timeline. We&apos;ll follow up
-              with next steps for a quote — usually within 1–2 business days.
-            </p>
-            <ul className="mt-5 space-y-2 text-sm text-zinc-700">
-              <li>
-                <Link
-                  href={siteConfig.links.onePager}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
-                >
-                  Product one-pager →
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={siteConfig.links.pricingPdf}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
-                >
-                  Pricing one-pager →
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={siteConfig.links.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
-                >
-                  Try the guided lesson →
-                </Link>
-              </li>
-            </ul>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start lg:gap-10">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--accent)]">
+                Next step
+              </p>
+              <h2
+                id="request-heading"
+                className="mt-2 font-display text-3xl font-semibold tracking-tight text-[#f7f3e8] sm:text-4xl"
+              >
+                Request information
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-[#c5d2cb] sm:text-base">
+                Tell us your role, group size, location, and timeline.
+                We&apos;ll follow up with next steps for a quote — usually
+                within 1–2 business days.
+              </p>
+              <ul className="mt-5 space-y-2 text-sm text-[#c5d2cb]">
+                <li>
+                  <Link
+                    href={siteConfig.links.onePager}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
+                  >
+                    Product one-pager →
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={siteConfig.links.pricingPdf}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
+                  >
+                    Pricing one-pager →
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href={siteConfig.links.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
+                  >
+                    Try the guided lesson →
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <ContactForm
+              defaultRole={audience.contactRole}
+              defaultHelpTopic={audience.contactHelpTopic}
+              title="Request information"
+              submitLabel="Send request"
+            />
           </div>
-          <ContactForm
-            defaultRole={audience.contactRole}
-            defaultHelpTopic={audience.contactHelpTopic}
-            title="Request information"
-            submitLabel="Send request"
-          />
-        </section>
+        </PageBand>
 
         {/* Other audiences */}
-        <section aria-labelledby="other-heading" className="space-y-4">
+        <PageBand tone="mid" aria-labelledby="other-heading">
           <h2
             id="other-heading"
-            className="font-display text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl"
+            className="font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl"
           >
             Looking for a different setting?
           </h2>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
             {others.map((item) => (
               <Link
                 key={item.slug}
                 href={item.href}
-                className="group rounded-[1.15rem] border border-[rgb(var(--accent-rgb)/0.2)] bg-white/70 px-5 py-4 transition-colors hover:border-[rgb(var(--brand-2-rgb)/0.35)] hover:bg-white"
+                className="group rounded-2xl border border-[rgb(var(--accent-rgb)/0.16)] bg-[#0e241c]/80 px-5 py-4 transition-colors hover:border-[rgb(var(--accent-rgb)/0.4)] hover:bg-[#16352b]"
               >
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--brand-2)]">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                   {item.eyebrow}
                 </p>
-                <p className="mt-1 font-display text-lg font-semibold text-zinc-950 group-hover:text-[rgb(var(--brand-2-rgb)/1)]">
+                <p className="mt-1 font-display text-lg font-semibold text-[#f7f3e8] group-hover:text-[var(--accent)]">
                   {item.title} →
                 </p>
               </Link>
             ))}
           </div>
-        </section>
-      </div>
+        </PageBand>
+      </FullBleed>
     </SubpageShell>
   );
 }

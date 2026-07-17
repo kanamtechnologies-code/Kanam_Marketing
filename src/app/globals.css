@@ -26,9 +26,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Light-only UI: do not auto-switch to dark mode. */
+/* Marketing site defaults to dusk storefront; legal pages opt into paper. */
 body {
-  background: var(--background);
+  background: #0e241c;
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   overflow-x: hidden;

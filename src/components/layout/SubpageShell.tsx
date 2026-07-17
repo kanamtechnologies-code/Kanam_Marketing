@@ -17,6 +17,8 @@ type SubpageShellProps = {
   toc?: TocItem[];
   /** Pull content under the sticky nav (default). Set false when the first child is a hero. */
   overlapNav?: boolean;
+  /** `dusk` matches the home storefront (default); `light` for dense legal/reading pages. */
+  tone?: "light" | "dusk";
 };
 
 export function SubpageShell({
@@ -27,17 +29,32 @@ export function SubpageShell({
   actions,
   toc,
   overlapNav = true,
+  tone = "dusk",
 }: SubpageShellProps) {
+  const isDusk = tone === "dusk";
+
   return (
     <div
       className={cn(
-        "relative isolate overflow-hidden bg-[var(--background)] text-[#14201c]",
+        "relative isolate overflow-hidden",
+        isDusk
+          ? "kanam-dusk bg-[#0e241c] text-[#f3efe4]"
+          : "bg-[var(--background)] text-[#14201c]",
         overlapNav && "-mt-6 md:-mt-16 lg:-mt-20"
       )}
     >
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.12)] via-transparent to-[rgb(var(--accent-rgb)/0.1)]" />
-        <div className="absolute inset-0 opacity-[0.035] kanam-hex-pattern" />
+        {isDusk ? (
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgb(var(--brand-2-rgb)/0.22),transparent_50%)]" />
+            <div className="absolute inset-0 opacity-[0.04] kanam-hex-pattern" />
+          </>
+        ) : (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-b from-[rgb(var(--brand-2-rgb)/0.12)] via-transparent to-[rgb(var(--accent-rgb)/0.1)]" />
+            <div className="absolute inset-0 opacity-[0.035] kanam-hex-pattern" />
+          </>
+        )}
       </div>
 
       <div
@@ -51,15 +68,30 @@ export function SubpageShell({
         {title ? (
           <header className="space-y-4 md:space-y-6">
             {eyebrow ? (
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--brand-2)]">
+              <p
+                className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.18em]",
+                  isDusk ? "text-[var(--accent)]" : "text-[var(--brand-2)]"
+                )}
+              >
                 {eyebrow}
               </p>
             ) : null}
-            <h1 className="font-display text-3xl font-semibold tracking-tight leading-[1.08] text-zinc-950 max-[360px]:text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[4rem]">
+            <h1
+              className={cn(
+                "font-display text-3xl font-semibold tracking-tight leading-[1.08] max-[360px]:text-[1.75rem] sm:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[4rem]",
+                isDusk ? "text-[#f7f3e8]" : "text-zinc-950"
+              )}
+            >
               {title}
             </h1>
             {subtitle ? (
-              <p className="max-w-4xl text-base leading-relaxed text-[var(--muted)] max-[360px]:text-[15px] md:text-lg 2xl:max-w-5xl">
+              <p
+                className={cn(
+                  "max-w-4xl text-base leading-relaxed max-[360px]:text-[15px] md:text-lg 2xl:max-w-5xl",
+                  isDusk ? "text-[#c5d2cb]" : "text-[var(--muted)]"
+                )}
+              >
                 {subtitle}
               </p>
             ) : null}
@@ -91,7 +123,14 @@ export function SubpageShell({
               </nav>
             </aside>
           ) : null}
-          <main className="min-w-0 [&>section]:rounded-3xl [&>section]:border [&>section]:border-[rgb(var(--accent-rgb)/0.28)] [&>section]:bg-white/90 [&>section]:px-4 [&>section]:shadow-[0_14px_34px_rgba(15,23,42,0.07)] [&>section]:sm:px-5 [&>section]:md:px-6 [&>section:nth-of-type(even)]:bg-gradient-to-br [&>section:nth-of-type(even)]:from-white [&>section:nth-of-type(even)]:via-[rgb(var(--brand-2-rgb)/0.06)] [&>section:nth-of-type(even)]:to-[rgb(var(--accent-rgb)/0.1)] [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:sm:text-base [&_p]:md:text-lg [&_li]:text-[15px] [&_li]:leading-relaxed [&_li]:sm:text-base [&_li]:md:text-lg [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:md:text-xl [&_p]:2xl:text-[1.125rem] [&_li]:2xl:text-[1.125rem]">
+          <main
+            className={cn(
+              "min-w-0 [&_p]:text-[15px] [&_p]:leading-relaxed [&_p]:sm:text-base [&_p]:md:text-lg [&_li]:text-[15px] [&_li]:leading-relaxed [&_li]:sm:text-base [&_li]:md:text-lg [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:md:text-xl [&_p]:2xl:text-[1.125rem] [&_li]:2xl:text-[1.125rem]",
+              isDusk
+                ? "[&>section]:rounded-2xl [&>section]:border [&>section]:border-[rgb(var(--accent-rgb)/0.16)] [&>section]:bg-[#16352b] [&>section]:px-4 [&>section]:sm:px-5 [&>section]:md:px-6 [&>section:nth-of-type(even)]:bg-[#122c24]"
+                : "[&>section]:rounded-3xl [&>section]:border [&>section]:border-[rgb(var(--accent-rgb)/0.28)] [&>section]:bg-white/90 [&>section]:px-4 [&>section]:shadow-[0_14px_34px_rgba(15,23,42,0.07)] [&>section]:sm:px-5 [&>section]:md:px-6 [&>section:nth-of-type(even)]:bg-gradient-to-br [&>section:nth-of-type(even)]:from-white [&>section:nth-of-type(even)]:via-[rgb(var(--brand-2-rgb)/0.06)] [&>section:nth-of-type(even)]:to-[rgb(var(--accent-rgb)/0.1]"
+            )}
+          >
             {children}
           </main>
         </div>
@@ -126,7 +165,7 @@ export function Band({ className, children }: { className?: string; children: Re
   return (
     <div
       className={cn(
-        "rounded-3xl border border-[rgb(var(--accent-rgb)/0.3)] bg-white/90 p-4 shadow-[0_12px_34px_rgba(15,23,42,0.08)] ring-1 ring-[rgb(var(--accent-rgb)/0.12)] backdrop-blur-sm transition-shadow hover:shadow-[0_16px_40px_rgba(15,23,42,0.11)] max-[360px]:p-3.5 sm:p-6 2xl:p-7",
+        "rounded-2xl border border-[rgb(var(--accent-rgb)/0.18)] bg-[#16352b] p-4 text-[#f3efe4] max-[360px]:p-3.5 sm:p-6 2xl:p-7",
         className
       )}
     >
@@ -138,7 +177,7 @@ export function Band({ className, children }: { className?: string; children: Re
 export function H2({ children, className }: { children: ReactNode; className?: string }) {
   return (
     <div className={className}>
-      <h2 className="font-display text-2xl font-semibold tracking-tight text-zinc-950 md:text-3xl">
+      <h2 className="font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] md:text-3xl">
         {children}
       </h2>
       <div className="mt-3 h-px w-14 bg-[rgb(var(--accent-rgb)/0.9)]" />
