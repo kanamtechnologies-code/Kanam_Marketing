@@ -31,6 +31,7 @@ import {
   LEARNING_PATHS,
   PACING_BLURB,
 } from "@/lib/learning-paths";
+import { billingLinks } from "@/lib/billing-links";
 import {
   LIVE_ADD_ONS,
   PRICING,
@@ -181,7 +182,13 @@ export default function ParentsPage() {
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
-                  <Link href="/contact">Book a tutoring trial</Link>
+                  <Link
+                    href={billingLinks.tutoringTrial()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a tutoring trial
+                  </Link>
                 </Button>
                 <Button
                   asChild
@@ -447,12 +454,45 @@ export default function ParentsPage() {
                 </dl>
                 <ul className="mt-4 grid gap-1.5 text-sm text-zinc-700 sm:grid-cols-2">
                   {TRACK_PRICES.map((track) => (
-                    <li key={track.slug} className="flex justify-between gap-3 border-b border-zinc-900/6 py-1.5">
+                    <li
+                      key={track.slug}
+                      className="flex items-center justify-between gap-3 border-b border-zinc-900/6 py-1.5"
+                    >
                       <span>{track.name}</span>
-                      <span className="font-semibold text-zinc-950">{track.priceLabel}</span>
+                      <span className="flex items-center gap-3">
+                        <span className="font-semibold text-zinc-950">{track.priceLabel}</span>
+                        <Link
+                          href={billingLinks.track(track.slug)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
+                        >
+                          Buy
+                        </Link>
+                      </span>
                     </li>
                   ))}
                 </ul>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  <Button asChild>
+                    <Link
+                      href={billingLinks.subscription()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Subscribe {PRICING.family.price}
+                    </Link>
+                  </Button>
+                  <Button asChild variant="secondary">
+                    <Link
+                      href={billingLinks.tracks()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Buy a full track
+                    </Link>
+                  </Button>
+                </div>
                 <p className="mt-4 text-sm text-zinc-700">
                   <span className="font-semibold text-zinc-950">Sibling discount:</span>{" "}
                   25% off platform for each additional learner in the household.
@@ -462,11 +502,17 @@ export default function ParentsPage() {
               <div className="flex flex-col gap-4 bg-[#e8e2d3] px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-7">
                 <p className="text-sm font-medium text-zinc-800">
                   Ready to get your child a tutor? Start with a {LIVE_ADD_ONS.oneToOne.trial}{" "}
-                  trial session.
+                  trial session — checkout opens in the Kanam learning app.
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <Button asChild>
-                    <Link href="/contact">Book a tutoring trial</Link>
+                    <Link
+                      href={billingLinks.tutoringTrial()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Book a tutoring trial
+                    </Link>
                   </Button>
                   <Button asChild variant="secondary">
                     <Link href={siteConfig.links.pricingPdf} target="_blank" rel="noreferrer">
@@ -674,7 +720,13 @@ export default function ParentsPage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
-                <Link href="/contact">Book a tutoring trial</Link>
+                <Link
+                  href={billingLinks.tutoringTrial()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Book a tutoring trial
+                </Link>
               </Button>
               <Button
                 asChild

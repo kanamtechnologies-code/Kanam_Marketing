@@ -10,6 +10,8 @@ export const siteConfig = {
     "Coding, AI, data, cybersecurity, financial literacy, and digital skills for grades 6–12 — live instruction or structured async classes. Built to align with CSTA K–12 Computer Science Standards. Six learning paths. Taught by industry professionals. Chromebook and mobile ready. Progress you can see.",
   links: {
     app: `${normalizedBase}/welcome`,
+    /** Self-serve Stripe storefront (requires sign-in). */
+    billing: `${normalizedBase}/billing`,
     demo:
       process.env.NEXT_PUBLIC_DEMO_URL ?? `${normalizedBase}/demo`,
     email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "info@kanamacademy.com",

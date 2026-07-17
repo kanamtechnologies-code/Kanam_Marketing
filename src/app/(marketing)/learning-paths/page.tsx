@@ -19,6 +19,7 @@ import {
   brandCtaSecondaryBtnClass,
 } from "@/components/site/BrandCtaBand";
 import { Button } from "@/components/ui/button";
+import { billingLinks } from "@/lib/billing-links";
 import {
   DEVICE_READY_SHORT,
   LEARNING_PATHS,
@@ -288,8 +289,12 @@ export default function LearningPathsPage() {
                   size="lg"
                   className={cn("w-full sm:w-auto", brandCtaPrimaryBtnClass)}
                 >
-                  <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
-                    Try the guided lesson
+                  <Link
+                    href={billingLinks.subscription()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Subscribe · $30/mo
                   </Link>
                 </Button>
                 <Button
@@ -298,7 +303,9 @@ export default function LearningPathsPage() {
                   variant="secondary"
                   className={cn("w-full sm:w-auto", brandCtaSecondaryBtnClass)}
                 >
-                  <Link href="/contact">Talk to us</Link>
+                  <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                    Try the guided lesson
+                  </Link>
                 </Button>
               </div>
             </div>

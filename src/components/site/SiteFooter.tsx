@@ -68,6 +68,14 @@ export function SiteFooter() {
               >
                 Get started / Sign in →
               </a>
+              <a
+                className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
+                href={siteConfig.links.billing}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Buy plans &amp; tutoring →
+              </a>
               <Link
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                 href="/one-pager"

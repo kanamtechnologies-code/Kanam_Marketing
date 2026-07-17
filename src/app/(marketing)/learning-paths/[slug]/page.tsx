@@ -22,6 +22,7 @@ import {
   brandCtaSecondaryBtnClass,
 } from "@/components/site/BrandCtaBand";
 import { Button } from "@/components/ui/button";
+import { billingLinks } from "@/lib/billing-links";
 import {
   DEVICE_READY_SHORT,
   getLearningPath,
@@ -31,6 +32,7 @@ import {
   type LearningPath,
   type LearningPathSlug,
 } from "@/lib/learning-paths";
+import { TRACK_PRICES } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -82,15 +84,43 @@ function OtherPathTile({ path }: { path: LearningPath }) {
 
 function CtaPair({
   onDark = false,
+  trackSlug,
+  trackPriceLabel,
 }: {
   onDark?: boolean;
+  trackSlug?: string;
+  trackPriceLabel?: string;
 }) {
   return (
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+      {trackSlug ? (
+        <Button
+          asChild
+          size={onDark ? "lg" : "default"}
+          className={onDark ? brandCtaPrimaryBtnClass : undefined}
+        >
+          <Link
+            href={billingLinks.track(trackSlug)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {trackPriceLabel ? `Buy this track · ${trackPriceLabel}` : "Buy this track"}
+          </Link>
+        </Button>
+      ) : null}
       <Button
         asChild
         size={onDark ? "lg" : "default"}
-        className={onDark ? brandCtaPrimaryBtnClass : undefined}
+        variant={trackSlug ? "secondary" : "default"}
+        className={
+          trackSlug
+            ? onDark
+              ? brandCtaSecondaryBtnClass
+              : undefined
+            : onDark
+              ? brandCtaPrimaryBtnClass
+              : undefined
+        }
       >
         <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
           Try the guided lesson
@@ -131,6 +161,7 @@ export default async function LearningPathDetailPage({ params }: Props) {
 
   /** Keep the walk-away list short and high-impact. */
   const highlights = path.learnOutcomes.slice(0, 4);
+  const trackPrice = TRACK_PRICES.find((t) => t.slug === path.slug);
 
   return (
     <SubpageShell overlapNav={false}>
@@ -175,7 +206,11 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 {path.marketingAngle}
               </p>
               <div className="mt-5">
-                <CtaPair onDark />
+                <CtaPair
+                  onDark
+                  trackSlug={path.slug}
+                  trackPriceLabel={trackPrice?.priceLabel}
+                />
               </div>
             </div>
             </div>
@@ -349,7 +384,11 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 after-school block, or Scout troop.
               </p>
               <div className="mt-8">
-                <CtaPair onDark />
+                <CtaPair
+                  onDark
+                  trackSlug={path.slug}
+                  trackPriceLabel={trackPrice?.priceLabel}
+                />
               </div>
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
