@@ -517,8 +517,8 @@ export default function ParentsPage() {
                     </Link>
                   </Button>
                   <Button asChild variant="secondary">
-                    <Link href={siteConfig.links.pricingPdf} target="_blank" rel="noreferrer">
-                      Full pricing sheet
+                    <Link href="/pricing">
+                      Full pricing page
                     </Link>
                   </Button>
                 </div>

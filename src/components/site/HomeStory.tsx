@@ -577,8 +577,8 @@ function FinalPanel() {
             variant="secondary"
             className="rounded-full border-white/45 bg-white/15 text-white hover:bg-white/25"
           >
-            <Link href={siteConfig.links.billing} target="_blank" rel="noopener noreferrer">
-              View plans &amp; buy
+            <Link href="/pricing">
+              View plans &amp; pricing
             </Link>
           </Button>
           <Button

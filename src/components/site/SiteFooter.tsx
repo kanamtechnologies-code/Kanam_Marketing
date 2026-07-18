@@ -84,6 +84,12 @@ export function SiteFooter() {
               </Link>
               <Link
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
+                href="/pricing"
+              >
+                Pricing →
+              </Link>
+              <Link
+                className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                 href="/one-pager/pricing"
               >
                 Pricing one-pager →

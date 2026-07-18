@@ -22,6 +22,7 @@ export const siteConfig = {
     standardsPdf: "/one-pager/standards",
     /** Printable HTML one-pagers (Save as PDF / Print). */
     onePager: "/one-pager",
+    pricing: "/pricing",
     pricingPdf: "/one-pager/pricing",
   },
   nav: [
@@ -33,6 +34,7 @@ export const siteConfig = {
     { href: "/parents", label: "For families & learners" },
     { href: "/about", label: "About" },
     { href: "/faq", label: "FAQ" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/contact", label: "Contact" },
   ],
   socials: [

@@ -72,7 +72,7 @@ const WAYS = [
     ],
     image: "/images/product/live-session-instructor.png",
     imageAlt: "Learner in a live online Kanam tutoring session",
-    href: "/parents#pricing",
+    href: "/pricing",
     cta: "See tutoring options",
   },
   {
