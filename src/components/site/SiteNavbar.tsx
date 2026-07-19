@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { X } from "lucide-react";
 
 import { siteConfig } from "@/lib/site";
@@ -59,17 +59,10 @@ function NavLinks({
 
 export function SiteNavbar() {
   const pathname = usePathname();
-  const [isClient, setIsClient] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Close the drawer after route changes (covers logo taps and back/forward).
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+  /** Path where the drawer was opened — auto-closes after navigation without an effect. */
+  const [menuPath, setMenuPath] = useState<string | null>(null);
+  const open = menuOpen && menuPath === pathname;
 
   return (
     <header className="sticky inset-x-0 top-0 z-[60] overflow-hidden border-b border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-r from-[#145c45] via-[rgb(var(--brand-2-rgb)/0.96)] to-[#1a6b52] shadow-lg supports-[backdrop-filter]:backdrop-blur-md">
@@ -96,63 +89,67 @@ export function SiteNavbar() {
           </div>
 
           <div className="lg:hidden">
-            {isClient ? (
-              <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-                <SheetTrigger asChild>
-                  <button
-                    className="inline-flex h-11 items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                    aria-label="Open menu"
-                  >
-                    Menu
-                  </button>
-                </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="border-l border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-b from-[#145c45] via-[rgb(var(--brand-2-rgb)/0.98)] to-[#1a6b52] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-[var(--accent)]"
+            <Sheet
+              open={open}
+              onOpenChange={(next) => {
+                setMenuOpen(next);
+                setMenuPath(next ? pathname : null);
+              }}
+            >
+              <SheetTrigger asChild>
+                <button
+                  className="inline-flex h-11 items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  aria-label="Open menu"
                 >
-                  <SheetHeader className="pr-12">
-                    <SheetTitle className="sr-only">Site navigation menu</SheetTitle>
-                    <div className="w-fit" onClick={() => setMenuOpen(false)}>
-                      <HeaderBrand />
-                    </div>
-                  </SheetHeader>
-                  <SheetClose asChild>
-                    <button
-                      type="button"
-                      className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 py-2.5 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-                    >
-                      <X className="h-4 w-4" />
-                      Close menu
-                    </button>
-                  </SheetClose>
-
-                  <div className="mt-6 flex flex-col items-center gap-4">
-                    <NavLinks
-                      closeOnNavigate
-                      onNavigate={() => setMenuOpen(false)}
-                    />
-                    <div className="h-px w-full bg-[rgb(var(--accent-rgb)/0.25)]" />
-                    <Button
-                      asChild
-                      className="w-full max-w-xs rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
-                    >
-                      <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
-                        Try the guided lesson
-                      </Link>
-                    </Button>
-                  </div>
-                </SheetContent>
-              </Sheet>
-            ) : (
-              <button
-                type="button"
-                disabled
-                className="inline-flex h-11 items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.35)] bg-white/5 px-4 text-sm font-semibold text-[#f3efe4]/80"
-                aria-label="Open menu"
+                  Menu
+                </button>
+              </SheetTrigger>
+              <SheetContent
+                side="right"
+                className="border-l border-[rgb(var(--accent-rgb)/0.55)] bg-gradient-to-b from-[#145c45] via-[rgb(var(--brand-2-rgb)/0.98)] to-[#1a6b52] text-white [&_[aria-label='Close']]:border [&_[aria-label='Close']]:border-white/30 [&_[aria-label='Close']]:bg-white/10 [&_[aria-label='Close']]:hover:bg-white/20 [&_[aria-label='Close']_svg]:text-[var(--accent)]"
               >
-                Menu
-              </button>
-            )}
+                <SheetHeader className="pr-12">
+                  <SheetTitle className="sr-only">Site navigation menu</SheetTitle>
+                  <div
+                    className="w-fit"
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setMenuPath(null);
+                    }}
+                  >
+                    <HeaderBrand />
+                  </div>
+                </SheetHeader>
+                <SheetClose asChild>
+                  <button
+                    type="button"
+                    className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[rgb(var(--accent-rgb)/0.4)] bg-white/5 px-4 py-2.5 text-sm font-semibold text-[#f3efe4] hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+                  >
+                    <X className="h-4 w-4" />
+                    Close menu
+                  </button>
+                </SheetClose>
+
+                <div className="mt-6 flex flex-col items-center gap-4">
+                  <NavLinks
+                    closeOnNavigate
+                    onNavigate={() => {
+                      setMenuOpen(false);
+                      setMenuPath(null);
+                    }}
+                  />
+                  <div className="h-px w-full bg-[rgb(var(--accent-rgb)/0.25)]" />
+                  <Button
+                    asChild
+                    className="w-full max-w-xs rounded-full bg-[var(--accent)] text-[#14201c] hover:bg-[rgb(var(--accent-rgb)/0.92)]"
+                  >
+                    <Link href={siteConfig.links.demo} target="_blank" rel="noopener noreferrer">
+                      Try the guided lesson
+                    </Link>
+                  </Button>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
