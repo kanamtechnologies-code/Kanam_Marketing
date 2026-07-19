@@ -1,5 +1,7 @@
 export type LearningPathSlug =
   | "ai-literacy"
+  | "advanced-ai"
+  | "ap-csp-prep"
   | "digital-literacy"
   | "cybersecurity"
   | "financial-literacy"
@@ -31,6 +33,8 @@ export type LearningPath = {
   image: string;
   /** Overview section visual on the path detail page. */
   overviewImage: string;
+  /** Optional highlight blocks on the path detail page (e.g. AP college credit). */
+  detailCallouts?: Array<{ title: string; body: string }>;
 };
 
 export const LEARNING_PATHS: LearningPath[] = [
@@ -119,6 +123,201 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
     image: "/images/product/path-card-ai-literacy.png",
     overviewImage: "/images/product/overview-photo-ai-literacy.png",
+  },
+  {
+    slug: "advanced-ai",
+    name: "Advanced AI",
+    shortName: "Advanced AI",
+    lessons: 16,
+    subtitle: "Build, evaluate, and audit AI systems — beyond prompting",
+    outcome:
+      "Students go past consumer AI use into framing problems, training and evaluating models, RAG and agents, fairness audits, AI security, and shipping a thin AI system they can demo and defend. Aligned to CSTA AI specialty pathways.",
+    learnOutcomes: [
+      "Frame AI problems with clear tasks, metrics, and human review",
+      "Work with training data — features, labels, leakage, and dataset bias",
+      "Train classifiers and read confusion matrices, precision, and recall",
+      "Explain LLMs beyond prompting: tokens, embeddings, RAG, and agents",
+      "Choose among prompt, RAG, and fine-tune — then evaluate with a harness",
+      "Audit fairness and AI security risks, then ship and defend a capstone system",
+    ],
+    skills: [
+      "ML evaluation labs",
+      "RAG & agents",
+      "Fairness audits",
+      "AI security awareness",
+      "Ship & defend a system",
+    ],
+    capstone: "Demo, Audit & Defend",
+    marketingAngle:
+      "Move from prompting to building — train, evaluate, retrieve, audit, and ship AI systems like a creator, not just a consumer.",
+    whoFor:
+      "Grades 10–12 (strong 9ths welcome) who already understand AI basics and want a specialty pathway beyond chat tools.",
+    prerequisite:
+      "Recommended: AI Literacy plus Python & AI Foundations (or equivalent coding basics).",
+    weeklyThemes: [
+      "Frame & Data",
+      "Classical ML You Can See",
+      "Neural Nets & Vision",
+      "LLMs Beyond Prompts",
+      "Agents & Evaluation",
+      "Stack Choices & Audits",
+      "Ship & Integrate",
+      "Capstone",
+    ],
+    weeklyFocus: [
+      "Problem framing, task types, features/labels, leakage, and dataset bias.",
+      "Train classifiers, read confusion matrices, precision/recall, and baselines.",
+      "Layers, overfitting, and computer-vision pipelines with privacy checks.",
+      "Tokens, embeddings, evaluation, and retrieval-augmented generation (RAG).",
+      "Tool-using agents, budgets, human gates, and evaluation harnesses.",
+      "Prompt vs RAG vs fine-tune, fairness audits, and AI security.",
+      "MLOps lite — deploy, monitor, drift — plus multimodal system design.",
+      "Build a thin AI system, then demo, audit, and defend it.",
+    ],
+    lessonTitles: [
+      "AI Systems: Framing Problems Worth Solving",
+      "Data for Machine Learning",
+      "Train Your First Classifier",
+      "Neural Networks: From Neurons to Overfitting",
+      "Computer Vision Pipelines",
+      "Language Models Beyond Prompting",
+      "Retrieval-Augmented Generation (RAG)",
+      "Agents, Tools & Workflows",
+      "Evaluation Harnesses & Experiment Tracking",
+      "Fine-Tuning vs Prompting vs RAG",
+      "Bias Audits & Fairness Metrics",
+      "Privacy, Security & Model Abuse",
+      "MLOps Lite: Deploy, Monitor, Drift",
+      "Multimodal & Tool-Using Systems",
+      "Capstone Studio: Build Your AI System",
+      "Capstone: Demo, Audit & Defend",
+    ],
+    lessonSynopses: [
+      "Define a problem worth solving with AI — task type, success metric, and where a human stays in the loop.",
+      "Prepare data for learning: features, labels, leakage risks, and how biased datasets shape unfair models.",
+      "Train a first classifier and read a confusion matrix — precision, recall, and when accuracy lies.",
+      "Build intuition for neural nets: layers, overfitting, and why evaluation on held-out data matters.",
+      "Walk a computer-vision pipeline and check privacy risks when models see faces and scenes.",
+      "Go past prompting into tokens, embeddings, hallucination failure modes, and how to evaluate LLM output.",
+      "Use retrieval-augmented generation so answers cite a corpus instead of inventing facts.",
+      "Design tool-using agents with budgets, permissions, and human gates before action.",
+      "Build a simple evaluation harness and track experiments so improvements are measurable.",
+      "Choose among prompting, RAG, and fine-tuning — and justify the stack for cost, risk, and quality.",
+      "Run a fairness-minded audit with concrete metrics and mitigation options.",
+      "Defend against prompt injection, data leakage, and common model-abuse patterns.",
+      "Ship with MLOps lite: deploy, monitor, and watch for drift after launch.",
+      "Orchestrate multimodal and tool-using systems without losing accountability.",
+      "Build a narrow vertical-slice AI system with a problem brief, method, and eval table.",
+      "Demo your system, present the audit, and defend limitations like a professional.",
+    ],
+    image: "/images/product/path-card-advanced-ai.png",
+    overviewImage: "/images/product/overview-photo-advanced-ai.png",
+    detailCallouts: [
+      {
+        title: "Built as a specialty pathway",
+        body: "Designed above AI Literacy and beside Python & AI — aligned to CSTA AI specialty / creator outcomes (data, ML, evaluation, and impact), not a watered-down survey of chatbots.",
+      },
+    ],
+  },
+  {
+    slug: "ap-csp-prep",
+    name: "AP CSP Prep",
+    shortName: "AP CSP Prep",
+    lessons: 16,
+    subtitle:
+      "College Board–aligned exam prep — Big Ideas, Create PT studio, and AP-style practice",
+    outcome:
+      "Instructor-built AP Computer Science Principles prep: all five Big Ideas, Create Performance Task practice, two 30-question practice tests, and a 40-question final exam. Prep only — not an official AP course; students still take the College Board exam through their school.",
+    learnOutcomes: [
+      "Master AP CSP Big Ideas: creative development, data, programming, systems & networks, and impact",
+      "Trace College Board–style pseudocode — variables, conditionals, loops, lists, and procedures",
+      "Practice Create Performance Task requirements (list, procedure, selection, iteration, PPR)",
+      "Build exam stamina with two 30-question practice tests and a 40-question final",
+      "Review with Big Idea score breakdowns and AP-style select-two items",
+      "Walk into the official May exam more prepared — then pursue college credit where accepted",
+    ],
+    skills: [
+      "AP Big Ideas coverage",
+      "Create PT studio",
+      "2 practice tests",
+      "40-question final",
+      "Exam readiness",
+    ],
+    capstone: "Create PT + Exam Gauntlet",
+    marketingAngle:
+      "Built by experienced IT instructors for the real AP CSP exam — Create PT practice, two practice tests, and a final so high schoolers can earn a score colleges respect.",
+    whoFor:
+      "High school students preparing for the AP Computer Science Principles exam — self-paced or with a cohort.",
+    prerequisite:
+      "Not an official College Board AP course. Kanam prepares you; you still register for and take the official exam (and submit Create PT) through your school / College Board.",
+    weeklyThemes: [
+      "Creative Development",
+      "Data",
+      "Programming I",
+      "Programming II",
+      "Programming III",
+      "Systems & Networks",
+      "Impact of Computing",
+      "Create PT & Exams",
+    ],
+    weeklyFocus: [
+      "Purpose, collaboration, iteration, testing, and documentation (Big Idea 1).",
+      "Bits/binary, abstraction, compression, metadata, bias, and insight from data (Big Idea 2).",
+      "Variables, expressions, strings, conditionals, and Boolean logic (Big Idea 3).",
+      "Iteration, lists, and traversal — patterns you’ll need on the Create PT.",
+      "Procedures, parameters, abstraction, algorithms, and efficiency tradeoffs.",
+      "Hardware/software, fault tolerance, packets, protocols, DNS, and HTTPS (Big Idea 4).",
+      "Innovations, equity, legal/ethical issues, IP, and privacy (Big Idea 5).",
+      "Create Performance Task studio, then gated practice tests and a final exam after all lessons.",
+    ],
+    lessonTitles: [
+      "Creative Development: Purpose, Collaboration & Iteration",
+      "Development Process, Testing & Documentation",
+      "Bits, Binary & Data Abstraction",
+      "Compression, Metadata, Bias & Insight from Data",
+      "Variables, Expressions & Strings",
+      "Conditionals & Boolean Logic",
+      "Iteration & Loops",
+      "Lists & Traversal",
+      "Procedures, Parameters & Abstraction",
+      "Algorithms, Efficiency, Searching & Sorting",
+      "Computing Systems & Fault Tolerance",
+      "The Internet: Packets, Protocols & Trust",
+      "Computing Innovations, Society & Equity",
+      "Legal & Ethical Issues: IP, Privacy & Open Source",
+      "Create Performance Task Studio",
+      "AP-Style Practice Gauntlet & Exam Readiness",
+    ],
+    lessonSynopses: [
+      "Explain purpose vs function, collaboration value, and iterative development the way AP CSP rewards.",
+      "Document, test, and refine — knowing testing finds errors but never proves a program is perfect.",
+      "Convert between binary and decimal, explain overflow vs roundoff, and use abstraction with data.",
+      "Compare lossless vs lossy compression, read metadata, and separate correlation from causation.",
+      "Use variables, expressions, and strings with College Board–style pseudocode conventions.",
+      "Trace conditionals and Boolean logic — including nested IF patterns common on the exam.",
+      "Master REPEAT n TIMES, REPEAT UNTIL, and FOR EACH — plus off-by-one and infinite-loop traps.",
+      "Work with lists: APPEND/INSERT/REMOVE, traversal, filter, and accumulate patterns.",
+      "Write procedures with parameters that change behavior — procedural vs data abstraction.",
+      "Compare linear vs binary search, reasonable vs unreasonable time, heuristics, and undecidable problems.",
+      "Explain computing systems, redundancy, and fault tolerance in AP-ready language.",
+      "Trace packets, IP/TCP, DNS, HTTP vs HTTPS, bandwidth vs latency, and certificate trust.",
+      "Evaluate computing innovations for equity, access, and unintended consequences.",
+      "Apply IP, Creative Commons, open source, PII, encryption, MFA, and phishing concepts.",
+      "Practice a Create PT program with list + procedure + selection + iteration and PPR-ready segments.",
+      "Run a mixed AP-style gauntlet and leave with a clear exam-readiness plan.",
+    ],
+    image: "/images/product/path-card-ap-csp-prep.png",
+    overviewImage: "/images/product/overview-photo-ap-csp-prep.png",
+    detailCallouts: [
+      {
+        title: "What’s included beyond the 16 lessons",
+        body: "Two timed practice tests (30 AP-style questions each) and a 40-question final exam — unlocked after the lessons. Includes select-two items and Big Idea score breakdowns. Prep simulations only — not official College Board exams or scores.",
+      },
+      {
+        title: "College credit & what families can save",
+        body: "AP CSP is designed as a first-semester intro college computing course for nonmajors. 1,200+ colleges publish credit or placement policies for qualifying scores — often 3–4 credit hours (policies vary; check College Board’s AP Credit Policy Search). When a college awards credit, families commonly avoid roughly $1,200–$3,000+ in tuition for that course at many public universities, and more at private schools. Official AP exam fee is separate (~$99 in the U.S.). Kanam prep does not itself award college credit.",
+      },
+    ],
   },
   {
     slug: "digital-literacy",
@@ -548,13 +747,13 @@ export const LEARNING_PATHS: LearningPath[] = [
 
 export const TOTAL_LESSONS = LEARNING_PATHS.reduce((sum, p) => sum + p.lessons, 0);
 
-/** Marketing total across the six paths (16×4 + 14×2). */
+/** Marketing total across all paths (16×6 + 14×2). */
 export const LESSONS_COUNT_LABEL = String(TOTAL_LESSONS);
 
 export const PATHS_COUNT_LABEL = String(LEARNING_PATHS.length);
 
 export const PATHS_LIST_SHORT =
-  "AI Literacy, Digital Literacy, Cybersecurity, Financial Literacy, Python & AI, and Data Analyst";
+  "AI Literacy, Advanced AI, AP CSP Prep, Digital Literacy, Cybersecurity, Financial Literacy, Python & AI, and Data Analyst";
 
 export const PROOF_POINTS = [
   {
@@ -562,12 +761,12 @@ export const PROOF_POINTS = [
     label: "Instructors with real tech experience",
   },
   {
-    value: "CSTA-aligned",
-    label: "Built for school adoption & accreditation",
+    value: "CSTA + AP prep",
+    label: "School-ready standards and exam prep tracks",
   },
   {
     value: `${LESSONS_COUNT_LABEL} lessons`,
-    label: "Six complete paths with real capstones",
+    label: "Eight complete paths with real capstones",
   },
   {
     value: "Progress you see",

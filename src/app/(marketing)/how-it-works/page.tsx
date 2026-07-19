@@ -34,7 +34,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "How it works | Kanam Academy",
   description:
-    "How Kanam Academy works: six learning paths, live instruction or structured async, progress adults can see, and a real lesson canvas — for teens, families, schools, and youth programs.",
+    "How Kanam Academy works: eight learning paths including Advanced AI and AP CSP Prep, live instruction or structured async, progress adults can see, and a real lesson canvas — for teens, families, schools, and youth programs.",
 };
 
 const PLATFORM_STEPS = [
@@ -78,7 +78,7 @@ const WAYS = [
   {
     eyebrow: "Platform access",
     title: "Move at your own pace",
-    body: `Six structured paths with coach notes, auto-checks, and progress you can see. Monthly access or buy one full track (${TRACK_PROGRAM.shortLabel}) from ${TRACK_PRICE_RANGE_LABEL}.`,
+    body: `Eight structured paths with coach notes, auto-checks, and progress you can see. Monthly access or buy one full track (${TRACK_PROGRAM.shortLabel}) from ${TRACK_PRICE_RANGE_LABEL}.`,
     points: [
       "Self-paced enrichment that still feels guided",
       "XP, badges, and a roadmap families can follow",
@@ -571,7 +571,7 @@ export default function HowItWorksPage() {
                 See the platform — then choose your path.
               </h2>
               <p className={brandCtaBodyClass}>
-                Open a real guided lesson, explore the six paths, or tell us about your
+                Open a real guided lesson, explore the eight paths, or tell us about your
                 learners. We’ll help you choose live tutoring, a family track, or a school
                 and program pilot.
               </p>

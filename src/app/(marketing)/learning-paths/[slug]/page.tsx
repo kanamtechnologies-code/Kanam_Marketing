@@ -318,6 +318,19 @@ export default async function LearningPathDetailPage({ params }: Props) {
                 ))}
               </ul>
 
+              {path.detailCallouts?.length ? (
+                <div className="mt-6 space-y-4 border-t border-zinc-200/80 pt-5">
+                  {path.detailCallouts.map((callout) => (
+                    <div key={callout.title}>
+                      <p className="text-sm font-semibold text-zinc-950">{callout.title}</p>
+                      <p className={cn("mt-1 text-sm leading-relaxed", lightMutedClass)}>
+                        {callout.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ) : null}
+
               <div className="mt-6 border-t border-[rgb(var(--brand-2-rgb)/0.18)] pt-4">
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[rgb(var(--brand-2-rgb)/0.85)]">
                   Skills · Capstone · Standards

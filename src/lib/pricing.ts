@@ -23,7 +23,7 @@ export const PRICING = {
     price: "$30/mo",
     alt: "or buy one full track (16 sessions) from $100",
     detail:
-      "Platform access — six structured paths, XP, and progress adults can see. Pay monthly for ongoing access to all tracks, or buy one full track (16 sessions over 8 weeks) for a clear finish line. Live 1:1 tutoring is optional and priced separately.",
+      "Platform access — eight structured paths, XP, and progress adults can see. Pay monthly for ongoing access to all tracks, or buy one full track (16 sessions over 8 weeks) for a clear finish line. Live 1:1 tutoring is optional and priced separately.",
   },
   program: {
     title: "After-school & weekend programs",
@@ -80,6 +80,18 @@ export const TRACK_PRICES = [
     name: "Python & AI Foundations",
     price: 169,
     priceLabel: "$169",
+  },
+  {
+    slug: "advanced-ai",
+    name: "Advanced AI",
+    price: 199,
+    priceLabel: "$199",
+  },
+  {
+    slug: "ap-csp-prep",
+    name: "AP CSP Prep",
+    price: 199,
+    priceLabel: "$199",
   },
   {
     slug: "cybersecurity",
@@ -147,8 +159,9 @@ export const LIVE_ADD_ONS = {
 } as const;
 
 export const PRICING_INCLUDES = [
-  "Six learning paths · 92 interactive lessons",
+  "Eight learning paths · 124 interactive lessons",
   `Each track = ${TRACK_PROGRAM.label} (flexible pacing · grades 6–12)`,
+  "Includes Advanced AI specialty + AP CSP Prep with practice tests & final",
   "Instructors who are industry professionals with years of experience",
   "Chromebook & mobile ready · no special software install",
   "Program tools: class codes, roster, assignments, XP",

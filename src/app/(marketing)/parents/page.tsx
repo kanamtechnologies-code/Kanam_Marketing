@@ -610,7 +610,7 @@ export default function ParentsPage() {
                 id="paths-heading"
                 className={`mt-2 text-3xl sm:text-4xl ${duskTitleClass}`}
               >
-                Six paths toward future-ready skills
+                Eight paths toward future-ready skills
               </h2>
               <p className={`mt-3 text-base ${duskMutedClass}`}>
                 Choose what fits your child’s curiosity. Beginners welcome — with room to grow.

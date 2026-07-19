@@ -35,7 +35,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "FAQ | Kanam Academy",
   description:
-    "FAQ: who Kanam is for, six learning paths, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
+    "FAQ: who Kanam is for, eight learning paths including Advanced AI and AP CSP Prep, flexible schedule, after-school and Scout programs, Chromebook and mobile ready, guided demo, and how to get started.",
 };
 
 const FAQ_GROUPS = [
@@ -46,15 +46,23 @@ const FAQ_GROUPS = [
     items: [
       {
         q: "What is Kanam Academy?",
-        a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, cybersecurity, and financial literacy — with six learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
+        a: `A browser-based learning platform for coding, AI literacy, Advanced AI, AP CSP prep, digital literacy, data, cybersecurity, and financial literacy — with eight learning paths, interactive lessons, XP and badges, and progress you can see. ${PACING_BLURB} Live instruction when you want a guide; structured async when you want to move at your own pace.`,
       },
       {
         q: "Who is it for?",
         a: `Teens and anyone learning tech — plus teachers, schools, families, ${PROGRAM_FIT_SHORT}, and enrichment partners.`,
       },
       {
-        q: "What are the six learning paths?",
-        a: `AI Literacy (16), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), Python & AI Foundations (14), and Data Analyst (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
+        q: "What are the eight learning paths?",
+        a: `AI Literacy (16), Advanced AI (16), AP CSP Prep (16 + practice tests & final), Digital Literacy (16), Cybersecurity (16), Financial Literacy (16), Python & AI Foundations (14), and Data Analyst (14) — ${LESSONS_COUNT_LABEL} interactive lessons total across ${PATHS_LIST_SHORT}.`,
+      },
+      {
+        q: "What is AP CSP Prep?",
+        a: "An instructor-built, College Board–aligned prep track for the AP Computer Science Principles exam — Big Ideas coverage, Create Performance Task studio, two 30-question practice tests, and a 40-question final. It is exam prep, not an official AP course; students still take the official exam through their school. Qualifying scores can earn college intro computing credit at many colleges (policies vary).",
+      },
+      {
+        q: "What is Advanced AI?",
+        a: "A specialty pathway beyond AI Literacy: frame problems, train and evaluate models, use RAG and agents, run fairness audits, and ship a thin AI system you can demo and defend. Recommended after AI Literacy and Python basics.",
       },
       {
         q: "How do I get started?",
@@ -77,7 +85,7 @@ const FAQ_GROUPS = [
       },
       {
         q: "How does assessment work?",
-        a: "Auto-graded guided and scratch exercises, check-for-understanding, capstone projects, and XP/badge progress visibility — designed so mastery is demonstrated, not just clicked through.",
+        a: "Auto-graded guided and scratch exercises, check-for-understanding, capstone projects, and XP/badge progress visibility — designed so mastery is demonstrated, not just clicked through. AP CSP Prep also includes two timed practice tests and a gated final exam after the lessons.",
       },
       {
         q: "What about the Data Analyst track?",

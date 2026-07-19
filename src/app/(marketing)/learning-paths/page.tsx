@@ -41,11 +41,13 @@ export const metadata: Metadata = {
 
 type TileTone = "spotlight" | "companion" | "panel";
 
-/** Curated mosaic order — literacy hero, defense stack, then build tracks. */
+/** Curated mosaic order — literacy hero, new specialty tracks, defense, then build tracks. */
 const PATH_MOSAIC: Array<{ slug: LearningPath["slug"]; tone: TileTone }> = [
   { slug: "ai-literacy", tone: "spotlight" },
-  { slug: "digital-literacy", tone: "companion" },
-  { slug: "cybersecurity", tone: "companion" },
+  { slug: "advanced-ai", tone: "companion" },
+  { slug: "ap-csp-prep", tone: "companion" },
+  { slug: "digital-literacy", tone: "panel" },
+  { slug: "cybersecurity", tone: "panel" },
   { slug: "ai-python", tone: "panel" },
   { slug: "data-analyst", tone: "panel" },
   { slug: "financial-literacy", tone: "panel" },
@@ -202,10 +204,10 @@ export default function LearningPathsPage() {
             <div className="max-w-xl">
               <p className={duskEyebrowClass}>Learning paths</p>
               <h1 className={cn("mt-3 text-[2.15rem] sm:text-4xl lg:text-[3rem] lg:leading-[1.05]", duskTitleClass)}>
-                Six learning paths. <span className="block text-[var(--accent)]">One platform.</span>
+                Eight learning paths. <span className="block text-[var(--accent)]">One platform.</span>
               </h1>
               <p className={cn("mt-5 text-base sm:text-lg", duskMutedClass)}>
-                {LESSONS_COUNT_LABEL} interactive lessons across coding, AI, data, cybersecurity, financial literacy, and digital skills. {PACING_BLURB}
+                {LESSONS_COUNT_LABEL} interactive lessons across coding, AI specialty, AP CSP prep, data, cybersecurity, financial literacy, and digital skills. {PACING_BLURB}
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild size="lg" className={brandCtaPrimaryBtnClass}>
@@ -273,15 +275,12 @@ export default function LearningPathsPage() {
               />
             ))}
 
-            {panels.map((item, index) => (
+            {panels.map((item) => (
               <PathTile
                 key={item.slug}
                 path={item.path}
                 tone="panel"
-                className={cn(
-                  "lg:col-span-4",
-                  index === panels.length - 1 && "sm:col-span-2 lg:col-span-4"
-                )}
+                className="sm:col-span-1 lg:col-span-4"
               />
             ))}
           </div>
@@ -299,9 +298,9 @@ export default function LearningPathsPage() {
                 Start anywhere. Finish with a real project.
               </h2>
               <p className="mt-4 max-w-xl text-base leading-relaxed text-[#e8e0cf]/90 sm:text-lg">
-                Literacy paths build judgment and fluency. Python, data, and cybersecurity
-                build hands-on skill. Live instruction when you want a guide; structured
-                async when you want to move at your own pace. {DEVICE_READY_SHORT}.
+                Literacy paths build judgment and fluency. Advanced AI and AP CSP Prep go deeper
+                for specialty and exam readiness. Python, data, and cybersecurity build
+                hands-on skill. Live or structured async — {DEVICE_READY_SHORT}.
               </p>
               <ul className="mt-6 space-y-3 text-sm text-[#e8e0cf]/90 sm:text-base">
                 {[

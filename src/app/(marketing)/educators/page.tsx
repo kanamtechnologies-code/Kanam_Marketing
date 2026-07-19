@@ -321,7 +321,7 @@ export default function EducatorsPage() {
                   variant="secondary"
                   className="border-[rgb(var(--brand-2-rgb)/0.3)]"
                 >
-                  <Link href="/learning-paths">See the six learning paths</Link>
+                  <Link href="/learning-paths">See the eight learning paths</Link>
                 </Button>
                 <Button
                   asChild

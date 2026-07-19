@@ -93,7 +93,7 @@ function HeroPanel() {
               The skills that open doors — taught with clarity, rigor, and real progress.
             </p>
             <p className="max-w-md text-base leading-relaxed text-white/80 sm:text-lg">
-              From AI and coding to cybersecurity, data, digital fluency, and money skills —
+              From AI and coding to AP CSP prep, cybersecurity, data, digital fluency, and money skills —
               learn live with a Kanam instructor, or at a pace that fits your life. Built for
               teens, families, and schools.
             </p>
@@ -160,7 +160,7 @@ function LearningPathsPanel() {
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
           Learning paths
         </p>
-        <SectionTitle className="mt-2">Six paths. One standard of excellence.</SectionTitle>
+        <SectionTitle className="mt-2">Eight paths. One standard of excellence.</SectionTitle>
         <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#c5d2cb]">
           Every track is a complete program — guided practice, visible progress, and a
           capstone that proves the skill.
@@ -215,7 +215,7 @@ function LearningPathsPanel() {
             variant="secondary"
             className="rounded-full border-[rgb(var(--accent-rgb)/0.45)] bg-transparent text-[var(--accent)] hover:bg-[rgb(var(--accent-rgb)/0.1)]"
           >
-            <Link href="/learning-paths">Compare all six paths</Link>
+            <Link href="/learning-paths">Compare all eight paths</Link>
           </Button>
           <p className="text-sm text-[#a8b8b0]">
             {PACING_SHORT} · live or self-paced
@@ -481,7 +481,7 @@ function FaqPanel() {
   const items = [
     {
       q: "What is Kanam Academy?",
-      a: `A browser-based learning platform for coding, AI literacy, digital literacy, data, cybersecurity, and financial literacy — with six learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
+      a: `A browser-based learning platform for coding, AI literacy, Advanced AI, AP CSP prep, digital literacy, data, cybersecurity, and financial literacy — with eight learning paths, interactive lessons, live or async options, and progress adults can see. ${PACING_BLURB}`,
     },
     {
       q: "Who is it for?",

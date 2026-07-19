@@ -159,7 +159,7 @@ export default function PricingPage() {
                 {PRICING.family.price}
               </p>
               <p className="mt-4 max-w-md text-base leading-relaxed text-[#c5d2cb]">
-                All six learning paths — XP, badges, and progress adults can see. Stay as long as
+                All eight learning paths — XP, badges, and progress adults can see. Stay as long as
                 you need.
               </p>
               <div className="mt-8">

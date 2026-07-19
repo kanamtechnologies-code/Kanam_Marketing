@@ -169,7 +169,7 @@ export default function StandardsOnePagerPage() {
 
         <section className="mt-3 print:mt-2">
           <h2 className="font-display text-base font-semibold text-[var(--foreground)] print:text-[0.95rem]">
-            Six learning tracks — coverage at a glance
+            Eight learning tracks — coverage at a glance
           </h2>
           <div className="mt-1.5 overflow-hidden rounded-xl border border-zinc-900/10">
             <table className="w-full text-left text-[0.72rem] print:text-[0.64rem]">

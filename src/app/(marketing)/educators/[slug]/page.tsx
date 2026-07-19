@@ -234,7 +234,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                   variant="secondary"
                   className={duskGhostBtnClass}
                 >
-                  <Link href="/learning-paths">See the six learning paths</Link>
+                  <Link href="/learning-paths">See the eight learning paths</Link>
                 </Button>
               </div>
             </div>

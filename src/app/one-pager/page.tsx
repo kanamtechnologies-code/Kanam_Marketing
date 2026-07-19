@@ -102,7 +102,7 @@ export default function OnePagerPage() {
             async.
           </h1>
           <p className="mt-2 max-w-3xl text-[0.95rem] leading-relaxed text-[var(--muted)] print:mt-1.5 print:text-[0.85rem]">
-            Kanam Academy is a browser-based platform with six learning paths,{" "}
+            Kanam Academy is a browser-based platform with eight learning paths,{" "}
             {LESSONS_COUNT_LABEL} interactive lessons, instant feedback, and progress
             adults can see. {PACING_BLURB} {DEVICE_READY_BLURB}
           </p>
@@ -164,7 +164,7 @@ export default function OnePagerPage() {
         <section className="mt-5 print:mt-3.5">
           <div className="flex items-baseline justify-between gap-3">
             <h2 className="font-display text-lg font-semibold text-[var(--foreground)] print:text-base">
-              Six learning paths
+              Eight learning paths
             </h2>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
               Flexible schedule

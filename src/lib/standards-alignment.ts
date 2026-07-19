@@ -86,6 +86,16 @@ export const PATH_COVERAGE = [
     frameworks: "CSTA IC/DA bridges · ISTE Digital Citizen + Knowledge Constructor",
   },
   {
+    path: "Advanced AI",
+    focus: "AI specialty — ML, evaluation, RAG/agents, fairness, ship & audit",
+    frameworks: "CSTA AI specialty / AI4K12 creator outcomes · CSTA 3A/3B AP + IC",
+  },
+  {
+    path: "AP CSP Prep",
+    focus: "College Board AP CSP Big Ideas + Create PT exam prep (not an official AP course)",
+    frameworks: "College Board AP CSP CED · computational thinking practices",
+  },
+  {
     path: "Digital Literacy",
     focus: "Digital citizenship, information judgment, privacy, collaboration",
     frameworks: "ISTE Students 2024 · CSTA Impacts of Computing",
