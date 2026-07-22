@@ -3,7 +3,8 @@
  * Self-serve: $30/mo subscription, per-track prices below, and 1:1 tutoring.
  * Schools / programs / Scouts: custom quote.
  *
- * Each learning track = 16 sessions over 8 weeks (2 sessions/week). Pacing can flex.
+ * Most tracks = 16 sessions / 8 weeks; Python & Data Analyst = 14. Pacing can flex.
+ * Keep track prices in sync with learn app BillingClient + Stripe.
  */
 
 /** Designed length of one full learning track. */
@@ -14,16 +15,16 @@ export const TRACK_PROGRAM = {
   label: "16 sessions over 8 weeks",
   shortLabel: "16 sessions · 8 weeks",
   detail:
-    "One full track is designed as 16 sessions over 8 weeks (about 2 sessions per week). Families and programs can go faster or slower.",
+    "Most tracks are designed as 16 sessions over 8 weeks (about 2 sessions per week). Python & AI and Data Analyst are 14 sessions. Families and programs can go faster or slower.",
 } as const;
 
 export const PRICING = {
   family: {
     title: "Families & individual learners",
     price: "$30/mo",
-    alt: "or buy one full track (16 sessions) from $100",
+    alt: "or buy one full track from $100",
     detail:
-      "Platform access — eight structured paths, XP, and progress adults can see. Pay monthly for ongoing access to all tracks, or buy one full track (16 sessions over 8 weeks) for a clear finish line. Live 1:1 tutoring is optional and priced separately.",
+      "Platform access — eight structured paths, XP, and progress adults can see. Pay monthly for ongoing access to all tracks, or buy one full track for a clear finish line. Live 1:1 tutoring is optional and priced separately.",
   },
   program: {
     title: "After-school & weekend programs",
@@ -84,14 +85,14 @@ export const TRACK_PRICES = [
   {
     slug: "advanced-ai",
     name: "Advanced AI",
-    price: 199,
-    priceLabel: "$199",
+    price: 200,
+    priceLabel: "$200",
   },
   {
     slug: "ap-csp-prep",
     name: "AP CSP Prep",
-    price: 199,
-    priceLabel: "$199",
+    price: 250,
+    priceLabel: "$250",
   },
   {
     slug: "cybersecurity",
@@ -107,10 +108,10 @@ export const TRACK_PRICES = [
   },
 ] as const;
 
-export const TRACK_PRICE_RANGE_LABEL = "$100–$200";
+export const TRACK_PRICE_RANGE_LABEL = "$100–$250";
 
 /** One-line value frame for track pricing surfaces. */
-export const TRACK_VALUE_BLURB = `Each track is a full program: ${TRACK_PROGRAM.label} (flexible pacing). Prices below are for the complete track — not a single session.`;
+export const TRACK_VALUE_BLURB = `Each track is a full program (~8 weeks; most are 16 sessions, Python & Data Analyst are 14). Flexible pacing. Prices below are for the complete track — not a single session.`;
 
 /** Live human instruction — always sold separately from platform access. */
 export const LIVE_ADD_ONS = {
@@ -160,8 +161,8 @@ export const LIVE_ADD_ONS = {
 
 export const PRICING_INCLUDES = [
   "Eight learning paths · 124 interactive lessons",
-  `Each track = ${TRACK_PROGRAM.label} (flexible pacing · grades 6–12)`,
-  "Includes Advanced AI specialty + AP CSP Prep with practice tests & final",
+  "Most tracks = 16 sessions / 8 weeks · Python & Data Analyst = 14 (flexible pacing · grades 6–12)",
+  "Includes Advanced AI + AP CSP Prep (2 practice tests + final; prep only, not official AP)",
   "Instructors who are industry professionals with years of experience",
   "Chromebook & mobile ready · no special software install",
   "Program tools: class codes, roster, assignments, XP",
@@ -184,7 +185,7 @@ export const PRICING_OPTIONS = [
   },
   {
     title: "Tutoring trial",
-    detail: `Single 1:1 intro session at ${LIVE_ADD_ONS.oneToOne.trial} before buying more sessions. Live sessions are separate from the 16-session track curriculum.`,
+    detail: `Single 1:1 intro session at ${LIVE_ADD_ONS.oneToOne.trial} before buying more sessions. Live sessions are separate from the track curriculum.`,
   },
 ] as const;
 

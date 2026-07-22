@@ -18,7 +18,10 @@ import {
 } from "@/components/site/BrandCtaBand";
 import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
-import { INSTRUCTORS } from "@/lib/instructors";
+import {
+  INSTRUCTOR_QUALIFICATIONS_BLURB,
+  INSTRUCTORS,
+} from "@/lib/instructors";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -52,6 +55,9 @@ export default function InstructorsPage() {
               </h1>
               <p className={`mt-5 text-base sm:text-lg ${duskMutedClass}`}>
                 Kanam Academy is built around live instruction first. Our instructors bring real industry experience — and the patience to make hard skills click for teens, families, and classroom partners.
+              </p>
+              <p className={`mt-4 text-sm sm:text-base ${duskMutedClass}`}>
+                {INSTRUCTOR_QUALIFICATIONS_BLURB}
               </p>
             </div>
           </div>

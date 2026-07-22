@@ -16,6 +16,14 @@ export type Instructor = {
   credentials: string[];
 };
 
+/** Short line for one-pagers and email — accurate, no overclaim on GaPSC licensure. */
+export const INSTRUCTOR_QUALIFICATIONS_SHORT =
+  "Live instructors are industry professionals, screened for work with minors";
+
+/** Slightly fuller line for /instructors and partner follow-ups. */
+export const INSTRUCTOR_QUALIFICATIONS_BLURB =
+  "Live sessions are led by industry professionals who are screened for work with minors. Kanam provides supplemental instruction — your host staff don’t need to be the coding expert, and we don’t replace certified classroom teachers of record.";
+
 /**
  * Live instructors featured on /instructors.
  * Bios summarize public LinkedIn profiles; keep LinkedIn links as source of truth.

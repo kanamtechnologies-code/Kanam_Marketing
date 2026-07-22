@@ -18,7 +18,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Kanam Academy pricing one-pager",
   description:
-    "Kanam Academy pricing — $30/mo family subscription, full learning tracks (16 sessions / 8 weeks) from $100–$200, plus optional 1:1 tutoring from $49 trial / $90 per session.",
+    "Kanam Academy pricing — $30/mo family subscription, full learning tracks from $100–$250, plus optional 1:1 tutoring from $49 trial / $90 per session.",
   robots: { index: true, follow: true },
 };
 

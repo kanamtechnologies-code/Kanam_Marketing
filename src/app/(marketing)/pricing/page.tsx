@@ -40,7 +40,7 @@ import { cn } from "@/lib/utils";
 export const metadata: Metadata = {
   title: "Pricing | Kanam Academy",
   description:
-    "Kanam Academy pricing — $30/mo family access, full learning tracks from $100–$200, optional 1:1 tutoring from $49 trial, and custom quotes for schools and programs.",
+    "Kanam Academy pricing — $30/mo family access, full learning tracks from $100–$250, optional 1:1 tutoring from $49 trial, and custom quotes for schools and programs.",
 };
 
 const PARTNER_PLANS = [

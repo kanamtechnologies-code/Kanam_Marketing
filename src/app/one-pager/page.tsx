@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { PrintButton } from "@/components/site/PrintButton";
+import { INSTRUCTOR_QUALIFICATIONS_SHORT } from "@/lib/instructors";
 import {
   DEVICE_READY_BLURB,
   DEVICE_READY_SHORT,
@@ -12,6 +13,7 @@ import {
   PATHS_COUNT_LABEL,
   PROGRAM_FIT_SHORT,
 } from "@/lib/learning-paths";
+import { PRICING, TRACK_PRICE_RANGE_LABEL } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -74,8 +76,8 @@ export default function OnePagerPage() {
                   {siteConfig.name}
                 </p>
                 <p className="text-sm font-medium text-white/85">
-                  {siteConfig.tagline} Coding, AI, data, finance &amp; digital literacy —
-                  in the browser.
+                  {siteConfig.tagline} Coding, AI, AP CSP Prep, data, finance &amp; digital
+                  literacy — in the browser.
                 </p>
               </div>
             </div>
@@ -104,7 +106,13 @@ export default function OnePagerPage() {
           <p className="mt-2 max-w-3xl text-[0.95rem] leading-relaxed text-[var(--muted)] print:mt-1.5 print:text-[0.85rem]">
             Kanam Academy is a browser-based platform with eight learning paths,{" "}
             {LESSONS_COUNT_LABEL} interactive lessons, instant feedback, and progress
-            adults can see. {PACING_BLURB} {DEVICE_READY_BLURB}
+            adults can see. Includes Advanced AI and AP CSP Prep (practice tests + final;
+            prep only, not an official AP course). {PACING_BLURB} {DEVICE_READY_BLURB}
+          </p>
+          <p className="mt-2 text-[0.85rem] font-medium text-[var(--foreground)] print:mt-1.5 print:text-[0.78rem]">
+            Self-serve: {PRICING.family.price} for all tracks, or one full track from{" "}
+            {TRACK_PRICE_RANGE_LABEL}. Live tutoring optional. Programs &amp; schools:
+            custom quote.
           </p>
         </section>
 
@@ -244,6 +252,7 @@ export default function OnePagerPage() {
             <ul className="mt-2 space-y-1.5 text-[0.8rem] text-[var(--muted)] print:text-[0.72rem]">
               {[
                 "Live cohorts, after-school, weekend, or Scout troop blocks",
+                INSTRUCTOR_QUALIFICATIONS_SHORT,
                 "Schedule flexes to your classroom, family, or self-paced needs",
                 `${DEVICE_READY_SHORT} — no special software to install`,
                 "Program tools: classes, codes, roster, XP",
