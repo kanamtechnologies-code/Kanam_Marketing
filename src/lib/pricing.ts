@@ -89,12 +89,6 @@ export const TRACK_PRICES = [
     priceLabel: "$200",
   },
   {
-    slug: "ap-csp-prep",
-    name: "AP CSP Prep",
-    price: 250,
-    priceLabel: "$250",
-  },
-  {
     slug: "cybersecurity",
     name: "Cybersecurity",
     price: 200,
@@ -105,6 +99,12 @@ export const TRACK_PRICES = [
     name: "Data Analyst",
     price: 200,
     priceLabel: "$200",
+  },
+  {
+    slug: "ap-csp-prep",
+    name: "AP CSP Prep",
+    price: 250,
+    priceLabel: "$250",
   },
 ] as const;
 

@@ -24,6 +24,7 @@ import {
 import { ParallaxImage } from "@/components/site/ParallaxImage";
 import { Button } from "@/components/ui/button";
 import { billingLinks } from "@/lib/billing-links";
+import { PATHS_COUNT_LABEL } from "@/lib/learning-paths";
 import {
   LIVE_ADD_ONS,
   PRICING,
@@ -111,9 +112,16 @@ export default function PricingPage() {
           <div className="grid grid-cols-2 gap-0 sm:grid-cols-4">
             {[
               { value: PRICING.family.price, label: "All tracks · monthly" },
-              { value: TRACK_PRICE_RANGE_LABEL, label: "One full track" },
-              { value: LIVE_ADD_ONS.oneToOne.trial, label: "Tutoring trial" },
-              { value: "Custom", label: "Schools & programs" },
+              {
+                value: `${PATHS_COUNT_LABEL} paths`,
+                label: "Full track unlocks",
+              },
+              { value: "1:1 tutoring", label: "Live with instructors" },
+              {
+                value: "Custom pricing",
+                label: "Schools & programs",
+                compact: true,
+              },
             ].map((item, index) => (
               <div
                 key={item.label}
@@ -126,7 +134,14 @@ export default function PricingPage() {
                   index > 0 ? "sm:border-l" : "sm:border-l-0 sm:pl-0 sm:pr-5"
                 )}
               >
-                <div className="font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
+                <div
+                  className={cn(
+                    "font-display font-semibold tracking-tight text-zinc-950",
+                    item.compact
+                      ? "text-xl leading-snug sm:text-2xl"
+                      : "text-2xl sm:text-3xl"
+                  )}
+                >
                   {item.value}
                 </div>
                 <div className="mt-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-zinc-500">
