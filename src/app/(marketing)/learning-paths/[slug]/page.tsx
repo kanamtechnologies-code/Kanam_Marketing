@@ -232,7 +232,7 @@ export default async function LearningPathDetailPage({ params }: Props) {
 
         {/* Facts — same proof-strip language as the rest of the site */}
         <PageBand tone="proof" className="py-8 md:py-10">
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-4">
+          <div className="grid grid-cols-2 gap-0 sm:grid-cols-4">
             {[
               { label: "Lessons", value: String(path.lessons) },
               { label: "Schedule", value: "Flexible" },
@@ -242,8 +242,12 @@ export default async function LearningPathDetailPage({ params }: Props) {
               <div
                 key={item.label}
                 className={cn(
-                  "border-b border-white/15 pb-3 pt-1 sm:border-b-0 sm:border-l sm:border-white/15 sm:pb-0 sm:pl-5 sm:first:border-l-0 sm:first:pl-0",
-                  index === 0 && "sm:border-l-0 sm:pl-0"
+                  "min-w-0 px-4 py-5",
+                  "border-white/20",
+                  index % 2 === 1 && "border-l",
+                  index >= 2 && "border-t",
+                  "sm:border-t-0 sm:px-5 sm:py-1",
+                  index > 0 ? "sm:border-l" : "sm:border-l-0 sm:pl-0 sm:pr-5"
                 )}
               >
                 <div

@@ -222,13 +222,13 @@ export default function LearningPathsPage() {
         </section>
 
         <PageBand tone="light">
-          <div className="kanam-fade-up grid grid-cols-2 gap-x-5 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="kanam-fade-up grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-[rgb(var(--accent-rgb)/0.35)] sm:grid-cols-3 lg:grid-cols-6 lg:rounded-none">
           {PROOF_POINTS.map((item) => (
-            <div key={item.label} className="min-w-0">
+            <div key={item.label} className="min-w-0 bg-[#f3efe4] px-4 py-5 sm:px-5 sm:py-6">
               <div className="font-display text-xl font-semibold tracking-tight text-zinc-950 sm:text-2xl">
                 {item.value}
               </div>
-              <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-zinc-500">
+              <div className="mt-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-zinc-500">
                 {item.label}
               </div>
             </div>

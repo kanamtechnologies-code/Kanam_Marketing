@@ -134,11 +134,11 @@ function HeroPanel() {
 function ProofStrip() {
   return (
     <section className="border-b border-[rgb(var(--accent-rgb)/0.35)] bg-gradient-to-b from-[#145c45] to-[rgb(var(--brand-2-rgb)/1)]">
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-[rgb(var(--accent-rgb)/0.22)] sm:grid-cols-3 lg:grid-cols-6">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-px bg-[rgb(var(--accent-rgb)/0.5)] sm:grid-cols-3 lg:grid-cols-6">
         {PROOF_POINTS.map((item) => (
           <div
             key={item.label}
-            className="bg-[#145c45] px-4 py-6 text-center sm:px-5 sm:py-7 lg:bg-transparent lg:bg-gradient-to-b lg:from-[#145c45] lg:to-[rgb(var(--brand-2-rgb)/1)] lg:px-4 lg:py-8"
+            className="bg-[#145c45] px-4 py-7 text-center sm:px-5 sm:py-8 lg:bg-transparent lg:bg-gradient-to-b lg:from-[#145c45] lg:to-[rgb(var(--brand-2-rgb)/1)] lg:px-4 lg:py-8"
           >
             <div className="font-display text-xl font-semibold leading-tight tracking-tight text-[var(--accent)] sm:text-2xl">
               {item.value}

@@ -108,14 +108,24 @@ export default function PricingPage() {
 
         {/* At-a-glance — premium proof strip */}
         <PageBand tone="light" className="!py-10 md:!py-12">
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
+          <div className="grid grid-cols-2 gap-0 sm:grid-cols-4">
             {[
               { value: PRICING.family.price, label: "All tracks · monthly" },
               { value: TRACK_PRICE_RANGE_LABEL, label: "One full track" },
               { value: LIVE_ADD_ONS.oneToOne.trial, label: "Tutoring trial" },
               { value: "Custom", label: "Schools & programs" },
-            ].map((item) => (
-              <div key={item.label} className="min-w-0">
+            ].map((item, index) => (
+              <div
+                key={item.label}
+                className={cn(
+                  "min-w-0 px-4 py-5",
+                  "border-[rgb(var(--accent-rgb)/0.35)]",
+                  index % 2 === 1 && "border-l",
+                  index >= 2 && "border-t",
+                  "sm:border-t-0 sm:px-5 sm:py-1",
+                  index > 0 ? "sm:border-l" : "sm:border-l-0 sm:pl-0 sm:pr-5"
+                )}
+              >
                 <div className="font-display text-2xl font-semibold tracking-tight text-zinc-950 sm:text-3xl">
                   {item.value}
                 </div>

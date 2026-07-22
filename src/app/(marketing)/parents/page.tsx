@@ -41,6 +41,7 @@ import {
   TRACK_PROGRAM,
 } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "For parents | Homeschool & enrichment | Kanam Academy",
@@ -206,20 +207,23 @@ export default function ParentsPage() {
         </section>
 
         <PageBand tone="proof" className="py-8 md:py-10">
-          <div className="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-0">
+          <div className="grid grid-cols-2 gap-0 sm:grid-cols-4">
             {HERO_PROOF.map((item, index) => (
               <div
                 key={item.label}
-                className={
-                  index > 0
-                    ? "sm:border-l sm:border-[rgb(var(--accent-rgb)/0.28)] sm:px-6 sm:first:pl-0"
-                    : "sm:px-6 sm:pl-0"
-                }
+                className={cn(
+                  "min-w-0 px-4 py-5",
+                  "border-[rgb(var(--accent-rgb)/0.4)]",
+                  index % 2 === 1 && "border-l",
+                  index >= 2 && "border-t",
+                  "sm:border-t-0 sm:px-6 sm:py-1",
+                  index > 0 ? "sm:border-l" : "sm:border-l-0 sm:pl-0"
+                )}
               >
                 <div className="font-display text-2xl font-semibold tracking-tight text-[#f7f3e8] sm:text-3xl">
                   {item.value}
                 </div>
-                <div className="mt-1 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
+                <div className="mt-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
                   {item.label}
                 </div>
               </div>
