@@ -1,7 +1,6 @@
 /**
- * Purchase deep-links into the learning app.
- * Buy CTAs go to /checkout (sign-in if needed → Stripe).
- * /billing remains an in-app account storefront for signed-in users.
+ * Purchase deep-links into the learning app billing storefront.
+ * CTAs go to https://learn.kanamacademy.com/billing (with optional scroll/highlight params).
  */
 
 const appBase = (
@@ -15,26 +14,14 @@ export type TutoringSku =
   | "bundle8"
   | "bundle16";
 
-export type CheckoutLinkOptions = {
-  kind: "subscription" | "track" | "tutoring";
-  trackSlug?: string;
-  tutoringSku?: TutoringSku;
-};
-
-/** Direct purchase: learn app signs in if needed, then opens Stripe Checkout. */
-export function checkoutUrl(options: CheckoutLinkOptions): string {
-  const params = new URLSearchParams();
-  params.set("kind", options.kind);
-  if (options.trackSlug) params.set("trackSlug", options.trackSlug);
-  if (options.tutoringSku) params.set("tutoringSku", options.tutoringSku);
-  return `${appBase}/checkout?${params.toString()}`;
-}
-
-/** @deprecated Prefer checkoutUrl for Buy CTAs. Kept for account/storefront links. */
 export type BillingLinkOptions = {
+  /** Scroll/highlight a track row */
   track?: string;
+  /** subscription | track | tutoring */
   plan?: "subscription" | "track" | "tutoring";
+  /** Scroll/highlight a tutoring SKU card */
   tutoring?: TutoringSku;
+  /** Explicit section id: plans | subscription | tracks | tutoring */
   section?: "plans" | "subscription" | "tracks" | "tutoring";
 };
 
@@ -49,14 +36,12 @@ export function billingUrl(options: BillingLinkOptions = {}): string {
 }
 
 export const billingLinks = {
-  /** Account storefront (signed-in users managing purchases). */
   storefront: () => billingUrl(),
-  subscription: () => checkoutUrl({ kind: "subscription" }),
-  /** Stay on marketing pricing — pick a specific track Buy button. */
-  tracks: () => "/pricing#tracks",
-  track: (slug: string) => checkoutUrl({ kind: "track", trackSlug: slug }),
-  tutoring: () => checkoutUrl({ kind: "tutoring", tutoringSku: "session" }),
-  tutoringTrial: () => checkoutUrl({ kind: "tutoring", tutoringSku: "trial" }),
-  tutoringSession: () => checkoutUrl({ kind: "tutoring", tutoringSku: "session" }),
-  tutoringSku: (sku: TutoringSku) => checkoutUrl({ kind: "tutoring", tutoringSku: sku }),
+  subscription: () => billingUrl({ plan: "subscription" }),
+  tracks: () => billingUrl({ plan: "track", section: "tracks" }),
+  track: (slug: string) => billingUrl({ plan: "track", track: slug }),
+  tutoring: () => billingUrl({ plan: "tutoring" }),
+  tutoringTrial: () => billingUrl({ plan: "tutoring", tutoring: "trial" }),
+  tutoringSession: () => billingUrl({ plan: "tutoring", tutoring: "session" }),
+  tutoringSku: (sku: TutoringSku) => billingUrl({ plan: "tutoring", tutoring: sku }),
 } as const;

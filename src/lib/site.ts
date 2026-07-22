@@ -10,7 +10,7 @@ export const siteConfig = {
     "Coding, AI, AP CSP prep, data, cybersecurity, financial literacy, and digital skills for grades 6–12 — live instruction or structured async classes. Built to align with CSTA K–12 Computer Science Standards. Eight learning paths. Taught by industry professionals. Chromebook and mobile ready. Progress you can see.",
   links: {
     app: `${normalizedBase}/welcome`,
-    /** In-app purchase/account page (prefer /pricing Buy → /checkout for new buyers). */
+    /** In-app billing storefront (Purchase CTAs land here). */
     billing: `${normalizedBase}/billing`,
     demo:
       process.env.NEXT_PUBLIC_DEMO_URL ?? `${normalizedBase}/demo`,
