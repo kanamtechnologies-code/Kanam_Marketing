@@ -68,19 +68,17 @@ export function SiteFooter() {
               >
                 Get started / Sign in →
               </a>
-              <a
+              <Link
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
-                href={siteConfig.links.billing}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/pricing"
               >
                 Buy plans &amp; tutoring →
-              </a>
+              </Link>
               <Link
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                 href="/one-pager"
               >
-                One-pager (print / PDF) →
+                Program overview →
               </Link>
               <Link
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
@@ -92,7 +90,7 @@ export function SiteFooter() {
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                 href="/one-pager/pricing"
               >
-                Pricing one-pager →
+                Pricing overview →
               </Link>
             </div>
           </div>

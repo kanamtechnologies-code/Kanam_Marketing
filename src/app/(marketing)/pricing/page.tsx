@@ -193,20 +193,14 @@ export default function PricingPage() {
               </div>
               <div className="mt-8">
                 <Button asChild size="lg" variant="secondary" className={duskGhostBtnClass}>
-                  <Link
-                    href={billingLinks.tracks()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Browse tracks in billing
-                  </Link>
+                  <a href="#tracks">See track prices</a>
                 </Button>
               </div>
             </div>
           </div>
 
           {/* Track menu — single elegant column */}
-          <div className="mt-12">
+          <div id="tracks" className="mt-12 scroll-mt-28">
             <div className="flex flex-wrap items-end justify-between gap-3 border-b border-[rgb(var(--accent-rgb)/0.28)] pb-4">
               <div>
                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-[var(--accent)]">
@@ -473,7 +467,7 @@ export default function PricingPage() {
                   href={siteConfig.links.pricingPdf}
                   className="font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                 >
-                  Open the pricing one-pager
+                  Open the pricing overview
                 </Link>
                 .
               </p>
@@ -486,11 +480,11 @@ export default function PricingPage() {
               </Button>
               <Button asChild size="lg" variant="secondary" className={brandCtaSecondaryBtnClass}>
                 <Link
-                  href={billingLinks.storefront()}
+                  href={billingLinks.subscription()}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Open billing
+                  Subscribe {PRICING.family.price}
                 </Link>
               </Button>
               <Button asChild size="lg" variant="secondary" className={brandCtaSecondaryBtnClass}>

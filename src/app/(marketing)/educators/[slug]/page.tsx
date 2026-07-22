@@ -121,7 +121,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    One-pager PDF
+                    Program overview
                   </Link>
                 </Button>
               </div>
@@ -147,7 +147,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Product one-pager
+                  Program overview
                 </Link>
               </Button>
               <Button
@@ -161,7 +161,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Pricing one-pager
+                  Pricing overview
                 </Link>
               </Button>
               <Button
@@ -350,7 +350,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                     rel="noreferrer"
                     className="font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                   >
-                    Product one-pager →
+                    Program overview →
                   </Link>
                 </li>
                 <li>
@@ -360,7 +360,7 @@ export default async function PartnerAudiencePage({ params }: Props) {
                     rel="noreferrer"
                     className="font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                   >
-                    Pricing one-pager →
+                    Pricing overview →
                   </Link>
                 </li>
                 <li>

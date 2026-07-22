@@ -52,13 +52,13 @@ export default function StandardsOnePagerPage() {
             href="/one-pager"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
-            Product one-pager
+            Overview
           </Link>
           <Link
             href="/"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
-            Back to site
+            Home
           </Link>
         </div>
       </div>
@@ -335,7 +335,7 @@ export default function StandardsOnePagerPage() {
             review: {siteConfig.links.email} · {siteConfig.links.phone}.
           </p>
           <p className="mt-1 text-[0.68rem] text-[var(--muted)] print:text-[0.6rem]">
-            {SITE_URL}/one-pager/standards · Print or Save as PDF
+            {SITE_URL} · {siteConfig.links.email}
           </p>
         </footer>
       </article>

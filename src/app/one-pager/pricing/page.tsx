@@ -16,7 +16,7 @@ import {
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Kanam Academy pricing one-pager",
+  title: "Kanam Academy pricing overview",
   description:
     "Kanam Academy pricing — $30/mo family subscription, full learning tracks from $100–$250, plus optional 1:1 tutoring from $49 trial / $90 per session.",
   robots: { index: true, follow: true },
@@ -51,13 +51,13 @@ export default function PricingOnePagerPage() {
             href="/one-pager"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
-            Product one-pager
+            Overview
           </Link>
           <Link
             href="/"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
-            Back to site
+            Home
           </Link>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default function PricingOnePagerPage() {
                   {siteConfig.name}
                 </p>
                 <p className="text-sm font-medium text-white/85">
-                  Pricing one-pager · Platform + optional live tutoring
+                  Pricing · Platform + optional live tutoring
                 </p>
               </div>
             </div>
@@ -267,10 +267,10 @@ export default function PricingOnePagerPage() {
 
         <footer className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-zinc-900/10 pt-2 text-[0.65rem] text-[var(--muted)] print:mt-2 print:pt-1.5">
           <p>
-            Starting guidance only · Not a public rate card · Quote by cohort &amp; delivery
-            model
+            Family &amp; track prices as listed · Programs &amp; schools quoted by cohort
+            &amp; delivery model
           </p>
-          <p className="font-medium text-[var(--brand-2)]">{SITE_URL}/one-pager/pricing</p>
+          <p className="font-medium text-[var(--brand-2)]">{SITE_URL}/pricing</p>
         </footer>
       </article>
 

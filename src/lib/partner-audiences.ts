@@ -109,7 +109,7 @@ export const PARTNER_AUDIENCES: PartnerAudience[] = [
     image: "/images/product/leaders-afterschool-live.png",
     imageAlt: "Kanam instructor teaching teens in an after-school program",
     metaDescription:
-      "Run Kanam as an after-school or weekend cohort. Your staff hosts; Kanam teaches live. Pricing guidance, one-pager, and a form to request information.",
+      "Run Kanam as an after-school or weekend cohort. Your staff hosts; Kanam teaches live. Pricing guidance, a program overview, and a form to request information.",
     heroHeadline: "After-school & weekend",
     heroAccent: "cohorts, taught by Kanam",
     heroBody:

@@ -17,9 +17,9 @@ import { PRICING, TRACK_PRICE_RANGE_LABEL } from "@/lib/pricing";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Kanam Academy one-pager",
+  title: "Kanam Academy overview",
   description:
-    "One-page overview of Kanam Academy for school admins, parents, and learners — learning paths, flexible schedule, Chromebook and mobile ready, and how to get started.",
+    "Kanam Academy overview for school admins, parents, and learners — learning paths, flexible schedule, Chromebook and mobile ready, and how to get started.",
   robots: { index: true, follow: true },
 };
 
@@ -50,7 +50,7 @@ export default function OnePagerPage() {
             href="/"
             className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
           >
-            Back to site
+            Home
           </Link>
         </div>
       </div>
@@ -90,7 +90,7 @@ export default function OnePagerPage() {
                   href="/one-pager/pricing"
                   className="font-semibold text-white underline underline-offset-2 hover:text-white/90"
                 >
-                  Pricing one-pager →
+                  See pricing →
                 </Link>
               </p>
             </div>
@@ -300,7 +300,7 @@ export default function OnePagerPage() {
                 Learn more
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--foreground)] print:text-[0.8rem]">
-                Marketing site →
+                Visit kanamacademy.com →
               </p>
               <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
                 {SITE_URL}
@@ -314,10 +314,10 @@ export default function OnePagerPage() {
                 Pricing
               </p>
               <p className="mt-1 text-sm font-semibold text-[var(--foreground)] print:text-[0.8rem]">
-                Pricing one-pager →
+                Full pricing details →
               </p>
               <p className="mt-0.5 break-all text-[0.7rem] text-[var(--muted)] print:text-[0.65rem]">
-                {SITE_URL}/one-pager/pricing
+                {SITE_URL}/pricing
               </p>
             </Link>
             <a
