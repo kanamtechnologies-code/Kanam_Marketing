@@ -235,7 +235,7 @@ export default function PricingPage() {
                       rel="noopener noreferrer"
                       className="inline-flex h-10 min-w-[5.5rem] items-center justify-center rounded-full border border-[rgb(var(--accent-rgb)/0.55)] bg-[rgb(var(--accent-rgb)/0.12)] px-5 text-sm font-semibold text-[var(--accent)] transition hover:border-[var(--accent)] hover:bg-[rgb(var(--accent-rgb)/0.22)]"
                     >
-                      Buy
+                      Purchase
                     </Link>
                   </div>
                 </li>

@@ -72,7 +72,7 @@ export function SiteFooter() {
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"
                 href="/pricing"
               >
-                Buy plans &amp; tutoring →
+                Plans &amp; tutoring →
               </Link>
               <Link
                 className="text-sm font-semibold text-[var(--accent)] underline-offset-4 hover:underline"

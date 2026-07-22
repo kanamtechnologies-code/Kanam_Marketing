@@ -105,7 +105,7 @@ function CtaPair({
             target="_blank"
             rel="noopener noreferrer"
           >
-            {trackPriceLabel ? `Buy this track · ${trackPriceLabel}` : "Buy this track"}
+            {trackPriceLabel ? `Purchase this track · ${trackPriceLabel}` : "Purchase this track"}
           </Link>
         </Button>
       ) : null}

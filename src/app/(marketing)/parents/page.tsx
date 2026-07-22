@@ -469,7 +469,7 @@ export default function ParentsPage() {
                           rel="noopener noreferrer"
                           className="text-sm font-semibold text-[var(--brand-2)] underline-offset-4 hover:underline"
                         >
-                          Buy
+                          Purchase
                         </Link>
                       </span>
                     </li>
@@ -491,7 +491,7 @@ export default function ParentsPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Buy a full track
+                      Purchase a full track
                     </Link>
                   </Button>
                 </div>
